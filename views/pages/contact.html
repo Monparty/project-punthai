@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ติดต่อ</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      main {
+        display: grid;
+        row-gap: 30px;
+      }
+
+      .boxContainer {
+        display: grid;
+        grid-template-columns: 2fr 6fr;
+        column-gap: 20px;
+      }
+
+      .leftBar {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+
+        & a {
+          border-bottom: 1px solid var(--gray);
+        }
+      }
+
+      .container__lists {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+
+      .borderBox {
+        display: grid;
+        grid-template-columns: 1fr 5fr 3fr;
+        column-gap: 20px;
+        align-items: center;
+
+        & i {
+          font-size: 60px;
+          color: var(--blue);
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .boxContainer {
+          grid-template-columns: 1fr;
+          row-gap: 30px;
+        }
+
+        .borderBox {
+          grid-template-columns: 1fr;
+          width: 500px;
+          row-gap: 10px;
+          text-align: center;
+          
+          & .helpBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & a {
+              width: 200px;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+      <div class="breadcrumbs">
+        <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a>ติดต่อ</a>
+      </div>
+
+      <section>
+        <h2 style="margin-bottom: 10px">ติดต่อเรา ขอความช่วยเหลือ</h2>
+        <div class="boxContainer">
+          <div class="leftBar">
+            <a href="#">รายละเอียดการจอง</a>
+            <a href="#cancel">ยกเลิกการจอง</a>
+            <a href="#">เปลี่ยนแปลงการจอง</a>
+            <a href="#">ขอรับบริการเพิ่มเติม</a>
+            <a href="#covid">สถานการณ์ไวรัสโควิด-19</a>
+            <a href="#">ติดต่อด้านอื่น ๆ</a>
+          </div>
+          <div class="container__lists">
+            <div class="borderBox">
+              <div class="icon" style="text-align: center;">
+                <i class='bx bx-info-square'></i>
+              </div>
+              <div class="boxHelpTitle">
+                <h4>
+                  ประสบปัญหาใดๆ เราพร้อมให้ความช่วยเหลือ
+                </h4>
+                <h5>
+                  ติดต่อที่พักหรือฝ่ายลูกค้าสัมพันธ์ของอโกด้า พร้อมรับคำตอบอย่างรวดเร็วจากเรา รวมถึงบริการอีกมากมายที่ท่านสามารถทำได้ด้วยตนเองง่ายๆ
+                </h5>
+              </div>
+              <div class="helpBtn">
+                <a href="#" class="button">ติดต่อฝ่ายลูกค้าสัมพันธ์</a>
+              </div>
+            </div>
+            <h2>รายละเอียดการจอง</h2>
+            <details>
+              <summary>
+                วิธีดูข้อมูลเพิ่มเติมเกี่ยวกับห้องพัก
+                บริการและสิ่งอำนวยความสะดวกของห้องพัก
+              </summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>วิธีตรวจสอบข้อมูลการจองและสถานะการจอง</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>ราคาห้องพักรวมอาหารเช้าหรือไม่</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <h2>ยกเลิกการจอง</h2>
+            <details>
+              <summary id="cancel">วิธียกเลิกการจอง</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>หากยกเลิกการจองจะมีค่าธรรมเนียมการยกเลิกหรือไม่</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>วิธีตรวจสอบว่าการจองถูกยกเลิกหรือไม่</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <h2 id="covid">สถานการณ์ไวรัสโควิด-19</h2>
+            <details>
+              <summary>
+                สามารถแก้ไขหรือยกเลิกการจองเนื่องจากสถานการณ์ไวรัสโควิด-19
+                ได้หรือไม่
+              </summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>
+                วิธีตรวจสอบเงื่อนไขการยกเลิกการจองเมื่อจองห้องพัก
+              </summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="payment__channels">
+          <div class="payment__channelItem">
+            <i class="bx bx-money"></i>
+            <div>
+              <h4>การโอนเงินผ่านธนาคาร</h4>
+              <h5>BANK TRANSFER</h5>
+            </div>
+          </div>
+          <div class="payment__channelItem">
+            <i class="bx bx-credit-card"></i>
+            <div>
+              <h4>ชำระด้วยบัตรเครดิต</h4>
+              <h5>CREDIT CCARD</h5>
+            </div>
+          </div>
+          <div class="payment__channelItem">
+            <i class="bx bx-building-house"></i>
+            <div>
+              <h4>ชำระหน้าเคาน์เตอร์เซอร์วิส</h4>
+              <h5>COUNTER SERVICES</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

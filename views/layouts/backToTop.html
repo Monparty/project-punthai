@@ -1,0 +1,43 @@
+<style>
+    #backToTop {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            background-color: var(--blue);
+            padding: 8px;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            cursor: pointer;
+            
+            & i {
+                font-size: 30px;
+                color: var(--white);
+            }
+        }
+</style>
+<a id="backToTop" onclick="backToTop()"><i class='bx bx-chevron-up'></i></a>
+
+<script>
+    let myBtn = document.getElementById("backToTop");
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            myBtn.style.visibility = "visible";
+        } else {
+            myBtn.style.visibility = "hidden";
+        }
+    }
+
+    function backToTop() {
+        document.documentElement.scrollTop = myBtn;
+        document.body.scrollTop = myBtn;
+        
+    }
+
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดการห้องประชุม</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .boxSearch {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+
+            & input {
+                width: 500px;
+            }
+
+            & .searchItem {
+                display: flex;
+                align-items: center;
+                column-gap: 10px;
+            } 
+        }
+        
+    </style>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="#">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>จัดการห้องประชุม</a>
+    </div>
+    <main class="containerAdmin">
+        <h2 style="margin-bottom:10px;">จัดการห้องประชุม</h2>
+        <div class="boxSearch">
+            <div class="searchItem">
+                <input type="text" name="" id="" placeholder="ค้นหารายการ...">
+                <a href="#" class="button w100">ค้นหา</a>
+            </div>
+            <a href="" class="button green">เพิ่มข้อมูลห้องประชุม <i class='bx bx-plus'></i></a>
+        </div>
+
+        <div class="containerTable">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td width="10%">ลำดับ</td>
+                        <td>ชื่อห้องพัก</td>
+                        <td width="15%">วันที่บันทึก</td>
+                        <td width="15%">สถานะ</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center">1</td>
+                        <td>ห้องพักครอบครัว</td>
+                        <td align="center">17/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">2</td>
+                        <td>ห้องพักเตียงเดี่ยว</td>
+                        <td align="center">19/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">3</td>
+                        <td>ห้องพักครอบครัว</td>
+                        <td align="center">20/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">4</td>
+                        <td>ห้องพักเตียงคู่</td>
+                        <td align="center">25/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">5</td>
+                        <td>ห้องพักเตียงเดี่ยว</td>
+                        <td align="center">30/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">1</td>
+                        <td>ห้องพักครอบครัว</td>
+                        <td align="center">17/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">2</td>
+                        <td>ห้องพักเตียงเดี่ยว</td>
+                        <td align="center">19/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">3</td>
+                        <td>ห้องพักครอบครัว</td>
+                        <td align="center">20/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">4</td>
+                        <td>ห้องพักเตียงคู่</td>
+                        <td align="center">25/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">5</td>
+                        <td>ห้องพักเตียงเดี่ยว</td>
+                        <td align="center">30/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">1</td>
+                        <td>ห้องพักครอบครัว</td>
+                        <td align="center">17/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">2</td>
+                        <td>ห้องพักเตียงเดี่ยว</td>
+                        <td align="center">19/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">3</td>
+                        <td>ห้องพักครอบครัว</td>
+                        <td align="center">20/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">4</td>
+                        <td>ห้องพักเตียงคู่</td>
+                        <td align="center">25/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                    <tr>
+                        <td align="center">5</td>
+                        <td>ห้องพักเตียงเดี่ยว</td>
+                        <td align="center">30/12/2566 14:00</td>
+                        <td align="center">Active</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../../js/script.js"></script>
+</body>
+</html>

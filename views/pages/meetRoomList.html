@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ห้องประชุม</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        main {
+            display: grid;
+            row-gap: 30px;
+        }
+
+        .boxContainer {
+            display: grid;
+            grid-template-columns: 2fr 6fr;
+            column-gap: 20px;
+        }
+
+        .leftBar {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            
+            & a {
+                border-bottom: 1px solid var(--gray);
+            }
+        }
+
+        .container__lists {
+            display: grid;
+            align-items: center;
+            justify-content: space-around;
+            grid-template-columns: 1fr 1fr 1fr;
+            row-gap: 10px;
+        }
+
+        .item__list {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            width: 200px;
+            display: grid;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 10px;
+            row-gap: 10px;
+            cursor: pointer;
+
+            & img {
+                width: 180px;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+
+            &:hover {
+                box-shadow: rgba(11, 57, 220, 0.1) 0px 4px 12px;;
+            }
+        }
+
+        .scrollPrice {
+            display: grid;
+            row-gap: 20px;
+        }
+
+        .boxImg {
+
+            & img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            & h5 {
+                padding: 10px;
+            }
+        }
+
+        .imgDesc {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            & .imgDesc__item {
+                position: relative; 
+                width: fit-content;
+            }
+
+            & h4 {
+                position: absolute; 
+                bottom: 5px;
+                padding: 15px; 
+                background: var(--black); 
+                color: var(--white);
+                width: 100%; 
+                border-radius: 0 0 10px 10px;
+                opacity: .7;
+                transition: .2s;
+                text-align: center;
+            }
+
+            & img {
+                border-radius: 10px;
+                object-fit: cover;
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        .child1:hover {
+
+            & h4 {
+            background: var(--blue); 
+            box-shadow: rgba(123, 123, 216, 0.2) 0px 7px 29px 0px;
+            }
+        }
+
+        .child2:hover {
+
+            & h4 {
+            background: var(--blue); 
+            box-shadow: rgba(123, 123, 216, 0.2) 0px 7px 29px 0px;
+            }
+        }
+
+        .child3:hover {
+
+            & h4 {
+            background: var(--blue); 
+            box-shadow: rgba(123, 123, 216, 0.2) 0px 7px 29px 0px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .imgDesc {
+                flex-direction: column;
+                row-gap: 10px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .boxContainer {
+                grid-template-columns: 1fr;
+                row-gap: 30px;
+            }
+
+            .container__lists {
+                grid-template-columns: 1fr 1fr;
+                column-gap: 10px;
+            }
+
+            .boxImg {
+                padding: 0 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+        <div class="breadcrumbs">
+            <a style="color: var(--gray);" href="homePage.php">หน้าแรก</a>
+            <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+            <a>รายการห้องประชุม</a>
+        </div>
+
+        <section>
+            <h2 style="margin-bottom: 10px;">ค้นหาห้องประชุม ห้องจัดอบรม และสถานที่จัดงานแต่งงาน</h2>
+            <div class="boxContainer">
+                <div class="leftBar">
+                    <div class="scrollPrice">
+                        <div class="btn__group">
+                            <input type="text" name="" id="" placeholder="฿0">
+                            <input type="text" name="" id="" placeholder="฿14,000">
+                        </div>
+                        <input style="width: 100%;" min="0" max="100" step="10" type="range">
+                    </div>
+                    <a href="#">ห้องเตียงเดี่ยว</a>
+                    <a href="#">ห้องเตียวคู่</a>
+                    <a href="#">ห้องริมทะเล</a>
+                    <a href="#">ห้องริมเขา</a>
+                    <a href="#">ห้องครอบครัว</a>
+                    <a href="#">ห้องคู่รัก</a>
+                </div>
+                <div class="container__lists">
+                    <div class="item__list" onclick="meetRoom()">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                    <div class="item__list">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                    <div class="item__list">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                    <div class="item__list">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                    <div class="item__list">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                    <div class="item__list">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                    <div class="item__list">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                    <div class="item__list">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                    <div class="item__list">
+                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        <h4>฿1,500</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="boxImg">
+                <img src="https://img.freepik.com/free-photo/fantastic-seascape-with-ripples_1232-424.jpg?w=740&t=st=1701793239~exp=1701793839~hmac=31cc426614218d3f9902e8a77a949a5b05e39df475f9eb0b598dd01abe1e865c" alt="">
+                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia atque vitae fuga necessitatibus, ex quod velit voluptatum, obcaecati accusantium, autem dolorum. Fugiat autem voluptatibus sint dolorum eius quidem omnis quo, quisquam animi officiis hic ducimus. Ducimus facere molestias nemo laborum accusamus excepturi consectetur inventore odio dolore neque minima quibusdam assumenda quod error unde, praesentium libero maxime atque? Officia, ab. Omnis officiis doloremque modi dolores iste, perspiciatis veritatis repellat quae amet ea, mollitia tenetur? Dignissimos quaerat quibusdam reiciendis repellendus explicabo? Ducimus.</h5>
+            </div>
+        </section>
+
+        <section>
+            <div class="imgDesc">
+                <div class="imgDesc__item child1">
+                    <img src="https://img.freepik.com/free-photo/fantastic-seascape-with-ripples_1232-424.jpg?w=740&t=st=1701793239~exp=1701793839~hmac=31cc426614218d3f9902e8a77a949a5b05e39df475f9eb0b598dd01abe1e865c" alt="">
+                    <h4>ห้องประชุมแนะนำสำหรับคุณ</h4>
+                </div>
+                <div class="imgDesc__item child2">
+                    <img src="https://img.freepik.com/free-photo/fantastic-seascape-with-ripples_1232-424.jpg?w=740&t=st=1701793239~exp=1701793839~hmac=31cc426614218d3f9902e8a77a949a5b05e39df475f9eb0b598dd01abe1e865c" alt="">
+                    <h4>ห้องประชุมแนะนำสำหรับคุณ</h4>
+                </div>
+                <div class="imgDesc__item child3">
+                    <img src="https://img.freepik.com/free-photo/fantastic-seascape-with-ripples_1232-424.jpg?w=740&t=st=1701793239~exp=1701793839~hmac=31cc426614218d3f9902e8a77a949a5b05e39df475f9eb0b598dd01abe1e865c" alt="">
+                    <h4>ห้องประชุมแนะนำสำหรับคุณ</h4>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="payment__channels">
+                <div class="payment__channelItem">
+                    <i class='bx bx-money'></i>
+                    <div>
+                        <h4>การโอนเงินผ่านธนาคาร</h4>
+                        <h5>BANK TRANSFER</h5>
+                    </div>
+                </div>
+                <div class="payment__channelItem">
+                    <i class='bx bx-credit-card'></i>
+                    <div>
+                        <h4>ชำระด้วยบัตรเครดิต</h4>
+                        <h5>CREDIT CCARD</h5>
+                    </div>
+                </div>
+                <div class="payment__channelItem">
+                    <i class='bx bx-building-house'></i>
+                    <div>
+                        <h4>ชำระหน้าเคาน์เตอร์เซอร์วิส</h4>
+                        <h5>COUNTER SERVICES</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+    <script>
+        function meetRoom() {
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<style>                
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: var(--white);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 100;
+    }
+
+    .closeSidebar {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: var(--blue);
+        padding: 8px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        
+        & i {
+            font-size: 30px;
+            color: var(--white);
+        }
+    }
+
+    .sidebarMenu {
+        display: grid;
+        padding: 10px;
+        row-gap: 10px;
+
+        & a, i {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border-radius: 15px;
+            
+
+            &:hover {
+                background-color: var(--sky);
+                border-radius: 15px;
+            }
+        }
+    }
+
+    .main__sidebar {
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        background-color: var(--blue);
+        padding: 8px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        cursor: pointer;
+        z-index: 2;
+        
+        & i {
+            font-size: 30px;
+            color: var(--white);
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .main__sidebar {
+            top: 35%;
+        }
+    }
+</style>
+<div>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closeSidebar" onclick="closeNav()"><i class='bx bx-menu-alt-right'></i></a>
+        <div class="sidebarMenu">
+            <input type="text" name="" id="" placeholder="ค้นหา...">
+            <a href="homePage.php"><i class='bx bx-home'></i>หน้าแรก</a>
+            <a href="#"><i class='bx bx-building-house'></i> ที่พัก</a>
+            <a href="#"><i class='bx bx-user'></i>ช่วยเหลือ</a>
+            <a href="#"><i class='bx bx-message-rounded-dots'></i>Chat</a>
+            <a href="#"><i class='bx bx-money'></i>ช่องทางการชำระเงิน</a>
+            <a href="#"><i class='bx bx-power-off'></i>ออกจากระบบ</a>
+        </div>
+    </div>
+    <div id="mainSidebar">
+        <a class="main__sidebar" onclick="openNav()"><i class='bx bx-menu-alt-left'></i></a>  
+    </div>
+</div>

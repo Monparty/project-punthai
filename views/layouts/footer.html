@@ -1,0 +1,114 @@
+<style>
+    footer {
+        background-color: var(--gray);
+        padding: 20px;
+    }
+
+    .footer__items {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        row-gap: 20px;
+    }
+
+    .foot__list {
+        display: grid;
+        row-gap: 10px;
+    }
+
+    .box__contact {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+        transition: .6s;
+
+        & i {
+            font-size: 30px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: .8;
+            } 
+        }
+    }
+    
+    .foot__hidden {
+        grid-column: 1 / span 3;
+    }
+
+    @media screen and (max-width: 576px) {
+        .footer__items {
+            grid-template-columns: 1fr 1fr;
+            
+            & .foot__logo {
+                grid-column: 1 / span 2;
+            }
+        }
+
+        .foot__hidden {
+            display: none;
+        }
+
+        footer {
+            width: 576px;
+        }
+    }
+</style>
+<footer>
+    <div class="footer__items">
+        <div class="foot__logo">
+            <a href=""><img style="border-radius: 15px;" src="../../imgs/logo.png" height="60" alt=""></a>
+        </div>
+        <div>
+            <h3>เกี่ยวกับ Punthai</h3>
+            <div class="foot__list">
+                <a href="">คำถามที่พบบ่อย</a>
+                <a href="">ข้อตกลงเงื่อนไข</a>
+                <a href="">สมัครสมาชิก</a>
+                <a href="">ร่วมงานกับเรา</a>
+                <a href="">นโยบายความเป็นส่วนตัว</a>
+            </div>
+        </div>
+        <div>
+            <h3>ผลิตภัณฑ์</h3>
+            <div class="foot__list">
+                <a href="">ห้องพัก</a>
+                <a href="">ห้องประชุม</a>
+                <a href="">รายการอาหาร</a>
+                <a href="">สิ่งอำนวยความสะดวก</a>
+                <a href="">การเดินทาง</a>
+            </div>
+        </div>
+        <div>
+            <h3>แผนกบริการลูกค้า</h3>
+            <div class="foot__list">
+                <a href="">ติดต่อเรา</a>
+                <a href="">วิธีการชำระเงิน</a>
+                <a href="">รายระเอียดการประกัน</a>
+                <a href="">การเคลมเงินประกัน</a>
+                <a href="">บริการอื่น ๆ</a>
+            </div>
+        </div>
+        <div>
+            <h3>อื่นๆ</h3>
+            <div class="foot__list">
+                <a href="">บทความทั้งหมด</a>
+                <a href="">รีวิวห้องพัก</a>
+                <a href="">เปรียบเทียบห้องพัก</a>
+                <a href="">Best of Punthai</a>
+                <a href="">Block</a>
+            </div>
+        </div>
+        <div class="foot__hidden"></div>
+        <div>
+            <h3>ติดตามเราได้ทาง</h3>
+        </div>
+        <div>
+            <div class="box__contact">
+                <i class='bx bxl-tiktok'></i>
+                <i class='bx bxl-facebook-square'></i>
+                <i class='bx bxl-instagram-alt' ></i>
+                <i class='bx bxl-youtube' ></i>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,99 @@
+<style>                
+    .sidebar {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #F7F9FC;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 10px;
+        z-index: 100;
+
+        & img {
+            margin-left: 5px;
+        }
+    }
+
+    .sidebarMenu {
+        display: grid;
+        padding: 20px 10px;
+        row-gap: 10px;
+
+        & a {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border-radius: 15px;
+            font-size: 16px;
+            
+            & i {
+                font-size: 22px;
+                margin-right: 10px;
+            }
+            
+
+            &:hover {
+                background-color: var(--lightBlue);
+                border-radius: 15px;
+            }
+        }
+    }
+
+    .main__sidebar {
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        background-color: var(--blue);
+        padding: 8px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        cursor: pointer;
+        z-index: 2;
+        
+        & i {
+            font-size: 30px;
+            color: var(--white);
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .main__sidebar {
+            top: 35%;
+        }
+    }
+
+    .active  {
+        background-color: var(--sky);
+        border-radius: 15px;
+        color: var(--white);
+        font-weight: bold;
+    }
+</style>
+<div>
+    <div id="mySidebar" class="sidebar">
+        <img src="../../../imgs/logo.png" height="50" alt="">
+        <div class="sidebarMenu">
+            <a class="sideItem" href="../../pages/dashboard/dashboard.php"><i class='bx bx-home'></i>หน้าแรก</a>
+            <a class="sideItem" href="../../pages/room/roomList.php"><i class='bx bx-hotel'></i>จัดการห้องพัก</a>
+            <a class="sideItem" href="../../pages/meetRoom/meetRoomList.php"><i class='bx bx-building-house'></i>จัดการห้องประชุม</a>
+            <a class="sideItem" href="#"><i class='bx bx-user'></i>จัดการสมาชิก</a>
+            <a class="sideItem" href="#"><i class='bx bx-bowl-rice'></i>จัดการรายการอาหาร</a>
+            <a class="sideItem" href="#"><i class='bx bx-book-bookmark'></i>ข้อมูลการจอง</a>
+            <a class="sideItem" href="#"><i class='bx bx-power-off'></i>ออกจากระบบ</a>
+        </div>
+    </div>
+</div>
+<script>
+
+document.querySelectorAll(".sideItem").forEach((link) => {
+    if (link.href === window.location.href) {
+        link.classList.add("active");
+    }
+});
+</script>

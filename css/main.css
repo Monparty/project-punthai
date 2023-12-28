@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+    font-weight: normal;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --black: #0E1116;
+    --orange: #FF5E1F;
+    --red: #E22120;
+    --sky: #A0C3FF;
+    --gray: #D8D7DC;
+    --blue: #0077ED;
+    --white: #FFFFFF;
+    --green: #0DC093;
+    --lightGray: #F6F6F6;
+    --lightBlue: #D5EAFF;
+    --shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 576px) {
+        width: 576px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+.btn__group {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 576px) {
+        display: grid;
+        grid-template-columns: auto auto;
+        row-gap: 10px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: var(--back);
+    font-size: 14px;
+    transition: .3s;
+    font-size: 14px;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.buttonOutline {
+    background: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    transition: .3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: var(--white);
+
+    &:hover {
+        opacity: .6;
+    }
+}
+
+.button {
+    background: var(--blue);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: .3s;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+
+    &:hover {
+        opacity: .6;
+    }
+}
+
+.button.green {
+    background: var(--green);
+}
+
+.borderBox {
+    border: 1px solid var(--gray);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.back {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+    color: var(--sky);
+    top: 10px;
+    left: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=text], [type=email], [type=number], [type=password] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+    outline: none;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+    outline: none;
+}
+
+input[type=file]::file-selector-button {
+    background-color: #fff;
+    color: #000;
+    border: 0px;
+    border-right: 1px solid #e5e5e5;
+    padding: 10px 15px;
+    margin-right: 20px;
+    transition: .5s;
+    border-radius: 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+input[type=file]::file-selector-button:hover {
+    background-color: #eee;
+    border: 0px;
+    border-right: 1px solid #e5e5e5;
+
+}
+
+.file {
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.w200 {
+    width: 200px;
+}
+
+.w300 {
+    width: 300px;
+}
+
+.w400 {
+    width: 400px;
+}
+
+.w500 {
+    width: 500px;
+}
+
+.payment__channels {
+    background-color: var(--blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    border-radius: 10px;
+
+    & .payment__channelItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 10px;
+
+        & i {
+            font-size: 35px;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        flex-direction: column;
+        width: 400px;
+        row-gap: 10px;
+        text-align: center;
+
+        & .payment__channelItem {
+            flex-direction: column;
+        }
+    }
+}
+
+details {
+    width: 100%;
+    background: var(--white);
+    margin-bottom: .5rem;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    overflow: hidden;
+
+    &:hover {
+        box-shadow: rgba(11, 57, 220, 0.1) 0px 4px 12px;
+    }
+
+    & .summaryContent {
+        padding: 10px;
+        background-color: var(--white);
+    }
+
+    @media screen and (max-width: 576px) {
+        width: 500px;
+    }
+}
+
+summary {
+    padding: 1rem;
+    display: block;
+    background: var(--white);
+    padding-left: 2.2rem;
+    position: relative;
+    cursor: pointer;
+}
+
+summary:before {
+    content: '';
+    border-width: .4rem;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--blue);
+    position: absolute;
+    top: 1.3rem;
+    left: 1rem;
+    transform: rotate(0);
+    transform-origin: .2rem 50%;
+    transition: .25s transform ease;
+}
+
+details[open] > summary:before {
+    transform: rotate(90deg);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--white); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #C7C7C7; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #abadac; 
+}

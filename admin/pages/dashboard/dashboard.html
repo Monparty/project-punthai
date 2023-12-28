@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .dashboardContainer {
+            display: grid;
+            grid-template-columns: auto auto auto auto  ;
+            row-gap: 10px;
+            justify-content: space-between;
+        }
+
+        .dashCard {
+            display: grid;
+            row-gap: 20px;
+            background: var(--sky);
+            padding: 10px;
+            width: 260px;
+            border-radius: 5px;
+
+            & .dashInfo {
+                display: flex;
+                align-items: center;
+                column-gap: 20px;
+                justify-content: space-between;
+                color: var(--white);
+
+                & i {
+                    font-size: 58px;
+                    color: var(--blue);
+                }
+            }
+            
+            & .dashBtn {
+                
+                & i {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .chart {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 90px;
+        }
+    </style>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="#">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>Dashboard</a>
+    </div>
+    <main class="containerAdmin">
+        <div class="dashboardContainer">
+            <div class="dashCard">
+                <div class="dashInfo">
+                    <div class="boxInnfo">
+                        <h1 class="bold count">10</h1>
+                        <h4>ข้อมูลการจองห้องพัก</h4>
+                    </div>
+                    <div class="boxIcon">
+                        <i class='bx bx-book-bookmark'></i>
+                    </div>
+                </div>
+                <div class="dashBtn">
+                    <a href="" class="buttonOutline">ดูรายละเอียด <i class='bx bxs-log-in-circle'></i></a>
+                </div>
+            </div>
+            <div class="dashCard">
+                <div class="dashInfo">
+                    <div class="boxInnfo">
+                        <h1 class="bold count">4</h1>
+                        <h4>ข้อมูลการจองห้องประชุม</h4>
+                    </div>
+                    <div class="boxIcon">
+                        <i class='bx bx-building-house'></i>
+                    </div>
+                </div>
+                <div class="dashBtn">
+                    <a href="" class="buttonOutline">ดูรายละเอียด <i class='bx bxs-log-in-circle'></i></a>
+                </div>
+            </div>
+            <div class="dashCard">
+                <div class="dashInfo">
+                    <div class="boxInnfo">
+                        <h1 class="bold count">19</h1>
+                        <h4>ข้อมูลสมาชิก</h4>
+                    </div>
+                    <div class="boxIcon">
+                        <i class='bx bx-user'></i>
+                    </div>
+                </div>
+                <div class="dashBtn">
+                    <a href="" class="buttonOutline">ดูรายละเอียด <i class='bx bxs-log-in-circle'></i></a>
+                </div>
+            </div>
+            <div class="dashCard" style="background: var(--gray);">
+                <div class="dashInfo">
+                    <div class="boxInnfo">
+                        <h1 class="bold count">18</h1>
+                        <h4>การแจ้งเตือน</h4>
+                    </div>
+                    <div class="boxIcon">
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                </div>
+                <div class="dashBtn">
+                    <a href="" class="buttonOutline">ดูรายละเอียด <i class='bx bxs-log-in-circle'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart">
+            <canvas id="myChart" style="max-width:520px"></canvas>
+            <canvas id="myChart2" style="max-width:520px"></canvas>
+        </div>
+
+    </main>
+
+    <script src="../../js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+    $('.count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 2000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+
+
+    const xValues = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษจิกายน"];
+    const yValues = [40, 30, 22, 22, 10];
+    const barColors = ["#e84e40", "#72d572","#4db6ac","#ff8a65","#F6C8B6"];
+
+    new Chart("myChart", {
+    type: "bar",
+    data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        title: {
+        display: true,
+        text: "ข้อมูลการจองในปี 2566"
+        }
+    }
+    }); 
+
+    //
+    const xValues1 = ["ห้องพักครอบครัว", "ห้องพักคู่รัก", "ห้องพักทั่วไป", "ห้องพักชั่วคราว"];
+    const yValues2 = [55, 49, 44, 24];
+    const barColors3 = [
+    "#b91d47",
+    "#00aba9",
+    "#2b5797",
+    "#e8c3b9"
+    ];
+
+    new Chart("myChart2", {
+    type: "pie",
+    data: {
+        labels: xValues1,
+        datasets: [{
+        backgroundColor: barColors3,
+        data: yValues2
+        }]
+    },
+    options: {
+        title: {
+        display: true,
+        text: "ประเภทห้องพักที่มีจำนวนการจองมากที่สุด"
+        }
+    }
+    });
+            
+    </script>
+</body>
+</html>

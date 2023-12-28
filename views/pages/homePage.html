@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punthai Homestay</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        main {
+            display: grid;
+            row-gap: 40px;
+        }
+
+        .boxcontent1 {
+            background: rgb(0,212,255);
+            background: linear-gradient(175deg, rgba(0,212,255,1) 0%, rgba(84,152,233,0.9920343137254902) 100%);
+            border-radius: 20px;
+            padding: 30px 10px;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            row-gap: 20px;
+            justify-items: center;
+
+            & input {
+                width: 600px;
+            }
+        }
+
+        .boxcontent2 {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            column-gap: 10px;
+        }
+
+        .content__img1 {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            width: 200px;
+            display: grid;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 10px;
+            row-gap: 10px;
+
+            & img {
+                width: 180px;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+        }
+
+
+        .slideshow-container {
+            width: fit-content;
+            position: relative;
+
+            & img {
+                width: 500px;
+                height: 338px;
+                border-radius: 10px;
+                object-fit: cover;
+            }
+        }
+
+        /* Next & previous buttons */
+        .prev--next {
+            cursor: pointer;
+            position: absolute;
+            bottom: 30px;
+            right: 20px;
+        }
+
+        .next, .prev {
+            background-color: var(--white);
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+
+            & i {
+                font-size: 20px;
+            }
+        }
+
+        .dot {
+            height: 2px;
+            width: 15px;
+            background-color: #bbb;
+            transition: .6s;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        
+        .boxcontent3 {
+            display: grid;
+            grid-template-columns: auto auto;
+            align-items: start;
+            column-gap: 10px;
+        }
+
+        .content__list {
+            background-color: var(--blue);
+            padding: 10px;
+            border-radius: 10px;
+            display: grid;
+            row-gap: 10px;
+
+
+            & img {
+                border-radius: 5px;
+            }
+
+            & .box__bestof  {
+                color: var(--white);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .contentright__section3 {
+            display: flex;
+            align-items: center;
+            column-gap: 20px;
+            background-color: var(--white);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .content__listh4 {
+            background-color: var(--blue); 
+            padding: 5px 14px; 
+            color: var(--white); 
+            border-radius: 10px;
+        }
+
+        .boxcontent4__desc {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            column-gap: 20px;
+        }
+
+        .content__img2 {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            width: 200px;
+            display: grid;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 10px;
+            row-gap: 10px;
+
+            &:first-child {
+                padding: 0;
+                box-shadow: none;
+
+                & img {
+                    height: 260px;
+                }
+            }
+
+            & img {
+                width: 180px;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+        }
+
+        .boxcontent4__img {
+            display: flex;
+            column-gap: 10px;
+        }
+
+        .boxcontent4 {
+            display: grid;
+            row-gap: 10px;
+        }
+
+        .section4 {
+            display: grid;
+            row-gap: 30px;
+        }
+
+        .boxcontent5__desc {
+            display: flex;
+            justify-content: center;
+            border-bottom: 3px solid var(--blue);
+            margin-bottom: 10px;
+        }
+
+        .boxcontent5__boxitem {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            gap: 5px;
+        }
+
+        .boxcontent5__item {
+            display: grid;
+            justify-items: center;
+            row-gap: 10px;
+            border: 1px solid var(--gray);
+            padding: 10px;
+            transition: .6s;
+            border-radius: 5px;
+            cursor: pointer;
+
+            & img {
+                border-radius: 50%;
+            }
+
+            &:hover {
+                background-color: var(--sky);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .boxcontent1 {
+                width: 400px;
+                text-align: center;
+
+                & input {
+                    width: 300px;
+                }
+            }
+
+            .boxcontent2 {
+                display: grid;
+                grid-template-columns: auto  auto;
+                row-gap: 10px;
+            }
+
+            .boxcontent3 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content__list {
+                width: 400px;
+            }
+
+            .boxcontent4__desc {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .boxcontent4__img {
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-content: start;
+                row-gap: 10px;
+            }
+            
+            .boxcontent5__boxitem {
+                grid-template-columns: auto auto auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <?php include("../layouts/backToTop.html"); ?>
+    <?php include("../layouts/btnHelp.html"); ?>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+        <section>
+            <div class="boxcontent1">
+                <h1 style="color: var(--white);">
+                    ที่พักที่ใช่ยังไงก็ Punthai Homestay
+                </h1>
+                <div class="btn__group">
+                    <input type="text" placeholder="ค้นหาสิ่งที่คุณต้องการ">
+                    <a href="#" class="buttonOutline"><i class='bx bx-search'></i> ค้นหา</a> 
+                </div>
+                <div class="btn__group">
+                    <a href="#" class="button">ห้องพักยอดนิยม</a>
+                    <a href="#" class="button">กิจกรรมยอดนิยม</a>
+                    <a href="#" class="button">จัดงานแต่ง</a>
+                    <a href="#" class="button">การจัดงานเลี้ยง</a>
+                    <a href="#" class="button">ภาพรวมห้องพัก</a>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 style="margin-bottom: 10px;">ยกระดับการเดินทางของคุณในแบบที่คุณต้องการ</h2>
+            <div class="boxcontent2">
+                <div class="content__img1">
+                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <h4>สถานที่ท่องเที่ยว</h4>
+                </div>
+                <div class="content__img1">
+                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <h4>สถานที่ท่องเที่ยว</h4>
+                </div>
+                <div class="content__img1">
+                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <h4>สถานที่ท่องเที่ยว</h4>
+                </div>
+                <div class="content__img1">
+                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <h4>สถานที่ท่องเที่ยว</h4>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="boxcontent3">
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                      <img src="../../imgs/noImage.png">
+                    </div>
+                    <div class="mySlides fade">
+                      <img src="../../imgs/noImage.png">
+                    </div>
+                    <div class="mySlides fade">
+                      <img src="../../imgs/noImage.png">
+                    </div>
+                    <div class="btn__group prev--next">
+                        <a class="prev" onclick="plusSlides(-1)"><i class='bx bx-chevron-left'></i></a>
+                        <a class="next" onclick="plusSlides(1)"><i class='bx bx-chevron-right'></i></a>
+                    </div>
+                    <div class="btn__group" style="margin: 5px;">
+                        <span class="dot" onclick="currentSlide(1)"></span> 
+                        <span class="dot" onclick="currentSlide(2)"></span> 
+                        <span class="dot" onclick="currentSlide(3)"></span> 
+                    </div>
+                </div>
+                <div class="content__list">
+                    <div class="box__bestof">
+                        <h2>Best of ที่สุดของห้องพัก</h2>
+                        <a href="#" style="color: var(--white);">ดูทั้งหมด</a>
+                    </div>
+                    <div class="contentright__section3">
+                        <h4 class="content__listh4">1</h4>
+                        <img src="../../imgs/noImage.png" height="50px" alt="">
+                        <div>
+                            <h4>text</h4>
+                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, architecto.</h5>
+                        </div>
+                    </div>
+                    <div class="contentright__section3">
+                        <h4 class="content__listh4">2</h4>
+                        <img src="../../imgs/noImage.png" height="50px" alt="">
+                        <div>
+                            <h4>text</h4>
+                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, architecto.</h5>
+                        </div>
+                    </div>
+                    <div class="contentright__section3">
+                        <h4 class="content__listh4">3</h4>
+                        <img src="../../imgs/noImage.png" height="50px" alt="">
+                        <div>
+                            <h4>text</h4>
+                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, architecto.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section4">
+                <div class="boxcontent4">
+                    <div class="boxcontent4__desc">
+                        <h2>ห้องพัก</h2>
+                        <div class="btn__group">
+                            <a href="#" class="button">ห้องพักยอดนิยม</a>
+                            <a href="#" class="buttonOutline">กิจกรรมยอดนิยม</a>
+                            <a href="#" class="buttonOutline">จัดงานแต่ง</a>
+                            <a href="#" class="buttonOutline">การจัดงานเลี้ยง</a>
+                            <a href="#" class="buttonOutline">ภาพรวมห้องพัก</a>
+                        </div>
+                    </div>
+                    <div class="boxcontent4__img">
+                        <div class="content__img2"">
+                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        </div>
+                        <div class="content__img2"">
+                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        </div>
+                        <div class="content__img2"">
+                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        </div>
+                        <div class="content__img2"">
+                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="boxcontent4">
+                    <div class="boxcontent4__desc">
+                        <h2>ห้องประชุม</h2>
+                        <div class="btn__group">
+                            <a href="#" class="button">ห้องพักยอดนิยม</a>
+                            <a href="#" class="buttonOutline">กิจกรรมยอดนิยม</a>
+                            <a href="#" class="buttonOutline">จัดงานแต่ง</a>
+                            <a href="#" class="buttonOutline">การจัดงานเลี้ยง</a>
+                            <a href="#" class="buttonOutline">ภาพรวมห้องพัก</a>
+                        </div>
+                    </div>
+                    <div class="boxcontent4__img">
+                        <div class="content__img2"">
+                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                        </div>
+                        <div class="content__img2"">
+                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        </div>
+                        <div class="content__img2"">
+                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        </div>
+                        <div class="content__img2"">
+                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="boxcontent5__desc">
+                <h2 style="margin-bottom: 10px;">รายการอาหารแนะนำประจำเดือน</h2>
+            </div>
+            <div class="boxcontent5__boxitem">
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+                <div class="boxcontent5__item">
+                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <h5>รายการอาหาร</h5>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="payment__channels">
+                <div class="payment__channelItem">
+                    <i class='bx bx-money'></i>
+                    <div>
+                        <h4>การโอนเงินผ่านธนาคาร</h4>
+                        <h5>BANK TRANSFER</h5>
+                    </div>
+                </div>
+                <div class="payment__channelItem">
+                    <i class='bx bx-credit-card'></i>
+                    <div>
+                        <h4>ชำระด้วยบัตรเครดิต</h4>
+                        <h5>CREDIT CCARD</h5>
+                    </div>
+                </div>
+                <div class="payment__channelItem">
+                    <i class='bx bx-building-house'></i>
+                    <div>
+                        <h4>ชำระหน้าเคาน์เตอร์เซอร์วิส</h4>
+                        <h5>COUNTER SERVICES</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
