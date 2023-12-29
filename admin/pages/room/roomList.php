@@ -1,5 +1,5 @@
 <?php 
-require_once '../../../config/config.php';
+include("../../../config/config.php");
 session_start();
 
 $sql = " SELECT * FROM rooms";

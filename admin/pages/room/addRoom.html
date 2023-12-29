@@ -74,6 +74,30 @@
             padding-right: 10px;
         }
 
+        .containerCheckbox {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom:  10px;
+        }
+
+        .boxCheckbox {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+        }
+
+        .formBtn {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            column-gap: 10px;
+            margin-top: 20px;
+
+            & i {
+                font-size: 20px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -86,7 +110,7 @@
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
         <a>เพิ่มข้อมูลห้องพัก</a>
     </div>
-    <form action="#">
+    <form action="addRoom.php" method="post">
         <main class="containerAdmin">
             <section class="formSection">
                 <h2 style="margin-bottom:10px;">เพิ่มข้อมูลห้องพัก</h2>
@@ -100,7 +124,7 @@
                             <h4>ชื่อห้องพัก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" value="xxx">
+                            <input type="text" name="name" value="">
                         </div>
                     </div>
                     <div class="formRow">
@@ -108,7 +132,7 @@
                             <h4>คำอธิบาย</h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" value="xxx">
+                            <input type="text" name="roomdesc" value="">
                         </div>
                     </div>
                     <div class="formRow">
@@ -116,16 +140,38 @@
                             <h4>ราคาที่พัก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <input type="text" value="xxx">
+                            <input type="text" name="price" value="">
                             <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
                         </div>
                     </div>
                     <div class="formRow valignTop">
                         <div class="formTitle">
-                            <h4>เกี่ยวกับห้องพัก <span class="force">*</span></h4>
+                            <h4>เกี่ยวกับห้องพัก</h4>
                         </div>
                         <div class="formInput">
-                            <textarea name=""></textarea>
+                            <textarea name="roomabout"></textarea>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>จำนวนเตียง <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <select name="bed" id="">
+                                <option value="" selected>-</option>
+                                <option value="1 เตียง">1 เตียง</option>
+                                <option value="2 เตียง">2 เตียง</option>
+                                <option value="1 เตียงใหญ่">1 เตียงใหญ่</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>รองรับจำนวน <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="text" name="amountpeople" value="">
+                            <h5 class="formInputDesc">หน่วยเป็นคน</h5>
                         </div>
                     </div>
                     <div class="formRow">
@@ -140,27 +186,118 @@
                         <i class='bx bxs-playlist'></i>
                         <h4>สิ่งอำนวยความสะดวก</h4>
                     </div>
-                    <div class="formRow">
+                    <div class="formRow valignTop">
                         <div class="formTitle">
-                            <h4>จำนวนเตียง <span class="force">*</span></h4>
+                            <h4>สิ่งอำนวยความสะดวก</h4>
                         </div>
-                        <div class="formInput w300">
-                            <select name="" id="">
-                                <option value="" selected>-</option>
-                                <option value="">1 เตียง</option>
-                                <option value="">2 เตียง</option>
-                                <option value="">1 เตียงใหญ่</option>
-                            </select>
+                        <div class="formInput">
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility[]" value="อาหารเช้า">
+                                    <label for="">อาหารเช้า</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility[]" value="สิ่งอํานวยความสะดวกสําหรับผู้พิการ">
+                                    <label for="">สิ่งอํานวยความสะดวกสําหรับผู้พิการ</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility[]" value="พนักงานบริการ 24 ชั่วโมง">
+                                    <label for="">พนักงานบริการ 24 ชั่วโมง</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility[]" value="ที่จอดรถ">
+                                    <label for="">ที่จอดรถ</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility[]" value="WiFi">
+                                    <label for="">WiFi</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility[]" value="พื้นที่สูบบุหรี่">
+                                    <label for="">พื้นที่สูบบุหรี่</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility[]" value="ระบบรักษาความปลอดภัย 24 ชั่วโมง">
+                                    <label for="">ระบบรักษาความปลอดภัย 24 ชั่วโมง</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility[]" value="ต้อนรับสัตว์เลี้ยง">
+                                    <label for="">ต้อนรับสัตว์เลี้ยง</label>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>Highlights</h4>
+                        </div>
+                        <div class="formInput">
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="highlight[]">
+                                    <label for="">สระว่ายน้ำ</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="highlight[]" value="ฟิตเนส">
+                                    <label for="">ฟิตเนส</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="highlight[]" value="สปา">
+                                    <label for="">สปา</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="highlight[]" value="ห้องอาหาร">
+                                    <label for="">ห้องอาหาร</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="highlight[]" value="ห้องประชุม">
+                                    <label for="">ห้องประชุม</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="highlight[]" value="บริการรับ-ส่งสนามบิน">
+                                    <label for="">บริการรับ-ส่งสนามบิน</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="highlight[]" value="มีสถานที่ปั่นจักรยาน">
+                                    <label for="">มีสถานที่ปั่นจักรยาน</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="highlight[]" value="บริการซักรีด">
+                                    <label for="">บริการซักรีด</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="headersection">
+                        <i class='bx bx-list-check'></i>
+                        <h4>สถานะ</h4>
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>รองรับจำนวน <span class="force">*</span></h4>
+                            <h4>สถานะ <span class="force">*</span></h4>
                         </div>
-                        <div class="formInput w300">
-                            <input type="text" value="xxx">
-                            <h5 class="formInputDesc">หน่วยเป็นคน</h5>
+                        <div class="boxCheckbox">
+                            <input type="radio" name="status[]" value="Active" checked>
+                            <label for="">ใช้งาน</label>
+                            <input type="radio" name="status[]" value="Inactive">
+                            <label for="">ไม่ใช้งาน</label>
                         </div>
+                    </div>
+                    <div class="formBtn">
+                        <button type="submit" class="button green w100"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
                     </div>
                 </div>
             </section>

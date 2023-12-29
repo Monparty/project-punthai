@@ -111,6 +111,11 @@ a {
     background: var(--green);
 }
 
+.button.gray {
+    background: var(--gray);
+    color: var(--black);
+}
+
 .borderBox {
     border: 1px solid var(--gray);
     padding: 10px;
