@@ -11,8 +11,8 @@
     <style>
         .dashboardContainer {
             display: grid;
-            grid-template-columns: auto auto auto auto  ;
-            row-gap: 10px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            column-gap: 10px;
             justify-content: space-between;
         }
 
@@ -21,7 +21,6 @@
             row-gap: 20px;
             background: var(--sky);
             padding: 10px;
-            width: 260px;
             border-radius: 5px;
 
             & .dashInfo {
@@ -35,10 +34,17 @@
                     font-size: 58px;
                     color: var(--blue);
                 }
+
+                & h4 {
+                    white-space: nowrap;
+                }
             }
             
             & .dashBtn {
-                
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
                 & i {
                     font-size: 20px;
                 }
@@ -115,7 +121,7 @@
                     </div>
                 </div>
                 <div class="dashBtn">
-                    <a href="" class="buttonOutline">ดูรายละเอียด <i class='bx bxs-log-in-circle'></i></a>
+                    <a href="" class="button">ดูรายละเอียด <i class='bx bxs-log-in-circle'></i></a>
                 </div>
             </div>
         </div>
