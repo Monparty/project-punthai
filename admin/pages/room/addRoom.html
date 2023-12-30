@@ -110,7 +110,7 @@
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
         <a>เพิ่มข้อมูลห้องพัก</a>
     </div>
-    <form action="addRoom.php" method="post">
+    <form action="addRoom.php" method="post" enctype="multipart/form-data">
         <main class="containerAdmin">
             <section class="formSection">
                 <h2 style="margin-bottom:10px;">เพิ่มข้อมูลห้องพัก</h2>
@@ -179,7 +179,7 @@
                             <h4>รูปภาพประกอบ</h4>
                         </div>
                         <div class="formInput file w300">
-                            <input type="file" multiple>
+                            <input type="file" name="image" multiple>
                         </div>
                     </div>
                     <div class="headersection">

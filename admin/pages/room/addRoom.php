@@ -13,9 +13,11 @@ $amountpeople = $_POST["amountpeople"];
 $facility = implode(",", $_POST["facility"]);
 $highlight = implode(",", $_POST["highlight"]);
 $status = implode(",", $_POST["status"]);
+$image = $_FILES["image"]["tmp_name"];
+$imgContent = file_get_contents($image);
 
-$sql = "INSERT INTO rooms (name, roomdesc, price, roomabout,  bed, amountpeople, facility, highlight, status, createAt)
-VALUES (:name, :roomdesc, :price, :roomabout, :bed, :amountpeople, :facility, :highlight, :status, CURRENT_TIMESTAMP)";
+$sql = "INSERT INTO rooms (name, roomdesc, price, roomabout,  bed, amountpeople, facility, highlight, status, createAt, image)
+VALUES (:name, :roomdesc, :price, :roomabout, :bed, :amountpeople, :facility, :highlight, :status, CURRENT_TIMESTAMP, :imgContent)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(":name", $name);
@@ -27,6 +29,8 @@ $stmt->bindParam(":amountpeople", $amountpeople);
 $stmt->bindParam(":facility", $facility);
 $stmt->bindParam(":highlight", $highlight);
 $stmt->bindParam(":status", $status);
+$stmt->bindParam(":status", $status);
+$stmt->bindParam(":imgContent", $image);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
