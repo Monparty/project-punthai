@@ -8,25 +8,6 @@
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/admin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        .boxSearch {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-
-            & input {
-                width: 500px;
-            }
-
-            & .searchItem {
-                display: flex;
-                align-items: center;
-                column-gap: 10px;
-            } 
-        }
-
-    </style>
 </head>
 <body>
     <?php include("../../layouts/header.php"); ?>
@@ -47,32 +28,30 @@
         </div>
 
         <div class="containerTable">
-            <table class="table">
+            <table class="table" border="0">
                 <thead>
                     <tr>
-                        <td width="10%">ลำดับ</td>
+                        <td width="5%">ลำดับ</td>
                         <td>ชื่อห้องพัก</td>
-                        <td width="15%">ประเภทห้องพัก</td>
                         <td width="15%">วันที่บันทึก</td>
                         <td width="15%">สถานะ</td>
+                        <td width="5%"></td>
+                        <td width="5%"></td>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $count = 0;
-                    while( $fetch = mysqli_fetch_assoc( $query ) ) {
-                        $count++;
-                        echo "
-                        <tr>
-                            <td align=\"center\">".$count."</td>
-                            <td>".$fetch['name']."</td>
-                            <td align=\"center\">".$fetch['type']."</td>
-                            <td></td>
-                            <td align=\"center\">".$fetch['status']."</td>
+                    $count = 1;
+                    while( $fetch = mysqli_fetch_assoc( $query ) ) { ?>
+                        <tr align="center">
+                            <td><?=$count++;?></td>
+                            <td align="left"><?php echo $fetch['name'];?></td>
+                            <td><?php echo $fetch['createAT'];?></td>
+                            <td><?php echo $fetch['status'];?></td>
+                            <td align="left"><a href="editRoom.php?id=<?php echo $fetch['id'];?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td align="left"><a href="#"><i class='bx bx-trash'></i></a></td>
                         </tr>
-                        ";
-                    }
-                ?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

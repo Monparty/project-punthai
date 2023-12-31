@@ -109,11 +109,13 @@ a {
 
 .button.green {
     background: var(--green);
+    white-space: nowrap;
 }
 
 .button.gray {
     background: var(--gray);
     color: var(--black);
+    white-space: nowrap;
 }
 
 .borderBox {

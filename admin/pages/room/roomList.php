@@ -6,7 +6,5 @@ $sql = " SELECT * FROM rooms";
 $query = mysqli_query( $c, $sql );
 
 
-
-
 include ("roomList.html");
 ?>

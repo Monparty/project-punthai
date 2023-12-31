@@ -24,6 +24,7 @@
             <section class="formSection">
                 <h2 style="margin-bottom:10px;">เพิ่มข้อมูลห้องพัก</h2>
                 <div class="form">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <div class="headersection">
                         <i class='bx bx-info-circle'></i>
                         <h4>ข้อมูลทั่วไป</h4>
@@ -33,7 +34,7 @@
                             <h4>ชื่อห้องพัก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" name="name" value="" required>
+                            <input type="text" name="name" value="<?=$name;?>" required>
                         </div>
                     </div>
                     <div class="formRow">
@@ -41,7 +42,7 @@
                             <h4>คำอธิบาย</h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" name="roomdesc" value="">
+                            <input type="text" name="roomdesc" value="<?=$roomdesc;?>">
                         </div>
                     </div>
                     <div class="formRow">
@@ -49,7 +50,7 @@
                             <h4>ราคาที่พัก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <input type="number" name="price" value="" required>
+                            <input type="number" name="price" value="<?=$price;?>" required>
                             <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
                         </div>
                     </div>
@@ -58,7 +59,7 @@
                             <h4>เกี่ยวกับห้องพัก</h4>
                         </div>
                         <div class="formInput">
-                            <textarea name="roomabout"></textarea>
+                            <textarea name="roomabout"><?=$roomabout;?></textarea>
                         </div>
                     </div>
                     <div class="formRow">
@@ -79,7 +80,7 @@
                             <h4>รองรับจำนวน <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <input type="number" name="amountpeople" value="" required>
+                            <input type="number" name="amountpeople" value="<?=$amountpeople;?>" required>
                             <h5 class="formInputDesc">หน่วยเป็นคน</h5>
                         </div>
                     </div>
@@ -100,9 +101,10 @@
                             <h4>สิ่งอำนวยความสะดวก</h4>
                         </div>
                         <div class="formInput">
+                        
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility[]" value="อาหารเช้า">
+                                    <input type="checkbox" name="facility[]" value="<?=$facility;?>" <? if($facility=='อาหารเช้า')echo "checked='checked'";?>
                                     <label for="">อาหารเช้า</label>
                                 </div>
                                 <div class="boxCheckbox">
