@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เพิ่มข้อมูลห้องพัก</title>
+    <title>แก้ไขข้อมูลห้องพัก</title>
     <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/admin.css">
@@ -17,12 +17,12 @@
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
         <a href="roomList.php">จัดการห้องพัก</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
-        <a>เพิ่มข้อมูลห้องพัก</a>
+        <a>แก้ไขข้อมูลห้องพัก</a>
     </div>
     <form action="addRoom.php" method="post" enctype="multipart/form-data">
         <main class="containerAdmin">
             <section class="formSection">
-                <h2 style="margin-bottom:10px;">เพิ่มข้อมูลห้องพัก</h2>
+                <h2 style="margin-bottom:10px;">แก้ไขข้อมูลห้องพัก</h2>
                 <div class="form">
                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <div class="headersection">
@@ -68,10 +68,7 @@
                         </div>
                         <div class="formInput w300">
                             <select name="bed" id="">
-                                <option value="" selected>-</option>
-                                <option value="1 เตียง">1 เตียง</option>
-                                <option value="2 เตียง">2 เตียง</option>
-                                <option value="1 เตียงใหญ่">1 เตียงใหญ่</option>
+                                <option value="" selected><?=$bed;?></option>
                             </select>
                         </div>
                     </div>
