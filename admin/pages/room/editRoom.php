@@ -9,6 +9,22 @@ $result = mysqli_query($c, $sql);
 $row = mysqli_fetch_array($result);
 extract($row);
 
+// ใช้แสดงรูปภาพ
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+
+// วนลูปเพื่อดึงข้อมูลรูปภาพ
+while ($row = $stmt->fetch()) {
+
+    // แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64
+    $image_base64 = $row["image"];
+
+    // แปลงข้อมูลรูปภาพจากฐาน64เป็นข้อมูลรูปภาพ
+    $image = base64_decode($image_base64);
+
+    // แสดงผลรูปภาพ
+    $showimg = '<img src="data:$image/png;base64,' . $image_base64 . '" style="width: 100%; object-fit: cover; border-radius: 4px;"/>';
+}
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {

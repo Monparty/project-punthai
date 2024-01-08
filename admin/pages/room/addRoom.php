@@ -27,11 +27,11 @@ $highlight6 = isset($_POST['highlight6']) ? $_POST['highlight6'] : "";
 $highlight7 = isset($_POST['highlight7']) ? $_POST['highlight7'] : "";
 $highlight8 = isset($_POST['highlight8']) ? $_POST['highlight8'] : "";
 $status = implode($_POST["status"]);
-$image = $_FILES["image"]["tmp_name"];
-$imgContent = file_get_contents($image);
+$image = file_get_contents($_FILES["image"]["tmp_name"]);
+$image_base64 = base64_encode($image);
 
 $sql = "INSERT INTO rooms (name, roomdesc, price, roomabout,  bed, amountpeople, facility1, facility2, facility3, facility4, facility5, facility6, facility7, facility8, highlight1, highlight2, highlight3, highlight4, highlight5, highlight6, highlight7, highlight8, status, createAt, image)
-VALUES (:name, :roomdesc, :price, :roomabout, :bed, :amountpeople, :facility1, :facility2, :facility3, :facility4, :facility5, :facility6, :facility7, :facility8, :highlight1, :highlight2, :highlight3, :highlight4, :highlight5, :highlight6, :highlight7, :highlight8, :status, CURRENT_TIMESTAMP, :imgContent)";
+VALUES (:name, :roomdesc, :price, :roomabout, :bed, :amountpeople, :facility1, :facility2, :facility3, :facility4, :facility5, :facility6, :facility7, :facility8, :highlight1, :highlight2, :highlight3, :highlight4, :highlight5, :highlight6, :highlight7, :highlight8, :status, CURRENT_TIMESTAMP, :image_base64)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(":name", $name);
@@ -57,7 +57,7 @@ $stmt->bindParam(":highlight6", $highlight6);
 $stmt->bindParam(":highlight7", $highlight7);
 $stmt->bindParam(":highlight8", $highlight8);
 $stmt->bindParam(":status", $status);
-$stmt->bindParam(":imgContent", $image);
+$stmt->bindParam(":image_base64", $image_base64);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {

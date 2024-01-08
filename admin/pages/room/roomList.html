@@ -31,10 +31,10 @@
             <table class="table" border="0">
                 <thead>
                     <tr>
-                        <td width="5%">ลำดับ</td>
+                        <td width="6%">ลำดับ</td>
                         <td>ชื่อห้องพัก</td>
-                        <td width="15%">วันที่บันทึก</td>
-                        <td width="15%">สถานะ</td>
+                        <td width="16%">วันที่บันทึก</td>
+                        <td width="14%">สถานะ</td>
                         <td width="5%"></td>
                         <td width="5%"></td>
                     </tr>
@@ -49,7 +49,7 @@
                             <td><?php echo $fetch['createAT'];?></td>
                             <td><?php echo $fetch['status'];?></td>
                             <td align="left"><a title="แก้ไขข้อมูลห้องพัก" href="editRoom.php?id=<?php echo $fetch['id'];?>"><i class='bx bx-edit-alt'></i></a></td>
-                            <td align="left"><a href="?delete=<?php echo $fetch['id'];?>"><i class='bx bx-trash'></i></a></td>
+                            <td align="left"><a title="ลบรายการ" href="?delete=<?php echo $fetch['id'];?>"><i class='bx bx-trash'></i></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>
