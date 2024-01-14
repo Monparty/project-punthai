@@ -29,7 +29,7 @@ while ($row = $stmt->fetch()) {
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
     $id = $_POST['id'];
-    $sql = "UPDATE rooms SET name=:name, roomdesc=:roomdesc, price=:price, roomabout=:roomabout, bed=:bed, amountpeople=:amountpeople, facility1=:facility1, facility2=:facility2, facility3=:facility3, facility4=:facility4, facility5=:facility5, facility6=:facility6, facility7=:facility7, facility8=:facility8, highlight1=:highlight1, highlight2=:highlight2, highlight3=:highlight3, highlight4=:highlight4, highlight5=:highlight5, highlight6=:highlight6, highlight7=:highlight7, highlight8=:highlight8, status=:status, image=:image_base64 WHERE id=$id";
+    $sql = "UPDATE rooms SET name=:name, roomdesc=:roomdesc, price=:price, roomabout=:roomabout, bed=:bed, amountpeople=:amountpeople, facility1=:facility1, facility2=:facility2, facility3=:facility3, facility4=:facility4, facility5=:facility5, facility6=:facility6, facility7=:facility7, facility8=:facility8, highlight1=:highlight1, highlight2=:highlight2, highlight3=:highlight3, highlight4=:highlight4, highlight5=:highlight5, highlight6=:highlight6, highlight7=:highlight7, highlight8=:highlight8, status=:status, image=:image_base64, updateAt=CURRENT_TIMESTAMP WHERE id=$id";
     
     $stmt = $conn->prepare($sql);
     $name = $_POST['name'];
