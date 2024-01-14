@@ -271,6 +271,58 @@
                     }
                 }
             }
+
+            @media screen and (max-width: 576px) {
+                .roomDetailName {
+                    flex-direction: column;
+                    width: 500px;
+                    gap: 10px;
+                }
+
+                .boxRoomPrice {
+                    width: 100%;
+                }
+
+                .boxRating {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                }
+
+                .container__lists {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                }
+
+                .containerRoomDetail {
+                    grid-template-columns: 1fr;
+                    padding: 0 20px;
+                }
+
+                .imgContainer {
+                    grid-template-columns: 1fr;
+                    gap: 10px;
+                }
+
+                .boxReviewScroll {
+                    overflow: hidden;
+                }
+
+                .boxReviewcontainer {
+                    flex-direction: column;
+                }
+
+                .commentContainer {
+                    width: 500px;
+                }
+
+                .btn__group {
+                    display: grid;
+                    grid-template-columns: auto auto auto auto auto;
+                    row-gap: 10px;
+                }
+            }
     </style>
 </head>
 <body>

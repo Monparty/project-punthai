@@ -87,8 +87,9 @@
                         <div class="formTitle">
                             <h4>รูปภาพประกอบ <span class="force">*</span></h4>
                         </div>
-                        <div class="formInput file w300">
+                        <div class="formInput file w300" style="display: flex; justify-content: space-between; align-items: center;">
                             <input type="file" name="image" multiple required>
+                            <input type="text" style="width: 700px; border: none; height: 20px;" value="<?=$image_base64;?>" readonly>
                         </div>
                     </div>
                     <div class="formRow">
@@ -132,7 +133,7 @@
                                     <label for="">WiFi</label>
                                 </div>
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility6" value="6" <?php echo ($facility3=='6') ? 'checked' : ''; ?>>
+                                    <input type="checkbox" name="facility6" value="6" <?php echo ($facility6=='6') ? 'checked' : ''; ?>>
                                     <label for="">พื้นที่สูบบุหรี่</label>
                                 </div>
                             </div>
