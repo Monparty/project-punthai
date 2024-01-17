@@ -42,14 +42,14 @@
                 <tbody>
                 <?php
                     $count = 1;
-                    while( $fetch = mysqli_fetch_assoc( $query ) ) { ?>
+                    while($fetch = mysqli_fetch_assoc($query)) { ?>
                         <tr align="center">
                             <td><?=$count++;?></td>
-                            <td align="left"><?php echo $fetch['name'];?></td>
-                            <td><?php echo $fetch['createAT'];?></td>
-                            <td><?php echo $fetch['status'];?></td>
-                            <td align="left"><a title="แก้ไขข้อมูล" href="editRoom.php?id=<?php echo $fetch['id'];?>"><i class='bx bx-edit-alt'></i></a></td>
-                            <td align="left"><a title="ลบรายการ" href="?delete=<?php echo $fetch['id'];?>"><i class='bx bx-trash'></i></a></td>
+                            <td align="left"><?=$fetch['name'];?></td>
+                            <td><?=$fetch['createAT'];?></td>
+                            <td><?=$fetch['status'];?></td>
+                            <td align="left"><a title="แก้ไขข้อมูล" href="editRoom.php?id=<?=$fetch['id'];?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td align="left"><a title="ลบรายการ" href="?delete=<?=$fetch['id'];?>"><i class='bx bx-trash'></i></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

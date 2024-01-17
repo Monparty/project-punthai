@@ -31,7 +31,7 @@
 
         .container__lists {
             display: grid;
-            align-items: center;
+            align-items: start;
             justify-content: space-around;
             grid-template-columns: 1fr 1fr 1fr;
             row-gap: 10px;
@@ -40,16 +40,16 @@
         .item__list {
             background-color: var(--white);
             box-shadow: var(--shadow);
-            width: 200px;
+            width: 220px;
             display: grid;
             justify-content: center;
             padding: 10px;
             border-radius: 10px;
-            row-gap: 10px;
+            row-gap: 5px;
             cursor: pointer;
 
             & img {
-                width: 180px;
+                width: 100%;
                 height: 180px;
                 object-fit: cover;
                 border-radius: 5px;
@@ -191,51 +191,16 @@
                     <a href="#">ห้องคู่รัก</a>
                 </div>
                 <div class="container__lists">
-                    <div class="item__list" onclick="roomDetail()">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
+                    <?php
+                    while($fetch = mysqli_fetch_assoc($query)) { ?>
+                        <div class="item__list" onclick="roomDetail()">
+                            <a href="#"><?=$showimg;?></a>
+                            <h4><?=$fetch['name'];?></h5>
+                            <h5 style="height: 55px; overflow: hidden; line-height: 18px;"><?=$fetch['roomdesc'];?></h5>
+                            <h4 id="price">฿<?=$fetch['price'];?></h4>
+                        </div>
+                    <?php } ?>
+                  
                 </div>
             </div>
         </section>
@@ -298,6 +263,13 @@
         function roomDetail() {
             window.location.href = "roomDetail.php"
         }
+        
+        /*
+        let price = document.getElementById("price").innerHTML;
+        let setComma = Intl.NumberFormat('en-US').format(price);
+        document.getElementById("price").innerHTML = setComma;
+        */
+
     </script>
 </body>
 </html>
