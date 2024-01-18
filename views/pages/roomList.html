@@ -192,15 +192,14 @@
                 </div>
                 <div class="container__lists">
                     <?php
-                    while($fetch = mysqli_fetch_assoc($query)) { ?>
+                    foreach ($query as $i=>$rooms) { ?>
                         <div class="item__list" onclick="roomDetail()">
-                            <a href="#"><?=$showimg;?></a>
-                            <h4><?=$fetch['name'];?></h5>
-                            <h5 style="height: 55px; overflow: hidden; line-height: 18px;"><?=$fetch['roomdesc'];?></h5>
-                            <h4 id="price">฿<?=$fetch['price'];?></h4>
+                            <a href="#"><?=$showimg[$i];?></a>
+                            <h4><?=$rooms['name'];?></h5>
+                            <h5 style="height: 55px; overflow: hidden; line-height: 18px;"><?=$rooms['roomdesc'];?></h5>
+                            <h4 id="price">฿<?=$rooms['price'];?></h4>
                         </div>
                     <?php } ?>
-                  
                 </div>
             </div>
         </section>

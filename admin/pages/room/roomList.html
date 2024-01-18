@@ -42,7 +42,7 @@
                 <tbody>
                 <?php
                     $count = 1;
-                    while($fetch = mysqli_fetch_assoc($query)) { ?>
+                    foreach($query as $fetch) { ?>
                         <tr align="center">
                             <td><?=$count++;?></td>
                             <td align="left"><?=$fetch['name'];?></td>

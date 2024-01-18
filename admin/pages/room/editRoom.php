@@ -14,7 +14,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 
 // วนลูปเพื่อดึงข้อมูลรูปภาพ
-while ($row = $stmt->fetch()) {
+foreach ($stmt as $row) {
 
     // แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64
     $image_base64 = $row["image"];
