@@ -55,8 +55,10 @@ if (isset($_REQUEST['update'])) {
     $highlight7 = isset($_POST['highlight7']) ? $_POST['highlight7'] : "";
     $highlight8 = isset($_POST['highlight8']) ? $_POST['highlight8'] : "";
     $status = implode($_POST["status"]);
-    $image = file_get_contents($_FILES["image"]["tmp_name"]);
-    $image_base64 = base64_encode($image);
+    if($_FILES["image"]["tmp_name"]){
+        $image = file_get_contents($_FILES["image"]["tmp_name"]);
+        $image_base64 = base64_encode($image);
+    };
 
     $stmt->bindParam(":name", $name);
     $stmt->bindParam(":roomdesc", $roomdesc);
@@ -81,7 +83,9 @@ if (isset($_REQUEST['update'])) {
     $stmt->bindParam(":highlight7", $highlight7);
     $stmt->bindParam(":highlight8", $highlight8);
     $stmt->bindParam(":status", $status);
-    $stmt->bindParam(":image_base64", $image_base64);
+    if($image_base64){
+        $stmt->bindParam(":image_base64", $image_base64);
+    };
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {

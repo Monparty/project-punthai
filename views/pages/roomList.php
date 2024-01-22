@@ -3,7 +3,7 @@ include ("../../config/config.php");
 session_start();
 
 
-$sql = " SELECT * FROM rooms";
+$sql = "SELECT * FROM rooms";
 $query = mysqli_query( $c, $sql );
 
 // ใช้แสดงรูปภาพ
@@ -20,7 +20,7 @@ $image_base64[$i] = $fetch["image"];
 $image = base64_decode($image_base64[$i]);
 
 // แสดงผลรูปภาพ
-$showimg[$i] = '<img src="data:$image/png;base64,' . $image_base64[$i] . '" style="width: 200px; height: 180px; object-fit: cover; border-radius: 4px;"/>';
+$showimg[$i] = '<img src="data:$image/png;base64,' . $image_base64[$i] . '" style="width: 200px; height: 180px; object-fit: cover; border-radius: 4px; transition: .3s;"/>';
 }
 
 include ("roomList.html");

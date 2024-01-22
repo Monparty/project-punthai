@@ -323,6 +323,75 @@
                     row-gap: 10px;
                 }
             }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 80px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            border-radius: 10px;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {top:-300px; opacity:0} 
+            to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        .modal-body {
+            padding: 20px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .summaryModal {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .modalForm {
+            display: grid;
+            gap: 10px;
+        }
+
+        .boxCheckbox {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+        }
+
+        .modalFormItem {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -343,13 +412,13 @@
         <section>
             <div class="roomDetailName borderBox">
                 <div class="roomName">
-                    <h2>ห้องพักครอบครัวขนาดสองเตียว</h2>
-                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus optio error rem. Reprehenderit expedita</h5>
+                    <h2><?=$fetch['name'];?></h2>
+                    <h5><?=$fetch['roomabout'];?></h5>
                 </div>
                 <div class="boxRoomPrice">
                     <div class="roomPrice">
-                        <h2 style="color: var(--orange);">฿ 1,500</h2>
-                        <a href="#" class="button w100">จองห้องพัก</a>
+                        <h2 style="color: var(--orange);">฿ <?=$fetch['price'];?></h2>
+                        <button type="button" id="myBtn" class="button w100">จองห้องพัก</button>
                     </div>
                     <div>
                         <h5>ราคาเริ่มต้น (ต่อคืน)</h5>
@@ -361,7 +430,7 @@
         <section>
             <div class="imgContainer">
                 <div class="boxImgLeft">
-                    <img src="../../imgs/noImage.png" alt="">
+                    <?=$showimg[$i];?>
                 </div>
                 <div class="boxImgRight">
                     <img src="../../imgs/noImage.png" alt="">
@@ -410,7 +479,7 @@
                 </div>
                 <div class="aboutRoom borderBox">
                     <h4 class="headName">เกี่ยวกับห้องพัก</h4>
-                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fuga illum necessitatibus minus totam dolores vero quos delectus vitae id quasi culpa, sit sunt! Distinctio nulla laboriosam nam dolor culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum sunt dicta doloremque autem veniam aspernatur pariatur aliquam, quaerat dolor nobis quam at vitae accusamus ut, natus laudantium nemo facere nam.</h5>
+                    <h5><?=$fetch['roomdesc'];?></h5>
                 </div>
                 <div class="facilitie borderBox">
                     <h4 class="headName">สิ่งอำนวยความสะดวก</h4>
@@ -678,8 +747,65 @@
         </section>
     </main>
 
+    <div id="myModal" class="modal">
+        <span class="close"></span>
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="roomDetail.php" method="post" class="modalForm">
+                    <h2>รายละเอียดการติดต่อ (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
+                    <h4>ชื่อ</h4>
+                    <input type="text" name="booker_name" required>
+                    <div class="modalFormItem">
+                        <div>
+                            <h4>อีเมล</h4>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div>
+                            <h4>เบอร์โทร</h4>
+                            <input type="number" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="boxCheckbox">
+                        <input type="radio" id="1" name="booking_type" value="1" checked>
+                        <label for="1">ฉันเป็นผู้เข้าพัก</label>
+                        <input type="radio" id="2" name="booking_type" value="2">
+                        <label for="2">ฉันจองสำหรับผู้อื่น</label>
+                    </div>
+                    <button type="submit" class="button">ดำเนินการชำระเงิน</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <?php include("../layouts/footer.html"); ?>
 
     <script src="../js/script.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
 </body>
 </html>

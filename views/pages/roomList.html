@@ -135,6 +135,15 @@
             }
         }
 
+        .zoomImg {
+            overflow: hidden;
+            border-radius: 5px;
+
+            & img:hover {
+                transform: scale(1.1); 
+            }
+        }
+
         @media screen and (max-width: 576px) {
             .imgDesc {
                 flex-direction: column;
@@ -192,13 +201,17 @@
                 </div>
                 <div class="container__lists">
                     <?php
-                    foreach ($query as $i=>$rooms) { ?>
-                        <div class="item__list" onclick="roomDetail()">
-                            <a href="#"><?=$showimg[$i];?></a>
-                            <h4><?=$rooms['name'];?></h5>
-                            <h5 style="height: 55px; overflow: hidden; line-height: 18px;"><?=$rooms['roomdesc'];?></h5>
-                            <h4 id="price">฿<?=$rooms['price'];?></h4>
-                        </div>
+                    foreach ($query as $i=>$fetch) { ?>
+                        <a href="roomDetail.php?id=<?=$fetch['id'];?>">
+                            <div class="item__list">
+                                <div class="zoomImg">
+                                    <?=$showimg[$i];?>
+                                </div>
+                                <h4><?=$fetch['name'];?></h5>
+                                <h5 style="height: 55px; overflow: hidden; line-height: 18px;"><?=$fetch['roomdesc'];?></h5>
+                                <h4 id="price">฿ <?=$fetch['price'];?></h4>
+                            </div>
+                        </a>
                     <?php } ?>
                 </div>
             </div>
@@ -262,13 +275,6 @@
         function roomDetail() {
             window.location.href = "roomDetail.php"
         }
-        
-        /*
-        let price = document.getElementById("price").innerHTML;
-        let setComma = Intl.NumberFormat('en-US').format(price);
-        document.getElementById("price").innerHTML = setComma;
-        */
-
     </script>
 </body>
 </html>

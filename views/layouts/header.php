@@ -20,7 +20,7 @@
         // เข้าสู่ระบบแล้ว ให้แสดงรูปภาพ
         
         echo '<i class="bx bx-user-circle"></i>' . '<h3>' . $_SESSION['username'] . '</h3>'; 
-        echo '<a href="../pages/logout.php" class="button w100">ออกจากระบบ</a>';
+        echo '<a href="../pages/logout.php"><i class="bx bx-log-out"></i></a>';
       } else {
         // ยังไม่เข้าสู่ระบบ ให้ซ่อนรูปภาพ
         echo '<a href="../pages/login.php" class="buttonOutline w100">เข้าสู่ระบบ</a>
