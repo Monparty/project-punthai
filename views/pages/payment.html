@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>การชำระเงิน</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      main {
+        display: grid;
+        row-gap: 30px;
+      }
+
+      .boxContainer {
+        display: grid;
+        grid-template-columns: 3fr 6fr;
+        column-gap: 20px;
+      }
+
+      .leftBar {
+        background-color: rgb(202, 138, 138);
+      }
+
+      .container__lists {
+        background-color: aquamarine;
+      }
+
+      @media screen and (max-width: 576px) {
+        .boxContainer {
+          grid-template-columns: 1fr;
+          row-gap: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+      <div class="breadcrumbs">
+        <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a>การชำระเงิน</a>
+      </div>
+
+      <section>
+        <h2 style="margin-bottom: 10px">คุณต้องการชำระเงินด้วยช่องทางใดใด?</h2>
+        <div class="boxContainer">
+          <div class="leftBar borderBox">
+
+          </div>
+          <div class="container__lists borderBox">
+
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

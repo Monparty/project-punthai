@@ -18,8 +18,8 @@
     <?php
       if (isset($_SESSION['username'])) {
         // เข้าสู่ระบบแล้ว ให้แสดงรูปภาพ
-        
-        echo '<i class="bx bx-user-circle"></i>' . '<h3>' . $_SESSION['username'] . '</h3>'; 
+        echo '<i class="bx bx-book-bookmark"></i>' .'<h4><a href="payment.php">การจองของฉัน</a></h4>';
+        echo '<i class="bx bx-user-circle"></i>' . '<h4>' . $_SESSION['username'] . '</h4>'; 
         echo '<a href="../pages/logout.php"><i class="bx bx-log-out"></i></a>';
       } else {
         // ยังไม่เข้าสู่ระบบ ให้ซ่อนรูปภาพ

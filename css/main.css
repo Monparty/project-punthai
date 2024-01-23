@@ -141,7 +141,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-input[type=text], [type=email], [type=number], [type=password] {
+input[type=text], [type=email], [type=number], [type=password], [type=date] {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--gray);

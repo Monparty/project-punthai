@@ -766,13 +766,23 @@
                             <input type="number" name="phone" required>
                         </div>
                     </div>
+                    <div class="modalFormItem">
+                        <div>
+                            <h4>วันที่เข้าพัก</h4>
+                            <input type="date" name="check_in_date" id="toDay" required>
+                        </div>
+                        <div>
+                            <h4>ถึงวันที่</h4>
+                            <input type="date" name="check_out_date" id="tomorrow" required>
+                        </div>
+                    </div>
                     <div class="boxCheckbox">
                         <input type="radio" id="1" name="booking_type" value="1" checked>
                         <label for="1">ฉันเป็นผู้เข้าพัก</label>
                         <input type="radio" id="2" name="booking_type" value="2">
                         <label for="2">ฉันจองสำหรับผู้อื่น</label>
                     </div>
-                    <button type="submit" class="button">ดำเนินการชำระเงิน</button>
+                    <button type="submit" class="button">ดำเนินการต่อไปยังการชำระเงิน</button>
                 </form>
             </div>
         </div>
@@ -807,6 +817,21 @@
             modal.style.display = "none";
           }
         }
+
+        var date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+        var today = year + "-" + month + "-" + day;
+        document.getElementById('toDay').value = today;
+
+        var tomorrow = date.getDate() + 1;
+        var today = year + "-" + month + "-" + tomorrow;
+        document.getElementById('tomorrow').value = today;
+
+        
         </script>
 </body>
 </html>

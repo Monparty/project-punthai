@@ -30,9 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = isset($_POST["email"]) ? $_POST["email"] : "";
   $phone = isset($_POST["phone"]) ? $_POST["phone"] : "";
   $booking_type = isset($_POST["booking_type"]) ? $_POST["booking_type"] : "";
+  $check_in_date = isset($_POST["check_in_date"]) ? $_POST["check_in_date"] : "";
+  $check_out_date = isset($_POST["check_out_date"]) ? $_POST["check_out_date"] : "";
+  $booking_type = isset($_POST["booking_type"]) ? $_POST["booking_type"] : "";
 
-  $sql = "INSERT INTO bookings (user_id, room_id, booker_name, email, phone, booking_type, createAt)
-  VALUES (:user_id, :room_id, :booker_name, :email, :phone, :booking_type, CURRENT_TIMESTAMP)";
+  $sql = "INSERT INTO bookings (user_id, room_id, booker_name, email, phone,check_in_date, check_out_date, booking_type, createAt)
+  VALUES (:user_id, :room_id, :booker_name, :email, :phone, :check_in_date, :check_out_date, :booking_type, CURRENT_TIMESTAMP)";
 
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(":user_id", $user_id);
@@ -40,6 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt->bindParam(":booker_name", $booker_name);
   $stmt->bindParam(":email", $email);
   $stmt->bindParam(":phone", $phone);
+  $stmt->bindParam(":check_in_date", $check_in_date);
+  $stmt->bindParam(":check_out_date", $check_out_date);
   $stmt->bindParam(":booking_type", $booking_type);
   $stmt->execute();
 
@@ -50,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             title: "บันทึกข้อมูลการจองสำเร็จ",  
             type: "success"
         }, function() {
-            window.location = "roomList.php";
+            window.location = "payment.php";
         });
         }, 1000);
       </script>';
