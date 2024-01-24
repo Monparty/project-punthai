@@ -15,15 +15,15 @@
 
       .boxContainer {
         display: grid;
-        grid-template-columns: 3fr 6fr;
+        grid-template-columns: 6fr 3fr;
         column-gap: 20px;
       }
 
-      .leftBar {
+      .leftContainer {
         background-color: rgb(202, 138, 138);
       }
 
-      .container__lists {
+      .rightContainer {
         background-color: aquamarine;
       }
 
@@ -49,11 +49,97 @@
       <section>
         <h2 style="margin-bottom: 10px">คุณต้องการชำระเงินด้วยช่องทางใดใด?</h2>
         <div class="boxContainer">
-          <div class="leftBar borderBox">
-
+          <div class="leftContainer borderBox">
+            <div class="leftContainerHead">
+              <h4>เรากำคงราคานี้ไว้สำหรับคุณ! กรุณาชำระเงินภายใน 10:10:19</h4>
+            </div>
+            <div class="checkItem">
+              <input type="checkbox">
+              <label for="">โอนเงิน</label>
+            </div>
+            <div class="paymentList">
+              <details>
+                <summary>
+                  ธนาคารไทยพาณิชย์
+                </summary>
+                <div class="summaryContent">
+                    <img src="../../imgs/noImage.png" height="50">
+                    <div class="paymentItem">
+                      <h4>ชื่อบัญชี : xxxxxxxx</h4>
+                      <h4>เลขที่บัญชี : xxxxxxxx</h4>
+                    </div>
+                </div>
+              </details>
+              <details>
+                <summary>
+                  ธนาคารกรุงไทย
+                </summary>
+                <div class="summaryContent">
+                    <img src="../../imgs/noImage.png" height="50">
+                    <div class="paymentItem">
+                      <h4>ชื่อบัญชี : xxxxxxxx</h4>
+                      <h4>เลขที่บัญชี : xxxxxxxx</h4>
+                    </div>
+                </div>
+              </details>
+            </div>
+            <div class="uploadSlip">
+              <h2>แนบหลักฐานการชำระเงิน</h2>
+              <input type="file">
+            </div>
+            
+            <div class="boxPrice">
+              <details>
+                <summary>
+                  รายละเอียดราคา
+                </summary>
+                <div class="boxPriceContent">
+                  <div class="borderBox"></div>
+                  <div>
+                    <h4>ชื่อห้องพัก</h4>
+                    <h4>จำนวนผู้เข้าพัก</h4>
+                  </div>
+                  <h4>฿ 1400</h4>
+                  <div>
+                    <h2>ราคารวม</h2>
+                    <h2>฿ 1400</h2>
+                  </div>
+                </div>
+              </details>
+            </div>
+            <div class="button">ส่งข้อมูลเพื่อตรวจสอบการชำระเงิน</div>
           </div>
-          <div class="container__lists borderBox">
-
+          
+          <div class="rightContainer borderBox">
+            <div class="rightContainerHead">
+              <h2>สรุปข้อมูลการจอง</h2>
+              <h4>หมายเลขการจอง xxxxxxxxx</h4>
+            </div>
+            <div class="rightDetail">
+              <h3>ชื่อห้องพัก</h3>
+              <div class="dateStay">
+                <div class="borderBox">
+                  <h4>เช็คอิน</h4>
+                  <h3>xx/xx/xx</h3>
+                </div>
+                <div class="borderBox">
+                  <h4>เช็คเอาท์</h4>
+                  <h3>xx/xx/xx</h3>
+                </div>
+              </div>
+              <div class="roomDetail">
+                <h4>ข้อมูลห้องพัก</h4>
+                <div>xxxx</div>
+                <div>xxxx</div>
+                <div>xxxx</div>
+              </div>
+              <div class="contact">
+                <h4>รายละเอียดการติดต่อ</h4>
+                <div>ชื่อ</div>
+                <div>เบอร์</div>
+                <div>เมล</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

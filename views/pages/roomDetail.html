@@ -391,6 +391,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
+
+            & h4 {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -753,7 +757,7 @@
             <div class="modal-body">
                 <form action="roomDetail.php" method="post" class="modalForm">
                     <input type="hidden" name="id" value="<?=$room_id;?>">
-                    <h2>รายละเอียดการติดต่อ (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
+                    <h2>รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
                     <h4>ชื่อ</h4>
                     <input type="text" name="booker_name" required>
                     <div class="modalFormItem">
@@ -768,11 +772,11 @@
                     </div>
                     <div class="modalFormItem">
                         <div>
-                            <h4>วันที่เข้าพัก</h4>
+                            <h4>วันที่เช็คอิน</h4>
                             <input type="date" name="check_in_date" id="toDay" required>
                         </div>
                         <div>
-                            <h4>ถึงวันที่</h4>
+                            <h4>วันที่เช็คเอาท์</h4>
                             <input type="date" name="check_out_date" id="tomorrow" required>
                         </div>
                     </div>
@@ -831,7 +835,6 @@
         var today = year + "-" + month + "-" + tomorrow;
         document.getElementById('tomorrow').value = today;
 
-        
-        </script>
+    </script>
 </body>
 </html>

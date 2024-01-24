@@ -101,11 +101,28 @@ a {
     align-items: center;
     justify-content: center;
     font-size: 14px;
+    position: relative;
+    overflow: hidden;
 
     &:hover {
         opacity: .6;
     }
 }
+
+span.ripple {
+    background-color: var(--sky);
+    border-radius: 50%;
+    position: absolute;
+    transform: scale(0);
+    animation: ripple .5s linear forwards;
+  }
+  
+  @keyframes ripple {
+    to {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
 
 .button.green {
     background: var(--green);
