@@ -71,8 +71,8 @@
   <a href="../pages/homePage.php"><img src="../../imgs/logo.png" height="50" alt=""></a>
   <div class="btn__group">
     <?php if (isset($_SESSION['username'])) { ?>
-      <!-- เข้าสู่ระบบแล้ว ให้แสดงรูปภาพ -->
 
+      <!-- เข้าสู่ระบบแล้ว ให้แสดงรูปภาพ -->
       <div  class="dropdown">
         <div class="dropbtn" onclick="myFunction()">
           <?php echo $_SESSION['username'];?>
@@ -93,13 +93,13 @@
           </a>
         </div>
       </div>
-
-
-
+      
     <?php } else { ?>
+
       <!-- ยังไม่เข้าสู่ระบบ ให้ซ่อนรูปภาพ -->
       <a href="../pages/login.php" class="buttonOutline w100">เข้าสู่ระบบ</a>
       <a href="../pages/register.php" class="button w100">สร้างบัญชี</a>
+
     <?php } ?>
   </div>
 </header>

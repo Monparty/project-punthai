@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>การชำระเงิน</title>
-    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
-    <link rel="stylesheet" href="../../css/main.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png" />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <style>
       main {
         display: grid;
@@ -17,14 +20,103 @@
         display: grid;
         grid-template-columns: 6fr 3fr;
         column-gap: 20px;
+        margin-bottom: 10px;
       }
 
       .leftContainer {
-        background-color: rgb(202, 138, 138);
+        display: grid;
+        gap: 10px;
+        padding: 20px;
+
+        & .leftContainerHead {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--sky);
+          padding: 5px;
+          border-radius: 5px;
+          color: var(--white);
+
+          & h4 {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          }
+        }
+
+        & .checkItem {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin: 5px 0;
+        }
+
+        & .paymentList {
+          display: grid;
+          gap: 10px;
+
+          & .summaryContent {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            & img {
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+          }
+        }
+
+        & .uploadSlip {
+          margin-bottom: 10px;
+
+          & h2 {
+            margin-bottom: 10px;
+          }
+        }
+
+        & .boxPriceContent {
+          display: grid;
+          gap: 10px;
+          padding: 10px;
+        }
+
+        & .boxPriceItem {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+        }
       }
 
       .rightContainer {
-        background-color: aquamarine;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+
+        & .dateStay {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+
+          & .dateStayItem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          & i {
+            font-size: 24px;
+          }
+        }
+
+        & .rightDetail {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
       }
 
       @media screen and (max-width: 576px) {
@@ -33,6 +125,69 @@
           row-gap: 30px;
         }
       }
+
+      .checkbox-wrapper-2 .ikxBAC {
+        appearance: none;
+        background-color: #dfe1e4;
+        border-radius: 72px;
+        border-style: none;
+        flex-shrink: 0;
+        height: 20px;
+        margin: 0;
+        position: relative;
+        width: 30px;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC::before {
+        bottom: -6px;
+        content: "";
+        left: -6px;
+        position: absolute;
+        right: -6px;
+        top: -6px;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC,
+      .checkbox-wrapper-2 .ikxBAC::after {
+        transition: all 100ms ease-out;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC::after {
+        background-color: #fff;
+        border-radius: 50%;
+        content: "";
+        height: 14px;
+        left: 3px;
+        position: absolute;
+        top: 3px;
+        width: 14px;
+      }
+
+      .checkbox-wrapper-2 input[type="checkbox"] {
+        cursor: default;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC:hover {
+        background-color: #c9cbcd;
+        transition-duration: 0s;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC:checked {
+        background-color: #6e79d6;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC:checked::after {
+        background-color: #fff;
+        left: 13px;
+      }
+
+      .checkbox-wrapper-2 :focus:not(.focus-visible) {
+        outline: 0;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC:checked:hover {
+        background-color: #535db3;
+      }
     </style>
   </head>
   <body>
@@ -40,91 +195,104 @@
     <?php include("../layouts/sidebar.html"); ?>
 
     <main class="container">
-      <div class="breadcrumbs">
-        <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
-        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
-        <a>การชำระเงิน</a>
-      </div>
-
       <section>
-        <h2 style="margin-bottom: 10px">คุณต้องการชำระเงินด้วยช่องทางใดใด?</h2>
+        <h2 style="margin-bottom: 10px">คุณต้องการชำระเงินด้วยช่องทางใด?</h2>
         <div class="boxContainer">
           <div class="leftContainer borderBox">
             <div class="leftContainerHead">
-              <h4>เรากำคงราคานี้ไว้สำหรับคุณ! กรุณาชำระเงินภายใน 10:10:19</h4>
+              <h4 class="bold">
+                เรากำคงราคานี้ไว้สำหรับคุณ! กรุณาชำระเงินภายใน
+                <span
+                  class="bold"
+                  style="color: var(--orange)"
+                  id="countDownDate"
+                ></span
+                ><span style="color: var(--orange); font-size: 18px"
+                  ><i class="bx bx-time-five"></i
+                ></span>
+              </h4>
             </div>
-            <div class="checkItem">
-              <input type="checkbox">
-              <label for="">โอนเงิน</label>
-            </div>
-            <div class="paymentList">
+            <label for="check" style="cursor: pointer">
+              <div class="checkItem borderBox">
+                <div class="checkbox-wrapper-2">
+                  <input
+                    id="check"
+                    onclick="checkShow()"
+                    type="checkbox"
+                    class="sc-gJwTLC ikxBAC"
+                    checked
+                  />
+                </div>
+                <h4>โอนเงิน</h4>
+              </div>
+            </label>
+            <div class="paymentList" id="details">
               <details>
-                <summary>
-                  ธนาคารไทยพาณิชย์
-                </summary>
+                <summary>ธนาคารไทยพาณิชย์</summary>
                 <div class="summaryContent">
-                    <img src="../../imgs/noImage.png" height="50">
-                    <div class="paymentItem">
-                      <h4>ชื่อบัญชี : xxxxxxxx</h4>
-                      <h4>เลขที่บัญชี : xxxxxxxx</h4>
-                    </div>
+                  <img src="https://i.pinimg.com/736x/02/31/87/023187a2f2dc47bbdc809b43c7667b3a.jpg"/>
+                  <div class="paymentItem">
+                    <h4>ชื่อบัญชี : xxxxxxxx</h4>
+                    <h4>เลขที่บัญชี : xxxxxxxx</h4>
+                  </div>
                 </div>
               </details>
               <details>
-                <summary>
-                  ธนาคารกรุงไทย
-                </summary>
+                <summary>ธนาคารกรุงไทย</summary>
                 <div class="summaryContent">
-                    <img src="../../imgs/noImage.png" height="50">
-                    <div class="paymentItem">
-                      <h4>ชื่อบัญชี : xxxxxxxx</h4>
-                      <h4>เลขที่บัญชี : xxxxxxxx</h4>
-                    </div>
+                  <img src="https://thaitabloid.com/wp-content/uploads/2018/01/9242_%E0%B9%82%E0%B8%A5%E0%B9%82%E0%B8%81%E0%B9%89-KTB-01.jpg"/>
+                  <div class="paymentItem">
+                    <h4>ชื่อบัญชี : xxxxxxxx</h4>
+                    <h4>เลขที่บัญชี : xxxxxxxx</h4>
+                  </div>
                 </div>
               </details>
             </div>
             <div class="uploadSlip">
               <h2>แนบหลักฐานการชำระเงิน</h2>
-              <input type="file">
+              <div class="formInput file">
+                <input type="file" name="image" multiple required />
+              </div>
             </div>
-            
             <div class="boxPrice">
               <details>
-                <summary>
-                  รายละเอียดราคา
-                </summary>
+                <summary>รายละเอียดราคา</summary>
                 <div class="boxPriceContent">
-                  <div class="borderBox"></div>
-                  <div>
-                    <h4>ชื่อห้องพัก</h4>
-                    <h4>จำนวนผู้เข้าพัก</h4>
+                  <div style="border: 1px dashed var(--gray)"></div>
+                  <div class="boxPriceItem">
+                    <div>
+                      <h4>ชื่อห้องพัก</h4>
+                      <h4>จำนวนผู้เข้าพัก</h4>
+                    </div>
+                    <h4>฿ 1400</h4>
                   </div>
-                  <h4>฿ 1400</h4>
-                  <div>
-                    <h2>ราคารวม</h2>
-                    <h2>฿ 1400</h2>
+                  <div class="boxPriceItem">
+                    <h3 class="bold">ราคารวม</h3>
+                    <h3 class="bold">฿ 1400</h3>
                   </div>
                 </div>
               </details>
             </div>
             <div class="button">ส่งข้อมูลเพื่อตรวจสอบการชำระเงิน</div>
           </div>
-          
+
           <div class="rightContainer borderBox">
             <div class="rightContainerHead">
               <h2>สรุปข้อมูลการจอง</h2>
               <h4>หมายเลขการจอง xxxxxxxxx</h4>
             </div>
+
             <div class="rightDetail">
-              <h3>ชื่อห้องพัก</h3>
+              <h4>ชื่อห้องพัก</h4>
               <div class="dateStay">
-                <div class="borderBox">
+                <div class="dateStayItem borderBox w100">
                   <h4>เช็คอิน</h4>
-                  <h3>xx/xx/xx</h3>
+                  <h4>xx/xx/xx</h4>
                 </div>
-                <div class="borderBox">
+                <i class="bx bx-right-arrow-alt"></i>
+                <div class="dateStayItem borderBox w100">
                   <h4>เช็คเอาท์</h4>
-                  <h3>xx/xx/xx</h3>
+                  <h4>xx/xx/xx</h4>
                 </div>
               </div>
               <div class="roomDetail">
@@ -133,6 +301,7 @@
                 <div>xxxx</div>
                 <div>xxxx</div>
               </div>
+              <div style="border: 1px dashed var(--gray)"></div>
               <div class="contact">
                 <h4>รายละเอียดการติดต่อ</h4>
                 <div>ชื่อ</div>
@@ -145,5 +314,37 @@
       </section>
     </main>
     <script src="../js/script.js"></script>
+    <script>
+      function checkShow() {
+        var checkBox = document.getElementById("check");
+        var details = document.getElementById("details");
+        if (checkBox.checked == true) {
+          details.style.visibility = "visible";
+        } else {
+          details.style.visibility = "hidden";
+        }
+      }
+
+      function countdownTimeStart() {
+        var countDownDate = new Date("Jan 5, 2028 15:37:25").getTime();
+        var countdownTime = setInterval(function () {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+          var hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("countDownDate").innerHTML =
+            "00" + " : " + minutes + " : " + seconds;
+          if (distance < 0) {
+            clearInterval(countdownTime);
+            document.getElementById("countDownDate").innerHTML = "หมดเวลา";
+          }
+        }, 1);
+      }
+      countdownTimeStart();
+    </script>
   </body>
 </html>

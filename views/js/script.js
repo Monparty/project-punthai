@@ -1,5 +1,5 @@
 // button effect
-
+/*
 var buttons = document.querySelectorAll('.button');
 
 Array.prototype.forEach.call(buttons, function (b) {
@@ -16,7 +16,7 @@ function createRipple(event) {
   ripple.style.top = event.clientY - rect.top - max + 'px';
   this.appendChild(ripple);
 }
-
+*/
 // showSlides
 
 let slideIndex = 1;
