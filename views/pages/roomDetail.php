@@ -24,7 +24,8 @@ foreach ($stmt as $i=>$fetch) {
 
 // ส่วนบันทึกข้อมูลการจอง
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $user_id = $fetch["user_id"];
+
+  $user_id = $_SESSION["user_id"];
   $room_id = $fetch["room_id"];
   $booker_name = isset($_POST["booker_name"]) ? $_POST["booker_name"] : "";
   $email = isset($_POST["email"]) ? $_POST["email"] : "";

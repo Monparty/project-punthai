@@ -3,7 +3,8 @@ include ("../../config/config.php");
 session_start();
 
 $user_id = $_SESSION["user_id"];
-$sql = "SELECT * FROM bookings, rooms WHERE booking_status = 'ชำระเงินเรียบร้อย / รอตรวจสอบ'";
+$sql = "SELECT * FROM rooms INNER JOIN bookings ON bookings.room_id = rooms.room_id WHERE bookings.user_id = $user_id";
+
 $query = mysqli_query( $c, $sql );
 
 // ใช้แสดงรูปภาพ
