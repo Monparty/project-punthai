@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบข้อมูลการชำระเงิน</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .boxPayment {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .dateStay {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+
+          & .dateStayItem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          & i {
+            font-size: 24px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="../dashboard/dashboard.php">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a href="roomList.php">ข้อมูลการจอง</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>ตรวจสอบข้อมูลการชำระเงิน</a>
+    </div>
+    <form action="addRoom.php" method="post" enctype="multipart/form-data">
+        <main class="containerAdmin">
+            <section class="formSection">
+                <h2 style="margin-bottom:10px;">ตรวจสอบข้อมูลการชำระเงิน</h2>
+                <div class="form">
+                    <div class="headersection">
+                        <i class='bx bx-info-circle'></i>
+                        <h4>รายละเอียดการชำระเงิน</h4>
+                    </div>
+                    <div class="boxPayment">
+                        <div class="slipImage">
+                            <img src="../../../imgs/noImage.png">
+                        </div>
+                        <div class="paymentDetail borderBox">
+                            <div class="dateStay">
+                                <div class="dateStayItem borderBox">
+                                  <h4>เช็คอิน</h4>
+                                  <h4>xx/xx/xxxx</h4>
+                                </div>
+                                <i class="bx bx-right-arrow-alt"></i>
+                                <div class="dateStayItem borderBox">
+                                  <h4>เช็คเอาท์</h4>
+                                  <h4>xx/xx/xxxx</h4>
+                                </div>
+                              </div>
+                            <div class="form">
+                                <div class="formRow">
+                                    <div class="formTitle">
+                                        <h4>ชื่อห้องพัก <span class="force">*</span></h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <input type="text" name="name" value="" required>
+                                    </div>
+                                </div>
+                                <div class="formRow">
+                                    <div class="formTitle">
+                                        <h4>คำอธิบาย</h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <input type="text" name="roomdesc" value="">
+                                    </div>
+                                </div>
+                                <div class="formRow">
+                                    <div class="formTitle">
+                                        <h4>ราคาที่พัก <span class="force">*</span></h4>
+                                    </div>
+                                    <div class="formInput w300">
+                                        <input type="number" name="price" value="" required>
+                                        <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
+                                    </div>
+                                </div>
+                                <div class="formRow valignTop">
+                                    <div class="formTitle">
+                                        <h4>เกี่ยวกับห้องพัก</h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <textarea name="roomabout"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="headersection">
+                        <i class='bx bx-list-check'></i>
+                        <h4>สถานะ</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สถานะ <span class="force">*</span></h4>
+                        </div>
+                        <div class="boxCheckbox">
+                            <input type="radio" name="status[]" value="Active" checked>
+                            <label for="">ใช้งาน</label>
+                            <input type="radio" name="status[]" value="Inactive">
+                            <label for="">ไม่ใช้งาน</label>
+                        </div>
+                    </div>
+                    <div class="formBtn">
+                        <button type="submit" class="button green w100"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </form>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

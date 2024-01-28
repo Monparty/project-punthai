@@ -18,8 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->rowCount() == 1) {
 
         //เข้าสู่ระบบสำเร็จ
-        $_SESSION["username"] =  $username;
-        $_SESSION["user_id"] = $stmt->fetch()["user_id"];
+        $data = $stmt->fetch();
+        $_SESSION["username"] = $data["username"];
+        $_SESSION["email"] = $data["email"];
+        $_SESSION["user_id"] = $data["user_id"];
+        $_SESSION["phone_number"] = $data["phone_number"] ?? "";
 
         //เปลี่ยนเส้นท่าไปยังหน้าหลัก
         echo '<script>

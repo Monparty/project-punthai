@@ -76,6 +76,11 @@
         }
       }
 
+      .boxHelp {
+        display: grid;
+        gap: 5px;
+      }
+
       @media screen and (max-width: 576px) {
         .boxContainer {
           grid-template-columns: 1fr;
@@ -124,18 +129,16 @@
             <a href="logout.php"><i class="bx bx-power-off"></i> ออกจากระบบ</a>
           </div>
           <div class="container__lists">
-            <div class="borderBox">
-              <div class="boxHelpTitle">
+            <div class="boxHelp borderBox">
                 <h4>ประสบปัญหาใดๆ เราพร้อมให้ความช่วยเหลือ</h4>
                 <h5>
                   ติดต่อที่พักหรือฝ่ายลูกค้าสัมพันธ์ของอโกด้า
                   พร้อมรับคำตอบอย่างรวดเร็วจากเรา
                   รวมถึงบริการอีกมากมายที่ท่านสามารถทำได้ด้วยตนเองง่ายๆ
                 </h5>
-              </div>
-              <div class="helpBtn">
-                <a href="#" class="button">ติดต่อฝ่ายลูกค้าสัมพันธ์</a>
-              </div>
+                <div class="helpBtn">
+                  <a href="#" class="button">ติดต่อฝ่ายลูกค้าสัมพันธ์</a>
+                </div>
             </div>
             <h2>รายละเอียดการจอง</h2>
             <?php
@@ -152,8 +155,8 @@
                   </div>
                   <h4>฿ <?=$fetch["price"];?></h4>
                 </div>
-                <div class="bookStatus" style="vertical-align: center;">
-                  <h4 class="bold" style="color: var(--blue);"><?=$fetch["booking_status"];?></h4>
+                <div class="bookStatus">
+                  <h4 class="bold" style="color: var(--blue); text-align: center;"><?=$fetch["booking_status"];?></h4>
                 </div>
               </div>
             </a>

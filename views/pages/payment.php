@@ -13,7 +13,8 @@ $stmt->execute();
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
     $user_id = $_SESSION["user_id"];
-    $sql = "UPDATE bookings SET slip_image=:image_base64, booking_status=:booking_status, upload_slip_at=CURRENT_TIMESTAMP WHERE user_id=$user_id";
+    $booking_id = $fetch['booking_id'];
+    $sql = "UPDATE bookings SET slip_image=:image_base64, booking_status=:booking_status, upload_slip_at=CURRENT_TIMESTAMP WHERE booking_id=$booking_id";
 
     $stmt = $conn->prepare($sql);
     $room_id = $_POST["room_id"];

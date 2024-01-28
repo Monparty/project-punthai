@@ -764,15 +764,15 @@
                     <input type="hidden" name="id" value="<?=$room_id;?>">
                     <h2>รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
                     <h4>ชื่อ</h4>
-                    <input type="text" name="booker_name" required>
+                    <input type="text" name="booker_name" value="<?=$_SESSION["username"];?>" required>
                     <div class="modalFormItem">
                         <div>
                             <h4>อีเมล</h4>
-                            <input type="email" name="email" required>
+                            <input type="email" name="email" value="<?=$_SESSION["email"];?>" required>
                         </div>
                         <div>
                             <h4>เบอร์โทร</h4>
-                            <input type="number" name="phone" required>
+                            <input type="number" name="phone" value="<?=$_SESSION["phone_number"];?>" required>
                         </div>
                     </div>
                     <div class="modalFormItem">
