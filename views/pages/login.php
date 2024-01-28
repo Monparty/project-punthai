@@ -14,11 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(":username", $username);
     $stmt->bindParam(":password", $password);
     $stmt->execute();
-
+    
     if ($stmt->rowCount() == 1) {
 
         //เข้าสู่ระบบสำเร็จ
         $_SESSION["username"] =  $username;
+        $_SESSION["user_id"] = $stmt->fetch()["user_id"];
 
         //เปลี่ยนเส้นท่าไปยังหน้าหลัก
         echo '<script>

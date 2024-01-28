@@ -3,14 +3,7 @@ include ("../../config/config.php");
 session_start();
 
 $id = $_REQUEST['room_id'];
-//$sql = "SELECT * FROM rooms INNER JOIN bookings ON bookings.room_id = $room_id && rooms.room_id = $room_id"; // ใช้ได้แล้ว
-$sql = "SELECT * FROM rooms INNER JOIN bookings ON bookings.room_id = $id && rooms.room_id = $id";
-/*
-$query = mysqli_query( $c, $sql );
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$fetch = mysqli_fetch_assoc($query);
-*/
+$sql = "SELECT * FROM rooms INNER JOIN bookings ON bookings.room_id = rooms.room_id WHERE rooms.room_id = $id ORDER BY bookings.booking_id DESC;";
 $result = mysqli_query($c, $sql);
 $fetch = mysqli_fetch_array($result);
 extract($fetch);
