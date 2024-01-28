@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>บัญชีของฉัน</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      main {
+        display: grid;
+        row-gap: 30px;
+      }
+
+      section {
+        margin-bottom: 60px;
+      }
+
+      .boxContainer {
+        display: grid;
+        grid-template-columns: 2fr 6fr;
+        column-gap: 20px;
+      }
+
+      .leftBar {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+
+
+        & a {
+          display: flex;
+          align-items: center;
+          padding: 5px;
+          gap: 10px;
+          font-size: 16px;
+          border-bottom: 1px solid var(--gray);
+
+          & i {
+            font-size: 22px;
+            color: var(--blue);
+          }
+        }
+      }
+
+      .leftBarActive {
+        background: var(--blue);
+        color: var(--white);
+        border-radius: 5px;
+
+        & i {
+          color: var(--white) !important
+        }
+      }
+
+      .container__lists {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+
+      @media screen and (max-width: 576px) {
+        .boxContainer {
+          grid-template-columns: 1fr;
+          row-gap: 30px;
+        }
+
+        .borderBox {
+          grid-template-columns: 1fr;
+          width: 500px;
+          row-gap: 10px;
+          text-align: center;
+          
+          & .helpBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & a {
+              width: 200px;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+      <div class="breadcrumbs">
+        <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a>บัญชีของฉัน</a>
+      </div>
+
+      <section>
+        <h2 style="margin-bottom: 10px">ข้อมูลส่วนตัว</h2>
+        <div class="boxContainer">
+          <div class="leftBar">
+            <a href="userAccount.php" class="leftBarActive"><i class='bx bx-user'></i> บัญชีของฉัน</a>
+            <a href="userBooking.php"><i class="bx bx-book-bookmark"></i> รายการจอง</a>
+            <a href="logout.php"><i class='bx bx-power-off'></i> ออกจากระบบ</a>
+          </div>
+          <div class="container__lists">
+            <div class="borderBox">
+              <div class="icon" style="text-align: center;">
+                <i class='bx bx-info-square'></i>
+              </div>
+              <div class="boxHelpTitle">
+                <h4>
+                  ประสบปัญหาใดๆ เราพร้อมให้ความช่วยเหลือ
+                </h4>
+                <h5>
+                  ติดต่อที่พักหรือฝ่ายลูกค้าสัมพันธ์ของอโกด้า พร้อมรับคำตอบอย่างรวดเร็วจากเรา รวมถึงบริการอีกมากมายที่ท่านสามารถทำได้ด้วยตนเองง่ายๆ
+                </h5>
+              </div>
+              <div class="helpBtn">
+                <a href="#" class="button">ติดต่อฝ่ายลูกค้าสัมพันธ์</a>
+              </div>
+            </div>
+            <h2>ข้อมูลบัญชี</h2>
+            <div class="borderBox">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi perferendis accusamus quasi blanditiis a quis distinctio obcaecati, harum voluptate quisquam quas quibusdam ducimus nobis dolorum repellendus quam minima suscipit eos?
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

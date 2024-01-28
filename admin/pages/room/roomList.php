@@ -7,10 +7,10 @@ $query = mysqli_query( $c, $sql );
 
 // ลบข้อมูล
 if (isset($_REQUEST['delete'])) {
-    $id = $_REQUEST['delete'];
+    $room_id = $_REQUEST['delete'];
 
-    $delete_stmt = $conn->prepare('DELETE FROM rooms WHERE id = :id');
-    $delete_stmt->bindParam(':id', $id);
+    $delete_stmt = $conn->prepare('DELETE FROM rooms WHERE room_id = :room_id');
+    $delete_stmt->bindParam(':room_id', $room_id);
     $delete_stmt->execute();
 
     echo '<script>

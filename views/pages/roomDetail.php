@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             title: "บันทึกข้อมูลการจองสำเร็จ",  
             type: "success"
         }, function() {
-            window.location = "payment.php";
+            window.location = "payment.php?room_id=' . $room_id . '";
         });
         }, 1000);
       </script>';

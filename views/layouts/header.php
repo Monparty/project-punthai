@@ -17,7 +17,6 @@
     align-items: center;
     justify-content: space-around;
     gap: 10px;
-    width: 100px;
     padding: 5px 20px;
     border-radius: 5px;
     transition: .2s;
@@ -79,11 +78,11 @@
           <i class='bx bx-chevron-down'></i>
         </div>
         <div id="myDropdown" class="dropdown-content">
-          <a href="payment.php" class="btn__group">
+          <a href="userAccount.php" class="btn__group">
             <i class='bx bx-user'></i>
             แก้ไขข้อมูลส่วนตัว
           </a>
-          <a href="payment.php" class="btn__group">
+          <a href="userBooking.php" class="btn__group">
             <i class="bx bx-book-bookmark"></i>
             การจองของฉัน
           </a>

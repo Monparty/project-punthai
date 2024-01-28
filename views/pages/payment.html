@@ -198,10 +198,12 @@
       <section>
         <h2 style="margin-bottom: 10px">คุณต้องการชำระเงินด้วยช่องทางใด?</h2>
         <div class="boxContainer">
+          <form action="payment.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?=$fetch['room_id'];?>">
           <div class="leftContainer borderBox">
             <div class="leftContainerHead">
               <h4 class="bold">
-                เรากำคงราคานี้ไว้สำหรับคุณ! กรุณาชำระเงินภายใน
+                เรากำลังคงราคานี้ไว้สำหรับคุณ! กรุณาชำระเงินภายใน
                 <span
                   class="bold"
                   style="color: var(--orange)"
@@ -251,7 +253,8 @@
             <div class="uploadSlip">
               <h2>แนบหลักฐานการชำระเงิน</h2>
               <div class="formInput file">
-                <input type="file" name="image" multiple required />
+                <input type="file" name="slip_image" multiple required />
+                <input type="hidden" name="booking_status" value="ชำระเงินเรียบร้อย / รอตรวจสอบ">
               </div>
             </div>
             <div class="boxPrice">
@@ -261,38 +264,39 @@
                   <div style="border: 1px dashed var(--gray)"></div>
                   <div class="boxPriceItem">
                     <div>
-                      <h4>ชื่อห้องพัก</h4>
-                      <h4>จำนวนผู้เข้าพัก</h4>
+                      <h4><?=$fetch['name'];?></h4>
+                      <h4>จำนวนผู้เข้าพัก <?=$fetch['amountpeople'];?> คน</h4>
                     </div>
-                    <h4>฿ 1400</h4>
+                    <h4>฿ <?=$fetch['price'];?></h4>
                   </div>
                   <div class="boxPriceItem">
                     <h3 class="bold">ราคารวม</h3>
-                    <h3 class="bold">฿ 1400</h3>
+                    <h3 class="bold">฿ <?=$fetch['price'];?></h3>
                   </div>
                 </div>
               </details>
             </div>
-            <div class="button">ส่งข้อมูลเพื่อตรวจสอบการชำระเงิน</div>
+            <button type="submit" class="button" name="update">ส่งข้อมูลเพื่อตรวจสอบการชำระเงิน</button>
           </div>
+        </form>
 
           <div class="rightContainer borderBox">
             <div class="rightContainerHead">
               <h2>สรุปข้อมูลการจอง</h2>
-              <h4>หมายเลขการจอง xxxxxxxxx</h4>
+              <h4>หมายเลขการจอง 0000<?=$fetch['booking_id'];?></h4>
             </div>
 
             <div class="rightDetail">
-              <h4>ชื่อห้องพัก</h4>
+              <h4><?=$fetch['name'];?></h4>
               <div class="dateStay">
-                <div class="dateStayItem borderBox w100">
+                <div class="dateStayItem borderBox">
                   <h4>เช็คอิน</h4>
-                  <h4>xx/xx/xx</h4>
+                  <h4><?=$fetch['check_in_date'];?></h4>
                 </div>
                 <i class="bx bx-right-arrow-alt"></i>
-                <div class="dateStayItem borderBox w100">
+                <div class="dateStayItem borderBox">
                   <h4>เช็คเอาท์</h4>
-                  <h4>xx/xx/xx</h4>
+                  <h4><?=$fetch['check_out_date'];?></h4>
                 </div>
               </div>
               <div class="roomDetail">
