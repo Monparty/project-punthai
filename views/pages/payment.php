@@ -2,18 +2,27 @@
 include ("../../config/config.php");
 session_start();
 
-$room_id = $_REQUEST['room_id'];
-$sql = "SELECT * FROM rooms WHERE room_id=$room_id";
+$id = $_REQUEST['room_id'];
+//$sql = "SELECT * FROM rooms INNER JOIN bookings ON bookings.room_id = $room_id && rooms.room_id = $room_id"; // ใช้ได้แล้ว
+$sql = "SELECT * FROM rooms INNER JOIN bookings ON bookings.room_id = $id && rooms.room_id = $id";
+/*
 $query = mysqli_query( $c, $sql );
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $fetch = mysqli_fetch_assoc($query);
+*/
+$result = mysqli_query($c, $sql);
+$fetch = mysqli_fetch_array($result);
+extract($fetch);
+$stmt = $conn->prepare($sql);
+$stmt->execute();
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
     $sql = "UPDATE rooms SET slip_image=:image_base64, booking_status=:booking_status, upload_slip_at=CURRENT_TIMESTAMP WHERE room_id=$room_id";
-    
+
     $stmt = $conn->prepare($sql);
+    $room_id = $_POST["room_id"];
     $booking_status = $_POST["booking_status"];
     $slip_image = file_get_contents($_FILES["slip_image"]["tmp_name"]);
     $image_base64 = base64_encode($slip_image);

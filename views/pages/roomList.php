@@ -3,7 +3,8 @@ include ("../../config/config.php");
 session_start();
 
 
-$sql = "SELECT * FROM rooms WHERE booking_status = 'จอง'";
+$sql = "SELECT * FROM rooms";
+//$sql = "SELECT * FROM rooms WHERE booking_status = 'จอง'";
 $query = mysqli_query( $c, $sql );
 
 // ใช้แสดงรูปภาพ
