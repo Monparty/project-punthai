@@ -129,6 +129,11 @@ span.ripple {
     white-space: nowrap;
 }
 
+.button.orange {
+    background: var(--orange);
+    white-space: nowrap;
+}
+
 .button.gray {
     background: var(--gray);
     color: var(--black);
@@ -164,6 +169,11 @@ input[type=text], [type=email], [type=number], [type=password], [type=date] {
     border: 1px solid var(--gray);
     border-radius: 4px;
     outline: none;
+
+    &:read-only {
+        background: var(--lightGray);
+        border: none;
+    }
 }
 
 select {
@@ -201,6 +211,7 @@ input[type=file]::file-selector-button:hover {
     border-right: 1px solid #e5e5e5;
 
 }
+
 
 .file {
     border: 1px solid #e5e5e5;
