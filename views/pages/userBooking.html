@@ -143,8 +143,10 @@
             <h2>รายละเอียดการจอง</h2>
             <?php
             foreach ($query as $i=>$fetch) { ?>
-            <a href="">
+            <a href="<?php echo ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') ? 'login.php' : 'payment.php?booking_id=' . $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>">
               <div class="borderBox roomContainer">
+                <input type="text" value="<?=$fetch["booking_id"];?>">
+                <input type="text" value="<?=$fetch["room_id"];?>">
                 <?=$showimg[$i];?>
                 <div class="roomItem">
                   <h3 class="bold"><?=$fetch["name"];?></h4>
