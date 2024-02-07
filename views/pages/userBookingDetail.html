@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>รายละเอียดการจอง</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      main {
+        display: grid;
+        row-gap: 30px;
+      }
+
+
+      .container__lists {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+
+      .borderBoxTop {
+        display: grid;
+        grid-template-columns: 1fr 5fr 3fr;
+        column-gap: 20px;
+        align-items: center;
+
+        & i {
+          font-size: 60px;
+          color: var(--blue);
+        }
+      }
+
+      .imgContainer {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            column-gap: 10px;
+            align-items: start;
+            justify-content: start;
+
+            & img {
+                border-radius: 10px;
+                object-fit: cover;
+            }
+
+            & .boxImgLeft {
+                
+                & img {
+                    height: 210px;
+                    width: 100%;
+                }
+            }
+        }
+
+        .roomDetailName {
+          display: grid;
+          gap: 5px;
+          height: 100%;
+
+          & .roomPrice {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+          }
+        }
+
+
+
+      @media screen and (max-width: 576px) {
+        .boxContainer {
+          grid-template-columns: 1fr;
+          row-gap: 30px;
+        }
+
+        .borderBox {
+          grid-template-columns: 1fr;
+          width: 500px;
+          row-gap: 10px;
+          text-align: center;
+          
+          & .helpBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & a {
+              width: 200px;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+      <div class="breadcrumbs">
+        <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a style="color: var(--gray)" href="userBooking.php">รายการจอง</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a>รายละเอียดการจอง</a>
+      </div>
+
+      <section>
+        <h2 style="margin-bottom: 10px">การจองของคุณได้รับการยืนยันแล้ว</h2>
+          <div class="container__lists">
+            <div class="borderbox borderBoxTop">
+              <div class="icon" style="text-align: center;">
+                <i class='bx bx-badge-check' ></i>
+              </div>
+              <div class="boxHelpTitle">
+                <h4>
+                  เอกสารยืนยังการจองอิเล็กทรอนิกส์
+                </h4>
+                <h5>
+                  กรุณาแสดงใบยืนยันการจองห้องพักในรูปแบบไฟส์อิเล็กทรอนิกส์หรือสำเนากระดาษเมื่อเช็คอิน ณ ที่พัก
+                </h5>
+              </div>
+              <div class="helpBtn">
+                <a href="confirmBookingForm.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>" target="_blank" class="button">พิมพ์เอกสาร</a>
+              </div>
+            </div>
+
+          <section>
+              <div class="imgContainer">
+                  <div class="boxImgLeft">
+                      <?=$showimg[$i];?>
+                  </div>
+                  <div class="roomDetailName borderBox">
+                      <h2>รายละเอียดการจอง</h2>
+                      <h4>หมายเลขการจอง 0000<?=$fetch['booking_id'];?></h4>
+                      <h4>จำนวนผู้เข้าพัก <?=$fetch['amountpeople'];?> คน</h4>
+                      <h4>เช็คอิน</h4>
+                      <h4><?=$fetch['check_in_date'];?> : หลัง 14:00</h4>
+                      <h4>เช็คเอาท์</h4>
+                      <h4><?=$fetch['check_out_date'];?> ก่อน 12:00</h4>
+                      <h4><?=$fetch['name'];?></h4>
+                      <div class="roomPrice">
+                        <h4 class="bold">รวมราคาห้องพัก</h4>
+                        <h2 style="color: var(--orange);">฿ <?=$fetch['price'];?></h2>
+                      </div>
+                </div>
+              </div>
+          </section>
+
+            <h2>ยกเลิกการจอง</h2>
+            <details>
+              <summary id="cancel">วิธียกเลิกการจอง</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>หากยกเลิกการจองจะมีค่าธรรมเนียมการยกเลิกหรือไม่</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>วิธีตรวจสอบว่าการจองถูกยกเลิกหรือไม่</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+
+      <section>
+        <div class="payment__channels">
+          <div class="payment__channelItem">
+            <i class="bx bx-money"></i>
+            <div>
+              <h4>การโอนเงินผ่านธนาคาร</h4>
+              <h5>BANK TRANSFER</h5>
+            </div>
+          </div>
+          <div class="payment__channelItem">
+            <i class="bx bx-credit-card"></i>
+            <div>
+              <h4>ชำระด้วยบัตรเครดิต</h4>
+              <h5>CREDIT CCARD</h5>
+            </div>
+          </div>
+          <div class="payment__channelItem">
+            <i class="bx bx-building-house"></i>
+            <div>
+              <h4>ชำระหน้าเคาน์เตอร์เซอร์วิส</h4>
+              <h5>COUNTER SERVICES</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

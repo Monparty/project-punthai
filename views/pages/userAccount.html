@@ -60,6 +60,14 @@
         row-gap: 10px;
       }
 
+      .formItem {
+        display: grid;
+        gap: 10px;
+        padding: 10px;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+
       @media screen and (max-width: 576px) {
         .boxContainer {
           grid-template-columns: 1fr;
@@ -106,26 +114,35 @@
             <a href="logout.php"><i class='bx bx-power-off'></i> ออกจากระบบ</a>
           </div>
           <div class="container__lists">
-            <div class="borderBox">
-              <div class="icon" style="text-align: center;">
-                <i class='bx bx-info-square'></i>
-              </div>
-              <div class="boxHelpTitle">
-                <h4>
-                  ประสบปัญหาใดๆ เราพร้อมให้ความช่วยเหลือ
-                </h4>
-                <h5>
-                  ติดต่อที่พักหรือฝ่ายลูกค้าสัมพันธ์ของอโกด้า พร้อมรับคำตอบอย่างรวดเร็วจากเรา รวมถึงบริการอีกมากมายที่ท่านสามารถทำได้ด้วยตนเองง่ายๆ
-                </h5>
-              </div>
-              <div class="helpBtn">
-                <a href="#" class="button">ติดต่อฝ่ายลูกค้าสัมพันธ์</a>
-              </div>
-            </div>
             <h2>ข้อมูลบัญชี</h2>
-            <div class="borderBox">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi perferendis accusamus quasi blanditiis a quis distinctio obcaecati, harum voluptate quisquam quas quibusdam ducimus nobis dolorum repellendus quam minima suscipit eos?
-            </div>
+            <form action="register.php" method="post">
+              <div class="back">
+                  <i class='bx bx-chevron-left'></i>
+                  <a href="#" onclick="history.back()">กลับ</a>
+              </div>
+              <div class="borderBox">
+                  <div class="formItem">
+                      <h4>ชื่อผู้ใช้งาน</h4>
+                      <input type="text" name="username" required>
+                      <h4>อีเมล</h4>
+                      <input type="email" name="email" required>
+                      <h4>เบอร์โทร</h4>
+                      <input type="number" name="phone_number" required>
+                      <h4>เพศ</h4>
+                      <select name="" required>
+                          <option value="-">-</option>
+                          <option value="-">ชาย</option>
+                          <option value="-">หญิง</option>
+                          <option value="-">ไม่ระบุ</option>
+                      </select>
+                      <h4>วันเกิด</h4>
+                      <input type="date" name="" required>
+                      <h4>ที่อยู่</h4>
+                      <textarea name=""></textarea>
+                      <button type="submit" class="button w100">อัพเดทข้อมูล</button>
+                  </div>
+              </div>
+          </form>
           </div>
         </div>
       </section>

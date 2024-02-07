@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เอกสารยืนยังการจอง</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+
+        .gridContainer {
+            display: grid;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .gridHead {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: start;
+            border-bottom: 1px solid var(--gray);
+            padding-bottom: 10px;
+
+            & .headItem1 {
+                text-align: center;
+            }
+
+            & .headItem2 {
+                text-align: right;
+            }
+        }
+        .gridBody {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: start;
+
+            & .bodyItem2 {
+                border-right: 1px dashed var(--gray);
+                border-left: 1px dashed var(--gray);
+                height: 100%;
+                padding: 20px;
+            }
+            
+            & .bodyItem1, .bodyItem3 {
+                padding: 20px;
+            }
+        }
+
+        .gridFoot {
+            border: 1px solid var(--gray);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body onload="window.print()">
+    <div class="gridContainer">
+        <div class="gridHead">
+            <img src="../../imgs/logo.png">
+            <div class="headitem1">
+                <h3>Booking ID</h3>
+                <h3>หมายเลขการจอง</h3>
+                <h3>0000<?=$fetch['booking_id'];?></h3>
+            </div>
+            <div class="headItem2">
+                <h2 class="bold">ชำระเงินเรียบร้อย</h2>
+                <h4>Booking confirm</h4>
+                <h4>เอกสารยืนยังการจองอิเล็กทรอนิกส์</h4>
+            </div>
+        </div>
+        <div class="gridBody">
+            <div class="bodyItem1">
+                <h2>ข้อมูลห้องพัก</h2>
+                <h4><?=$fetch['name'];?></h4>
+                <h4>รวมราคาห้องพัก</h4>
+                <h4>฿ <?=$fetch['price'];?></h4>
+            </div>
+            <div class="bodyItem2">
+                <h2>รายละเอียดการจอง</h2>
+                <h4>หมายเลขการจอง 0000<?=$fetch['booking_id'];?></h4>
+                <h4>จำนวนผู้เข้าพัก <?=$fetch['amountpeople'];?> คน</h4>
+                <h4>เช็คอิน</h4>
+                <h4><?=$fetch['check_in_date'];?> : หลัง 14:00</h4>
+                <h4>เช็คเอาท์</h4>
+                <h4><?=$fetch['check_out_date'];?> ก่อน 12:00</h4>
+            </div>
+            <div class="bodyItem3">
+                <h2>ข้อมูลผู้เข้าพัก</h2>
+                <h4>ชื่อผู้จอง <?=$fetch['booker_name'];?></h4>
+                <h4>เบอร์โทร <?=$fetch['phone'];?></h4>
+                <h4>อีเมล <?=$fetch['email'];?></h4>
+            </div>
+        </div>
+        <div class="gridFoot">
+            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, saepe. Cupiditate quibusdam fuga, inventore, officia eaque deserunt beatae soluta, itaque aperiam doloribus obcaecati consectetur aspernatur quisquam explicabo a voluptatum? Porro!</h4>
+        </div>
+    </div>
+</body>
+</html>

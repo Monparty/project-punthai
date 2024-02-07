@@ -20,6 +20,7 @@
     padding: 5px 20px;
     border-radius: 5px;
     transition: .2s;
+    cursor: pointer;
     
       &:hover {
         background-color: var(--lightGray);
@@ -72,7 +73,7 @@
     <?php if (isset($_SESSION['username'])) { ?>
 
       <!-- เข้าสู่ระบบแล้ว ให้แสดงรูปภาพ -->
-      <div  class="dropdown">
+      <div class="dropdown">
         <div class="dropbtn" onclick="myFunction()">
           <?php echo $_SESSION['username'];?>
           <i class='bx bx-chevron-down'></i>
