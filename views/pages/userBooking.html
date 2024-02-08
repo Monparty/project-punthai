@@ -143,7 +143,13 @@
             <h2>รายละเอียดการจอง</h2>
             <?php
             foreach ($query as $i=>$fetch) { ?>
-            <a href="<?php echo ($fetch['booking_status'] === 'จอง') ? 'paymentAfter.php?booking_id=' . $fetch['booking_id'] . '&room_id=' . $fetch['room_id'] : 'userBookingDetail.php?booking_id=' . $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>">
+            <a href="<?php if ($fetch['booking_status'] === 'จอง') { ?>
+              paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
+            <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
+              userBookingDetail.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>
+            <?php } else { ?>
+              
+            <?php } ?>">
               <div class="borderBox roomContainer">
                 <?=$showimg[$i];?>
                 <div class="roomItem">

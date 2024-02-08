@@ -427,7 +427,11 @@
                 <div class="boxRoomPrice">
                     <div class="roomPrice">
                         <h2 style="color: var(--orange);">฿ <?=$fetch['price'];?></h2>
-                        <button type="button" id="myBtn" class="button w100">จองห้องพัก</button>
+                        <?php if (isset($_SESSION['username'])) { ?>
+                            <button type="button" id="myBtn" class="button w100">จองห้องพัก</button>
+                          <?php } else { ?>
+                            <button type="button" onclick="alert('กรุณาเข้าสู่ระบบเพื่อจองห้องพัก');" class="button w100">จองห้องพัก</button>
+                          <?php } ?>
                     </div>
                     <div>
                         <h5>ราคาเริ่มต้น (ต่อคืน)</h5>
@@ -816,7 +820,6 @@
         var today = year + "-" + month + "-" + tomorrow;
         document.getElementById('tomorrow').value = today;
 
-
         // Get the modal
         var modal = document.getElementById("myModal");
         
@@ -842,6 +845,8 @@
             modal.style.display = "none";
           }
         }
+
+        
 
     </script>
 </body>
