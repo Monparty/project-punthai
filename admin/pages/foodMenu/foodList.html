@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดการรายการอาหาร</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="#">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>จัดการรายการอาหาร</a>
+    </div>
+    <main class="containerAdmin">
+        <h2 style="margin-bottom:10px;">จัดการรายการอาหาร</h2>
+        <div class="boxSearch">
+            <div class="searchItem">
+                <input type="text" name="" id="" placeholder="ค้นหารายการ...">
+                <a href="#" class="button w100">ค้นหา</a>
+            </div>
+            <a href="addFood.php" class="button green">เพิ่มข้อมูลอาหาร <i class='bx bx-plus'></i></a>
+        </div>
+
+        <div class="containerTable">
+            <table class="table" border="0">
+                <thead>
+                    <tr>
+                        <td width="6%">ลำดับ</td>
+                        <td>ชื่อรายการอาหาร</td>
+                        <td width="16%">วันที่บันทึก</td>
+                        <td width="14%">สถานะ</td>
+                        <td width="5%"></td>
+                        <td width="5%"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                    $count = 1;
+                    foreach($query as $fetch) { ?>
+                        <tr align="center">
+                            <td><?=$count++;?></td>
+                            <td align="left"><?=$fetch['food_name'];?></td>
+                            <td><?=$fetch['create_at'];?></td>
+                            <td><?=$fetch['food_status'];?></td>
+                            <td align="left"><a title="แก้ไขข้อมูล" href="editFood.php?id=<?=$fetch['food_id'];?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td align="left"><a title="ลบรายการ" href="?delete=<?=$fetch['food_id'];?>"><i class='bx bx-trash'></i></a></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+<script src="../../js/script.js"></script>
+</body>
+</html>

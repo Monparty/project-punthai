@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>สั่งอาหาร</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png" />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      main {
+        display: grid;
+        row-gap: 30px;
+      }
+
+      section {
+        margin-bottom: 60px;
+      }
+
+      .boxContainer {
+        display: grid;
+        grid-template-columns: 2fr 6fr;
+        column-gap: 20px;
+      }
+
+      .leftBar {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+
+        & a {
+          display: flex;
+          align-items: center;
+          padding: 5px;
+          gap: 10px;
+          font-size: 16px;
+          border-bottom: 1px solid var(--gray);
+
+          & i {
+            font-size: 22px;
+            color: var(--blue);
+          }
+        }
+      }
+
+      .leftBarActive {
+        background: var(--blue);
+        color: var(--white);
+        border-radius: 5px;
+
+        & i {
+          color: var(--white) !important;
+        }
+      }
+
+      .foodContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px 0;
+      }
+
+      .zoomImg {
+          overflow: hidden;
+          border-radius: 5px;
+
+          & img:hover {
+              transform: scale(1.1); 
+          }
+      }
+
+      .item__list {
+            width: 220px;
+            display: grid;
+            justify-content: center;
+            row-gap: 10px;
+            cursor: pointer;
+        }
+
+        .boxFoodName {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+      @media screen and (max-width: 576px) {
+        .boxContainer {
+          grid-template-columns: 1fr;
+          row-gap: 30px;
+        }
+
+        .borderBox {
+          grid-template-columns: 1fr;
+          width: 500px;
+          row-gap: 10px;
+          text-align: center;
+
+          & .helpBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & a {
+              width: 200px;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+      <div class="breadcrumbs">
+        <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a>สั่งอาหาร</a>
+      </div>
+
+      <section>
+        <h2 style="margin-bottom: 10px">สั่งรายการอาหาร เมนูมากมายเพื่อคุณ</h2>
+        <div class="boxContainer">
+          <div class="leftBar">
+            <a href="userAccount.php"><i class="bx bx-user"></i> บัญชีของฉัน</a>
+            <a href="userBooking.php"><i class="bx bx-book-bookmark"></i> รายการจอง</a>
+            <a href="userFoodList.php" class="leftBarActive"><i class='bx bx-bowl-rice'></i> สั่งอาหาร</a>
+            <a href="logout.php"><i class="bx bx-power-off"></i> ออกจากระบบ</a>
+          </div>
+          <div class="foodContainer">
+            <?php
+            foreach ($query as $i=>$fetch) { ?>
+                <a href="userFoodDetail.php?id=<?=$fetch['food_id'];?>">
+                    <div class="item__list">
+                      <div class="zoomImg">
+                        <?=$showimg[$i];?>
+                      </div>
+                      <div class="boxFoodName">
+                        <h4><?=$fetch['food_name'];?></h4>
+                        <h4>฿ <?=$fetch['food_price'];?></h4>
+                      </div>
+                    </div>
+                </a>
+            <?php } ?>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

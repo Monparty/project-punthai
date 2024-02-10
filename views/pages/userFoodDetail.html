@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>รายละเอียดอาหาร</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      main {
+        display: grid;
+        row-gap: 30px;
+      }
+
+      .boxFoodDetail {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        align-items: center;
+        gap: 20px;
+
+        & img {
+          width: 100%;
+          height: 330px;
+        }
+
+        & textarea {
+          margin-bottom: 20px;
+        }
+
+        & .foodItemDetail {
+          height: 80px;
+          padding: 5px;
+          margin-bottom: 10px;
+        }
+
+
+        .boxBtn {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+
+          & .boxOrderNumber {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+          }
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .boxContainer {
+          grid-template-columns: 1fr;
+          row-gap: 30px;
+        }
+
+        .borderBox {
+          grid-template-columns: 1fr;
+          width: 500px;
+          row-gap: 10px;
+          text-align: center;
+          
+          & .helpBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & a {
+              width: 200px;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+      <div class="breadcrumbs">
+        <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a style="color: var(--gray)" href="userFoodList.php">สั่งอาหาร</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a>รายละเอียดอาหาร</a>
+      </div>
+
+      <section>
+        <h2 style="margin-bottom: 10px;">ชื่ออาหาร</h2>
+        <div class="borderBox">
+          <form action="userFoodDetail.php" method="post" class="modalForm">
+            <div class="boxFoodDetail">
+              <img src="../../imgs/noImage.png">
+              <div class="foodDetail borderBox">
+                <h3>รายละเอียดอาหาร</h3>
+                <div class="foodItemDetail">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elores veniam dolor exercitationem enim.
+                </div>
+                <h4 style="margin-bottom: 10px;">หมายเหตุ</h4>
+                <textarea name=""></textarea>
+                <div class="boxBtn">
+                  <div class="boxOrderNumber">
+                    <button type="button" class="minus button bold">-</button>
+                    <input type="number" class="w100" value="1" style="text-align: center;">
+                    <button type="button" class="plus button bold">+</button>
+                  </div>
+                  <button type="submit" class="button w100">สั่งอาหาร</button>
+                </div>
+              </div>
+            </div>
+        </form>
+        </div>
+      </section>
+
+      <section>
+        <div class="payment__channels">
+          <div class="payment__channelItem">
+            <i class="bx bx-money"></i>
+            <div>
+              <h4>การโอนเงินผ่านธนาคาร</h4>
+              <h5>BANK TRANSFER</h5>
+            </div>
+          </div>
+          <div class="payment__channelItem">
+            <i class="bx bx-credit-card"></i>
+            <div>
+              <h4>ชำระด้วยบัตรเครดิต</h4>
+              <h5>CREDIT CCARD</h5>
+            </div>
+          </div>
+          <div class="payment__channelItem">
+            <i class="bx bx-building-house"></i>
+            <div>
+              <h4>ชำระหน้าเคาน์เตอร์เซอร์วิส</h4>
+              <h5>COUNTER SERVICES</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+    <script>
+      	$(document).ready(function() {
+			$('.minus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count < 1 ? 1 : count;
+				$input.val(count);
+				$input.change();
+				return false;
+			});
+			$('.plus').click(function () {
+				var $input = $(this).parent().find('input');
+				$input.val(parseInt($input.val()) + 1);
+				$input.change();
+				return false;
+			});
+		});
+    </script>
+  </body>
+</html>
