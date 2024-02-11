@@ -7,10 +7,10 @@ $query = mysqli_query( $c, $sql );
 
 // ลบข้อมูล
 if (isset($_REQUEST['delete'])) {
-    $room_id = $_REQUEST['delete'];
+    $food_id = $_REQUEST['delete'];
 
-    $delete_stmt = $conn->prepare('DELETE FROM rooms WHERE food_id = :food_id');
-    $delete_stmt->bindParam(':room_id', $room_id);
+    $delete_stmt = $conn->prepare('DELETE FROM foods WHERE food_id = :food_id');
+    $delete_stmt->bindParam(':food_id', $food_id);
     $delete_stmt->execute();
 
     echo '<script>
@@ -19,7 +19,7 @@ if (isset($_REQUEST['delete'])) {
             title: "ลบข้อมูลสำเร็จ",  
             type: "success"
         }, function() {
-            window.location = "roomList.php";
+            window.location = "foodList.php";
         });
         }, 1000);
         </script>';

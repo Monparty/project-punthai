@@ -15,7 +15,7 @@
 
       .boxFoodDetail {
         display: grid;
-        grid-template-columns: 3fr 2fr;
+        grid-template-columns: 5fr 3fr;
         align-items: center;
         gap: 20px;
 
@@ -25,13 +25,17 @@
         }
 
         & textarea {
-          margin-bottom: 20px;
+          height: 70px;
         }
 
         & .foodItemDetail {
           height: 80px;
           padding: 5px;
-          margin-bottom: 10px;
+        }
+
+        .foodDetail {
+          display: grid;
+          gap: 10px;
         }
 
 
@@ -48,6 +52,28 @@
             gap: 10px;
           }
         }
+      }
+
+      .boxImage {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .boxImgRight {
+        display: grid;
+        gap: 10px;
+
+        img {
+          width: 80px;
+          height: 80px;
+          border-radius: 5px;
+        }
+      }
+
+      .force {
+          color: var(--red);
+          font-weight: bold;
       }
 
       @media screen and (max-width: 576px) {
@@ -90,25 +116,45 @@
       </div>
 
       <section>
-        <h2 style="margin-bottom: 10px;">ชื่ออาหาร</h2>
+        <h2 style="margin-bottom: 10px;"><?=$fetch['food_name'];?></h2>
         <div class="borderBox">
           <form action="userFoodDetail.php" method="post" class="modalForm">
+            <input type="hidden" name="id" value="<?=$food_id;?>">
             <div class="boxFoodDetail">
-              <img src="../../imgs/noImage.png">
+              <div class="boxImage">
+                <div class="boxImgLeft">
+                  <?=$showimg[$i];?>
+                </div>
+                <div class="boxImgRight">
+                    <img src="../../imgs/noImage.png" alt="">
+                    <img src="../../imgs/noImage.png" alt="">
+                    <img src="../../imgs/noImage.png" alt="">
+                    <img src="../../imgs/noImage.png" alt="">
+                </div>
+              </div>
               <div class="foodDetail borderBox">
                 <h3>รายละเอียดอาหาร</h3>
                 <div class="foodItemDetail">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elores veniam dolor exercitationem enim.
+                  <?=$fetch['food_detail'];?>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error perspiciatis asperiores 
                 </div>
-                <h4 style="margin-bottom: 10px;">หมายเหตุ</h4>
-                <textarea name=""></textarea>
+                <h4>หมายเหตุ</h4>
+                <textarea name="order_remark"></textarea>
+                  <h4>เลือกห้องพัก <span class="force">*</span></h4>
+                  <select name="">
+                    <option value="">-</option>
+                    <?php
+                    foreach ($queryBooking as $i=>$fetchBooking) { ?>
+                      <option value=""><?=$fetchBooking['room_number'];?></option>
+                    <?php } ?>
+                  </select>
                 <div class="boxBtn">
                   <div class="boxOrderNumber">
                     <button type="button" class="minus button bold">-</button>
-                    <input type="number" class="w100" value="1" style="text-align: center;">
+                    <input type="number" name="order_quantity" class="w100" value="1" style="text-align: center;">
                     <button type="button" class="plus button bold">+</button>
                   </div>
-                  <button type="submit" class="button w100">สั่งอาหาร</button>
+                  <button type="submit" class="button">สั่งอาหาร ฿ <?=$fetch['food_price'];?></button>
                 </div>
               </div>
             </div>
