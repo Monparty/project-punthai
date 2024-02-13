@@ -15,7 +15,7 @@
 
       .boxFoodDetail {
         display: grid;
-        grid-template-columns: 5fr 3fr;
+        grid-template-columns: 5fr 4fr;
         align-items: center;
         gap: 20px;
 
@@ -136,16 +136,15 @@
                 <h3>รายละเอียดอาหาร</h3>
                 <div class="foodItemDetail">
                   <?=$fetch['food_detail'];?>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error perspiciatis asperiores 
                 </div>
                 <h4>หมายเหตุ</h4>
                 <textarea name="order_remark"></textarea>
                   <h4>เลือกห้องพัก <span class="force">*</span></h4>
-                  <select name="">
+                  <select name="room_number" required>
                     <option value="">-</option>
                     <?php
                     foreach ($queryBooking as $i=>$fetchBooking) { ?>
-                      <option value=""><?=$fetchBooking['room_number'];?></option>
+                      <option value="<?=$fetchBooking['room_number'];?>"><?=$fetchBooking['room_number'];?></option>
                     <?php } ?>
                   </select>
                 <div class="boxBtn">

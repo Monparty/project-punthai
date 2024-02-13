@@ -31,7 +31,7 @@
                 <thead>
                     <tr>
                         <td width="6%">ลำดับ</td>
-                        <td>ชื่อผู้สั่งอาหาร</td>
+                        <td>ห้องที่สั่งอาหาร</td>
                         <td width="18%">วันที่สั่ง</td>
                         <td width="24%">สถานะ</td>
                         <td width="10%"></td>
@@ -43,10 +43,10 @@
                     foreach($query as $fetch) { ?>
                         <tr align="center">
                             <td><?=$count++;?></td>
-                            <td align="left"><?=$fetch['user_id'];?></td>
+                            <td align="left"><?=$fetch['room_number'];?></td>
                             <td><?=$fetch['order_date'];?></td>
                             <td><?=$fetch['order_status'];?></td>
-                            <td align="center"><a title="ข้อมูลการสั่งอาหาร" href="orderFoodManage.php?id=<?=$fetch['order_id'];?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td align="center"><a title="ข้อมูลการสั่งอาหาร" href="orderFoodManage.php?order_id=<?=$fetch['order_id'];?>"><i class='bx bx-edit-alt'></i></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

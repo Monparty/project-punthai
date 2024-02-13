@@ -26,7 +26,7 @@ foreach ($stmt as $i=>$fetch) {
   $food_image = base64_decode($image_base64[$i]);
 
   // แสดงผลรูปภาพ
-  $showimg[$i] = '<img src="data:$food_image/png;base64,' . $image_base64[$i] . '" style="width: 100%; height: 350px; object-fit: cover; border-radius: 4px; transition: .3s;"/>';
+  $showimg[$i] = '<img src="data:$food_image/png;base64,' . $image_base64[$i] . '" style="width: 420px; height: 390px; object-fit: cover; border-radius: 4px; transition: .3s;"/>';
 }
 
 // ส่วนบันทึกข้อมูลการสั่งอาหาร
@@ -34,18 +34,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $food_id = $fetch["food_id"];
   $order_remark = isset($_POST["order_remark"]) ? $_POST["order_remark"] : "";
   $order_quantity = isset($_POST["order_quantity"]) ? $_POST["order_quantity"] : "";
+  $room_number = isset($_POST["room_number"]) ? $_POST["room_number"] : "";
   $food_price = $fetch["food_price"];
   $sum_price = $order_quantity * $food_price;
   $order_status = "รอการชำระเงิน";
   
-  $sql = "INSERT INTO order_food (user_id, food_id, order_remark, order_quantity, sum_price, order_status, order_date)
-  VALUES (:user_id, :food_id, :order_remark, :order_quantity, :sum_price, :order_status, CURRENT_TIMESTAMP)";
+  $sql = "INSERT INTO order_food (user_id, food_id, order_remark, order_quantity, room_number, sum_price, order_status, order_date)
+  VALUES (:user_id, :food_id, :order_remark, :order_quantity, :room_number, :sum_price, :order_status, CURRENT_TIMESTAMP)";
 
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(":user_id", $user_id);
   $stmt->bindParam(":food_id", $food_id);
   $stmt->bindParam(":order_remark", $order_remark);
   $stmt->bindParam(":order_quantity", $order_quantity);
+  $stmt->bindParam(":room_number", $room_number);
   $stmt->bindParam(":sum_price", $sum_price);
   $stmt->bindParam(":order_status", $order_status);
   $stmt->execute();

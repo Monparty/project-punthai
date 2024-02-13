@@ -2,8 +2,8 @@
 include("../../../config/config.php");
 session_start();
 
-$booking_id = $_REQUEST['id'];
-$sql = "SELECT * FROM bookings INNER JOIN rooms ON rooms.room_id = bookings.room_id WHERE bookings.booking_id = $booking_id";
+$order_id = $_REQUEST['order_id'];
+$sql = "SELECT * FROM order_food INNER JOIN foods ON foods.food_id = order_food.food_id WHERE order_food.order_id = $order_id";
 $result = mysqli_query($c, $sql);
 $fetch = mysqli_fetch_array($result);
 extract($fetch);

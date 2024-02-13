@@ -87,7 +87,7 @@
 
         .boxOrdedr {
           display: grid;
-          grid-template-columns: 1fr 6fr 3fr;
+          grid-template-columns: 1fr 6fr 4fr;
           align-items: center;
           justify-content: center;
           margin-bottom: 10px;
@@ -142,6 +142,13 @@
           <div class="boxfoodOrder">
             <?php
             foreach ($queryOrder as $i=>$fetchOrder) { ?>
+            <a href="<?php if ($fetchOrder['order_status'] === 'รอการชำระเงิน') { ?>
+              foodPaymentAfter.php?order_id=<?php echo $fetchOrder['order_id'] . '&food_id=' . $fetchOrder['food_id'];?>
+            <?php } else if ($fetchOrder['order_status'] === 'ชำระเงินเรียบร้อย') { ?>
+              
+            <?php } else { ?>
+              
+            <?php } ?>">
             <div class="boxOrdedr borderBox">
                 <?=$showimgOrder[$i];?>
                 <div class="orderDetail">
@@ -152,6 +159,7 @@
                   <h4 class="bold" style="color: var(--blue); text-align: center;"><?=$fetchOrder['order_status'];?></h4>
                 </div>
             </div>
+            </a>
             <?php } ?>
             
             <div class="foodContainer">

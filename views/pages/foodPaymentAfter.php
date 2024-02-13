@@ -2,8 +2,9 @@
 include ("../../config/config.php");
 session_start();
 
-$food_id = $_REQUEST['food_id'];
-$sql = "SELECT * FROM foods INNER JOIN order_food ON order_food.food_id = foods.food_id WHERE foods.food_id = $food_id ORDER BY order_food.food_id DESC;";
+$order_id = $_GET['order_id'];
+$food_id = $_GET['food_id'];
+$sql = "SELECT * FROM foods, order_food WHERE order_id = $order_id AND foods.food_id = $food_id";
 $result = mysqli_query($c, $sql);
 $fetch = mysqli_fetch_array($result);
 extract($fetch);
@@ -52,5 +53,5 @@ if (isset($_REQUEST['update'])) {
     }
 }
 
-include ("foodPayment.html");
+include ("foodPaymentAfter.html");
 ?>
