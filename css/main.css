@@ -191,6 +191,11 @@ textarea {
     border: 1px solid var(--gray);
     border-radius: 4px;
     outline: none;
+
+    &:read-only {
+        background: var(--lightGray);
+        border: none;
+    }
 }
 
 input[type=file]::file-selector-button {

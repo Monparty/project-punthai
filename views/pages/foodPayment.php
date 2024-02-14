@@ -11,19 +11,20 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 
 foreach ($stmt as $i=>$fetch) {
-  
-  // แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64
-  $image_base64[$i] = $fetch["food_image"];
-
-  // แปลงข้อมูลรูปภาพจากฐาน64เป็นข้อมูลรูปภาพ
-  $food_image = base64_decode($image_base64[$i]);
-
-  // แสดงผลรูปภาพ
-  $showimg[$i] = '<img src="data:$food_image/png;base64,' . $image_base64[$i] . '" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px; transition: .3s;"/>';
+    
+    // แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64
+    $image_base64[$i] = $fetch["food_image"];
+    
+    // แปลงข้อมูลรูปภาพจากฐาน64เป็นข้อมูลรูปภาพ
+    $food_image = base64_decode($image_base64[$i]);
+    
+    // แสดงผลรูปภาพ
+    $showimg[$i] = '<img src="data:$food_image/png;base64,' . $image_base64[$i] . '" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px; transition: .3s;"/>';
 }
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
+    $order_id = $fetch["order_id"];
     $sql = "UPDATE order_food SET order_slip=:image_base64, order_status=:order_status, payment_at=CURRENT_TIMESTAMP WHERE order_id=$order_id";
 
     $stmt = $conn->prepare($sql);

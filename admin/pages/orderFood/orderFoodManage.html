@@ -30,8 +30,8 @@
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
         <a>ข้อมูลการสั่งอาหาร</a>
     </div>
-    <form action="checkInCheckOutManage.php" method="post">
-        <input type="hidden" name="id" value="<?=$booking_id;?>">
+    <form action="orderFoodManage.php" method="post">
+        <input type="hidden" name="order_id" value="<?=$order_id;?>">
         <main class="containerAdmin">
             <section class="formSection">
                 <h2 style="margin-bottom:10px;">ข้อมูลการสั่งอาหาร</h2>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="boxPayment">
                         <div class="slipImage">
-                            <img src="../../../imgs/noImage.png" alt="">
+                            <?=$showimg[$i];?>
                         </div>
                         <div class="paymentDetail borderBox">
                             <div class="form">
@@ -51,7 +51,7 @@
                                         <h4>ห้องที่สั่ง</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="x" readonly>
+                                        <input type="text" value="<?=$fetch['room_number'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow">
@@ -59,7 +59,7 @@
                                         <h4>ชื่อผู้สั่ง</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="x" readonly>
+                                        <input type="text" value="<?=$fetchUser['username'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow">
@@ -67,7 +67,7 @@
                                         <h4>เบอร์โทร</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="x" readonly>
+                                        <input type="text" value="<?=$fetchUser['phone_number'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow">
@@ -75,7 +75,7 @@
                                         <h4>เมนูอาหาร</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="x" readonly>
+                                        <input type="text" value="<?=$fetch['food_name'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow">
@@ -83,7 +83,7 @@
                                         <h4>ราคาอาหาร</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="x" readonly>
+                                        <input type="text" value="<?=$fetch['food_price'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow">
@@ -91,7 +91,15 @@
                                         <h4>สั่งอาหารเมื่อ</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="x" readonly>
+                                        <input type="text" value="<?=$fetch['order_date'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="formRow valignTop">
+                                    <div class="formTitle">
+                                        <h4>หมายเหตุสั่งอาหาร</h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <textarea name="" readonly><?=$fetch['order_remark'];?></textarea>
                                     </div>
                                 </div>
                                 <div class="formRow valignTop">
@@ -99,13 +107,13 @@
                                         <h4>หมายเหตุ</h4>
                                     </div>
                                     <div class="formInput">
-                                        <textarea name="" readonly>xx</textarea>
+                                        <textarea name="payment_remark"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="formBtn">
-                                <button type="submit" name="cancel" class="button orange"> การชำระเงินไม่ถูกต้อง</button>
-                                <button type="submit" name="update" class="button green"> ยืนยันการชำระเงิน</button>
+                                <button type="submit" name="cancel" class="button orange">การชำระเงินไม่ถูกต้อง</button>
+                                <button type="submit" name="update" class="button green">ยืนยันการชำระเงิน</button>
                                 <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
                             </div>
                         </div>

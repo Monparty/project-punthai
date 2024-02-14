@@ -10,30 +10,47 @@ extract($fetch);
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
-// ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
-if (isset($_REQUEST['checkIn'])) {
-    $sql = "UPDATE bookings SET room_number=:room_number, car_number=:car_number, remark_check_in_out=:remark_check_in_out, booking_status=:booking_status, check_in_at=CURRENT_TIMESTAMP WHERE booking_id=$booking_id";
+// ดึงชื่อ User มาแสดง
+$user_id = $fetch["user_id"];
+$sqlUser = "SELECT * FROM order_food INNER JOIN users ON users.user_id = order_food.user_id WHERE order_food.user_id = $user_id";
+$resultUser = mysqli_query($c, $sqlUser);
+$fetchUser = mysqli_fetch_array($resultUser);
+extract($fetchUser);
+$stmtUser = $conn->prepare($sqlUser);
+$stmtUser->execute();
 
-    $booking_status = "เช็คอิน";
-    $remark_check_in_out = $_POST["remark_check_in_out"];
-    $room_number = $_POST["room_number"];
-    $car_number = $_POST["car_number"];
+foreach ($stmt as $i=>$fetch) {
+  
+  // แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64
+  $image_base64[$i] = $fetch["order_slip"];
+
+  // แปลงข้อมูลรูปภาพจากฐาน64เป็นข้อมูลรูปภาพ
+  $order_slip = base64_decode($image_base64[$i]);
+
+  // แสดงผลรูปภาพ
+  $showimg[$i] = '<img src="data:$order_slip/png;base64,' . $image_base64[$i] . '" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px;"/>';
+}
+
+// ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
+if (isset($_REQUEST['update'])) {
+    $sql = "UPDATE order_food SET payment_remark=:payment_remark, order_status=:order_status, approve_at=CURRENT_TIMESTAMP WHERE order_id=$order_id";
+
+    $order_status = "กำลังจัดเตรียมอาหาร";
+    $payment_remark = $_POST["payment_remark"];
 
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":room_number", $room_number);
-    $stmt->bindParam(":car_number", $car_number);
-    $stmt->bindParam(":remark_check_in_out", $remark_check_in_out);
-    $stmt->bindParam(":booking_status", $booking_status);
+    $stmt->bindParam(":payment_remark", $payment_remark);
+    $stmt->bindParam(":order_status", $order_status);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
     echo '<script>
         setTimeout(function() {
         swal({
-            title: "บันทึกข้อมูลการเช็คอินเรียบร้อย",  
+            title: "ตรวจสอบข้อมูลการชำระเงินเรียบร้อย",  
             type: "success"
         }, function() {
-            window.location = "checkInCheckOutList.php";
+            window.location = "orderFoodList.php";
         });
         }, 1000);
         </script>';
@@ -42,25 +59,25 @@ if (isset($_REQUEST['checkIn'])) {
     }
 }
 
-if (isset($_REQUEST['checkOut'])) {
-    $sql = "UPDATE bookings SET remark_check_in_out=:remark_check_in_out, booking_status=:booking_status, check_out_at=CURRENT_TIMESTAMP WHERE booking_id=$booking_id";
+if (isset($_REQUEST['cancel'])) {
+    $sql = "UPDATE order_food SET payment_remark=:payment_remark, order_status=:order_status, approve_at=CURRENT_TIMESTAMP WHERE order_id=$order_id";
 
-    $booking_status = "เช็คเอาท์";
-    $remark_check_in_out = $_POST["remark_check_in_out"];
+    $order_status = "ข้อมูลการชำระเงินไม่ถูกต้อง";
+    $payment_remark = $_POST["payment_remark"];
     
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":remark_check_in_out", $remark_check_in_out);
-    $stmt->bindParam(":booking_status", $booking_status);
+    $stmt->bindParam(":payment_remark", $payment_remark);
+    $stmt->bindParam(":order_status", $order_status);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
     echo '<script>
         setTimeout(function() {
         swal({
-            title: "บันทึกข้อมูลการเช็คเอาท์เรียบร้อย",  
+            title: "ตรวจสอบข้อมูลการชำระเงินเรียบร้อย",  
             type: "success"
         }, function() {
-            window.location = "checkInCheckOutList.php";
+            window.location = "orderFoodList.php";
         });
         }, 1000);
         </script>';

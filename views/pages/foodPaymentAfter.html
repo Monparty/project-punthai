@@ -198,8 +198,9 @@
       <section>
         <h2 style="margin-bottom: 10px">คุณมีรายการที่ทำค้างไว้</h2>
         <div class="boxContainer">
-          <form action="foodPayment.php" method="post" enctype="multipart/form-data">
+          <form action="foodPaymentAfter.php" method="post" enctype="multipart/form-data">
           <input type="hidden" name="food_id" value="<?=$fetch['food_id'];?>">
+          <input type="hidden" name="order_id" value="<?=$fetch['order_id'];?>">
           <div class="leftContainer borderBox">
             <div class="leftContainerHead">
               <h4 class="bold">
