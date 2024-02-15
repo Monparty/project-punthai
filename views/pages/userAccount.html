@@ -66,6 +66,11 @@
         padding: 10px;
         grid-template-columns: 1fr 1fr;
         align-items: center;
+
+        & .btnRight {
+          display: flex;
+          justify-content: flex-end;
+        }
       }
 
       @media screen and (max-width: 576px) {
@@ -116,7 +121,7 @@
           </div>
           <div class="container__lists">
             <h2>ข้อมูลบัญชี</h2>
-            <form action="register.php" method="post">
+            <form action="userAccount.php" method="post">
               <div class="back">
                   <i class='bx bx-chevron-left'></i>
                   <a href="#" onclick="history.back()">กลับ</a>
@@ -124,23 +129,28 @@
               <div class="borderBox">
                   <div class="formItem">
                       <h4>ชื่อผู้ใช้งาน</h4>
-                      <input type="text" name="username" required>
+                      <input type="text" name="username" value="<?=$fetch['username'];?>">
                       <h4>อีเมล</h4>
-                      <input type="email" name="email" required>
+                      <input type="email" name="email" value="<?=$fetch['email'];?>">
                       <h4>เบอร์โทร</h4>
-                      <input type="number" name="phone_number" required>
+                      <input type="number" name="phone_number" value="<?=$fetch['phone_number'];?>">
                       <h4>เพศ</h4>
-                      <select name="" required>
-                          <option value="-">-</option>
-                          <option value="-">ชาย</option>
-                          <option value="-">หญิง</option>
-                          <option value="-">ไม่ระบุ</option>
+                      <select name="gender">
+                          <option value="">-</option>
+                          <option value="1" <?php echo ($fetch['gender']=='1') ? 'selected' : ''; ?>>ชาย</option>
+                          <option value="2" <?php echo ($fetch['gender']=='2') ? 'selected' : ''; ?>>หญิง</option>
+                          <option value="3" <?php echo ($fetch['gender']=='3') ? 'selected' : ''; ?>>ไม่ระบุ</option>
                       </select>
                       <h4>วันเกิด</h4>
-                      <input type="date" name="" required>
-                      <h4>ที่อยู่</h4>
-                      <textarea name=""></textarea>
-                      <button type="submit" class="button w100">อัพเดทข้อมูล</button>
+                      <input type="date" name="birth_date" value="<?=$fetch['birth_date'];?>">
+                      <div style="height: 100%;">
+                        <h4>ที่อยู่</h4>
+                      </div>
+                      <textarea name="address"><?=$fetch['address'];?></textarea>
+                      <div></div>
+                      <div class="btnRight">
+                        <button type="submit" class="button w100">อัพเดทข้อมูล</button>
+                      </div>
                   </div>
               </div>
           </form>
