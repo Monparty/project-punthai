@@ -117,14 +117,14 @@
                                 </div>
                             </div>
                             <div class="formBtn">
-                                <?php if ($fetch['booking_status'] === "เช็คอิน") { ?>
-                                    <button type="submit" name="checkOut" class="button orange w100"> เช็คเอาท์</button>
-                                  <?php } else if ($fetch['booking_status'] === "ชำระเงินเรียบร้อย") { ?>
-                                    <button type="submit" name="checkIn" class="button green w100"> เช็คอิน</button>
-                                  <?php } else { ?>
-                                    
-                                  <?php } ?>
-                                  <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
+                            <?php if ($fetch['booking_status'] === "เช็คอิน") { ?>
+                                <button type="submit" name="checkOut" class="button orange w100"> เช็คเอาท์</button>
+                            <?php } else if ($fetch['booking_status'] === "ชำระเงินเรียบร้อย") { ?>
+                                <button type="submit" name="checkIn" class="button green w100"> เช็คอิน</button>
+                            <?php } else { ?>
+                                
+                            <?php } ?>
+                                <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
                             </div>
                         </div>
                     </div>

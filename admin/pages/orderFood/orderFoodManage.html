@@ -31,7 +31,7 @@
         <a>ข้อมูลการสั่งอาหาร</a>
     </div>
     <form action="orderFoodManage.php" method="post">
-        <input type="hidden" name="order_id" value="<?=$order_id;?>">
+        <input type="hidden" name="order_id" value="<?=$fetch['order_id'];?>">
         <main class="containerAdmin">
             <section class="formSection">
                 <h2 style="margin-bottom:10px;">ข้อมูลการสั่งอาหาร</h2>
@@ -88,6 +88,22 @@
                                 </div>
                                 <div class="formRow">
                                     <div class="formTitle">
+                                        <h4>จำนวน</h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <input type="text" value="<?=$fetch['order_quantity'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="formRow">
+                                    <div class="formTitle">
+                                        <h4>ราคารวม</h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <input type="text" value="<?=$fetch['sum_price'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="formRow">
+                                    <div class="formTitle">
                                         <h4>สั่งอาหารเมื่อ</h4>
                                     </div>
                                     <div class="formInput">
@@ -107,13 +123,19 @@
                                         <h4>หมายเหตุ</h4>
                                     </div>
                                     <div class="formInput">
-                                        <textarea name="payment_remark"></textarea>
+                                        <textarea name="payment_remark"><?=$fetch['payment_remark'];?></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="formBtn">
+                            <?php if ($fetch['order_status'] === "ชำระเงินเรียบร้อย / รอตรวจสอบ") { ?>
                                 <button type="submit" name="cancel" class="button orange">การชำระเงินไม่ถูกต้อง</button>
                                 <button type="submit" name="update" class="button green">ยืนยันการชำระเงิน</button>
+                            <?php } else if ($fetch['order_status'] === "กำลังจัดเตรียมอาหาร") { ?>
+                                <button type="submit" name="delivery" class="button green"> ยืนยันการส่งอาหาร</button>
+                            <?php } else { ?>
+                                
+                            <?php } ?>
                                 <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
                             </div>
                         </div>

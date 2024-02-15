@@ -33,6 +33,7 @@ foreach ($stmt as $i=>$fetch) {
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
+    $order_id = $_REQUEST['order_id'];
     $sql = "UPDATE order_food SET payment_remark=:payment_remark, order_status=:order_status, approve_at=CURRENT_TIMESTAMP WHERE order_id=$order_id";
 
     $order_status = "กำลังจัดเตรียมอาหาร";
@@ -60,6 +61,7 @@ if (isset($_REQUEST['update'])) {
 }
 
 if (isset($_REQUEST['cancel'])) {
+    $order_id = $_POST["order_id"];
     $sql = "UPDATE order_food SET payment_remark=:payment_remark, order_status=:order_status, approve_at=CURRENT_TIMESTAMP WHERE order_id=$order_id";
 
     $order_status = "ข้อมูลการชำระเงินไม่ถูกต้อง";
@@ -75,6 +77,34 @@ if (isset($_REQUEST['cancel'])) {
         setTimeout(function() {
         swal({
             title: "ตรวจสอบข้อมูลการชำระเงินเรียบร้อย",  
+            type: "success"
+        }, function() {
+            window.location = "orderFoodList.php";
+        });
+        }, 1000);
+        </script>';
+    } else {
+    echo "เกิดข้อผิดพลาดในการแก้ไขข้อมูล";
+    }
+}
+
+if (isset($_REQUEST['delivery'])) {
+    $order_id = $_POST["order_id"];
+    $sql = "UPDATE order_food SET payment_remark=:payment_remark, order_status=:order_status, delivery_at=CURRENT_TIMESTAMP WHERE order_id=$order_id";
+
+    $order_status = "ส่งอาหารเรียบร้อย";
+    $payment_remark = $_POST["payment_remark"];
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":payment_remark", $payment_remark);
+    $stmt->bindParam(":order_status", $order_status);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+    echo '<script>
+        setTimeout(function() {
+        swal({
+            title: "ยันยันส่งอาหารเรียบร้อย",
             type: "success"
         }, function() {
             window.location = "orderFoodList.php";

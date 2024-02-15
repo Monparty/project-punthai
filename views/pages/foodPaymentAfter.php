@@ -36,7 +36,6 @@ if (isset($_REQUEST['update'])) {
 
 $order_id = $_GET['order_id'];
 $food_id = $_GET['food_id'];
-
 $sql = "SELECT * FROM foods, order_food WHERE order_id = $order_id AND foods.food_id = $food_id";
 $result = mysqli_query($c, $sql);
 $fetch = mysqli_fetch_array($result);
