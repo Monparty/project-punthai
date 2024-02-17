@@ -69,13 +69,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
   }
 
+  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
   // บันทึกข้อมูลผู้ใช้ใหม่ลงในฐานข้อมูล
-  $sql = "INSERT INTO users (username, email, phone_number,  password, create_at) VALUES (:username, :email, :phone_number, :password, CURRENT_TIMESTAMP)";
+  $sql = "INSERT INTO users (username, email, phone_number,  password, create_at) VALUES (:username, :email, :phone_number, :hashedPassword, CURRENT_TIMESTAMP)";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(":username", $username);
   $stmt->bindParam(":email", $email);
   $stmt->bindParam(":phone_number", $phone_number);
-  $stmt->bindParam(":password", $password);
+  $stmt->bindParam(":hashedPassword", $hashedPassword);
   $stmt->execute();
 
   // แจ้งให้ผู้ใช้ทราบว่าสมัครสมาชิกสำเร็จ
