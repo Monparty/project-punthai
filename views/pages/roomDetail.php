@@ -19,7 +19,7 @@ foreach ($stmt as $i=>$fetch) {
   $image = base64_decode($image_base64[$i]);
 
   // แสดงผลรูปภาพ
-  $showimg[$i] = '<img src="data:$image/png;base64,' . $image_base64[$i] . '" style="width: 100%; height: 310px; object-fit: cover; border-radius: 4px; transition: .3s;"/>';
+  $showimg[$i] = '<img src="data:$image/png;base64,' . $image_base64[$i] . '" style="width: 100%; height: 310px; object-fit: cover; border-radius: 5px; transition: .3s;"/>';
 }
 
 // ส่วนบันทึกข้อมูลการจอง

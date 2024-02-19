@@ -31,7 +31,7 @@
 
         .container__lists {
             display: grid;
-            align-items: center;
+            align-items: start;
             justify-content: space-around;
             grid-template-columns: 1fr 1fr 1fr;
             row-gap: 10px;
@@ -40,23 +40,23 @@
         .item__list {
             background-color: var(--white);
             box-shadow: var(--shadow);
-            width: 200px;
+            width: 220px;
             display: grid;
             justify-content: center;
             padding: 10px;
             border-radius: 10px;
-            row-gap: 10px;
+            row-gap: 5px;
             cursor: pointer;
 
             & img {
-                width: 180px;
+                width: 100%;
                 height: 180px;
                 object-fit: cover;
                 border-radius: 5px;
             }
 
             &:hover {
-                box-shadow: rgba(11, 57, 220, 0.1) 0px 4px 12px;;
+                box-shadow: rgba(11, 57, 220, 0.1) 0px 4px 12px;
             }
         }
 
@@ -135,6 +135,15 @@
             }
         }
 
+        .zoomImg {
+            overflow: hidden;
+            border-radius: 5px;
+
+            & img:hover {
+                transform: scale(1.1); 
+            }
+        }
+
         @media screen and (max-width: 576px) {
             .imgDesc {
                 flex-direction: column;
@@ -171,9 +180,9 @@
             <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
             <a>รายการห้องประชุม</a>
         </div>
-
+        
         <section>
-            <h2 style="margin-bottom: 10px;">ค้นหาห้องประชุม ห้องจัดอบรม และสถานที่จัดงานแต่งงาน</h2>
+            <h2 style="margin-bottom: 10px;">ค้นหาห้องประชุมที่เหมาะกับกิจกรรมของคุณ</h2>
             <div class="boxContainer">
                 <div class="leftBar">
                     <div class="scrollPrice">
@@ -191,51 +200,19 @@
                     <a href="#">ห้องคู่รัก</a>
                 </div>
                 <div class="container__lists">
-                    <div class="item__list" onclick="meetRoom()">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
-                    <div class="item__list">
-                        <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
-                        <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                        <h4>฿1,500</h4>
-                    </div>
+                    <?php
+                    foreach ($query as $i=>$fetch) { ?>
+                        <a href="roomDetail.php?id=<?=$fetch['room_id'];?>">
+                            <div class="item__list">
+                                <div class="zoomImg">
+                                    <?=$showimg[$i];?>
+                                </div>
+                                <h4><?=$fetch['name'];?></h5>
+                                <h5 style="height: 55px; overflow: hidden; line-height: 18px;"><?=$fetch['roomdesc'];?></h5>
+                                <h4>฿ <?=$fetch['price'];?></h4>
+                            </div>
+                        </a>
+                    <?php } ?>
                 </div>
             </div>
         </section>
@@ -295,8 +272,8 @@
 
     <script src="../js/script.js"></script>
     <script>
-        function meetRoom() {
-
+        function roomDetail() {
+            window.location.href = "roomDetail.php"
         }
     </script>
 </body>
