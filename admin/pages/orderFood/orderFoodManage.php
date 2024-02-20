@@ -104,7 +104,7 @@ if (isset($_REQUEST['delivery'])) {
     echo '<script>
         setTimeout(function() {
         swal({
-            title: "ยันยันส่งอาหารเรียบร้อย",
+            title: "ยืนยันการส่งอาหารเรียบร้อย",
             type: "success"
         }, function() {
             window.location = "orderFoodList.php";

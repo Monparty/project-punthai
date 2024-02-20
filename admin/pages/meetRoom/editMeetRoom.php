@@ -3,8 +3,8 @@ include("../../../config/config.php");
 session_start();
 
 // ใช้สำหรับแสดงข้อมูลตาม ID ที่เลือกมา
-$room_id = $_REQUEST['id'];
-$sql = "SELECT * FROM rooms WHERE room_id=$room_id";
+$meetroom_id = $_REQUEST['id'];
+$sql = "SELECT * FROM meetrooms WHERE meetroom_id=$meetroom_id";
 $result = mysqli_query($c, $sql);
 $row = mysqli_fetch_array($result);
 extract($row);
@@ -17,18 +17,18 @@ $stmt->execute();
 foreach ($stmt as $row) {
 
     // แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64
-    $image_base64 = $row["image"];
+    $image_base64 = $row["meetroom_image"];
 
     // แปลงข้อมูลรูปภาพจากฐาน64เป็นข้อมูลรูปภาพ
-    $image = base64_decode($image_base64);
+    $meetroom_image = base64_decode($image_base64);
 
     // แสดงผลรูปภาพ
-    $showimg = '<img src="data:$image/png;base64,' . $image_base64 . '" style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px;"/>';
+    $showimg = '<img src="data:$meetroom_image/png;base64,' . $image_base64 . '" style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px;"/>';
 }
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
-    $sql = "UPDATE rooms SET name=:name, roomdesc=:roomdesc, price=:price, roomabout=:roomabout, bed=:bed, amountpeople=:amountpeople, facility1=:facility1, facility2=:facility2, facility3=:facility3, facility4=:facility4, facility5=:facility5, facility6=:facility6, facility7=:facility7, facility8=:facility8, highlight1=:highlight1, highlight2=:highlight2, highlight3=:highlight3, highlight4=:highlight4, highlight5=:highlight5, highlight6=:highlight6, highlight7=:highlight7, highlight8=:highlight8, status=:status, image=:image_base64, updateAt=CURRENT_TIMESTAMP WHERE room_id=$room_id";
+    $sql = "UPDATE meetrooms SET name=:name, roomdesc=:roomdesc, price=:price, roomabout=:roomabout, bed=:bed, amountpeople=:amountpeople, facility1=:facility1, facility2=:facility2, facility3=:facility3, facility4=:facility4, facility5=:facility5, facility6=:facility6, facility7=:facility7, facility8=:facility8, highlight1=:highlight1, highlight2=:highlight2, highlight3=:highlight3, highlight4=:highlight4, highlight5=:highlight5, highlight6=:highlight6, highlight7=:highlight7, highlight8=:highlight8, status=:status, image=:image_base64, updateAt=CURRENT_TIMESTAMP WHERE room_id=$room_id";
     
     $stmt = $conn->prepare($sql);
     $name = $_POST['name'];
@@ -45,14 +45,9 @@ if (isset($_REQUEST['update'])) {
     $facility6 = isset($_POST['facility6']) ? $_POST['facility6'] : "";
     $facility7 = isset($_POST['facility7']) ? $_POST['facility7'] : "";
     $facility8 = isset($_POST['facility8']) ? $_POST['facility8'] : "";
-    $highlight1 = isset($_POST['highlight1']) ? $_POST['highlight1'] : "";
-    $highlight2 = isset($_POST['highlight2']) ? $_POST['highlight2'] : "";
-    $highlight3 = isset($_POST['highlight3']) ? $_POST['highlight3'] : "";
-    $highlight4 = isset($_POST['highlight4']) ? $_POST['highlight4'] : "";
-    $highlight5 = isset($_POST['highlight5']) ? $_POST['highlight5'] : "";
-    $highlight6 = isset($_POST['highlight6']) ? $_POST['highlight6'] : "";
-    $highlight7 = isset($_POST['highlight7']) ? $_POST['highlight7'] : "";
-    $highlight8 = isset($_POST['highlight8']) ? $_POST['highlight8'] : "";
+    $facility9 = isset($_POST['facility9']) ? $_POST['facility9'] : "";
+    $facility10 = isset($_POST['facility10']) ? $_POST['facility10'] : "";
+
     $status = implode($_POST["status"]);
     if($_FILES["image"]["tmp_name"]){
         $image = file_get_contents($_FILES["image"]["tmp_name"]);
@@ -73,14 +68,8 @@ if (isset($_REQUEST['update'])) {
     $stmt->bindParam(":facility6", $facility6);
     $stmt->bindParam(":facility7", $facility7);
     $stmt->bindParam(":facility8", $facility8);
-    $stmt->bindParam(":highlight1", $highlight1);
-    $stmt->bindParam(":highlight2", $highlight2);
-    $stmt->bindParam(":highlight3", $highlight3);
-    $stmt->bindParam(":highlight4", $highlight4);
-    $stmt->bindParam(":highlight5", $highlight5);
-    $stmt->bindParam(":highlight6", $highlight6);
-    $stmt->bindParam(":highlight7", $highlight7);
-    $stmt->bindParam(":highlight8", $highlight8);
+    $stmt->bindParam(":facility9", $facility9);
+    $stmt->bindParam(":facility10", $facility10);
     $stmt->bindParam(":status", $status);
     if($image_base64){
         $stmt->bindParam(":image_base64", $image_base64);
@@ -94,7 +83,7 @@ if (isset($_REQUEST['update'])) {
             title: "แก้ไขข้อมูลสำเร็จ",  
             type: "success"
         }, function() {
-            window.location = "roomList.php";
+            window.location = "meetRoomList.php";
         });
         }, 1000);
         </script>';

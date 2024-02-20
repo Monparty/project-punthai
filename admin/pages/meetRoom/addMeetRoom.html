@@ -15,11 +15,11 @@
     <div class="breadcrumbsAdmin">
         <a href="../dashboard/dashboard.php">หน้าแรก</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
-        <a href="roomList.php">จัดการห้องประชุม</a>
+        <a href="meetRoomList.php">จัดการห้องประชุม</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
         <a>เพิ่มข้อมูลห้องประชุม</a>
     </div>
-    <form action="addRoom.php" method="post" enctype="multipart/form-data">
+    <form action="addMeetRoom.php" method="post" enctype="multipart/form-data">
         <main class="containerAdmin">
             <section class="formSection">
                 <h2 style="margin-bottom:10px;">เพิ่มข้อมูลห้องประชุม</h2>
@@ -33,7 +33,7 @@
                             <h4>ชื่อห้องประชุม <span class="force">*</span></h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" name="name" value="" required>
+                            <input type="text" name="meetroom_name" value="" required>
                         </div>
                     </div>
                     <div class="formRow">
@@ -41,7 +41,7 @@
                             <h4>คำอธิบาย</h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" name="roomdesc" value="">
+                            <input type="text" name="meetroom_desc" value="">
                         </div>
                     </div>
                     <div class="formRow">
@@ -49,7 +49,7 @@
                             <h4>ราคา <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <input type="number" name="price" value="" required>
+                            <input type="number" name="meetroom_price" value="" required>
                             <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
                         </div>
                     </div>
@@ -58,19 +58,18 @@
                             <h4>เกี่ยวกับห้องประชุม</h4>
                         </div>
                         <div class="formInput">
-                            <textarea name="roomabout"></textarea>
+                            <textarea name="meetroom_about"></textarea>
                         </div>
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>จำนวนเตียง <span class="force">*</span></h4>
+                            <h4>ชั้น <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <select name="bed" id="">
+                            <select name="floor">
                                 <option value="" selected>-</option>
-                                <option value="1">1 เตียง</option>
-                                <option value="2">2 เตียง</option>
-                                <option value="3">1 เตียงใหญ่</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
                         </div>
                     </div>
@@ -88,12 +87,12 @@
                             <h4>รูปภาพประกอบ <span class="force">*</span></h4>
                         </div>
                         <div class="formInput file w300">
-                            <input type="file" name="image" multiple required>
+                            <input type="file" name="meetroom_image" multiple required>
                         </div>
                     </div>
                     <div class="headersection">
                         <i class='bx bxs-playlist'></i>
-                        <h4>อุปกรณ์ และสิ่งอำนวยความสะดวก</h4>
+                        <h4>อุปกรณ์และสิ่งอำนวยความสะดวก</h4>
                     </div>
                     <div class="formRow valignTop">
                         <div class="formTitle">
@@ -103,110 +102,53 @@
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
                                     <input type="checkbox" name="facility1" value="1">
-                                    <label for="">อาหารเช้า</label>
+                                    <label for="">โปรเจคเตอร์</label>
                                 </div>
                                 <div class="boxCheckbox">
                                     <input type="checkbox" name="facility2" value="2">
-                                    <label for="">สิ่งอํานวยความสะดวกสําหรับผู้พิการ</label>
+                                    <label for="">ไมโครโฟน</label>
                                 </div>
                             </div>
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
                                     <input type="checkbox" name="facility3" value="3">
-                                    <label for="">พนักงานบริการ 24 ชั่วโมง</label>
+                                    <label for="">ลำโพง</label>
                                 </div>
                                 <div class="boxCheckbox">
                                     <input type="checkbox" name="facility4" value="4">
-                                    <label for="">ที่จอดรถ</label>
+                                    <label for="">พัดลม</label>
                                 </div>
                             </div>
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
                                     <input type="checkbox" name="facility5" value="5">
-                                    <label for="">WiFi</label>
+                                    <label for="">โต๊ะกลม</label>
                                 </div>
                                 <div class="boxCheckbox">
                                     <input type="checkbox" name="facility6" value="6">
-                                    <label for="">พื้นที่สูบบุหรี่</label>
+                                    <label for="">โต๊ะยาว</label>
                                 </div>
                             </div>
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
                                     <input type="checkbox" name="facility7" value="7">
-                                    <label for="">ระบบรักษาความปลอดภัย 24 ชั่วโมง</label>
+                                    <label for="">ผ้าปูโต๊ะ</label>
                                 </div>
                                 <div class="boxCheckbox">
                                     <input type="checkbox" name="facility8" value="8">
-                                    <label for="">ต้อนรับสัตว์เลี้ยง</label>
+                                    <label for="">กระดานไวท์บอร์ด</label>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="headersection">
-                        <i class='bx bx-info-circle'></i>
-                        <h4>ข้อมูลการจัดมื้ออาหาร</h4>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>ชื่อห้องประชุม <span class="force">*</span></h4>
-                        </div>
-                        <div class="formInput">
-                            <input type="text" name="name" value="" required>
-                        </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>คำอธิบาย</h4>
-                        </div>
-                        <div class="formInput">
-                            <input type="text" name="roomdesc" value="">
-                        </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>ราคา <span class="force">*</span></h4>
-                        </div>
-                        <div class="formInput w300">
-                            <input type="number" name="price" value="" required>
-                            <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
-                        </div>
-                    </div>
-                    <div class="formRow valignTop">
-                        <div class="formTitle">
-                            <h4>เกี่ยวกับห้องประชุม</h4>
-                        </div>
-                        <div class="formInput">
-                            <textarea name="roomabout"></textarea>
-                        </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>จำนวนเตียง <span class="force">*</span></h4>
-                        </div>
-                        <div class="formInput w300">
-                            <select name="bed" id="">
-                                <option value="" selected>-</option>
-                                <option value="1">1 เตียง</option>
-                                <option value="2">2 เตียง</option>
-                                <option value="3">1 เตียงใหญ่</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>รองรับจำนวน <span class="force">*</span></h4>
-                        </div>
-                        <div class="formInput w300">
-                            <input type="number" name="amountpeople" value="" required>
-                            <h5 class="formInputDesc">หน่วยเป็นคน</h5>
-                        </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>รูปภาพประกอบ <span class="force">*</span></h4>
-                        </div>
-                        <div class="formInput file w300">
-                            <input type="file" name="image" multiple required>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility9" value="9">
+                                    <label for="">โพเดียม</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility10" value="10">
+                                    <label for="">ดอกไม้พลาสติก</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="headersection">

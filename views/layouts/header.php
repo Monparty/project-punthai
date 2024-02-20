@@ -81,7 +81,7 @@
         <div id="myDropdown" class="dropdown-content">
           <a href="userAccount.php" class="btn__group">
             <i class='bx bx-user'></i>
-            แก้ไขข้อมูลส่วนตัว
+            ข้อมูลบัญชี
           </a>
           <a href="userBooking.php" class="btn__group">
             <i class="bx bx-book-bookmark"></i>

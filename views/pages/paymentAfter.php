@@ -38,7 +38,9 @@ if (isset($_REQUEST['update'])) {
 
 $room_id = $_GET['room_id'];
 $booking_id = $_GET['booking_id'];
-$sql = "SELECT * FROM rooms, bookings WHERE booking_id = $booking_id;";
+
+$sql = "SELECT * FROM rooms, bookings WHERE booking_id = $booking_id AND rooms.room_id = $room_id;";
+
 $result = mysqli_query($c, $sql);
 $fetch = mysqli_fetch_array($result);
 extract($fetch);

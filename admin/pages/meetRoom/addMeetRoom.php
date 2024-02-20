@@ -4,11 +4,11 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  $name = $_POST["name"];
-  $roomdesc = $_POST["roomdesc"];
-  $price = $_POST["price"];
-  $roomabout = $_POST["roomabout"];
-  $bed = $_POST["bed"];
+  $meetroom_name = $_POST["meetroom_name"];
+  $meetroom_desc = $_POST["meetroom_desc"];
+  $meetroom_price = $_POST["meetroom_price"];
+  $meetroom_about = $_POST["meetroom_about"];
+  $floor = $_POST["floor"];
   $amountpeople = $_POST["amountpeople"];
   $facility1 = isset($_POST['facility1']) ? $_POST['facility1'] : "";
   $facility2 = isset($_POST['facility2']) ? $_POST['facility2'] : "";
@@ -18,27 +18,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $facility6 = isset($_POST['facility6']) ? $_POST['facility6'] : "";
   $facility7 = isset($_POST['facility7']) ? $_POST['facility7'] : "";
   $facility8 = isset($_POST['facility8']) ? $_POST['facility8'] : "";
-  $highlight1 = isset($_POST['highlight1']) ? $_POST['highlight1'] : "";
-  $highlight2 = isset($_POST['highlight2']) ? $_POST['highlight2'] : "";
-  $highlight3 = isset($_POST['highlight3']) ? $_POST['highlight3'] : "";
-  $highlight4 = isset($_POST['highlight4']) ? $_POST['highlight4'] : "";
-  $highlight5 = isset($_POST['highlight5']) ? $_POST['highlight5'] : "";
-  $highlight6 = isset($_POST['highlight6']) ? $_POST['highlight6'] : "";
-  $highlight7 = isset($_POST['highlight7']) ? $_POST['highlight7'] : "";
-  $highlight8 = isset($_POST['highlight8']) ? $_POST['highlight8'] : "";
-  $status = implode($_POST["status"]);
-  $image = file_get_contents($_FILES["image"]["tmp_name"]);
-  $image_base64 = base64_encode($image);
+  $facility9 = isset($_POST['facility9']) ? $_POST['facility9'] : "";
+  $facility10 = isset($_POST['facility10']) ? $_POST['facility10'] : "";
 
-  $sql = "INSERT INTO rooms (name, roomdesc, price, roomabout,  bed, amountpeople, facility1, facility2, facility3, facility4, facility5, facility6, facility7, facility8, highlight1, highlight2, highlight3, highlight4, highlight5, highlight6, highlight7, highlight8, status, createAt, image)
-  VALUES (:name, :roomdesc, :price, :roomabout, :bed, :amountpeople, :facility1, :facility2, :facility3, :facility4, :facility5, :facility6, :facility7, :facility8, :highlight1, :highlight2, :highlight3, :highlight4, :highlight5, :highlight6, :highlight7, :highlight8, :status, CURRENT_TIMESTAMP, :image_base64)";
+  $status = implode($_POST["status"]);
+  $meetroom_image = file_get_contents($_FILES["meetroom_image"]["tmp_name"]);
+  $image_base64 = base64_encode($meetroom_image);
+
+  $sql = "INSERT INTO meetrooms (meetroom_name, meetroom_desc, meetroom_price, meetroom_about, floor, amountpeople, facility1, facility2, facility3, facility4, facility5, facility6, facility7, facility8, facility9, facility10, status, create_at, meetroom_image)
+  VALUES (:meetroom_name, :meetroom_desc, :meetroom_price, :meetroom_about, :floor, :amountpeople, :facility1, :facility2, :facility3, :facility4, :facility5, :facility6, :facility7, :facility8, :facility9, :facility10, :status, CURRENT_TIMESTAMP, :image_base64)";
 
   $stmt = $conn->prepare($sql);
-  $stmt->bindParam(":name", $name);
-  $stmt->bindParam(":roomdesc", $roomdesc);
-  $stmt->bindParam(":price", $price);
-  $stmt->bindParam(":roomabout", $roomabout);
-  $stmt->bindParam(":bed", $bed);
+  $stmt->bindParam(":meetroom_name", $meetroom_name);
+  $stmt->bindParam(":meetroom_desc", $meetroom_desc);
+  $stmt->bindParam(":meetroom_price", $meetroom_price);
+  $stmt->bindParam(":meetroom_about", $meetroom_about);
+  $stmt->bindParam(":floor", $floor);
   $stmt->bindParam(":amountpeople", $amountpeople);
   $stmt->bindParam(":facility1", $facility1);
   $stmt->bindParam(":facility2", $facility2);
@@ -48,14 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt->bindParam(":facility6", $facility6);
   $stmt->bindParam(":facility7", $facility7);
   $stmt->bindParam(":facility8", $facility8);
-  $stmt->bindParam(":highlight1", $highlight1);
-  $stmt->bindParam(":highlight2", $highlight2);
-  $stmt->bindParam(":highlight3", $highlight3);
-  $stmt->bindParam(":highlight4", $highlight4);
-  $stmt->bindParam(":highlight5", $highlight5);
-  $stmt->bindParam(":highlight6", $highlight6);
-  $stmt->bindParam(":highlight7", $highlight7);
-  $stmt->bindParam(":highlight8", $highlight8);
+  $stmt->bindParam(":facility9", $facility9);
+  $stmt->bindParam(":facility10", $facility10);
   $stmt->bindParam(":status", $status);
   $stmt->bindParam(":image_base64", $image_base64);
   $stmt->execute();
@@ -67,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             title: "บันทึกข้อมูลสำเร็จ",  
             type: "success"
         }, function() {
-            window.location = "roomList.php";
+            window.location = "meetRoomList.php";
         });
         }, 1000);
       </script>';

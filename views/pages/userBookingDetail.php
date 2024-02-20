@@ -4,7 +4,7 @@ session_start();
 
 $room_id = $_GET['room_id'];
 $booking_id = $_GET['booking_id'];
-$sql = "SELECT * FROM rooms, bookings WHERE booking_id = $booking_id;";
+$sql = "SELECT * FROM rooms, bookings WHERE booking_id = $booking_id AND rooms.room_id = $room_id;";
 $query = mysqli_query( $c, $sql );
 // ใช้แสดงรูปภาพ
 $stmt = $conn->prepare($sql);

@@ -45,11 +45,11 @@
                     foreach($query as $fetch) { ?>
                         <tr align="center">
                             <td><?=$count++;?></td>
-                            <td align="left"><?=$fetch['name'];?></td>
-                            <td><?=$fetch['createAT'];?></td>
+                            <td align="left"><?=$fetch['meetroom_name'];?></td>
+                            <td><?=$fetch['create_at'];?></td>
                             <td><?=$fetch['status'];?></td>
-                            <td align="left"><a title="แก้ไขข้อมูล" href="editMeetRoom.php?id=<?=$fetch['room_id'];?>"><i class='bx bx-edit-alt'></i></a></td>
-                            <td align="left"><a title="ลบรายการ" href="?delete=<?=$fetch['room_id'];?>"><i class='bx bx-trash'></i></a></td>
+                            <td align="left"><a title="แก้ไขข้อมูล" href="editMeetRoom.php?id=<?=$fetch['meetroom_id'];?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td align="left"><a title="ลบรายการ" href="?delete=<?=$fetch['meetroom_id'];?>"><i class='bx bx-trash'></i></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>
