@@ -144,6 +144,12 @@
             }
         }
 
+        .roomDesc {
+            height: 55px; 
+            overflow: hidden; 
+            line-height: 18px;
+        }
+
         @media screen and (max-width: 576px) {
             .imgDesc {
                 flex-direction: column;
@@ -192,24 +198,24 @@
                         </div>
                         <input style="width: 100%;" min="0" max="100" step="10" type="range">
                     </div>
-                    <a href="#">ห้องเตียงเดี่ยว</a>
-                    <a href="#">ห้องเตียวคู่</a>
-                    <a href="#">ห้องริมทะเล</a>
-                    <a href="#">ห้องริมเขา</a>
-                    <a href="#">ห้องครอบครัว</a>
-                    <a href="#">ห้องคู่รัก</a>
+                    <a href="#">ห้องประชุมธุรกิจ</a>
+                    <a href="#">ห้องประชุมงานแต่ง</a>
+                    <a href="#">ห้องประชุมงานเลี้ยง</a>
+                    <a href="#">ห้องประชุมสัมมนา</a>
+                    <a href="#">ห้องจัดโครงการ</a>
+                    <a href="#">ห้องงานเกษียณ</a>
                 </div>
                 <div class="container__lists">
                     <?php
                     foreach ($query as $i=>$fetch) { ?>
-                        <a href="roomDetail.php?id=<?=$fetch['room_id'];?>">
+                        <a href="roomDetail.php?id=<?=$fetch['meetroom_id'];?>">
                             <div class="item__list">
                                 <div class="zoomImg">
                                     <?=$showimg[$i];?>
                                 </div>
-                                <h4><?=$fetch['name'];?></h5>
-                                <h5 style="height: 55px; overflow: hidden; line-height: 18px;"><?=$fetch['roomdesc'];?></h5>
-                                <h4>฿ <?=$fetch['price'];?></h4>
+                                <h4><?=$fetch['meetroom_name'];?></h4>
+                                <h4 class="roomDesc"><?=$fetch['meetroom_desc'];?></h4>
+                                <h4>฿ <?=number_format($fetch['meetroom_price']);?></h4>
                             </div>
                         </a>
                     <?php } ?>

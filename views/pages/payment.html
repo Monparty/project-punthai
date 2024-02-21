@@ -267,11 +267,11 @@
                       <h4><?=$fetch['name'];?></h4>
                       <h4>จำนวนผู้เข้าพัก <?=$fetch['amountpeople'];?> คน</h4>
                     </div>
-                    <h4>฿ <?=$fetch['price'];?></h4>
+                    <h4>฿ <?=number_format($fetch['price']);?></h4>
                   </div>
                   <div class="boxPriceItem">
                     <h3 class="bold">ราคารวม</h3>
-                    <h3 class="bold">฿ <?=$fetch['price'];?></h3>
+                    <h3 class="bold">฿ <?=number_format($fetch['price']);?></h3>
                   </div>
                 </div>
               </details>

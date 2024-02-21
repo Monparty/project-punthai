@@ -153,7 +153,7 @@
                 <?=$showimgOrder[$i];?>
                 <div class="orderDetail">
                   <h4 class="bold"><?=$fetchOrder['food_name'];?> <span style="font-size: 14px; color: var(--blue);">x<?=$fetchOrder['order_quantity'];?></span></h4>
-                  <h4>฿ <?=$fetchOrder['sum_price'];?></h4>
+                  <h4>฿ <?=number_format($fetchOrder['sum_price']);?></h4>
                 </div>
                 <div class="orderStatus">
                   <h4 class="bold" style="color: var(--blue); text-align: center;"><?=$fetchOrder['order_status'];?></h4>
@@ -172,7 +172,7 @@
                         </div>
                         <div class="boxFoodName">
                           <h4><?=$fetch['food_name'];?></h4>
-                          <h4>฿ <?=$fetch['food_price'];?></h4>
+                          <h4>฿ <?=number_format($fetch['food_price']);?></h4>
                         </div>
                       </div>
                   </a>

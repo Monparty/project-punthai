@@ -55,7 +55,7 @@
             }
             
             & .boxRoomPrice {
-                flex: 2;
+                flex: 3;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-end;
@@ -426,7 +426,7 @@
                 </div>
                 <div class="boxRoomPrice">
                     <div class="roomPrice">
-                        <h2 style="color: var(--orange);">฿ <?=$fetch['price'];?></h2>
+                        <h2 style="color: var(--orange);">฿ <?=number_format($fetch['price']);?></h2>
                         <?php if (isset($_SESSION['username'])) { ?>
                             <button type="button" id="myBtn" class="button w100">จองห้องพัก</button>
                           <?php } else { ?>

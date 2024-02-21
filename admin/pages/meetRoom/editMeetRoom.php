@@ -3,13 +3,11 @@ include("../../../config/config.php");
 session_start();
 
 // ใช้สำหรับแสดงข้อมูลตาม ID ที่เลือกมา
-$meetroom_id = $_REQUEST['id'];
+$meetroom_id = $_REQUEST['meetroom_id'];
 $sql = "SELECT * FROM meetrooms WHERE meetroom_id=$meetroom_id";
 $result = mysqli_query($c, $sql);
 $row = mysqli_fetch_array($result);
 extract($row);
-
-// ใช้แสดงรูปภาพ
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
@@ -28,14 +26,14 @@ foreach ($stmt as $row) {
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
-    $sql = "UPDATE meetrooms SET name=:name, roomdesc=:roomdesc, price=:price, roomabout=:roomabout, bed=:bed, amountpeople=:amountpeople, facility1=:facility1, facility2=:facility2, facility3=:facility3, facility4=:facility4, facility5=:facility5, facility6=:facility6, facility7=:facility7, facility8=:facility8, highlight1=:highlight1, highlight2=:highlight2, highlight3=:highlight3, highlight4=:highlight4, highlight5=:highlight5, highlight6=:highlight6, highlight7=:highlight7, highlight8=:highlight8, status=:status, image=:image_base64, updateAt=CURRENT_TIMESTAMP WHERE room_id=$room_id";
+    $sql = "UPDATE meetrooms SET meetroom_name=:meetroom_name, floor=:floor, meetroom_desc=:meetroom_desc, meetroom_price=:meetroom_price, meetroom_about=:meetroom_about, amountpeople=:amountpeople, facility1=:facility1, facility2=:facility2, facility3=:facility3, facility4=:facility4, facility5=:facility5, facility6=:facility6, facility7=:facility7, facility8=:facility8, facility9=:facility9, facility10=:facility10, status=:status, meetroom_image=:image_base64, update_at=CURRENT_TIMESTAMP WHERE meetroom_id=$meetroom_id";
     
     $stmt = $conn->prepare($sql);
-    $name = $_POST['name'];
-    $roomdesc = $_POST["roomdesc"];
-    $price = $_POST["price"];
-    $roomabout = $_POST["roomabout"];
-    $bed = $_POST["bed"];
+    $meetroom_name = $_POST['meetroom_name'];
+    $floor = $_POST['floor'];
+    $meetroom_desc = $_POST["meetroom_desc"];
+    $meetroom_price = $_POST["meetroom_price"];
+    $meetroom_about = $_POST["meetroom_about"];
     $amountpeople = $_POST["amountpeople"];
     $facility1 = isset($_POST['facility1']) ? $_POST['facility1'] : "";
     $facility2 = isset($_POST['facility2']) ? $_POST['facility2'] : "";
@@ -47,18 +45,17 @@ if (isset($_REQUEST['update'])) {
     $facility8 = isset($_POST['facility8']) ? $_POST['facility8'] : "";
     $facility9 = isset($_POST['facility9']) ? $_POST['facility9'] : "";
     $facility10 = isset($_POST['facility10']) ? $_POST['facility10'] : "";
-
     $status = implode($_POST["status"]);
-    if($_FILES["image"]["tmp_name"]){
-        $image = file_get_contents($_FILES["image"]["tmp_name"]);
-        $image_base64 = base64_encode($image);
+    if($_FILES["meetroom_image"]["tmp_name"]){
+        $meetroom_image = file_get_contents($_FILES["meetroom_image"]["tmp_name"]);
+        $image_base64 = base64_encode($meetroom_image);
     };
 
-    $stmt->bindParam(":name", $name);
-    $stmt->bindParam(":roomdesc", $roomdesc);
-    $stmt->bindParam(":price", $price);
-    $stmt->bindParam(":roomabout", $roomabout);
-    $stmt->bindParam(":bed", $bed);
+    $stmt->bindParam(":meetroom_name", $meetroom_name);
+    $stmt->bindParam(":floor", $floor);
+    $stmt->bindParam(":meetroom_desc", $meetroom_desc);
+    $stmt->bindParam(":meetroom_price", $meetroom_price);
+    $stmt->bindParam(":meetroom_about", $meetroom_about);
     $stmt->bindParam(":amountpeople", $amountpeople);
     $stmt->bindParam(":facility1", $facility1);
     $stmt->bindParam(":facility2", $facility2);

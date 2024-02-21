@@ -24,6 +24,7 @@
             <section class="formSection">
                 <h2 style="margin-bottom:10px;">แก้ไขข้อมูลห้องประชุม</h2>
                 <div class="form">
+                    <input type="hidden" name="meetroom_id" value="<?=$meetroom_id;?>">
                     <div class="headersection">
                         <i class='bx bx-info-circle'></i>
                         <h4>ข้อมูลทั่วไป</h4>
@@ -67,9 +68,8 @@
                         </div>
                         <div class="formInput w300">
                             <select name="floor">
-                                <option value="" selected>-</option>
-                                <option value="2" <?php echo ($floor=='1') ? 'selected' : ''; ?>>1</option>
-                                <option value="3" <?php echo ($floor=='2') ? 'selected' : ''; ?>>2</option>
+                                <option value="1" <?php echo ($floor=='1') ? 'selected' : ''; ?>>1</option>
+                                <option value="2" <?php echo ($floor=='2') ? 'selected' : ''; ?>>2</option>
                             </select>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                             <h4>รูปภาพประกอบ <span class="force">*</span></h4>
                         </div>
                         <div class="formInput file w300" style="display: flex; justify-content: space-between; align-items: center;">
-                            <input type="file" name="image" multiple>
+                            <input type="file" name="meetroom_image" multiple>
                             <input type="text" style="width: 700px; border: none; height: 20px; background: none;" value="<?=$image_base64;?>" readonly>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                     <div class="formBtn">
-                        <button type="submit" class="button green w100"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="submit" name="update" class="button green w100"><i class='bx bx-save'></i> บันทึก</button>
                         <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
                     </div>
                 </div>

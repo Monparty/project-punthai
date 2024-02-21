@@ -144,6 +144,12 @@
             }
         }
 
+        .roomDesc {
+            height: 55px; 
+            overflow: hidden; 
+            line-height: 18px;
+        }
+
         @media screen and (max-width: 576px) {
             .imgDesc {
                 flex-direction: column;
@@ -207,9 +213,9 @@
                                 <div class="zoomImg">
                                     <?=$showimg[$i];?>
                                 </div>
-                                <h4><?=$fetch['name'];?></h5>
-                                <h5 style="height: 55px; overflow: hidden; line-height: 18px;"><?=$fetch['roomdesc'];?></h5>
-                                <h4>฿ <?=$fetch['price'];?></h4>
+                                <h4><?=$fetch['name'];?></h4>
+                                <h4 class="roomDesc"><?=$fetch['roomdesc'];?></h4>
+                                <h4>฿ <?=number_format($fetch['price']);?></h4>
                             </div>
                         </a>
                     <?php } ?>
