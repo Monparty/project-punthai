@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดห้องประชุม</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        main {
+            display: grid;
+            row-gap: 30px;
+        }
+
+        .imgContainer {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            column-gap: 10px;
+            align-items: start;
+            justify-content: start;
+
+            & img {
+                border-radius: 5px;
+                object-fit: cover;
+            }
+
+            & .boxImgLeft {
+                
+                & img {
+                    height: 310px;
+                    width: 100%;
+                }
+            }
+
+            & .boxImgRight {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+
+                & img {
+                    height: 150px;
+                    width: 200px;
+                }
+            }
+        }
+
+        .roomDetailName {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            & .roomName {
+                flex: 7;
+            }
+            
+            & .boxRoomPrice {
+                flex: 3;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            & .roomPrice {
+                display: flex;
+                align-items: center;
+                column-gap: 10px;
+            }
+        }
+
+        .containerRoomDetail {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 10px;
+
+            & .headName {
+                margin-bottom: 5px;
+            }
+
+            & .headNameHighlight {
+                margin-bottom: 50px;
+            }
+
+            & .scoreBox {
+                display: flex;
+                align-items: center;
+                column-gap: 10px;
+                margin-bottom: 5px;
+            } 
+
+        } 
+        .boxReviewScroll {
+            width: 300px;
+            overflow-x: scroll;
+
+            & .boxReviewcontainer {
+                display: flex;
+                column-gap: 10px;
+                width: 850px;
+            }
+
+            & .boxReviewHead {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            & .boxReview {
+                width: 270px;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* .boxReviewScroll::-webkit-scrollbar {
+            display: none;
+        } */
+
+        .boxReviewScroll::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        /* Track */
+        .boxReviewScroll::-webkit-scrollbar-track {
+            background: var(--white); 
+        }
+        
+        /* Handle */
+        .boxReviewScroll::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: var(--sky); 
+        }
+        
+        /* Handle on hover */
+        .boxReviewScroll::-webkit-scrollbar-thumb:hover {
+            background: var(--blue); 
+        }
+
+        .facilitie {    
+            display: grid;
+            grid-template-columns: 1fr;
+            row-gap: 5px;
+
+            & i {
+                font-size: 18px;
+                color: var(--blue);
+            }
+
+            & .facilitieItem {
+                display: flex;
+                column-gap: 10px;
+            }
+        }
+
+        .highlightBoxItems {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            & i {
+                font-size: 40px;
+                color: var(--blue);
+            }
+
+            & .highlightItem {
+                display: grid;
+                justify-items: center;
+            }
+        }
+
+        .question {
+            display: grid;
+            row-gap: 10px;
+        }
+
+        .boxRating {
+            display: flex;
+            justify-content: space-around;
+            
+            & .ratingItem {
+                width: 220px;
+                height: 120px;
+                border: 1px solid var(--blue);
+                background: #e5f1fd;
+                padding: 10px;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                row-gap: 5px;
+                text-align: center;
+                color: var(--blue);
+                transition: .3s;
+
+                &:hover {
+                    background-color: var(--white);
+                }
+            }
+    
+
+            & .ratingItem--sub {
+                text-align: left;
+    
+                & h2 {
+                    border-top: 1px solid var(--sky);
+                }
+    
+                & span {
+                    font-size: 14px;
+                }
+            }
+    
+            & .boxRatingH2 {
+                background-color: var(--blue); 
+                color: var(--white); 
+                border-radius: 50px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                width: 100px;
+            }
+        }
+
+        .commentContainer {
+                display: grid;
+                row-gap: 20px;
+                
+                & .comment {
+                    display: grid;
+                    row-gap: 5px;
+    
+                    & .commentTitle {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 10px;
+    
+                        & img {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                        }
+    
+                        & i {
+                            color: var(--blue);
+                        }
+                    }
+                }
+            }
+
+            .container__lists {
+                display: grid;
+                align-items: center;
+                justify-content: center;
+                grid-template-columns: 1fr 1fr 1fr 1fr ;
+                row-gap: 10px;
+                
+                & .item__list {
+                    background-color: var(--white);
+                    box-shadow: var(--shadow);
+                    width: 200px;
+                    display: grid;
+                 
+                    padding: 10px;
+                    border-radius: 10px;
+                    row-gap: 10px;
+                    cursor: pointer;
+        
+                    & img {
+                        width: 180px;
+                        height: 180px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                    }
+        
+                    &:hover {
+                        box-shadow: rgba(11, 57, 220, 0.1) 0px 4px 12px;;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 576px) {
+                .roomDetailName {
+                    flex-direction: column;
+                    width: 500px;
+                    gap: 10px;
+                }
+
+                .boxRoomPrice {
+                    width: 100%;
+                }
+
+                .boxRating {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                }
+
+                .container__lists {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                }
+
+                .containerRoomDetail {
+                    grid-template-columns: 1fr;
+                    padding: 0 20px;
+                }
+
+                .imgContainer {
+                    grid-template-columns: 1fr;
+                    gap: 10px;
+                }
+
+                .boxReviewScroll {
+                    overflow: hidden;
+                }
+
+                .boxReviewcontainer {
+                    flex-direction: column;
+                }
+
+                .commentContainer {
+                    width: 500px;
+                }
+
+                .btn__group {
+                    display: grid;
+                    grid-template-columns: auto auto auto auto auto;
+                    row-gap: 10px;
+                }
+            }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 80px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            border-radius: 10px;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {top:-300px; opacity:0} 
+            to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        .modal-body {
+            padding: 20px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .summaryModal {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .modalForm {
+            display: grid;
+            gap: 10px;
+        }
+
+        .boxCheckbox {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+        }
+
+        .modalFormItem {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+
+            & h4 {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <?php include("../layouts/backToTop.html"); ?>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+        <div class="breadcrumbs">
+            <a style="color: var(--gray);" href="homePage.php">หน้าแรก</a>
+            <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+            <a style="color: var(--gray);" href="meetRoomList.php">รายการห้องประชุม</a>
+            <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+            <a>รายละเอียดห้องประชุม</a>
+        </div>
+
+        <section>
+            <div class="roomDetailName borderBox">
+                <div class="roomName">
+                    <h2><?=$fetch['meetroom_name'];?></h2>
+                    <h5><?=$fetch['meetroom_about'];?></h5>
+                </div>
+                <div class="boxRoomPrice">
+                    <div class="roomPrice">
+                        <h2 style="color: var(--orange);">฿ <?=number_format($fetch['meetroom_price']);?></h2>
+                        <?php if (isset($_SESSION['username'])) { ?>
+                            <button type="button" id="myBtn" class="button">จองห้องประชุม</button>
+                          <?php } else { ?>
+                            <button type="button" onclick="alert('กรุณาเข้าสู่ระบบเพื่อจองห้องประชุม');" class="button w100">จองห้องประชุม</button>
+                          <?php } ?>
+                    </div>
+                    <div>
+                        <h5>ราคาเริ่มต้น (ต่อชั่วโมง)</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="imgContainer">
+                <div class="boxImgLeft">
+                    <?=$showimg[$i];?>
+                </div>
+                <div class="boxImgRight">
+                    <img src="../../imgs/noImage.png" alt="">
+                    <img src="../../imgs/noImage.png" alt="">
+                    <img src="../../imgs/noImage.png" alt="">
+                    <img src="../../imgs/noImage.png" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="containerRoomDetail">
+                <div class="reviewRoom borderBox">
+                    <div class="scoreDesc">
+                        <h4 class="headName">Reviews</h4>
+                        </div>
+                    <div class="scoreBox">
+                        <h3 style="color:var(--blue);">9.5 <span style="color: var(--black);">/ 10</span></h3>
+                        <h4>คะแนนรวมจากผู้เข้าพัก</h4>
+                    </div>
+                    <div class="boxReviewScroll">
+                        <div class="boxReviewcontainer">
+                            <div class="boxReview borderBox">
+                                <div class="boxReviewHead">
+                                    <h4 style="color:var(--blue);">8.8 <span style="color: var(--black);">/ 10</span></h4>
+                                    <h5>คุณสมพง น.</h5>
+                                </div>
+                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, similique!</h5>
+                            </div>
+                            <div class="boxReview borderBox">
+                                <div class="boxReviewHead">
+                                    <h4 style="color:var(--blue);">8.8 <span style="color: var(--black);">/ 10</span></h4>
+                                    <h5>คุณสมพง น.</h5>
+                                </div>
+                                <h5>Lorem ipsum dolor sit amet consecteti, et!</h5>
+                            </div>
+                            <div class="boxReview borderBox">
+                                <div class="boxReviewHead">
+                                    <h4 style="color:var(--blue);">8.8 <span style="color: var(--black);">/ 10</span></h4>
+                                    <h5>คุณสมพง น.</h5>
+                                </div>
+                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, similique!</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aboutRoom borderBox">
+                    <h4 class="headName">เกี่ยวกับห้องประชุม</h4>
+                    <h5><?=$fetch['meetroom_desc'];?></h5>
+                </div>
+                <div class="facilitie borderBox">
+                    <h4 class="headName">สิ่งอำนวยความสะดวก</h4>
+                    <div class="facilitieItem">
+                        <i class='bx bx-bowl-hot'></i>
+                        <h5>อาหารเช้า</h5>
+                    </div>
+                    <div class="facilitieItem">
+                        <i class='bx bx-accessibility' ></i>
+                        <h5>สิ่งอํานวยความสะดวกสําหรับผู้พิการ</h5>
+                    </div>
+                    <div class="facilitieItem">
+                        <i class='bx bx-time'></i>
+                        <h5>พนักงานบริการ 24 ชั่วโมง</h5>
+                    </div>
+                    <div class="facilitieItem">
+                        <i class='bx bxs-parking'></i>
+                        <h5>ที่จอดรถ</h5>
+                    </div>
+                    <div class="facilitieItem">
+                        <i class='bx bx-wifi'></i>
+                        <h5>WiFi</h5>
+                    </div>
+                    <div class="facilitieItem">
+                        <i class='bx bxs-dog' ></i>
+                        <h5>ต้อนรับสัตว์เลี้ยง</h5>
+                    </div>
+                </div>
+                <div class="highlights borderBox">
+                    <h4 class="headNameHighlight">Highlights</h4>
+                    <div class="highlightBoxItems">
+                        <div class="highlightItem">
+                            <i class='bx bx-store-alt'></i>
+                            <h5>ใกล้ร้านสะดวกซื้อ</h5>
+                        </div>
+                        <div class="highlightItem">
+                            <i class='bx bx-cycling'></i>
+                            <h5>มีสถานที่ปั่นจักรยาน</h5>
+                        </div>
+                        <div class="highlightItem">
+                            <i class='bx bxs-plane-alt'></i>
+                            <h5>ใกล้สนามบิน</h5>
+                        </div>
+                        <div class="highlightItem">
+                            <i class='bx bx-closet'></i>
+                            <h5>บริการซักรีด</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="question">
+                <h2>
+                    คำถามที่พบบ่อย
+                </h2>
+                <details>
+                    <summary>
+                        เวลาเช็คอินและเช็คเอาต์ของที่พักคือกี่โมง
+                    </summary>
+                    <div class="summaryContent">
+                        <h5>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                            officiis exercitationem. Laboriosam dicta voluptates odio
+                            consectetur maiores, minima, accusantium saepe tempora, fugiat
+                            nostrum vero maxime temporibus qui adipisci obcaecati error?
+                        </h5>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        ที่พักปลอดบุหรี่/สูบบุหรี่ได้หรือไม่
+                    </summary>
+                    <div class="summaryContent">
+                        <h5>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                            officiis exercitationem. Laboriosam dicta voluptates odio
+                            consectetur maiores, minima, accusantium saepe tempora, fugiat
+                            nostrum vero maxime temporibus qui adipisci obcaecati error?
+                        </h5>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        ที่พักให้บริการอาหารอะไรบ้าง
+                    </summary>
+                    <div class="summaryContent">
+                        <h5>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                            officiis exercitationem. Laboriosam dicta voluptates odio
+                            consectetur maiores, minima, accusantium saepe tempora, fugiat
+                            nostrum vero maxime temporibus qui adipisci obcaecati error?
+                        </h5>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        เดินทางไปที่พักอย่างไร
+                    </summary>
+                    <div class="summaryContent">
+                        <h5>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                            officiis exercitationem. Laboriosam dicta voluptates odio
+                            consectetur maiores, minima, accusantium saepe tempora, fugiat
+                            nostrum vero maxime temporibus qui adipisci obcaecati error?
+                        </h5>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section>
+            <div class="rating">
+                <h2 style="margin-bottom: 10px;">คะแนนของห้องประชุม</h2>
+                <div class="boxRating">
+                    <div class="ratingItem" style="display: flex; align-items: center;">
+                        <h2 class="boxRatingH2">9.5</h2>
+                        <h3>คะแนนดีเยี่ยม</h3>
+                        <div class="btn__group">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star-half'></i>
+                        </div>
+                    </div>
+                    <div class="ratingItem ratingItem--sub">
+                        <h4><i class='bx bx-bed'></i> คะแนนความสะอาด</h4>
+                        <h5>8.9 / 10</h5>
+                        <h2><span>ดีกว่า</span> 92 <span>%</span></h2>
+                    </div>
+                    <div class="ratingItem ratingItem--sub">
+                        <h4><i class='bx bx-male-female'></i> คะแนนจากผู้เข้าพักเป็นคู่</h4>
+                        <h5>8.9 / 10</h5>
+                        <h2><span>ดีกว่า</span> 95 <span>%</span></h2>
+                    </div>
+                    <div class="ratingItem ratingItem--sub">
+                        <h4><i class='bx bx-home-alt' ></i> คะแนนขนาดห้อง</h4>
+                        <h5>9.9 / 10</h5>
+                        <h2><span>ดีกว่า</span> 98 <span>%</span></h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="commentContainer">
+                <div class="comment">
+                    <div class="commentTitle">
+                        <img src="../../imgs/noImage.png" alt="">
+                        <div class="commentName">
+                            <h5>นายสมพง ด</h5>
+                            <div class="btn__group">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star-half'></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">
+                        <h5>22-12-2566 05:00</h5>
+                    </div>
+                    <div class="commentDesc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde sit porro, omnis natus provident praesentium quis, quisquam rem ut nulla ipsum. Beatae rerum nobis alias atque laborum suscipit nam aspernatur?
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="commentTitle">
+                        <img src="../../imgs/noImage.png" alt="">
+                        <div class="commentName">
+                            <h5>นายสมพง ด</h5>
+                            <div class="btn__group">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star-half'></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">
+                        <h5>22-12-2566 05:00</h5>
+                    </div>
+                    <div class="commentDesc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde sit porro, omnis natus provident praesentium quis, quisquam rem ut nulla ipsum. Beatae rerum nobis alias atque laborum suscipit nam aspernatur?
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="commentTitle">
+                        <img src="../../imgs/noImage.png" alt="">
+                        <div class="commentName">
+                            <h5>นายสมพง ด</h5>
+                            <div class="btn__group">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star-half'></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">
+                        <h5>22-12-2566 05:00</h5>
+                    </div>
+                    <div class="commentDesc">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde sit porro, omnis natus provident praesentium quis, quisquam rem ut nulla ipsum. Beatae rerum nobis alias atque laborum suscipit nam aspernatur?
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 style="margin-bottom: 10px;">ห้องประชุมที่คุณอาจสนใจ</h2>
+            <div class="container__lists">
+                <div class="item__list" onclick="roomDetail()">
+                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                    <h4>฿1,500</h4>
+                </div>
+                <div class="item__list" onclick="roomDetail()">
+                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                    <h4>฿1,500</h4>
+                </div>
+                <div class="item__list" onclick="roomDetail()">
+                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                    <h4>฿1,500</h4>
+                </div>
+                <div class="item__list" onclick="roomDetail()">
+                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                    <h4>฿1,500</h4>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="payment__channels">
+                <div class="payment__channelItem">
+                    <i class='bx bx-money'></i>
+                    <div>
+                        <h4>การโอนเงินผ่านธนาคาร</h4>
+                        <h5>BANK TRANSFER</h5>
+                    </div>
+                </div>
+                <div class="payment__channelItem">
+                    <i class='bx bx-credit-card'></i>
+                    <div>
+                        <h4>ชำระด้วยบัตรเครดิต</h4>
+                        <h5>CREDIT CCARD</h5>
+                    </div>
+                </div>
+                <div class="payment__channelItem">
+                    <i class='bx bx-building-house'></i>
+                    <div>
+                        <h4>ชำระหน้าเคาน์เตอร์เซอร์วิส</h4>
+                        <h5>COUNTER SERVICES</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="myModal" class="modal">
+        <span class="close"></span>
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="roomDetail.php" method="post" class="modalForm">
+                    <input type="hidden" name="id" value="<?=$room_id;?>">
+                    <h2>รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
+                    <h4>ชื่อ</h4>
+                    <input type="text" name="booker_name" value="<?=$_SESSION["username"];?>" required>
+                    <div class="modalFormItem">
+                        <div>
+                            <h4>อีเมล</h4>
+                            <input type="email" name="email" value="<?=$_SESSION["email"];?>" required>
+                        </div>
+                        <div>
+                            <h4>เบอร์โทร</h4>
+                            <input type="number" name="phone" value="<?=$_SESSION["phone_number"];?>" required>
+                        </div>
+                    </div>
+                    <div class="modalFormItem">
+                        <div>
+                            <h4>วันที่เช็คอิน</h4>
+                            <input type="date" name="check_in_date" id="toDay" required>
+                        </div>
+                        <div>
+                            <h4>วันที่เช็คเอาท์</h4>
+                            <input type="date" name="check_out_date" id="tomorrow" required>
+                        </div>
+                    </div>
+                    <div class="boxCheckbox">
+                        <input type="radio" id="1" name="booking_type" value="1" checked>
+                        <label for="1">ฉันเป็นผู้เข้าพัก</label>
+                        <input type="radio" id="2" name="booking_type" value="2">
+                        <label for="2">ฉันจองสำหรับผู้อื่น</label>
+                    </div>
+                    <button type="submit" class="button">ดำเนินการต่อไปยังการชำระเงิน</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+    <script>
+        var date = new Date();
+        var day = date.getDate();
+        var tomorrow = date.getDate() + 1;
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+        if (tomorrow < 10) tomorrow = "0" + tomorrow;
+
+        var today = year + "-" + month + "-" + day;
+        document.getElementById('toDay').value = today;
+        
+        var today = year + "-" + month + "-" + tomorrow;
+        document.getElementById('tomorrow').value = today;
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+
+        
+
+    </script>
+</body>
+</html>
