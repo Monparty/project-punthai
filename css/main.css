@@ -163,7 +163,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-input[type=text], [type=email], [type=number], [type=password], [type=date] {
+input[type=text], [type=email], [type=number], [type=password], [type=date], [type=datetime-local] {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--gray);

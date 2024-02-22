@@ -89,52 +89,6 @@
             } 
 
         } 
-        .boxReviewScroll {
-            width: 300px;
-            overflow-x: scroll;
-
-            & .boxReviewcontainer {
-                display: flex;
-                column-gap: 10px;
-                width: 850px;
-            }
-
-            & .boxReviewHead {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            & .boxReview {
-                width: 270px;
-                margin-bottom: 10px;
-            }
-        }
-
-        /* .boxReviewScroll::-webkit-scrollbar {
-            display: none;
-        } */
-
-        .boxReviewScroll::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-        }
-        
-        /* Track */
-        .boxReviewScroll::-webkit-scrollbar-track {
-            background: var(--white); 
-        }
-        
-        /* Handle */
-        .boxReviewScroll::-webkit-scrollbar-thumb {
-            border-radius: 10px;
-            background: var(--sky); 
-        }
-        
-        /* Handle on hover */
-        .boxReviewScroll::-webkit-scrollbar-thumb:hover {
-            background: var(--blue); 
-        }
 
         .facilitie {    
             display: grid;
@@ -152,21 +106,6 @@
             }
         }
 
-        .highlightBoxItems {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-
-            & i {
-                font-size: 40px;
-                color: var(--blue);
-            }
-
-            & .highlightItem {
-                display: grid;
-                justify-items: center;
-            }
-        }
 
         .question {
             display: grid;
@@ -384,6 +323,11 @@
         .modalForm {
             display: grid;
             gap: 10px;
+            
+
+            overflow-y: scroll;
+            height: 410px;
+            padding-right: 10px;
         }
 
         .boxCheckbox {
@@ -400,6 +344,10 @@
             & h4 {
                 margin-bottom: 10px;
             }
+        }
+
+        .form-panel:not(.active) {
+            display:none;
         }
     </style>
 </head>
@@ -456,44 +404,6 @@
 
         <section>
             <div class="containerRoomDetail">
-                <div class="reviewRoom borderBox">
-                    <div class="scoreDesc">
-                        <h4 class="headName">Reviews</h4>
-                        </div>
-                    <div class="scoreBox">
-                        <h3 style="color:var(--blue);">9.5 <span style="color: var(--black);">/ 10</span></h3>
-                        <h4>คะแนนรวมจากผู้เข้าพัก</h4>
-                    </div>
-                    <div class="boxReviewScroll">
-                        <div class="boxReviewcontainer">
-                            <div class="boxReview borderBox">
-                                <div class="boxReviewHead">
-                                    <h4 style="color:var(--blue);">8.8 <span style="color: var(--black);">/ 10</span></h4>
-                                    <h5>คุณสมพง น.</h5>
-                                </div>
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, similique!</h5>
-                            </div>
-                            <div class="boxReview borderBox">
-                                <div class="boxReviewHead">
-                                    <h4 style="color:var(--blue);">8.8 <span style="color: var(--black);">/ 10</span></h4>
-                                    <h5>คุณสมพง น.</h5>
-                                </div>
-                                <h5>Lorem ipsum dolor sit amet consecteti, et!</h5>
-                            </div>
-                            <div class="boxReview borderBox">
-                                <div class="boxReviewHead">
-                                    <h4 style="color:var(--blue);">8.8 <span style="color: var(--black);">/ 10</span></h4>
-                                    <h5>คุณสมพง น.</h5>
-                                </div>
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, similique!</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="aboutRoom borderBox">
-                    <h4 class="headName">เกี่ยวกับห้องประชุม</h4>
-                    <h5><?=$fetch['meetroom_desc'];?></h5>
-                </div>
                 <div class="facilitie borderBox">
                     <h4 class="headName">สิ่งอำนวยความสะดวก</h4>
                     <div class="facilitieItem">
@@ -521,26 +431,9 @@
                         <h5>ต้อนรับสัตว์เลี้ยง</h5>
                     </div>
                 </div>
-                <div class="highlights borderBox">
-                    <h4 class="headNameHighlight">Highlights</h4>
-                    <div class="highlightBoxItems">
-                        <div class="highlightItem">
-                            <i class='bx bx-store-alt'></i>
-                            <h5>ใกล้ร้านสะดวกซื้อ</h5>
-                        </div>
-                        <div class="highlightItem">
-                            <i class='bx bx-cycling'></i>
-                            <h5>มีสถานที่ปั่นจักรยาน</h5>
-                        </div>
-                        <div class="highlightItem">
-                            <i class='bx bxs-plane-alt'></i>
-                            <h5>ใกล้สนามบิน</h5>
-                        </div>
-                        <div class="highlightItem">
-                            <i class='bx bx-closet'></i>
-                            <h5>บริการซักรีด</h5>
-                        </div>
-                    </div>
+                <div class="aboutRoom borderBox">
+                    <h4 class="headName">เกี่ยวกับห้องประชุม</h4>
+                    <h5><?=$fetch['meetroom_desc'];?></h5>
                 </div>
             </div>
         </section>
@@ -552,7 +445,7 @@
                 </h2>
                 <details>
                     <summary>
-                        เวลาเช็คอินและเช็คเอาต์ของที่พักคือกี่โมง
+                        จองห้องประชุมอย่างไร
                     </summary>
                     <div class="summaryContent">
                         <h5>
@@ -565,7 +458,7 @@
                 </details>
                 <details>
                     <summary>
-                        ที่พักปลอดบุหรี่/สูบบุหรี่ได้หรือไม่
+                        รองรับได้กี่ที่นั่ง
                     </summary>
                     <div class="summaryContent">
                         <h5>
@@ -578,7 +471,7 @@
                 </details>
                 <details>
                     <summary>
-                        ที่พักให้บริการอาหารอะไรบ้าง
+                        มีการบริการอาหารแบบบุฟเฟ่ต์หรือไม่
                     </summary>
                     <div class="summaryContent">
                         <h5>
@@ -591,7 +484,7 @@
                 </details>
                 <details>
                     <summary>
-                        เดินทางไปที่พักอย่างไร
+                        สิ่งอำนวยความสะดวกของห้องประชุม
                     </summary>
                     <div class="summaryContent">
                         <h5>
@@ -781,21 +674,52 @@
                     </div>
                     <div class="modalFormItem">
                         <div>
-                            <h4>วันที่เช็คอิน</h4>
-                            <input type="date" name="check_in_date" id="toDay" required>
+                            <h4>หัวข้อการประชุม</h4>
+                            <input type="text" name="" required>
                         </div>
                         <div>
-                            <h4>วันที่เช็คเอาท์</h4>
-                            <input type="date" name="check_out_date" id="tomorrow" required>
+                            <h4>จำนวนผู้เข้าร่วม</h4>
+                            <input type="number" name="" required>
+                        </div>
+                    </div>
+                    <div class="modalFormItem">
+                        <div>
+                            <h4>วันที่ / เวลาที่เริ่มต้น</h4>
+                            <input type="datetime-local" name="" required>
+                        </div>
+                        <div>
+                            <h4>วันที่ / เวลาที่สิ้นสุด</h4>
+                            <input type="datetime-local" name="" required>
                         </div>
                     </div>
                     <div class="boxCheckbox">
                         <input type="radio" id="1" name="booking_type" value="1" checked>
-                        <label for="1">ฉันเป็นผู้เข้าพัก</label>
-                        <input type="radio" id="2" name="booking_type" value="2">
-                        <label for="2">ฉันจองสำหรับผู้อื่น</label>
+                        <label for="1">ไม่มีการจัดอาหาร</label>
+                        <input type="radio" id="2" name="booking_type" value="1">
+                        <label for="2">อาหารว่าง</label>
+                        <input type="radio" id="3" name="booking_type" value="2">
+                        <label for="3">การจัดมื้ออาหาร</label>
+                        <input type="radio" id="4" name="booking_type" value="2">
+                        <label for="4">อาหารแบบบุฟเฟ่ต์</label>
                     </div>
-                    <button type="submit" class="button">ดำเนินการต่อไปยังการชำระเงิน</button>
+                    <div class="form-panel active">Panel one content here</div>
+                    <div class="form-panel">Panel two content here</div>
+                    <div class="form-panel">Panel three content here</div>
+                    <div class="form-panel">Panel four content here</div>
+                    <div class="form-panel">Panel five content here</div>
+                    <div class="form-panel">Panel six content here</div>
+                    <div class="modalFormItem">
+                        <div>
+                            <button type="button" class="previous button w100" style="height: 30px;">Previous</button>
+                        </div>
+                        <div>
+                            <button type="button" class="next button w100" style="height: 30px;">Next</button>
+                        </div>
+                    </div>
+                    
+                    <h4>รายระเอียดอื่น ๆ</h4>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <button type="submit" class="button" style="height: 30px;">ดำเนินการต่อไปยังการชำระเงิน</button>
                 </form>
             </div>
         </div>
@@ -805,20 +729,6 @@
 
     <script src="../js/script.js"></script>
     <script>
-        var date = new Date();
-        var day = date.getDate();
-        var tomorrow = date.getDate() + 1;
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
-        if (month < 10) month = "0" + month;
-        if (day < 10) day = "0" + day;
-        if (tomorrow < 10) tomorrow = "0" + tomorrow;
-
-        var today = year + "-" + month + "-" + day;
-        document.getElementById('toDay').value = today;
-        
-        var today = year + "-" + month + "-" + tomorrow;
-        document.getElementById('tomorrow').value = today;
 
         // Get the modal
         var modal = document.getElementById("myModal");
@@ -839,6 +749,20 @@
           }
         }
 
+        $('.previous').click(function () {
+            var cur = $('.form-panel').index($('.form-panel.active'));
+            if (cur!=0) {
+                $('.form-panel').removeClass('active');
+                $('.form-panel').eq(cur-1).addClass('active');
+            }
+        });
+        $('.next').click(function () {
+            var cur = $('.form-panel').index($('.form-panel.active'));
+            if (cur!=$('.form-panel').length-1) {
+                $('.form-panel').removeClass('active');
+                $('.form-panel').eq(cur+1).addClass('active');
+            }
+        });
         
 
     </script>

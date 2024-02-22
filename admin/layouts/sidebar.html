@@ -62,6 +62,32 @@
         }
     }
 
+    details {
+        border-radius: 15px;
+
+        & summary {
+            padding: 5px 38px;
+        }
+
+        & .summaryContent {
+            display: grid;
+            gap: 5px;
+        }
+
+        & summary:before {
+            content: '';
+            border-width: .4rem;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--blue);
+            position: absolute;
+            top: 12px;
+            left: 1rem;
+            transform: rotate(0);
+            transform-origin: .2rem 50%;
+            transition: .25s transform ease;
+        }
+    }
+
     @media screen and (max-width: 576px) {
         .main__sidebar {
             top: 35%;
@@ -87,6 +113,17 @@
             <a class="sideItem" href="../../pages/foodMenu/foodList.php"><i class='bx bx-bowl-rice'></i>จัดการเมนูอาหาร</a>
             <a class="sideItem" href="../../pages/orderFood/orderFoodList.php"><i class='bx bx-dish'></i>จัดการสั่งอาหาร</a>
             <a class="sideItem" href="#"><i class='bx bx-user'></i>จัดการสมาชิก</a>
+            <details>
+                <summary>
+                    ตั้งค่าระบบ
+                </summary>
+                <div class="summaryContent">
+                    <a class="sideItem" href="#"><i class='bx bx-wallet'></i>ข้อมูลธนาคาร</a>
+                    <a class="sideItem" href="#"><i class='bx bx-notepad'></i></i>ข้อมูลเว็บไซต์</a>
+                    <a class="sideItem" href="#"><i class='bx bx-slideshow'></i>จัดการคอนเทนต์</a>
+                    <a class="sideItem" href="#"><i class='bx bx-street-view'></i>ประวัติการเข้าใช้งาน</a>
+                </div>
+              </details>
             <a class="sideItem" href="#"><i class='bx bx-power-off'></i>ออกจากระบบ</a>
         </div>
     </div>
