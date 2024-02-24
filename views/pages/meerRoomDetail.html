@@ -323,11 +323,7 @@
         .modalForm {
             display: grid;
             gap: 10px;
-            
-
-            overflow-y: scroll;
             height: 410px;
-            padding-right: 10px;
         }
 
         .boxCheckbox {
@@ -659,55 +655,62 @@
             <div class="modal-body">
                 <form action="roomDetail.php" method="post" class="modalForm">
                     <input type="hidden" name="id" value="<?=$room_id;?>">
-                    <h2>รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
-                    <h4>ชื่อ</h4>
-                    <input type="text" name="booker_name" value="<?=$_SESSION["username"];?>" required>
-                    <div class="modalFormItem">
-                        <div>
-                            <h4>อีเมล</h4>
-                            <input type="email" name="email" value="<?=$_SESSION["email"];?>" required>
+                    <h2 style="height: 30px;">รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
+                    <div class="containerModalForm" style="background: red; height: 300px;">
+                        <div class="form-panel active">
+                            <h4>ชื่อ</h4>
+                            <input type="text" name="booker_name" value="<?=$_SESSION["username"];?>" required>
+                            <div class="modalFormItem">
+                                <div>
+                                    <h4>อีเมล</h4>
+                                    <input type="email" name="email" value="<?=$_SESSION["email"];?>" required>
+                                </div>
+                                <div>
+                                    <h4>เบอร์โทร</h4>
+                                    <input type="number" name="phone" value="<?=$_SESSION["phone_number"];?>" required>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <h4>เบอร์โทร</h4>
-                            <input type="number" name="phone" value="<?=$_SESSION["phone_number"];?>" required>
+                        <div class="form-panel">
+                            <div class="modalFormItem">
+                                <div>
+                                    <h4>หัวข้อการประชุม</h4>
+                                    <input type="text" name="" required>
+                                </div>
+                                <div>
+                                    <h4>จำนวนผู้เข้าร่วม</h4>
+                                    <input type="number" name="" required>
+                                </div>
+                            </div>
+                            <div class="modalFormItem">
+                                <div>
+                                    <h4>วันที่ / เวลาที่เริ่มต้น</h4>
+                                    <input type="datetime-local" name="" required>
+                                </div>
+                                <div>
+                                    <h4>วันที่ / เวลาที่สิ้นสุด</h4>
+                                    <input type="datetime-local" name="" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-panel">
+                            <div class="boxCheckbox">
+                                <input type="radio" id="1" name="booking_type" value="1" checked>
+                                <label for="1">ไม่มีการจัดอาหาร</label>
+                                <input type="radio" id="2" name="booking_type" value="1">
+                                <label for="2">อาหารว่าง</label>
+                                <input type="radio" id="3" name="booking_type" value="2">
+                                <label for="3">การจัดมื้ออาหาร</label>
+                                <input type="radio" id="4" name="booking_type" value="2">
+                                <label for="4">อาหารแบบบุฟเฟ่ต์</label>
+                            </div>
+                        </div>
+                        <div class="form-panel">
+                            <h4>รายระเอียดอื่น ๆ</h4>
+                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <button type="submit" class="button" style="height: 30px;">ดำเนินการต่อไปยังการชำระเงิน</button>
                         </div>
                     </div>
-                    <div class="modalFormItem">
-                        <div>
-                            <h4>หัวข้อการประชุม</h4>
-                            <input type="text" name="" required>
-                        </div>
-                        <div>
-                            <h4>จำนวนผู้เข้าร่วม</h4>
-                            <input type="number" name="" required>
-                        </div>
-                    </div>
-                    <div class="modalFormItem">
-                        <div>
-                            <h4>วันที่ / เวลาที่เริ่มต้น</h4>
-                            <input type="datetime-local" name="" required>
-                        </div>
-                        <div>
-                            <h4>วันที่ / เวลาที่สิ้นสุด</h4>
-                            <input type="datetime-local" name="" required>
-                        </div>
-                    </div>
-                    <div class="boxCheckbox">
-                        <input type="radio" id="1" name="booking_type" value="1" checked>
-                        <label for="1">ไม่มีการจัดอาหาร</label>
-                        <input type="radio" id="2" name="booking_type" value="1">
-                        <label for="2">อาหารว่าง</label>
-                        <input type="radio" id="3" name="booking_type" value="2">
-                        <label for="3">การจัดมื้ออาหาร</label>
-                        <input type="radio" id="4" name="booking_type" value="2">
-                        <label for="4">อาหารแบบบุฟเฟ่ต์</label>
-                    </div>
-                    <div class="form-panel active">Panel one content here</div>
-                    <div class="form-panel">Panel two content here</div>
-                    <div class="form-panel">Panel three content here</div>
-                    <div class="form-panel">Panel four content here</div>
-                    <div class="form-panel">Panel five content here</div>
-                    <div class="form-panel">Panel six content here</div>
                     <div class="modalFormItem">
                         <div>
                             <button type="button" class="previous button w100" style="height: 30px;">Previous</button>
@@ -716,10 +719,6 @@
                             <button type="button" class="next button w100" style="height: 30px;">Next</button>
                         </div>
                     </div>
-                    
-                    <h4>รายระเอียดอื่น ๆ</h4>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                    <button type="submit" class="button" style="height: 30px;">ดำเนินการต่อไปยังการชำระเงิน</button>
                 </form>
             </div>
         </div>
