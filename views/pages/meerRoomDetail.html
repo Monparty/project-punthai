@@ -330,6 +330,7 @@
             display: flex;
             align-items: center;
             column-gap: 10px;
+            margin-bottom: 10px;
         }
 
         .modalFormItem {
@@ -653,13 +654,109 @@
         <span class="close"></span>
         <div class="modal-content">
             <div class="modal-body">
+
+                <style>
+                    .modalFormItemBtn {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        height: fit-content;
+                    }
+
+                    .containerModalForm {
+                        height: 315px;
+                        gap: 20px;
+                    }
+
+                    .cateringContainer {
+                        display: grid;
+                        gap: 10px;
+                        overflow-y: scroll;
+                        height: 250px;
+                    }
+
+                    .cateringItem {
+                        display: flex;
+                        gap: 10px;
+
+                        & .borderbox {
+                            padding: 5px;
+                            width: 250px;
+                            height: 125px;
+                        }
+
+                        input[type="checkbox"][id^="cb"] {
+                            display: none;
+                        }
+    
+                        label {
+                            display: flex;
+                            gap: 10px;
+                            position: relative;
+                            cursor: pointer;
+                        }
+    
+                        label:before {
+                            color: var(--white);
+                            content: " ";
+                            display: block;
+                            border-radius: 50%;
+                            position: absolute;
+                            top: -5px;
+                            left: -5px;
+                            width: 25px;
+                            height: 25px;
+                            text-align: center;
+                            line-height: 28px;
+                            transition-duration: 0.4s;
+                            transform: scale(0);
+                            z-index: 2;
+                        }
+    
+                        label img {
+                            height: 70px;
+                            width: 70px;
+                            transition-duration: 0.2s;
+                            transform-origin: 50% 50%;
+                            border-radius: 5px;
+                        }
+    
+    
+                        :checked + label:before {
+                            content: "✓";
+                            background-color: var(--blue);
+                            transform: scale(1);
+                        }
+    
+                        :checked + label img {
+                            transform: scale(0.9);
+                        }
+
+                        & .boxPrice {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            gap: 10px;
+                            margin-top: 10px;
+                            padding: 0 10px;
+
+                            & .boxPriceInput {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+                            }
+                        }
+                    }
+
+                </style>
+
                 <form action="roomDetail.php" method="post" class="modalForm">
                     <input type="hidden" name="id" value="<?=$room_id;?>">
-                    <h2 style="height: 30px;">รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
-                    <div class="containerModalForm" style="background: red; height: 300px;">
+                    <h2 style="height: fit-content;">รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
+                    <div class="containerModalForm">
                         <div class="form-panel active">
                             <h4>ชื่อ</h4>
-                            <input type="text" name="booker_name" value="<?=$_SESSION["username"];?>" required>
+                            <input type="text" style="margin-bottom: 10px;" name="booker_name" value="<?=$_SESSION["username"];?>" required>
                             <div class="modalFormItem">
                                 <div>
                                     <h4>อีเมล</h4>
@@ -672,7 +769,7 @@
                             </div>
                         </div>
                         <div class="form-panel">
-                            <div class="modalFormItem">
+                            <div class="modalFormItem" style="margin-bottom: 10px;">
                                 <div>
                                     <h4>หัวข้อการประชุม</h4>
                                     <input type="text" name="" required>
@@ -695,14 +792,167 @@
                         </div>
                         <div class="form-panel">
                             <div class="boxCheckbox">
-                                <input type="radio" id="1" name="booking_type" value="1" checked>
+                                <input type="radio" id="1" name="cateringType" onchange="showStuff('A', this); return false;" value="A" checked>
                                 <label for="1">ไม่มีการจัดอาหาร</label>
-                                <input type="radio" id="2" name="booking_type" value="1">
-                                <label for="2">อาหารว่าง</label>
-                                <input type="radio" id="3" name="booking_type" value="2">
-                                <label for="3">การจัดมื้ออาหาร</label>
-                                <input type="radio" id="4" name="booking_type" value="2">
-                                <label for="4">อาหารแบบบุฟเฟ่ต์</label>
+                                <input type="radio" id="cateringType" name="cateringType" onchange="showStuff('B', this); return false;" value="B">
+                                <label for="2">มีการจัดอาหาร</label>
+                            </div>
+                            <div class="boxCheckbox" id="B" style="display: none;">
+                                <input type="checkbox" name="cateringList" id="cateringList1" onclick="cateringListShow1()" value="1">
+                                <label for="1">อาหารว่าง</label>
+                                <input type="checkbox" name="cateringList" id="cateringList2" onclick="cateringListShow2()" value="2">
+                                <label for="2">อาหารกลางวัน</label>
+                                <input type="checkbox" name="cateringList" id="cateringList3" onclick="cateringListShow3()" value="3">
+                                <label for="3">อาหารแบบบุฟเฟ่ต์</label>
+                            </div>
+                            <div class="cateringContainer">
+                                <div class="cateringItem" id="cateringItem1" style="display: none;">
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb1" onclick="checkboxShow1()"/>
+                                        <label for="cb1">
+                                            <img src="../../imgs/snack1.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <div class="boxPriceInput" id="boxPrice1" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb2" onclick="checkboxShow2()"/>
+                                        <label for="cb2">
+                                            <img src="../../imgs/snack2.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <div class="boxPriceInput" id="boxPrice2" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb3" onclick="checkboxShow3()"/>
+                                        <label for="cb3">
+                                            <img src="../../imgs/snack3.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <div class="boxPriceInput" id="boxPrice3" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cateringItem" id="cateringItem2" style="display: none;">
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb4" onclick="checkboxShow4()"/>
+                                        <label for="cb4">
+                                            <img src="../../imgs/lunch1.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <div class="boxPriceInput" id="boxPrice4" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb5" onclick="checkboxShow5()"/>
+                                        <label for="cb5">
+                                            <img src="../../imgs/lunch2.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <div class="boxPriceInput" id="boxPrice5" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb6" onclick="checkboxShow6()"/>
+                                        <label for="cb6">
+                                            <img src="../../imgs/lunch3.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <div class="boxPriceInput" id="boxPrice6" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cateringItem" id="cateringItem3" style="display: none;">
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb7" onclick="checkboxShow7()"/>
+                                        <label for="cb7">
+                                            <img src="../../imgs/buffet1.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb8" onclick="checkboxShow8()"/>
+                                        <label for="cb8">
+                                            <img src="../../imgs/buffet2.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb9" onclick="checkboxShow9()"/>
+                                        <label for="cb9">
+                                            <img src="../../imgs/buffet3.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
+                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <h4 class="bold">฿ 100</h4>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-panel">
@@ -711,12 +961,12 @@
                             <button type="submit" class="button" style="height: 30px;">ดำเนินการต่อไปยังการชำระเงิน</button>
                         </div>
                     </div>
-                    <div class="modalFormItem">
+                    <div class="modalFormItemBtn">
                         <div>
-                            <button type="button" class="previous button w100" style="height: 30px;">Previous</button>
+                            <button type="button" class="previous button w100">ย้อนกลับ</button>
                         </div>
                         <div>
-                            <button type="button" class="next button w100" style="height: 30px;">Next</button>
+                            <button type="button" class="next button w100">ถัดไป</button>
                         </div>
                     </div>
                 </form>
@@ -728,6 +978,100 @@
 
     <script src="../js/script.js"></script>
     <script>
+        function showStuff(id, btn) {
+            $("#A,#B").hide();
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function cateringListShow1() {
+            var catering = document.getElementById("cateringList1");
+            var cateringItem = document.getElementById("cateringItem1");
+            if (catering.checked == true){
+                cateringItem.style.display = "flex";
+            } else {
+                cateringItem.style.display = "none";
+            }
+        }
+
+        function cateringListShow2() {
+            var catering = document.getElementById("cateringList2");
+            var cateringItem = document.getElementById("cateringItem2");
+            if (catering.checked == true){
+                cateringItem.style.display = "flex";
+            } else {
+                cateringItem.style.display = "none";
+            }
+        }
+
+        function cateringListShow3() {
+            var catering = document.getElementById("cateringList3");
+            var cateringItem = document.getElementById("cateringItem3");
+            if (catering.checked == true){
+                cateringItem.style.display = "flex";
+            } else {
+                cateringItem.style.display = "none";
+            }
+        }
+
+        function checkboxShow1() {
+            var checkBox = document.getElementById("cb1");
+            var boxPrice = document.getElementById("boxPrice1");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
+
+        function checkboxShow2() {
+            var checkBox = document.getElementById("cb2");
+            var boxPrice = document.getElementById("boxPrice2");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
+
+        function checkboxShow3() {
+            var checkBox = document.getElementById("cb3");
+            var boxPrice = document.getElementById("boxPrice3");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
+
+        function checkboxShow4() {
+            var checkBox = document.getElementById("cb4");
+            var boxPrice = document.getElementById("boxPrice4");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
+
+        function checkboxShow5() {
+            var checkBox = document.getElementById("cb5");
+            var boxPrice = document.getElementById("boxPrice5");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
+
+        function checkboxShow6() {
+            var checkBox = document.getElementById("cb6");
+            var boxPrice = document.getElementById("boxPrice6");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
 
         // Get the modal
         var modal = document.getElementById("myModal");
