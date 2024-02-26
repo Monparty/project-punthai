@@ -375,7 +375,7 @@
                         <?php if (isset($_SESSION['username'])) { ?>
                             <button type="button" id="myBtn" class="button">จองห้องประชุม</button>
                           <?php } else { ?>
-                            <button type="button" onclick="alert('กรุณาเข้าสู่ระบบเพื่อจองห้องประชุม');" class="button w100">จองห้องประชุม</button>
+                            <button type="button" onclick="alert('กรุณาเข้าสู่ระบบเพื่อจองห้องประชุม');" class="button">จองห้องประชุม</button>
                           <?php } ?>
                     </div>
                     <div>
@@ -681,7 +681,7 @@
 
                         & .borderbox {
                             padding: 5px;
-                            width: 250px;
+                            width: 280px;
                             height: 125px;
                         }
 
@@ -750,8 +750,8 @@
 
                 </style>
 
-                <form action="roomDetail.php" method="post" class="modalForm">
-                    <input type="hidden" name="id" value="<?=$room_id;?>">
+                <form action="meetRoomDetail.php" method="post" class="modalForm">
+                    <input type="hidden" name="meetroom_id" value="<?=$meetroom_id;?>">
                     <h2 style="height: fit-content;">รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
                     <div class="containerModalForm">
                         <div class="form-panel active">
@@ -772,193 +772,203 @@
                             <div class="modalFormItem" style="margin-bottom: 10px;">
                                 <div>
                                     <h4>หัวข้อการประชุม</h4>
-                                    <input type="text" name="" required>
+                                    <input type="text" name="meeting_topic" required>
                                 </div>
                                 <div>
                                     <h4>จำนวนผู้เข้าร่วม</h4>
-                                    <input type="number" name="" required>
+                                    <input type="number" name="amountpeople" required>
                                 </div>
                             </div>
                             <div class="modalFormItem">
                                 <div>
                                     <h4>วันที่ / เวลาที่เริ่มต้น</h4>
-                                    <input type="datetime-local" name="" required>
+                                    <input type="datetime-local" name="start_date" required>
                                 </div>
                                 <div>
                                     <h4>วันที่ / เวลาที่สิ้นสุด</h4>
-                                    <input type="datetime-local" name="" required>
+                                    <input type="datetime-local" name="end_date" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-panel">
                             <div class="boxCheckbox">
-                                <input type="radio" id="1" name="cateringType" onchange="showStuff('A', this); return false;" value="A" checked>
-                                <label for="1">ไม่มีการจัดอาหาร</label>
-                                <input type="radio" id="cateringType" name="cateringType" onchange="showStuff('B', this); return false;" value="B">
-                                <label for="2">มีการจัดอาหาร</label>
+                                <input type="radio" id="catering1" name="catering" onchange="showStuff('A', this); return false;" value="T" checked>
+                                <label for="catering1">ไม่มีการจัดอาหาร</label>
+                                <input type="radio" id="catering" name="catering" onchange="showStuff('B', this); return false;" value="F">
+                                <label for="catering">มีการจัดอาหาร</label>
                             </div>
                             <div class="boxCheckbox" id="B" style="display: none;">
-                                <input type="checkbox" name="cateringList" id="cateringList1" onclick="cateringListShow1()" value="1">
-                                <label for="1">อาหารว่าง</label>
-                                <input type="checkbox" name="cateringList" id="cateringList2" onclick="cateringListShow2()" value="2">
-                                <label for="2">อาหารกลางวัน</label>
-                                <input type="checkbox" name="cateringList" id="cateringList3" onclick="cateringListShow3()" value="3">
-                                <label for="3">อาหารแบบบุฟเฟ่ต์</label>
+                                <input type="checkbox" name="catering_type" id="catering_type1" onclick="catering_typeShow1()" value="snack">
+                                <label for="catering_type1">อาหารว่าง</label>
+                                <input type="checkbox" name="catering_type" id="catering_type2" onclick="catering_typeShow2()" value="lunch">
+                                <label for="catering_type2">อาหารกลางวัน</label>
+                                <input type="checkbox" name="catering_type" id="catering_type3" onclick="catering_typeShow3()" value="buffet">
+                                <label for="catering_type3">อาหารแบบบุฟเฟ่ต์</label>
                             </div>
                             <div class="cateringContainer">
                                 <div class="cateringItem" id="cateringItem1" style="display: none;">
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb1" onclick="checkboxShow1()"/>
+                                        <input type="checkbox" id="cb1" name="snack1" value="T" onclick="checkboxShow1()"/>
                                         <label for="cb1">
                                             <img src="../../imgs/snack1.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">แซนวิชแฮมชีสและกาแฟ</h4>
+                                                <h5>แซนวิชแฮมชีส, กาแฟ</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
                                             <div class="boxPriceInput" id="boxPrice1" style="visibility: hidden;">
                                                 <h4>จำนวน</h4>
-                                                <input type="number" class="w100" style="height: 30px;">
+                                                <input type="number" name="snack1_amount" class="w100" style="height: 30px;">
                                             </div>
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 45</h4>
                                         </div>
                                     </div>
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb2" onclick="checkboxShow2()"/>
+                                        <input type="checkbox" id="cb2" name="snack2" value="T" onclick="checkboxShow2()"/>
                                         <label for="cb2">
                                             <img src="../../imgs/snack2.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">แซนวิชแฮมชีสและน้ำผลไม้</h4>
+                                                <h5>แซนวิชแฮมชีส, น้ำผลไม้</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
                                             <div class="boxPriceInput" id="boxPrice2" style="visibility: hidden;">
                                                 <h4>จำนวน</h4>
-                                                <input type="number" class="w100" style="height: 30px;">
+                                                <input type="number" name="snack2_amount" class="w100" style="height: 30px;">
                                             </div>
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 55</h4>
                                         </div>
                                     </div>
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb3" onclick="checkboxShow3()"/>
+                                        <input type="checkbox" id="cb3" name="snack3" value="T" onclick="checkboxShow3()"/>
                                         <label for="cb3">
                                             <img src="../../imgs/snack3.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">พายครัวซองต์ และน้ำผลไม้</h4>
+                                                <h5>พายสตรอเบอรี่, ครัวซองต์, น้ำผลไม้</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
                                             <div class="boxPriceInput" id="boxPrice3" style="visibility: hidden;">
                                                 <h4>จำนวน</h4>
-                                                <input type="number" class="w100" style="height: 30px;">
+                                                <input type="number" name="snack3_amount" class="w100" style="height: 30px;">
                                             </div>
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 65</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cateringItem" id="cateringItem2" style="display: none;">
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb4" onclick="checkboxShow4()"/>
+                                        <input type="checkbox" id="cb4" name="lunch1" value="T" onclick="checkboxShow4()"/>
                                         <label for="cb4">
-                                            <img src="../../imgs/lunch1.png"/>
+                                            <img src="../../imgs/lunch2.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">ข้าวกะเพราไข่ดาว และผลไม้</h4>
+                                                <h5>ข้าวกะเพราหมู / ไก่, ไข่ดาว, ผลไม้</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
                                             <div class="boxPriceInput" id="boxPrice4" style="visibility: hidden;">
                                                 <h4>จำนวน</h4>
-                                                <input type="number" class="w100" style="height: 30px;">
+                                                <input type="number" name="lunch1_amount" class="w100" style="height: 30px;">
                                             </div>
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 55</h4>
                                         </div>
                                     </div>
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb5" onclick="checkboxShow5()"/>
+                                        <input type="checkbox" id="cb5" name="lunch2" value="T" onclick="checkboxShow5()"/>
                                         <label for="cb5">
-                                            <img src="../../imgs/lunch2.png"/>
+                                            <img src="../../imgs/lunch3.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">ข้าวผัดปลาแกะ และผลไม้</h4>
+                                                <h5>ข้าวผัด, ปลาแกะ, ผลไม้</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
                                             <div class="boxPriceInput" id="boxPrice5" style="visibility: hidden;">
                                                 <h4>จำนวน</h4>
-                                                <input type="number" class="w100" style="height: 30px;">
+                                                <input type="number" name="lunch2_amount" class="w100" style="height: 30px;">
                                             </div>
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 65</h4>
                                         </div>
                                     </div>
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb6" onclick="checkboxShow6()"/>
+                                        <input type="checkbox" id="cb6" name="lunch3" value="T" onclick="checkboxShow6()"/>
                                         <label for="cb6">
-                                            <img src="../../imgs/lunch3.png"/>
+                                            <img src="../../imgs/lunch1.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">ข้าวปั้นปลาดิบ และหมูเทมปุระ</h4>
+                                                <h5>ข้าวปั้น, ปลาดิบ, หมูเทมปุระ</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
                                             <div class="boxPriceInput" id="boxPrice6" style="visibility: hidden;">
                                                 <h4>จำนวน</h4>
-                                                <input type="number" class="w100" style="height: 30px;">
+                                                <input type="number" name="lunch3_amount" class="w100" style="height: 30px;">
                                             </div>
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 135</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cateringItem" id="cateringItem3" style="display: none;">
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb7" onclick="checkboxShow7()"/>
+                                        <input type="checkbox" id="cb7" name="buffet1" value="T" onclick="checkboxShow7()"/>
                                         <label for="cb7">
                                             <img src="../../imgs/buffet1.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">บุฟเฟ่ต์อาหารภาคกลาง</h4>
+                                                <h5>ต้มยำกุ้ง, ปลาดุกฟู, ผัดกะเพราหมู, แกงเลียง</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 2,000 - 3,000</h4>
                                         </div>
                                     </div>
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb8" onclick="checkboxShow8()"/>
+                                        <input type="checkbox" id="cb8" name="buffet2" value="T"  onclick="checkboxShow8()"/>
                                         <label for="cb8">
                                             <img src="../../imgs/buffet2.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">บุฟเฟ่ต์อาหารภาคใต้</h4>
+                                                <h5>คั่วกลิ้ง, แกงไตปลา, หมูผัดกะปิ, ใบเหลียงผัดไข่</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 2,000 - 3,000</h4>
                                         </div>
                                     </div>
                                     <div class="borderbox">
-                                        <input type="checkbox" id="cb9" onclick="checkboxShow9()"/>
+                                        <input type="checkbox" id="cb9" name="buffet3" value="T"  onclick="checkboxShow9()"/>
                                         <label for="cb9">
                                             <img src="../../imgs/buffet3.png"/>
                                             <div class="labelDetail">
-                                                <h4 class="bold">พาย และ ครัวซองต์</h4>
-                                                <h5>พาย, ครัวซองต์, น้ำสม, พาย, ครัวซองต์, น้ำสม</h5>
+                                                <h4 class="bold">บุฟเฟ่ต์อาหารภาคเหนือ</h4>
+                                                <h5>ข้าวซอยไก่, ไส้อั่ว, แกงฮังเล, น้ำพริกหนุ่มกับแคบหมู</h5>
                                             </div>
                                         </label>
                                         <div class="boxPrice">
-                                            <h4 class="bold">฿ 100</h4>
+                                            <h4 class="bold">฿ 2,000 - 3,000</h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-panel">
-                            <h4>รายระเอียดอื่น ๆ</h4>
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
-                            <button type="submit" class="button" style="height: 30px;">ดำเนินการต่อไปยังการชำระเงิน</button>
+                            <details style="margin-bottom: 10px;">
+                                <summary>หากมีความสงสัยหรือต้องการสอบถามข้อมูลเพิ่มเติม</summary>
+                                <div class="summaryContent">
+                                  <h5>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nesciunt nobis neque asperiores doloremque id aut quia ipsam corporis laudantium!
+                                  </h5>
+                                </div>
+                              </details>
+                            <h4 style="margin-bottom: 10px;">รายระเอียดอื่น ๆ</h4>
+                            <textarea name="remark" style="margin-bottom: 30px;"></textarea>
+                            <div style="display: flex; justify-content: center;">
+                                <button type="submit" class="button">ดำเนินการต่อไปยังการชำระเงิน</button>
+                            </div>
                         </div>
                     </div>
                     <div class="modalFormItemBtn">
@@ -983,8 +993,8 @@
             document.getElementById(id).style.display = 'flex';
         }
 
-        function cateringListShow1() {
-            var catering = document.getElementById("cateringList1");
+        function catering_typeShow1() {
+            var catering = document.getElementById("catering_type1");
             var cateringItem = document.getElementById("cateringItem1");
             if (catering.checked == true){
                 cateringItem.style.display = "flex";
@@ -993,8 +1003,8 @@
             }
         }
 
-        function cateringListShow2() {
-            var catering = document.getElementById("cateringList2");
+        function catering_typeShow2() {
+            var catering = document.getElementById("catering_type2");
             var cateringItem = document.getElementById("cateringItem2");
             if (catering.checked == true){
                 cateringItem.style.display = "flex";
@@ -1003,8 +1013,8 @@
             }
         }
 
-        function cateringListShow3() {
-            var catering = document.getElementById("cateringList3");
+        function catering_typeShow3() {
+            var catering = document.getElementById("catering_type3");
             var cateringItem = document.getElementById("cateringItem3");
             if (catering.checked == true){
                 cateringItem.style.display = "flex";
