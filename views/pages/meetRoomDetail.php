@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $remark = isset($_POST["remark"]) ? $_POST["remark"] : "";
 
   $sql = "INSERT INTO meetroom_bookings (user_id, meetroom_id, booker_name, email, phone, amountpeople, meeting_topic, start_date, end_date, catering, catering_type, snack1, snack1_amount, snack2, snack2_amount, snack3, snack3_amount, lunch1, lunch1_amount, lunch2, lunch2_amount, lunch3, lunch3_amount, buffet1, buffet2, buffet3, remark, create_at)
-  VALUES (:user_id, :meetroom_id, :booker_name, :email, :phone, :amountpeople, :meeting_topic, :start_date, :end_date, :catering, :catering_type, :snack1, :snack1_amount, :snack2, :snack2_amount, :snack3, :snack3_amount, :lunch1, :lunch1_amount, :lunch2, :lunch2_amount, :lunch3, :lunch3_amount, :buffet1, :buffet2, :buffet3, remark, CURRENT_TIMESTAMP)";
+  VALUES (:user_id, :meetroom_id, :booker_name, :email, :phone, :amountpeople, :meeting_topic, :start_date, :end_date, :catering, :catering_type, :snack1, :snack1_amount, :snack2, :snack2_amount, :snack3, :snack3_amount, :lunch1, :lunch1_amount, :lunch2, :lunch2_amount, :lunch3, :lunch3_amount, :buffet1, :buffet2, :buffet3, :remark, CURRENT_TIMESTAMP)";
 
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(":user_id", $user_id);
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt->bindParam(":buffet1", $buffet1);
   $stmt->bindParam(":buffet2", $buffet2);
   $stmt->bindParam(":buffet3", $buffet3);
-  $stmt->bindParam(":remark ", $remark);
+  $stmt->bindParam(":remark", $remark);
   $stmt->execute();
 
 
@@ -101,7 +101,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             type: "success"
         }, function() {
             window.location = "meetRoomPayment.php";
-            //window.location = "meetRoomPayment.php?meetRoom_id=' . $meetRoom_id . '";
         });
         }, 1000);
       </script>';
