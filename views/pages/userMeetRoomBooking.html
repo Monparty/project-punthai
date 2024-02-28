@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>รายการจอง</title>
+    <title>การจองห้องประชุม</title>
     <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png" />
     <link rel="stylesheet" href="../../css/main.css" />
     <link
@@ -115,17 +115,17 @@
       <div class="breadcrumbs">
         <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
         <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
-        <a>รายการจอง</a>
+        <a>การจองห้องประชุม</a>
       </div>
 
       <section>
-        <h2 style="margin-bottom: 10px">รายการจอง</h2>
+        <h2 style="margin-bottom: 10px">การจองห้องประชุม</h2>
         <div class="boxContainer">
           <div class="leftBar">
             <a href="userAccount.php"><i class="bx bx-user"></i> ข้อมูลบัญชี</a>
-            <a href="userBooking.php" class="leftBarActive"><i class="bx bx-book-bookmark"></i> รายการจอง</a>
+            <a href="userBooking.php"><i class="bx bx-book-bookmark"></i> การจองห้องประชุม</a>
             <a href="userFoodList.php"><i class='bx bx-bowl-rice'></i> สั่งอาหาร</a>
-            <a href="userMeetRoomBooking.php"><i class='bx bx-building-house'></i> การจองห้องประชุม</a>
+            <a href="userMeetRoomBooking.php" class="leftBarActive"><i class='bx bx-building-house'></i> การจองห้องประชุม</a>
             <a href="logout.php"><i class="bx bx-power-off"></i> ออกจากระบบ</a>
           </div>
           <div class="container__lists">
@@ -144,22 +144,22 @@
             <?php
             foreach ($query as $i=>$fetch) { ?>
             <a href="<?php if ($fetch['booking_status'] === 'รอชำระเงิน') { ?>
-              paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
+              meetRoomPaymentAfter.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id'];?>
             <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
-              userBookingDetail.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>
+              userBookingDetail.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id']?>
             <?php } else { ?>
               
             <?php } ?>">
               <div class="borderBox roomContainer">
                 <?=$showimg[$i];?>
                 <div class="roomItem">
-                  <h4 class="bold"><?=$fetch["name"];?></h4>
+                  <h4 class="bold"><?=$fetch["meetroom_name"];?></h4>
                   <div class="roomCheckDate">
-                    <h4>วันที่เช็คอิน : <?=$fetch["check_in_date"];?></h4>
+                    <h4>วันที่ / เวลาที่เริ่มต้น<br><?=$fetch["start_date"];?></h4>
                     <i class="bx bx-right-arrow-alt"></i>
-                    <h4>วันที่เช็คเอาท์ : <?=$fetch["check_out_date"];?></h4>
+                    <h4>วันที่ / เวลาที่สิ้นสุด<br><?=$fetch["end_date"];?></h4>
                   </div>
-                  <h4>฿ <?=number_format($fetch["price"]);?></h4>
+                  <h4><?php echo ($fetch['sumprice']=='') ? 'คลิกเพื่อตรวจสอบการชําระเงิน' : "฿ " . number_format($fetch["sumprice"]);?></h4>
                 </div>
                 <div class="bookStatus">
                   <h4 class="bold" style="color: var(--blue); text-align: center;"><?=$fetch["booking_status"];?></h4>

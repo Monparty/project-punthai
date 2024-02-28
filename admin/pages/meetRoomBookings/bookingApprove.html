@@ -26,7 +26,7 @@
     <div class="breadcrumbsAdmin">
         <a href="../dashboard/dashboard.php">หน้าแรก</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
-        <a href="bookingList.php">ข้อมูลการจองห้องพัก</a>
+        <a href="bookingList.php">ข้อมูลการจองห้องประชุม</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
         <a>ตรวจสอบข้อมูลการชำระเงิน</a>
     </div>
@@ -72,35 +72,43 @@
                                 </div>
                                 <div class="formRow">
                                     <div class="formTitle">
-                                        <h4>วันที่เช็คอิน</h4>
+                                        <h4>วันที่ / เวลาที่เริ่มต้น</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="<?=$fetch['check_in_date'];?>" readonly>
+                                        <input type="text" value="<?=$fetch['start_date'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow">
                                     <div class="formTitle">
-                                        <h4>วันที่เช็คเอาท์</h4>
+                                        <h4>วันที่ / เวลาที่สิ้นสุด</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="<?=$fetch['check_out_date'];?>" readonly>
+                                        <input type="text" value="<?=$fetch['end_date'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow">
                                     <div class="formTitle">
-                                        <h4>ชื่อห้องพัก</h4>
+                                        <h4>ชื่อห้องประชุม</h4>
                                     </div>
                                     <div class="formInput">
-                                        <input type="text" value="<?=$fetch['name'];?>" readonly>
+                                        <input type="text" value="<?=$fetch['meetroom_name'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow">
                                     <div class="formTitle">
-                                        <h4>ราคาห้องพัก</h4>
+                                        <h4>ราคาห้องประชุม</h4>
                                     </div>
                                     <div class="formInput w300">
-                                        <input type="number" value="<?=$fetch['price'];?>" readonly>
+                                        <input type="number" value="<?=$fetch['sumprice'];?>" readonly>
                                         <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
+                                    </div>
+                                </div>
+                                <div class="formRow">
+                                    <div class="formTitle">
+                                        <h4>ข้อมูลการจัดอาหาร</h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <input type="text" value="xx" readonly>
                                     </div>
                                 </div>
                                 <div class="formRow valignTop">

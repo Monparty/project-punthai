@@ -346,6 +346,100 @@
         .form-panel:not(.active) {
             display:none;
         }
+
+        .modalFormItemBtn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: fit-content;
+        }
+
+        .containerModalForm {
+            height: 315px;
+            gap: 20px;
+        }
+
+        .cateringContainer {
+            display: grid;
+            gap: 10px;
+            overflow: auto;
+            height: 250px;
+            width: 635px;
+            padding-bottom: 10px;
+        }
+
+        .cateringItem {
+            display: flex;
+            gap: 10px;
+
+            & .borderbox {
+                padding: 5px;
+                width: 280px;
+                height: 125px;
+            }
+
+            input[type="checkbox"][id^="cb"] {
+                display: none;
+            }
+
+            label {
+                display: flex;
+                gap: 10px;
+                position: relative;
+                cursor: pointer;
+            }
+
+            label:before {
+                color: var(--white);
+                content: " ";
+                display: block;
+                border-radius: 50%;
+                position: absolute;
+                top: -5px;
+                left: -5px;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                line-height: 28px;
+                transition-duration: 0.4s;
+                transform: scale(0);
+                z-index: 2;
+            }
+
+            label img {
+                height: 70px;
+                width: 70px;
+                transition-duration: 0.2s;
+                transform-origin: 50% 50%;
+                border-radius: 5px;
+            }
+
+
+            :checked + label:before {
+                content: "✓";
+                background-color: var(--blue);
+                transform: scale(1);
+            }
+
+            :checked + label img {
+                transform: scale(0.9);
+            }
+
+            & .boxPrice {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 10px;
+                margin-top: 10px;
+                padding: 0 10px;
+
+                & .boxPriceInput {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+            }
+        }
     </style>
 </head>
 <body>
@@ -654,102 +748,6 @@
         <span class="close"></span>
         <div class="modal-content">
             <div class="modal-body">
-
-                <style>
-                    .modalFormItemBtn {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        height: fit-content;
-                    }
-
-                    .containerModalForm {
-                        height: 315px;
-                        gap: 20px;
-                    }
-
-                    .cateringContainer {
-                        display: grid;
-                        gap: 10px;
-                        overflow-y: scroll;
-                        height: 250px;
-                    }
-
-                    .cateringItem {
-                        display: flex;
-                        gap: 10px;
-
-                        & .borderbox {
-                            padding: 5px;
-                            width: 280px;
-                            height: 125px;
-                        }
-
-                        input[type="checkbox"][id^="cb"] {
-                            display: none;
-                        }
-    
-                        label {
-                            display: flex;
-                            gap: 10px;
-                            position: relative;
-                            cursor: pointer;
-                        }
-    
-                        label:before {
-                            color: var(--white);
-                            content: " ";
-                            display: block;
-                            border-radius: 50%;
-                            position: absolute;
-                            top: -5px;
-                            left: -5px;
-                            width: 25px;
-                            height: 25px;
-                            text-align: center;
-                            line-height: 28px;
-                            transition-duration: 0.4s;
-                            transform: scale(0);
-                            z-index: 2;
-                        }
-    
-                        label img {
-                            height: 70px;
-                            width: 70px;
-                            transition-duration: 0.2s;
-                            transform-origin: 50% 50%;
-                            border-radius: 5px;
-                        }
-    
-    
-                        :checked + label:before {
-                            content: "✓";
-                            background-color: var(--blue);
-                            transform: scale(1);
-                        }
-    
-                        :checked + label img {
-                            transform: scale(0.9);
-                        }
-
-                        & .boxPrice {
-                            display: flex;
-                            justify-content: flex-end;
-                            align-items: center;
-                            gap: 10px;
-                            margin-top: 10px;
-                            padding: 0 10px;
-
-                            & .boxPriceInput {
-                                display: flex;
-                                align-items: center;
-                                gap: 10px;
-                            }
-                        }
-                    }
-
-                </style>
-
                 <form action="meetRoomDetail.php" method="post" class="modalForm">
                     <input type="hidden" name="meetroom_id" value="<?=$meetroom_id;?>">
                     <h2 style="height: fit-content;">รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
@@ -908,7 +906,7 @@
                                                 <h4>จำนวน</h4>
                                                 <input type="number" name="lunch3_amount" class="w100" style="height: 30px;">
                                             </div>
-                                            <h4 class="bold">฿ 135</h4>
+                                            <h4 class="bold">฿ 235</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -923,7 +921,11 @@
                                             </div>
                                         </label>
                                         <div class="boxPrice">
-                                            <h4 class="bold">฿ 2,000 - 3,000</h4>
+                                            <div class="boxPriceInput" id="boxPrice7" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" name="buffet1_amount" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 340</h4>
                                         </div>
                                     </div>
                                     <div class="borderbox">
@@ -936,7 +938,11 @@
                                             </div>
                                         </label>
                                         <div class="boxPrice">
-                                            <h4 class="bold">฿ 2,000 - 3,000</h4>
+                                            <div class="boxPriceInput" id="boxPrice8" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" name="buffet2_amount" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 340</h4>
                                         </div>
                                     </div>
                                     <div class="borderbox">
@@ -949,7 +955,53 @@
                                             </div>
                                         </label>
                                         <div class="boxPrice">
-                                            <h4 class="bold">฿ 2,000 - 3,000</h4>
+                                            <div class="boxPriceInput" id="boxPrice9" style="visibility: hidden;">
+                                                <h4>จำนวน</h4>
+                                                <input type="number" name="buffet3_amount" class="w100" style="height: 30px;">
+                                            </div>
+                                            <h4 class="bold">฿ 340</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb10" name="buffetset1" value="T" onclick="checkboxShow10()"/>
+                                        <label for="cb10">
+                                            <img src="../../imgs/buffet1.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">บุฟเฟ่ต์อาหารภาคกลาง</h4>
+                                                <h5>ต้มยำกุ้ง, ปลาดุกฟู, ผัดกะเพราหมู, แกงเลียง</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <h4 class="bold">เซ็ท 10 - 19 ท่าน</h4>
+                                            <h4 class="bold">฿ 6,500</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb11" name="buffetset2" value="T"  onclick="checkboxShow11()"/>
+                                        <label for="cb11">
+                                            <img src="../../imgs/buffet2.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">บุฟเฟ่ต์อาหารภาคใต้</h4>
+                                                <h5>คั่วกลิ้ง, แกงไตปลา, หมูผัดกะปิ, ใบเหลียงผัดไข่</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <h4 class="bold">เซ็ท 30 - 49 ท่าน</h4>
+                                            <h4 class="bold">฿ 12,000</h4>
+                                        </div>
+                                    </div>
+                                    <div class="borderbox">
+                                        <input type="checkbox" id="cb12" name="buffetset3" value="T"  onclick="checkboxShow12()"/>
+                                        <label for="cb12">
+                                            <img src="../../imgs/buffet3.png"/>
+                                            <div class="labelDetail">
+                                                <h4 class="bold">บุฟเฟ่ต์อาหารภาคเหนือ</h4>
+                                                <h5>ข้าวซอยไก่, ไส้อั่ว, แกงฮังเล, น้ำพริกหนุ่มกับแคบหมู</h5>
+                                            </div>
+                                        </label>
+                                        <div class="boxPrice">
+                                            <h4 class="bold">เซ็ท 50 - 100 ท่าน</h4>
+                                            <h4 class="bold">฿ 22,000</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -1076,6 +1128,36 @@
         function checkboxShow6() {
             var checkBox = document.getElementById("cb6");
             var boxPrice = document.getElementById("boxPrice6");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
+
+        function checkboxShow7() {
+            var checkBox = document.getElementById("cb7");
+            var boxPrice = document.getElementById("boxPrice7");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
+
+        function checkboxShow8() {
+            var checkBox = document.getElementById("cb8");
+            var boxPrice = document.getElementById("boxPrice8");
+            if (checkBox.checked == true){
+                boxPrice.style.visibility = "visible";
+            } else {
+                boxPrice.style.visibility = "hidden";
+            }
+        }
+
+        function checkboxShow9() {
+            var checkBox = document.getElementById("cb9");
+            var boxPrice = document.getElementById("boxPrice9");
             if (checkBox.checked == true){
                 boxPrice.style.visibility = "visible";
             } else {

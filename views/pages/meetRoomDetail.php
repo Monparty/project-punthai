@@ -36,28 +36,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $end_date = isset($_POST["end_date"]) ? $_POST["end_date"] : "";
   $catering = isset($_POST["catering"]) ? $_POST["catering"] : "";
   $catering_type = isset($_POST["catering_type"]) ? $_POST["catering_type"] : "";
-
   $snack1 = isset($_POST["snack1"]) ? $_POST["snack1"] : "";
   $snack1_amount = isset($_POST["snack1_amount"]) ? $_POST["snack1_amount"] : "";
   $snack2 = isset($_POST["snack2"]) ? $_POST["snack2"] : "";
   $snack2_amount = isset($_POST["snack2_amount"]) ? $_POST["snack2_amount"] : "";
   $snack3 = isset($_POST["snack3"]) ? $_POST["snack3"] : "";
   $snack3_amount = isset($_POST["snack3_amount"]) ? $_POST["snack3_amount"] : "";
-
   $lunch1 = isset($_POST["lunch1"]) ? $_POST["lunch1"] : "";
   $lunch1_amount = isset($_POST["lunch1_amount"]) ? $_POST["lunch1_amount"] : "";
   $lunch2 = isset($_POST["lunch2"]) ? $_POST["lunch2"] : "";
   $lunch2_amount = isset($_POST["lunch2_amount"]) ? $_POST["lunch2_amount"] : "";
   $lunch3 = isset($_POST["lunch3"]) ? $_POST["lunch3"] : "";
   $lunch3_amount = isset($_POST["lunch3_amount"]) ? $_POST["lunch3_amount"] : "";
-
   $buffet1 = isset($_POST["buffet1"]) ? $_POST["buffet1"] : "";
+  $buffet1_amount = isset($_POST["buffet1_amount"]) ? $_POST["buffet1_amount"] : "";
   $buffet2 = isset($_POST["buffet2"]) ? $_POST["buffet2"] : "";
+  $buffet2_amount = isset($_POST["buffet2_amount"]) ? $_POST["buffet2_amount"] : "";
   $buffet3 = isset($_POST["buffet3"]) ? $_POST["buffet3"] : "";
+  $buffet3_amount = isset($_POST["buffet3_amount"]) ? $_POST["buffet3_amount"] : "";
+
+  $buffetset1 = isset($_POST["buffetset1"]) ? $_POST["buffetset1"] : "";
+  $buffetset2 = isset($_POST["buffetset2"]) ? $_POST["buffetset2"] : "";
+  $buffetset3 = isset($_POST["buffetset3"]) ? $_POST["buffetset3"] : "";
   $remark = isset($_POST["remark"]) ? $_POST["remark"] : "";
 
-  $sql = "INSERT INTO meetroom_bookings (user_id, meetroom_id, booker_name, email, phone, amountpeople, meeting_topic, start_date, end_date, catering, catering_type, snack1, snack1_amount, snack2, snack2_amount, snack3, snack3_amount, lunch1, lunch1_amount, lunch2, lunch2_amount, lunch3, lunch3_amount, buffet1, buffet2, buffet3, remark, create_at)
-  VALUES (:user_id, :meetroom_id, :booker_name, :email, :phone, :amountpeople, :meeting_topic, :start_date, :end_date, :catering, :catering_type, :snack1, :snack1_amount, :snack2, :snack2_amount, :snack3, :snack3_amount, :lunch1, :lunch1_amount, :lunch2, :lunch2_amount, :lunch3, :lunch3_amount, :buffet1, :buffet2, :buffet3, :remark, CURRENT_TIMESTAMP)";
+  $sql = "INSERT INTO meetroom_bookings (user_id, meetroom_id, booker_name, email, phone, amountpeople, meeting_topic, start_date, end_date, catering, catering_type, snack1, snack1_amount, snack2, snack2_amount, snack3, snack3_amount, lunch1, lunch1_amount, lunch2, lunch2_amount, lunch3, lunch3_amount, buffet1, buffet1_amount, buffet2, buffet2_amount, buffet3, buffet3_amount, buffetset1, buffetset2, buffetset3, remark, create_at)
+  VALUES (:user_id, :meetroom_id, :booker_name, :email, :phone, :amountpeople, :meeting_topic, :start_date, :end_date, :catering, :catering_type, :snack1, :snack1_amount, :snack2, :snack2_amount, :snack3, :snack3_amount, :lunch1, :lunch1_amount, :lunch2, :lunch2_amount, :lunch3, :lunch3_amount, :buffet1, :buffet1_amount, :buffet2, :buffet2_amount, :buffet3, :buffet3_amount, :buffetset1, :buffetset2, :buffetset3, :remark, CURRENT_TIMESTAMP)";
 
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(":user_id", $user_id);
@@ -71,27 +75,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt->bindParam(":end_date", $end_date);
   $stmt->bindParam(":catering", $catering);
   $stmt->bindParam(":catering_type", $catering_type);
-
   $stmt->bindParam(":snack1", $snack1);
   $stmt->bindParam(":snack1_amount", $snack1_amount);
   $stmt->bindParam(":snack2", $snack2);
   $stmt->bindParam(":snack2_amount", $snack2_amount);
   $stmt->bindParam(":snack3", $snack3);
   $stmt->bindParam(":snack3_amount", $snack3_amount);
-
   $stmt->bindParam(":lunch1", $lunch1);
   $stmt->bindParam(":lunch1_amount", $lunch1_amount);
   $stmt->bindParam(":lunch2", $lunch2);
   $stmt->bindParam(":lunch2_amount", $lunch2_amount);
   $stmt->bindParam(":lunch3", $lunch3);
   $stmt->bindParam(":lunch3_amount", $lunch3_amount);
-
   $stmt->bindParam(":buffet1", $buffet1);
+  $stmt->bindParam(":buffet1_amount", $buffet1_amount);
   $stmt->bindParam(":buffet2", $buffet2);
+  $stmt->bindParam(":buffet2_amount", $buffet2_amount);
   $stmt->bindParam(":buffet3", $buffet3);
+  $stmt->bindParam(":buffet3_amount", $buffet3_amount);
+  $stmt->bindParam(":buffetset1", $buffetset1);
+  $stmt->bindParam(":buffetset2", $buffetset2);
+  $stmt->bindParam(":buffetset3", $buffetset3);
   $stmt->bindParam(":remark", $remark);
   $stmt->execute();
-
 
   if ($stmt->rowCount() > 0) {
     echo '<script>
@@ -100,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             title: "บันทึกข้อมูลการจองสำเร็จ",  
             type: "success"
         }, function() {
-            window.location = "meetRoomPayment.php";
+            window.location = "meetRoomPayment.php?meetroom_id=' . $meetroom_id . '";
         });
         }, 1000);
       </script>';

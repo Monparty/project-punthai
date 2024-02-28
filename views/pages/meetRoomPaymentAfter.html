@@ -197,10 +197,10 @@
 
     <main class="container">
       <section>
-        <h2 style="margin-bottom: 10px">คุณต้องการชำระเงินด้วยช่องทางใด?</h2>
+        <h2 style="margin-bottom: 10px">คุณมีรายการที่ทำค้างไว้</h2>
         <div class="boxContainer">
-          <form action="meetRoomPayment.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="meetroom_id" value="<?=$fetch['meetroom_id'];?>">
+          <form action="meetRoomPaymentAfter.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="meetbooking_id" value="<?=$fetch['meetbooking_id'];?>">
           <div class="leftContainer borderBox">
             <div class="leftContainerHead">
               <h4 class="bold">
@@ -362,6 +362,7 @@
                   <div class="boxPriceItem">
                     <h3 class="bold">ราคารวม</h3>
                     <h3 class="bold">฿ <?=number_format($sumprice);?></h3>
+                    <input type="hidden" name="sumprice" value="<?=$sumprice;?>">
                   </div>
                 </div>
               </details>
