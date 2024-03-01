@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>รายละเอียดการจองห้องประชุม</title>
+    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      main {
+        display: grid;
+        row-gap: 30px;
+      }
+
+
+      .container__lists {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+
+      .borderBoxTop {
+        display: grid;
+        grid-template-columns: 1fr 5fr 3fr;
+        column-gap: 20px;
+        align-items: center;
+
+        & i {
+          font-size: 60px;
+          color: var(--blue);
+        }
+      }
+
+      .imgContainer {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            column-gap: 10px;
+            align-items: start;
+            justify-content: start;
+
+            & img {
+                border-radius: 10px;
+                object-fit: cover;
+            }
+
+            & .boxImgLeft {
+                
+                & img {
+                    height: 210px;
+                    width: 100%;
+                }
+            }
+        }
+
+        .roomDetailName {
+          display: grid;
+          gap: 5px;
+          height: 100%;
+
+          & .roomPrice {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+          }
+        }
+
+        .boxPriceItem {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+
+
+      @media screen and (max-width: 576px) {
+        .boxContainer {
+          grid-template-columns: 1fr;
+          row-gap: 30px;
+        }
+
+        .borderBox {
+          grid-template-columns: 1fr;
+          width: 500px;
+          row-gap: 10px;
+          text-align: center;
+          
+          & .helpBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & a {
+              width: 200px;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?php include("../layouts/header.php"); ?>
+    <?php include("../layouts/navbar.html"); ?>
+    <?php include("../layouts/sidebar.html"); ?>
+
+    <main class="container">
+      <div class="breadcrumbs">
+        <a style="color: var(--gray)" href="homePage.php">หน้าแรก</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a style="color: var(--gray)" href="userMeetRoomBooking.php">การจองห้องประชุม</a>
+        <i class="bx bx-chevron-right" style="color: var(--gray)"></i>
+        <a>รายละเอียดการจองห้องประชุม</a>
+      </div>
+
+      <section>
+        <h2 style="margin-bottom: 10px">การจองของคุณได้รับการยืนยันแล้ว</h2>
+          <div class="container__lists">
+            <div class="borderbox borderBoxTop">
+              <div class="icon" style="text-align: center;">
+                <i class='bx bx-badge-check' ></i>
+              </div>
+              <div class="boxHelpTitle">
+                <h4>
+                  เอกสารยืนยังการจองอิเล็กทรอนิกส์
+                </h4>
+                <h5>
+                  กรุณาแสดงใบยืนยันการจองห้องพักในรูปแบบไฟส์อิเล็กทรอนิกส์หรือสำเนากระดาษเมื่อเช็คอิน ณ ที่พัก
+                </h5>
+              </div>
+              <div class="helpBtn">
+                <a href="confirmMeetBookingForm.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id']?>" target="_blank" class="button">พิมพ์เอกสาร</a>
+              </div>
+            </div>
+
+          <section>
+              <div class="imgContainer">
+                  <div class="boxImgLeft">
+                      <?=$showimg[$i];?>
+                  </div>
+                  <div class="roomDetailName borderBox">
+                      <h2>รายละเอียดการจองห้องประชุม</h2>
+                      <h4>หมายเลขการจอง 0000<?=$fetch['meetbooking_id'];?></h4>
+                      <h4>วันที่ / เวลาที่เริ่มต้น</h4>
+                      <h4><?=$fetch['start_date'];?></h4>
+                      <h4>วันที่ / เวลาที่สิ้นสุด</h4>
+                      <h4><?=$fetch['end_date'];?></h4>
+                      <h4><?=$fetch['meetroom_name'];?></h4>
+                      <div class="meetroom_price">
+                        <h4 class="bold">ข้อมูลการชำระเงิน</h4>
+                      </div>
+                      <div class="boxPriceContent">
+                        <div style="border: 1px dashed var(--gray); margin-bottom: 10px;"></div>
+                        <div class="boxPriceItem">
+                          <div>
+                            <h4><?=$fetch['meetroom_name'];?></h4>
+                            <h4>จำนวนผู้เข้าร่วม <?=$fetch['amountpeople'];?> คน</h4>
+                          </div>
+                          <h4>฿ <?=number_format($fetch['meetroom_price']);?></h4>
+                        </div>
+      
+                        <div class="boxPriceItem" <?php echo ($fetch['snack1']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>แซนวิชแฮมชีสและกาแฟ</h4>
+                            <h4>ราคา <?=$snack1;?> จำนวน <?=$fetch['snack1_amount'];?> ชุด</h4>
+                          </div>
+                          <h4>฿ <?=number_format($snack1_price);?></h4>
+                        </div>
+                        <div class="boxPriceItem" <?php echo ($fetch['snack2']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>แซนวิชแฮมชีสและกาแฟ</h4>
+                            <h4>ราคา <?=$snack2;?> จำนวน <?=$fetch['snack2_amount'];?> ชุด</h4>
+                          </div>
+                          <h4>฿ <?=number_format($snack2_price);?></h4>
+                        </div>
+                        <div class="boxPriceItem" <?php echo ($fetch['snack3']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>แซนวิชแฮมชีสและกาแฟ</h4>
+                            <h4>ราคา <?=$snack3;?> จำนวน <?=$fetch['snack3_amount'];?> ชุด</h4>
+                          </div>
+                          <h4>฿ <?=number_format($snack3_price);?></h4>
+                        </div>
+      
+                        <div class="boxPriceItem" <?php echo ($fetch['lunch1']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>ข้าวกะเพราไข่ดาว และผลไม้</h4>
+                            <h4>ราคา <?=$lunch1;?> จำนวน <?=$fetch['lunch1_amount'];?> ชุด</h4>
+                          </div>
+                          <h4>฿ <?=number_format($lunch1_price);?></h4>
+                        </div>
+                        <div class="boxPriceItem" <?php echo ($fetch['lunch2']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>ข้าวผัดปลาแกะ และผลไม้</h4>
+                            <h4>ราคา <?=$lunch2;?> จำนวน <?=$fetch['lunch2_amount'];?> ชุด</h4>
+                          </div>
+                          <h4>฿ <?=number_format($lunch2_price);?></h4>
+                        </div>
+                        <div class="boxPriceItem" <?php echo ($fetch['lunch3']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>ข้าวปั้นปลาดิบ และหมูเทมปุระ</h4>
+                            <h4>ราคา <?=$lunch3;?> จำนวน <?=$fetch['lunch3_amount'];?> ชุด</h4>
+                          </div>
+                          <h4>฿ <?=number_format($lunch3_price);?></h4>
+                        </div>
+      
+                        <div class="boxPriceItem" <?php echo ($fetch['buffet1']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>บุฟเฟ่ต์อาหารภาคกลาง</h4>
+                            <h4>ราคา <?=$buffet;?> จำนวน <?=$fetch['buffet1_amount'];?> ท่าน</h4>
+                          </div>
+                          <h4>฿ <?=number_format($buffet1_price);?></h4>
+                        </div>
+                        <div class="boxPriceItem" <?php echo ($fetch['buffet2']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>บุฟเฟ่ต์อาหารภาคใต้</h4>
+                            <h4>ราคา <?=$buffet;?> จำนวน <?=$fetch['buffet2_amount'];?> ท่าน</h4>
+                          </div>
+                          <h4>฿ <?=number_format($buffet2_price);?></h4>
+                        </div>
+                        <div class="boxPriceItem" <?php echo ($fetch['buffet3']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>บุฟเฟ่ต์อาหารภาคเหนือ</h4>
+                            <h4>ราคา <?=$buffet;?> จำนวน <?=$fetch['buffet3_amount'];?> ท่าน</h4>
+                          </div>
+                          <h4>฿ <?=number_format($buffet3_price);?></h4>
+                        </div>
+      
+                        <div class="boxPriceItem" <?php echo ($fetch['buffetset1']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>บุฟเฟ่ต์อาหารภาคกลาง (แบบเหมา)</h4>
+                            <h4>เซ็ท 10 - 19 ท่าน</h4>
+                          </div>
+                          <h4>฿ <?=number_format($buffetset1);?></h4>
+                        </div>
+                        <div class="boxPriceItem" <?php echo ($fetch['buffetset2']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>บุฟเฟ่ต์อาหารภาคกลาง (แบบเหมา)</h4>
+                            <h4>เซ็ท 30 - 49 ท่าน</h4>
+                          </div>
+                          <h4>฿ <?=number_format($buffetset2);?></h4>
+                        </div>
+                        <div class="boxPriceItem" <?php echo ($fetch['buffetset3']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                          <div>
+                            <h4>บุฟเฟ่ต์อาหารภาคกลาง (แบบเหมา)</h4>
+                            <h4>เซ็ท 50 - 100 ท่าน</h4>
+                          </div>
+                          <h4>฿ <?=number_format($buffetset3);?></h4>
+                        </div>
+      
+                        <div class="boxPriceItem" style="color: var(--orange);">
+                          <h3 class="bold">ราคารวม</h3>
+                          <h3 class="bold">฿ <?=number_format($fetch['sumprice']);?></h3>
+                        </div>
+                        <div style="border: 1px dashed var(--gray); margin-top: 10px;"></div>
+                      </div>
+                </div>
+              </div>
+          </section>
+
+            <h2>ยกเลิกการจอง</h2>
+            <details>
+              <summary id="cancel">วิธียกเลิกการจอง</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>หากยกเลิกการจองจะมีค่าธรรมเนียมการยกเลิกหรือไม่</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+            <details>
+              <summary>วิธีตรวจสอบว่าการจองถูกยกเลิกหรือไม่</summary>
+              <div class="summaryContent">
+                <h5>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                  officiis exercitationem. Laboriosam dicta voluptates odio
+                  consectetur maiores, minima, accusantium saepe tempora, fugiat
+                  nostrum vero maxime temporibus qui adipisci obcaecati error?
+                </h5>
+              </div>
+            </details>
+
+      <section>
+        <div class="payment__channels">
+          <div class="payment__channelItem">
+            <i class="bx bx-money"></i>
+            <div>
+              <h4>การโอนเงินผ่านธนาคาร</h4>
+              <h5>BANK TRANSFER</h5>
+            </div>
+          </div>
+          <div class="payment__channelItem">
+            <i class="bx bx-credit-card"></i>
+            <div>
+              <h4>ชำระด้วยบัตรเครดิต</h4>
+              <h5>CREDIT CCARD</h5>
+            </div>
+          </div>
+          <div class="payment__channelItem">
+            <i class="bx bx-building-house"></i>
+            <div>
+              <h4>ชำระหน้าเคาน์เตอร์เซอร์วิส</h4>
+              <h5>COUNTER SERVICES</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <?php include("../layouts/footer.html"); ?>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

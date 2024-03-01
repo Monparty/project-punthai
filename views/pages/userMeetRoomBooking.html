@@ -123,7 +123,7 @@
         <div class="boxContainer">
           <div class="leftBar">
             <a href="userAccount.php"><i class="bx bx-user"></i> ข้อมูลบัญชี</a>
-            <a href="userBooking.php"><i class="bx bx-book-bookmark"></i> การจองห้องประชุม</a>
+            <a href="userBooking.php"><i class="bx bx-book-bookmark"></i> การจองห้องพัก</a>
             <a href="userFoodList.php"><i class='bx bx-bowl-rice'></i> สั่งอาหาร</a>
             <a href="userMeetRoomBooking.php" class="leftBarActive"><i class='bx bx-building-house'></i> การจองห้องประชุม</a>
             <a href="logout.php"><i class="bx bx-power-off"></i> ออกจากระบบ</a>
@@ -146,7 +146,7 @@
             <a href="<?php if ($fetch['booking_status'] === 'รอชำระเงิน') { ?>
               meetRoomPaymentAfter.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id'];?>
             <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
-              userBookingDetail.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id']?>
+              userMeetBookingDetail.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id']?>
             <?php } else { ?>
               
             <?php } ?>">

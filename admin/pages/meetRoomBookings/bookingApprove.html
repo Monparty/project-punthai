@@ -18,6 +18,12 @@
         .formBtn {
             padding: 0 20px;
         }
+
+        .boxPriceItem {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
@@ -31,7 +37,7 @@
         <a>ตรวจสอบข้อมูลการชำระเงิน</a>
     </div>
     <form action="bookingApprove.php" method="post">
-        <input type="hidden" name="id" value="<?=$booking_id;?>">
+        <input type="hidden" name="id" value="<?=$meetbooking_id;?>">
         <main class="containerAdmin">
             <section class="formSection">
                 <h2 style="margin-bottom:10px;">ตรวจสอบข้อมูลการชำระเงิน</h2>
@@ -72,6 +78,14 @@
                                 </div>
                                 <div class="formRow">
                                     <div class="formTitle">
+                                        <h4>ชื่อห้องประชุม</h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <input type="text" value="<?=$fetch['meetroom_name'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="formRow">
+                                    <div class="formTitle">
                                         <h4>วันที่ / เวลาที่เริ่มต้น</h4>
                                     </div>
                                     <div class="formInput">
@@ -88,35 +102,119 @@
                                 </div>
                                 <div class="formRow">
                                     <div class="formTitle">
-                                        <h4>ชื่อห้องประชุม</h4>
-                                    </div>
-                                    <div class="formInput">
-                                        <input type="text" value="<?=$fetch['meetroom_name'];?>" readonly>
+                                        <h4>ข้อมูลการชำระเงิน</h4>
                                     </div>
                                 </div>
-                                <div class="formRow">
-                                    <div class="formTitle">
-                                        <h4>ราคาห้องประชุม</h4>
+                                    <div class="boxPriceContent">
+                                      <div style="border: 1px dashed var(--gray); margin-bottom: 10px;"></div>
+                                      <div class="boxPriceItem">
+                                        <div>
+                                          <h4><?=$fetch['meetroom_name'];?></h4>
+                                          <h4>จำนวนผู้เข้าร่วม <?=$fetch['amountpeople'];?> คน</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($fetch['meetroom_price']);?></h4>
+                                      </div>
+                    
+                                      <div class="boxPriceItem" <?php echo ($fetch['snack1']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>แซนวิชแฮมชีสและกาแฟ</h4>
+                                          <h4>ราคา <?=$snack1;?> จำนวน <?=$fetch['snack1_amount'];?> ชุด</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($snack1_price);?></h4>
+                                      </div>
+                                      <div class="boxPriceItem" <?php echo ($fetch['snack2']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>แซนวิชแฮมชีสและกาแฟ</h4>
+                                          <h4>ราคา <?=$snack2;?> จำนวน <?=$fetch['snack2_amount'];?> ชุด</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($snack2_price);?></h4>
+                                      </div>
+                                      <div class="boxPriceItem" <?php echo ($fetch['snack3']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>แซนวิชแฮมชีสและกาแฟ</h4>
+                                          <h4>ราคา <?=$snack3;?> จำนวน <?=$fetch['snack3_amount'];?> ชุด</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($snack3_price);?></h4>
+                                      </div>
+                    
+                                      <div class="boxPriceItem" <?php echo ($fetch['lunch1']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>ข้าวกะเพราไข่ดาว และผลไม้</h4>
+                                          <h4>ราคา <?=$lunch1;?> จำนวน <?=$fetch['lunch1_amount'];?> ชุด</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($lunch1_price);?></h4>
+                                      </div>
+                                      <div class="boxPriceItem" <?php echo ($fetch['lunch2']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>ข้าวผัดปลาแกะ และผลไม้</h4>
+                                          <h4>ราคา <?=$lunch2;?> จำนวน <?=$fetch['lunch2_amount'];?> ชุด</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($lunch2_price);?></h4>
+                                      </div>
+                                      <div class="boxPriceItem" <?php echo ($fetch['lunch3']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>ข้าวปั้นปลาดิบ และหมูเทมปุระ</h4>
+                                          <h4>ราคา <?=$lunch3;?> จำนวน <?=$fetch['lunch3_amount'];?> ชุด</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($lunch3_price);?></h4>
+                                      </div>
+                    
+                                      <div class="boxPriceItem" <?php echo ($fetch['buffet1']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>บุฟเฟ่ต์อาหารภาคกลาง</h4>
+                                          <h4>ราคา <?=$buffet;?> จำนวน <?=$fetch['buffet1_amount'];?> ท่าน</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($buffet1_price);?></h4>
+                                      </div>
+                                      <div class="boxPriceItem" <?php echo ($fetch['buffet2']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>บุฟเฟ่ต์อาหารภาคใต้</h4>
+                                          <h4>ราคา <?=$buffet;?> จำนวน <?=$fetch['buffet2_amount'];?> ท่าน</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($buffet2_price);?></h4>
+                                      </div>
+                                      <div class="boxPriceItem" <?php echo ($fetch['buffet3']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>บุฟเฟ่ต์อาหารภาคเหนือ</h4>
+                                          <h4>ราคา <?=$buffet;?> จำนวน <?=$fetch['buffet3_amount'];?> ท่าน</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($buffet3_price);?></h4>
+                                      </div>
+                    
+                                      <div class="boxPriceItem" <?php echo ($fetch['buffetset1']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>บุฟเฟ่ต์อาหารภาคกลาง (แบบเหมา)</h4>
+                                          <h4>เซ็ท 10 - 19 ท่าน</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($buffetset1);?></h4>
+                                      </div>
+                                      <div class="boxPriceItem" <?php echo ($fetch['buffetset2']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>บุฟเฟ่ต์อาหารภาคกลาง (แบบเหมา)</h4>
+                                          <h4>เซ็ท 30 - 49 ท่าน</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($buffetset2);?></h4>
+                                      </div>
+                                      <div class="boxPriceItem" <?php echo ($fetch['buffetset3']=='T') ? 'style="display: flex;"' : 'style="display: none;"';?>>
+                                        <div>
+                                          <h4>บุฟเฟ่ต์อาหารภาคกลาง (แบบเหมา)</h4>
+                                          <h4>เซ็ท 50 - 100 ท่าน</h4>
+                                        </div>
+                                        <h4>฿ <?=number_format($buffetset3);?></h4>
+                                      </div>
+                    
+                                      <div class="boxPriceItem">
+                                        <h3 class="bold">ราคารวม</h3>
+                                        <h3 class="bold">฿ <?=number_format($sumprice);?></h3>
+                                      </div>
+                                      <div style="border: 1px dashed var(--gray); margin-top: 10px;"></div>
                                     </div>
-                                    <div class="formInput w300">
-                                        <input type="number" value="<?=$fetch['sumprice'];?>" readonly>
-                                        <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
-                                    </div>
-                                </div>
-                                <div class="formRow">
-                                    <div class="formTitle">
-                                        <h4>ข้อมูลการจัดอาหาร</h4>
-                                    </div>
-                                    <div class="formInput">
-                                        <input type="text" value="xx" readonly>
-                                    </div>
-                                </div>
                                 <div class="formRow valignTop">
                                     <div class="formTitle">
                                         <h4>หมายเหตุ</h4>
                                     </div>
                                     <div class="formInput">
-                                        <textarea name="remark"></textarea>
+                                        <textarea name="remark_approve"></textarea>
                                     </div>
                                 </div>
                             </div>

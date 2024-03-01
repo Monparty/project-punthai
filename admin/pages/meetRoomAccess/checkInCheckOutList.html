@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การเข้าใช้งานห้องประชุม</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="#">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>การเข้าใช้งานห้องประชุม</a>
+    </div>
+    <main class="containerAdmin">
+        <h2 style="margin-bottom:10px;">การเข้าใช้งานห้องประชุม</h2>
+        <div class="boxSearch">
+            <div class="searchItem">
+                <input type="text" name="" id="" placeholder="ค้นหารายการ...">
+                <a href="#" class="button w100">ค้นหา</a>
+            </div>
+        </div>
+
+        <div class="containerTable">
+            <table class="table" border="0">
+                <thead>
+                    <tr>
+                        <td width="6%">ลำดับ</td>
+                        <td>ชื่อผู้จองห้องพัก</td>
+                        <td width="18%">วันที่เข้าพัก</td>
+                        <td width="24%">สถานะ</td>
+                        <td width="10%"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                    $count = 1;
+                    foreach($query as $fetch) { ?>
+                        <tr align="center">
+                            <td><?=$count++;?></td>
+                            <td align="left"><?=$fetch['booker_name'];?></td>
+                            <td><?=$fetch['check_in_date'];?> 14:00:00</td>
+                            <td><?=$fetch['booking_status'];?></td>
+                            <td align="center"><a title="ข้อมูลการเช็คอิน เช็คเอาท์" href="checkInCheckOutManage.php?id=<?=$fetch['booking_id'];?>"><i class='bx bx-edit-alt'></i></a></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+<script src="../../js/script.js"></script>
+</body>
+</html>
