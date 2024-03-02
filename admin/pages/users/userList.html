@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>การเข้าใช้งานห้องประชุม</title>
+    <title>จัดการข้อมูลสมาชิก</title>
     <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/admin.css">
@@ -15,15 +15,16 @@
     <div class="breadcrumbsAdmin">
         <a href="#">หน้าแรก</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
-        <a>การเข้าใช้งานห้องประชุม</a>
+        <a>จัดการข้อมูลสมาชิก</a>
     </div>
     <main class="containerAdmin">
-        <h2 style="margin-bottom:10px;">การเข้าใช้งานห้องประชุม</h2>
+        <h2 style="margin-bottom:10px;">จัดการข้อมูลสมาชิก</h2>
         <div class="boxSearch">
             <div class="searchItem">
                 <input type="text" name="" id="" placeholder="ค้นหารายการ...">
                 <a href="#" class="button w100">ค้นหา</a>
             </div>
+            <a href="addUser.php" class="button green">เพิ่มข้อมูลสมาชิก <i class='bx bx-plus'></i></a>
         </div>
 
         <div class="containerTable">
@@ -31,10 +32,11 @@
                 <thead>
                     <tr>
                         <td width="6%">ลำดับ</td>
-                        <td>ชื่อผู้จองห้องประชุม</td>
-                        <td width="18%">วันที่เริ่มต้น</td>
-                        <td width="24%">สถานะ</td>
-                        <td width="10%"></td>
+                        <td>ชื่อสมาชิก</td>
+                        <td width="16%">วันที่บันทึก</td>
+                        <td width="14%">สถานะ</td>
+                        <td width="5%"></td>
+                        <td width="5%"></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,10 +45,11 @@
                     foreach($query as $fetch) { ?>
                         <tr align="center">
                             <td><?=$count++;?></td>
-                            <td align="left"><?=$fetch['booker_name'];?></td>
-                            <td><?=$fetch['start_date'];?> </td>
-                            <td><?=$fetch['booking_status'];?></td>
-                            <td align="center"><a title="ข้อมูลการเข้าใช้งานห้องประชุม" href="checkInCheckOutManage.php?id=<?=$fetch['meetbooking_id'];?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td align="left"><?=$fetch['username'];?></td>
+                            <td><?=$fetch['create_at'];?></td>
+                            <td><?=$fetch['status'];?></td>
+                            <td align="left"><a title="แก้ไขข้อมูล" href="editUser.php?user_id=<?=$fetch['user_id'];?>"><i class='bx bx-edit-alt'></i></a></td>
+                            <td align="left"><a title="ลบรายการ" href="?delete=<?=$fetch['user_id'];?>"><i class='bx bx-trash'></i></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

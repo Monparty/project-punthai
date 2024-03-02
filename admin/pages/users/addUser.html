@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เพิ่มข้อมูลสมาชิก</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="../dashboard/dashboard.php">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a href="userList.php">จัดการสมาชิก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>เพิ่มข้อมูลสมาชิก</a>
+    </div>
+    <form action="addUser.php" method="post" enctype="multipart/form-data">
+        <main class="containerAdmin">
+            <section class="formSection">
+                <h2 style="margin-bottom:10px;">เพิ่มข้อมูลสมาชิก</h2>
+                <div class="form">
+                    <div class="headersection">
+                        <i class='bx bx-info-circle'></i>
+                        <h4>ข้อมูลทั่วไป</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ชื่อสมาชิก <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput">
+                            <input type="text" name="meetroom_name" value="" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>คำอธิบาย</h4>
+                        </div>
+                        <div class="formInput">
+                            <input type="text" name="meetroom_desc" value="">
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ราคา <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="number" name="meetroom_price" value="" required>
+                            <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
+                        </div>
+                    </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>เกี่ยวกับสมาชิก</h4>
+                        </div>
+                        <div class="formInput">
+                            <textarea name="meetroom_about"></textarea>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ชั้น <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <select name="floor">
+                                <option value="" selected>-</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>รองรับจำนวน <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="number" name="amountpeople" value="" required>
+                            <h5 class="formInputDesc">หน่วยเป็นคน</h5>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>รูปภาพประกอบ <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput file w300">
+                            <input type="file" name="meetroom_image" multiple required>
+                        </div>
+                    </div>
+                    <div class="headersection">
+                        <i class='bx bxs-playlist'></i>
+                        <h4>อุปกรณ์และสิ่งอำนวยความสะดวก</h4>
+                    </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>สิ่งอำนวยความสะดวก</h4>
+                        </div>
+                        <div class="formInput">
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility1" value="1">
+                                    <label for="">โปรเจคเตอร์</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility2" value="2">
+                                    <label for="">ไมโครโฟน</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility3" value="3">
+                                    <label for="">ลำโพง</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility4" value="4">
+                                    <label for="">พัดลม</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility5" value="5">
+                                    <label for="">โต๊ะกลม</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility6" value="6">
+                                    <label for="">โต๊ะยาว</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility7" value="7">
+                                    <label for="">ผ้าปูโต๊ะ</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility8" value="8">
+                                    <label for="">กระดานไวท์บอร์ด</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility9" value="9">
+                                    <label for="">โพเดียม</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input type="checkbox" name="facility10" value="10">
+                                    <label for="">ดอกไม้พลาสติก</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="headersection">
+                        <i class='bx bx-list-check'></i>
+                        <h4>สถานะ</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สถานะ <span class="force">*</span></h4>
+                        </div>
+                        <div class="boxCheckbox">
+                            <input type="radio" name="status[]" value="Active" checked>
+                            <label for="">ใช้งาน</label>
+                            <input type="radio" name="status[]" value="Inactive">
+                            <label for="">ไม่ใช้งาน</label>
+                        </div>
+                    </div>
+                    <div class="formBtn">
+                        <button type="submit" class="button green w100"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </form>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

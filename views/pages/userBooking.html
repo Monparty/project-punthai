@@ -148,7 +148,7 @@
             <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
               userBookingDetail.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>
             <?php } else { ?>
-              
+              paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
             <?php } ?>">
               <div class="borderBox roomContainer">
                 <?=$showimg[$i];?>

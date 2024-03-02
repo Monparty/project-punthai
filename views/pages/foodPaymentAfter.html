@@ -260,11 +260,11 @@
                       <h4><?=$fetch['food_name'];?></h4>
                       <h4>จำนวนที่สั่ง <?=$fetch['order_quantity'];?> รายการ</h4>
                     </div>
-                    <h4>฿ <?=$fetch['food_price'];?></h4>
+                    <h4>฿ <?=number_format($fetch['food_price']);?></h4>
                   </div>
                   <div class="boxPriceItem">
                     <h3 class="bold">ราคารวม</h3>
-                    <h3 class="bold">฿ <?=$fetch['food_price'];?></h3>
+                    <h3 class="bold">฿ <?=number_format($fetch['food_price']);?></h3>
                   </div>
                 </div>
               </details>

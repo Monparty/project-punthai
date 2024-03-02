@@ -1,9 +1,9 @@
-<?php 
+<?php
 include("../../../config/config.php");
 session_start();
 
-$booking_id = $_REQUEST['id'];
-$sql = "SELECT * FROM bookings INNER JOIN rooms ON rooms.room_id = bookings.room_id WHERE bookings.booking_id = $booking_id";
+$meetbooking_id = $_REQUEST['id'];
+$sql = "SELECT * FROM meetroom_bookings INNER JOIN meetrooms ON meetrooms.meetroom_id = meetroom_bookings.meetroom_id WHERE meetroom_bookings.meetbooking_id = $meetbooking_id";
 $result = mysqli_query($c, $sql);
 $fetch = mysqli_fetch_array($result);
 extract($fetch);
@@ -12,22 +12,18 @@ $stmt->execute();
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['checkIn'])) {
-    $sql = "UPDATE bookings SET room_number=:room_number, car_number=:car_number, remark_check_in_out=:remark_check_in_out, booking_status=:booking_status, check_in_at=CURRENT_TIMESTAMP WHERE booking_id=$booking_id";
+    $sql = "UPDATE meetroom_bookings SET remark_approve=:remark_approve, booking_status=:booking_status, real_start_date=CURRENT_TIMESTAMP WHERE meetbooking_id=$meetbooking_id";
 
-    $booking_status = "เช็คอิน";
-    $remark_check_in_out = $_POST["remark_check_in_out"];
-    $room_number = $_POST["room_number"];
-    $car_number = $_POST["car_number"];
+    $booking_status = "เข้าใช้งานห้องประชุม";
+    $remark_approve = $_POST["remark_approve"];
 
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":room_number", $room_number);
-    $stmt->bindParam(":car_number", $car_number);
-    $stmt->bindParam(":remark_check_in_out", $remark_check_in_out);
+    $stmt->bindParam(":remark_approve", $remark_approve);
     $stmt->bindParam(":booking_status", $booking_status);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-    echo '<script>
+        echo '<script>
         setTimeout(function() {
         swal({
             title: "บันทึกข้อมูลการเช็คอินเรียบร้อย",  
@@ -38,23 +34,23 @@ if (isset($_REQUEST['checkIn'])) {
         }, 1000);
         </script>';
     } else {
-    echo "เกิดข้อผิดพลาดในการแก้ไขข้อมูล";
+        echo "เกิดข้อผิดพลาดในการแก้ไขข้อมูล";
     }
 }
 
 if (isset($_REQUEST['checkOut'])) {
-    $sql = "UPDATE bookings SET remark_check_in_out=:remark_check_in_out, booking_status=:booking_status, check_out_at=CURRENT_TIMESTAMP WHERE booking_id=$booking_id";
+    $sql = "UPDATE meetroom_bookings SET remark_approve=:remark_approve, booking_status=:booking_status, real_end_date=CURRENT_TIMESTAMP WHERE meetbooking_id=$meetbooking_id";
 
-    $booking_status = "เช็คเอาท์";
-    $remark_check_in_out = $_POST["remark_check_in_out"];
-    
+    $booking_status = "ใช้งานห้องประชุมเสร็จสิ้น";
+    $remark_approve = $_POST["remark_approve"];
+
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":remark_check_in_out", $remark_check_in_out);
+    $stmt->bindParam(":remark_approve", $remark_approve);
     $stmt->bindParam(":booking_status", $booking_status);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-    echo '<script>
+        echo '<script>
         setTimeout(function() {
         swal({
             title: "บันทึกข้อมูลการเช็คเอาท์เรียบร้อย",  
@@ -65,9 +61,8 @@ if (isset($_REQUEST['checkOut'])) {
         }, 1000);
         </script>';
     } else {
-    echo "เกิดข้อผิดพลาดในการแก้ไขข้อมูล";
+        echo "เกิดข้อผิดพลาดในการแก้ไขข้อมูล";
     }
 }
 
-include ("checkInCheckOutManage.html");
-?>
+include("checkInCheckOutManage.html");
