@@ -147,8 +147,10 @@
               meetRoomPaymentAfter.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id'];?>
             <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
               userMeetBookingDetail.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id']?>
-            <?php } else { ?>
-              meetRoomPaymentAfter.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id'];?>
+            <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย / รอตรวจสอบ') { ?>
+              
+              <?php } else { ?>
+                meetRoomPaymentAfter.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id'];?>
             <?php } ?>">
               <div class="borderBox roomContainer">
                 <?=$showimg[$i];?>

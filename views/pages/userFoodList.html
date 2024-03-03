@@ -145,8 +145,8 @@
             foreach ($queryOrder as $i=>$fetchOrder) { ?>
             <a href="<?php if ($fetchOrder['order_status'] === 'รอการชำระเงิน') { ?>
               foodPaymentAfter.php?order_id=<?php echo $fetchOrder['order_id'] . '&food_id=' . $fetchOrder['food_id'];?>
-            <?php } else if ($fetchOrder['order_status'] === 'ชำระเงินเรียบร้อย') { ?>
-              
+              <?php } else if ($fetchOrder['order_status'] === 'ข้อมูลการชำระเงินไม่ถูกต้อง') { ?>
+                foodPaymentAfter.php?order_id=<?php echo $fetchOrder['order_id'] . '&food_id=' . $fetchOrder['food_id'];?>
             <?php } else { ?>
               
             <?php } ?>">

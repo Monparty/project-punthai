@@ -278,6 +278,46 @@
             }
         }
 
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        h1 span {
+            color: var(--white);
+            position: relative;
+        }
+
+        h1 span {
+            color: var(--white);
+            position: relative;
+        }
+
+        h1 span::before {
+            content: "";
+            height: 30px;
+            width: 2px;
+            position: absolute;
+            top: 50%;
+            right: -8px;
+            background: var(--white);
+            transform: translateY(-45%);
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0 }
+        }
+
+        .boxcontent5__item {
+
+            & img {
+                width: 90px;
+                height: 90px;
+                object-fit: cover;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -290,9 +330,7 @@
     <main class="container">
         <section>
             <div class="boxcontent1">
-                <h1 style="color: var(--white);">
-                    ที่พักที่ใช่ยังไงก็ Punthai Homestay
-                </h1>
+                    <h1>&nbsp;<span></span></h1>
                 <div class="btn__group">
                     <input type="text" placeholder="ค้นหาสิ่งที่คุณต้องการ">
                     <a href="#" class="buttonOutline"><i class='bx bx-search'></i> ค้นหา</a> 
@@ -310,19 +348,19 @@
             <h2 style="margin-bottom: 10px;">ยกระดับการเดินทางของคุณในแบบที่คุณต้องการ</h2>
             <div class="boxcontent2">
                 <div class="content__img1">
-                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <a href="#"><img src="https://www.grandecentrepointpattaya.com/upload/rooms-and-suites/2-rooms-and-suites.jpg?v=66" alt=""></a>
                     <h4>สถานที่ท่องเที่ยว</h4>
                 </div>
                 <div class="content__img1">
-                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <a href="#"><img src="https://image-tc.galaxy.tf/wijpeg-a8m9cqkzy9o6c5hhfi4rxpbu9/hopplusroom01_standard.jpg?crop=0%2C0%2C2000%2C1500" alt=""></a>
                     <h4>สถานที่ท่องเที่ยว</h4>
                 </div>
                 <div class="content__img1">
-                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <a href="#"><img src="https://image-tc.galaxy.tf/wijpeg-5gkkhdbvpze7max7sm5i4fbe6/es-super-deluxe-suite-twin-city-park-view-3.jpg?width=1920" alt=""></a>
                     <h4>สถานที่ท่องเที่ยว</h4>
                 </div>
                 <div class="content__img1">
-                    <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                    <a href="#"><img src="https://bcdn.renthub.in.th/listing_picture/202002/20200224/RQj9aHxeD62Z4o5SdGNo.jpg?class=lthumbnail" alt=""></a>
                     <h4>สถานที่ท่องเที่ยว</h4>
                 </div>
             </div>
@@ -332,13 +370,13 @@
             <div class="boxcontent3">
                 <div class="slideshow-container">
                     <div class="mySlides fade">
-                      <img src="../../imgs/noImage.png">
+                      <img src="https://www.tkpalace.com/wp-content/uploads/2019/01/Stand-re3.png">
                     </div>
                     <div class="mySlides fade">
-                      <img src="../../imgs/noImage.png">
+                      <img src="https://baanphuwaan.org/wp-content/uploads/2022/08/BW-0078.jpg">
                     </div>
                     <div class="mySlides fade">
-                      <img src="../../imgs/noImage.png">
+                      <img src="https://bcdn.renthub.in.th/listing_picture/202002/20200224/RQj9aHxeD62Z4o5SdGNo.jpg?class=lthumbnail">
                     </div>
                     <div class="btn__group prev--next">
                         <a class="prev" onclick="plusSlides(-1)"><i class='bx bx-chevron-left'></i></a>
@@ -357,7 +395,7 @@
                     </div>
                     <div class="contentright__section3">
                         <h4 class="content__listh4">1</h4>
-                        <img src="../../imgs/noImage.png" height="50px" alt="">
+                        <img src="https://image-tc.galaxy.tf/wijpeg-5gkkhdbvpze7max7sm5i4fbe6/es-super-deluxe-suite-twin-city-park-view-3.jpg?width=1920" style="width: 50px; height: 50px; object-fit: cover;" alt="">
                         <div>
                             <h4>text</h4>
                             <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, architecto.</h5>
@@ -365,7 +403,7 @@
                     </div>
                     <div class="contentright__section3">
                         <h4 class="content__listh4">2</h4>
-                        <img src="../../imgs/noImage.png" height="50px" alt="">
+                        <img src="https://www.grandecentrepointpattaya.com/upload/rooms-and-suites/2-rooms-and-suites.jpg?v=66" style="width: 50px; height: 50px; object-fit: cover;" alt="">
                         <div>
                             <h4>text</h4>
                             <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, architecto.</h5>
@@ -373,7 +411,7 @@
                     </div>
                     <div class="contentright__section3">
                         <h4 class="content__listh4">3</h4>
-                        <img src="../../imgs/noImage.png" height="50px" alt="">
+                        <img src="https://www.tkpalace.com/wp-content/uploads/2019/01/Stand-re3.png" style="width: 50px; height: 50px; object-fit: cover;" alt="">
                         <div>
                             <h4>text</h4>
                             <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, architecto.</h5>
@@ -398,18 +436,18 @@
                     </div>
                     <div class="boxcontent4__img">
                         <div class="content__img2"">
-                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <a href="#"><img src="https://baanphuwaan.org/wp-content/uploads/2022/08/BW-0078.jpg" alt=""></a>
                         </div>
                         <div class="content__img2"">
-                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <a href="#"><img src="https://www.tkpalace.com/wp-content/uploads/2019/01/Stand.Re_.png" alt=""></a>
                             <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
                         </div>
                         <div class="content__img2"">
-                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <a href="#"><img src="https://pix10.agoda.net/hotelImages/33878453/563761286/3a93a039e5bbee25cd882ac7635449f8.jpg?ce=0&s=702x392" alt=""></a>
                             <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
                         </div>
                         <div class="content__img2"">
-                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <a href="#"><img src="https://pix10.agoda.net/hotelImages/33878453/563761290/e3b1b07c52c9fcffa8a3765ef2cf9e4a.jpg?ce=0&s=702x392" alt=""></a>
                             <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
                         </div>
                     </div>
@@ -418,7 +456,7 @@
                     <div class="boxcontent4__desc">
                         <h2>ห้องประชุม</h2>
                         <div class="btn__group">
-                            <a href="#" class="button">ห้องพักยอดนิยม</a>
+                            <a href="#" class="button">ห้องประชุมยอดนิยม</a>
                             <a href="#" class="buttonOutline">กิจกรรมยอดนิยม</a>
                             <a href="#" class="buttonOutline">จัดงานแต่ง</a>
                             <a href="#" class="buttonOutline">การจัดงานเลี้ยง</a>
@@ -427,18 +465,18 @@
                     </div>
                     <div class="boxcontent4__img">
                         <div class="content__img2"">
-                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <a href="#"><img src="https://www.ananda.co.th/blog/thegenc/wp-content/uploads/2023/09/business-meeting-working-room-office-building-FI.jpg" alt=""></a>
                         </div>
                         <div class="content__img2"">
-                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO3G9AxcrJlF2wq0tuAMvYI97NK0rGP_RqCWFfKWVon4EFjn3SIlxiGx54yI7iX-i07GM&usqp=CAU" alt=""></a>
                             <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
                         </div>
                         <div class="content__img2"">
-                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <a href="#"><img src="https://digitoryspace.com/wp-content/uploads/2022/06/Meeting-Room-A-768x433.jpg" alt=""></a>
                             <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
                         </div>
                         <div class="content__img2"">
-                            <a href="#"><img src="../../imgs/noImage.png" alt=""></a>
+                            <a href="#"><img src="https://lh3.googleusercontent.com/proxy/49W2xq77tfGp-z9c16pzgAwhCULRVo6PW0a9z8vy6dGXBjz8NvJt4qhqXEJdmEtpF8X9M4yVUjGdH73TgBqd4bw8GZoRNJshh0WCIH3K07VNY1tWPhBXXoZFUQRJ" alt=""></a>
                             <h5>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h5>
                         </div>
                     </div>
@@ -452,75 +490,51 @@
             </div>
             <div class="boxcontent5__boxitem">
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://www.pullmanphuketarcadia.com/wp-content/uploads/sites/65/2021/07/Thai-Food-Recipe-Green-Curry.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5LI9eU30jOZeQaNmAjy4WGOXc52wZm20kjVwgJGNDfj0wquWc9F.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://www.diyinspirenow.com/wp-content/uploads/2021/11/%E0%B9%80%E0%B8%A1%E0%B8%99%E0%B8%B9%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3-7-%E0%B8%A7%E0%B8%B1%E0%B8%99-06.webp" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://img.wongnai.com/p/1920x0/2018/12/17/71ede90ccda64400a10a97c851f1c0bc.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://img.kapook.com/u/2017/surauch/cooking/p2_32.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://เมนู.net/media/images/recipe/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%80%E0%B8%9C%E0%B9%87%E0%B8%94%E0%B9%84%E0%B8%81%E0%B9%88.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://img.wongnai.com/p/1920x0/2021/08/09/f5ff71c37a2c4101b895432aae1ac01a.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://img.wongnai.com/p/1920x0/2019/07/02/620860161df84fbb8ef6b3c326105b3b.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://img.wongnai.com/p/1920x0/2019/05/13/8206fe1d60144d6094416b6431983d7a.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://img.wongnai.com/p/l/2017/10/13/c9cd03322921435faa728d5f9c119d3b.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://img.wongnai.com/p/1920x0/2018/10/17/d10f29bb89794d93ab4a80704133d700.jpg" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
                 <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
-                    <h5>รายการอาหาร</h5>
-                </div>
-                <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
-                    <h5>รายการอาหาร</h5>
-                </div>
-                <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
-                    <h5>รายการอาหาร</h5>
-                </div>
-                <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
-                    <h5>รายการอาหาร</h5>
-                </div>
-                <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
-                    <h5>รายการอาหาร</h5>
-                </div>
-                <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
-                    <h5>รายการอาหาร</h5>
-                </div>
-                <div class="boxcontent5__item">
-                    <img src="../../imgs/noImage.png" height="90" alt="">
+                    <img src="https://static.cdntap.com/tap-assets-prod/wp-content/uploads/sites/25/2014/12/9fish-sticks-1.jpg?width=700&quality=95" height="90" alt="">
                     <h5>รายการอาหาร</h5>
                 </div>
             </div>
@@ -555,5 +569,36 @@
     <?php include("../layouts/footer.html"); ?>
 
     <script src="../js/script.js"></script>
+    <script>
+        const dynamicText = document.querySelector("h1 span");
+    const words = ["ที่พักที่ใช่ยังไงก็ Punthai Homestay", "จัดงานเลี้ยง งานแต่ ประชุมสัมมนา", "จัดมื้ออาหาร", "จองห้องพัก"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const typeEffect = () => {
+        const currentWord = words[wordIndex];
+        const currentChar = currentWord.substring(0, charIndex);
+        dynamicText.textContent = currentChar;
+        dynamicText.classList.add("stop-blinking");
+
+        if (!isDeleting && charIndex < currentWord.length) {
+            // If condition is true, type the next character
+            charIndex++;
+            setTimeout(typeEffect, 200);
+        } else if (isDeleting && charIndex > 0) {
+            // If condition is true, remove the previous character
+            charIndex--;
+            setTimeout(typeEffect, 100);
+        } else {
+            // If word is deleted then switch to the next word
+            isDeleting = !isDeleting;
+            dynamicText.classList.remove("stop-blinking");
+            wordIndex = !isDeleting ? (wordIndex + 1) % words.length : wordIndex;
+            setTimeout(typeEffect, 1200);
+        }
+    }
+    typeEffect();
+    </script>
 </body>
 </html>

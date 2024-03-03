@@ -33,122 +33,85 @@
                             <h4>ชื่อสมาชิก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" name="meetroom_name" value="" required>
+                            <input type="text" name="username" value="" required>
                         </div>
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>คำอธิบาย</h4>
+                            <h4>อีเมล <span class="force">*</span></h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" name="meetroom_desc" value="">
+                            <input type="email" name="email" value="" required>
                         </div>
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>ราคา <span class="force">*</span></h4>
+                            <h4>เบอร์โทร <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <input type="number" name="meetroom_price" value="" required>
-                            <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
-                        </div>
-                    </div>
-                    <div class="formRow valignTop">
-                        <div class="formTitle">
-                            <h4>เกี่ยวกับสมาชิก</h4>
-                        </div>
-                        <div class="formInput">
-                            <textarea name="meetroom_about"></textarea>
+                            <input type="number" name="phone_number" value="" required>
                         </div>
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>ชั้น <span class="force">*</span></h4>
+                            <h4>รหัสผ่าน <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <select name="floor">
-                                <option value="" selected>-</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                            <input type="password" name="password" value="" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ยืนยันรหัสผ่าน <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="password" name="confirm_password" value="" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>เพศ</h4>
+                        </div>
+                        <div class="formInput w300">
+                            <select name="gender">
+                                <option value="">-</option>
+                                <option value="1">ชาย</option>
+                                <option value="2">หญิง</option>
+                                <option value="3">ไม่ระบุ</option>
                             </select>
                         </div>
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>รองรับจำนวน <span class="force">*</span></h4>
+                            <h4>วันเกิด</h4>
                         </div>
                         <div class="formInput w300">
-                            <input type="number" name="amountpeople" value="" required>
-                            <h5 class="formInputDesc">หน่วยเป็นคน</h5>
+                            <input type="date" name="birth_date" value="">
                         </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>รูปภาพประกอบ <span class="force">*</span></h4>
-                        </div>
-                        <div class="formInput file w300">
-                            <input type="file" name="meetroom_image" multiple required>
-                        </div>
-                    </div>
-                    <div class="headersection">
-                        <i class='bx bxs-playlist'></i>
-                        <h4>อุปกรณ์และสิ่งอำนวยความสะดวก</h4>
                     </div>
                     <div class="formRow valignTop">
                         <div class="formTitle">
-                            <h4>สิ่งอำนวยความสะดวก</h4>
+                            <h4>ที่อยู่</h4>
                         </div>
                         <div class="formInput">
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility1" value="1">
-                                    <label for="">โปรเจคเตอร์</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility2" value="2">
-                                    <label for="">ไมโครโฟน</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility3" value="3">
-                                    <label for="">ลำโพง</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility4" value="4">
-                                    <label for="">พัดลม</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility5" value="5">
-                                    <label for="">โต๊ะกลม</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility6" value="6">
-                                    <label for="">โต๊ะยาว</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility7" value="7">
-                                    <label for="">ผ้าปูโต๊ะ</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility8" value="8">
-                                    <label for="">กระดานไวท์บอร์ด</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility9" value="9">
-                                    <label for="">โพเดียม</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility10" value="10">
-                                    <label for="">ดอกไม้พลาสติก</label>
-                                </div>
-                            </div>
+                            <textarea name="address"></textarea>
+                        </div>
+                    </div>
+                    <div class="headersection">
+                        <i class='bx bx-user-pin'></i>
+                        <h4>สิทธิการเข้าถึง</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สิทธิการเข้าถึง <span class="force">*</span></h4>
+                        </div>
+                        <div class="boxCheckbox">
+                            <input type="radio" id="1" name="position[]" value="user" checked>
+                            <label for="1">user</label>
+                            <input type="radio" id="2" name="position[]" value="employee">
+                            <label for="2">employee</label>
+                            <input type="radio" id="3" name="position[]" value="admin">
+                            <label for="3">admin</label>
                         </div>
                     </div>
                     <div class="headersection">

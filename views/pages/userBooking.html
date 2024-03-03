@@ -147,6 +147,8 @@
               paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
             <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
               userBookingDetail.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>
+            <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย / รอตรวจสอบ') { ?>
+
             <?php } else { ?>
               paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
             <?php } ?>">
