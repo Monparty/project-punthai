@@ -303,11 +303,15 @@
                 <div><?=$fetch['roomabout'];?></div>
               </div>
               <div style="border: 1px dashed var(--gray)"></div>
-              <div class="contact">
+              <div>
                 <h4>รายละเอียดการติดต่อ</h4>
                 <h4><?=$fetch['booker_name'];?></h4>
                 <h4><?=$fetch['phone'];?></h4>
                 <h4><?=$fetch['email'];?></h4>
+              </div>
+              <div <?php echo ($remark=='') ? 'style="display: none;"' : '';?>>
+                <h4 class="bold" style="color: var(--orange);">มีบางอย่างไม่ถูกต้อง !</h4>
+                <h4><?=$fetch['remark'];?></h4>
               </div>
             </div>
           </div>

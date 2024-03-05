@@ -26,7 +26,7 @@ if (isset($_REQUEST['checkIn'])) {
         echo '<script>
         setTimeout(function() {
         swal({
-            title: "บันทึกข้อมูลการเช็คอินเรียบร้อย",  
+            title: "บันทึกข้อมูลการเข้าใช้งานเรียบร้อย",  
             type: "success"
         }, function() {
             window.location = "checkInCheckOutList.php";
@@ -53,7 +53,7 @@ if (isset($_REQUEST['checkOut'])) {
         echo '<script>
         setTimeout(function() {
         swal({
-            title: "บันทึกข้อมูลการเช็คเอาท์เรียบร้อย",  
+            title: "บันทึกข้อมูลการใช้งานเรียบร้อย",  
             type: "success"
         }, function() {
             window.location = "checkInCheckOutList.php";

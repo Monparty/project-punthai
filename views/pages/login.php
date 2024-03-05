@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (password_verify($password, $hashedPassword)) {   
             $_SESSION["username"] = $data["username"];
+            $_SESSION["name"] = $data["name"];
             $_SESSION["email"] = $data["email"];
             $_SESSION["user_id"] = $data["user_id"];
             $_SESSION["phone_number"] = $data["phone_number"] ?? "";

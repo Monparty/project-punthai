@@ -11,7 +11,7 @@
         .formItem {
             display: flex;
             flex-direction: column;
-            row-gap: 10px;
+            row-gap: 5px;
             width: 300px;
             padding: 20px;
         }
@@ -41,12 +41,14 @@
         <div class="borderBox">
             <h2>สมัครสมาชิก</h2>
             <div class="formItem">
-                <h4>ชื่อ <span style="color: var(--sky); font-size: 14px;">(ใช้ในการเข้าสู่ระบบ)</span></h4>
-                <input type="text" name="username" required>
+                <h4>ชื่อ - นามสกุล</h4>
+                <input type="text" name="name" required>
                 <h4>อีเมล</h4>
                 <input type="email" name="email" required>
                 <h4>เบอร์โทร</h4>
                 <input type="number" name="phone_number" required>
+                <h4>Username <span style="color: var(--sky); font-size: 14px;">(ใช้ในการเข้าสู่ระบบ)</span></h4>
+                <input type="text" name="username" required>
                 <h4>รหัสผ่าน</h4>
                 <input type="password" name="password" required>
                 <h4>ยืนยันรหัสผ่าน</h4>

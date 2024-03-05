@@ -43,6 +43,10 @@ extract($fetch);
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
+$order_quantity = $fetch['order_quantity'];
+$food_price = $fetch['food_price'];
+$sumPrice = $order_quantity * $food_price;
+
 foreach ($stmt as $i=>$fetch) {
   
   // แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64

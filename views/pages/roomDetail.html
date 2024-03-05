@@ -767,8 +767,8 @@
                 <form action="roomDetail.php" method="post" class="modalForm">
                     <input type="hidden" name="id" value="<?=$room_id;?>">
                     <h2>รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
-                    <h4>ชื่อ</h4>
-                    <input type="text" name="booker_name" value="<?=$_SESSION["username"];?>" required>
+                    <h4>ชื่อผู้จอง</h4>
+                    <input type="text" name="booker_name" value="<?=$_SESSION["name"];?>" required>
                     <div class="modalFormItem">
                         <div>
                             <h4>อีเมล</h4>

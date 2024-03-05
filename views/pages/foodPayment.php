@@ -21,6 +21,9 @@ foreach ($stmt as $i=>$fetch) {
     // แสดงผลรูปภาพ
     $showimg[$i] = '<img src="data:$food_image/png;base64,' . $image_base64[$i] . '" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px; transition: .3s;"/>';
 }
+$order_quantity = $fetch['order_quantity'];
+$food_price = $fetch['food_price'];
+$sumPrice = $order_quantity * $food_price;
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {

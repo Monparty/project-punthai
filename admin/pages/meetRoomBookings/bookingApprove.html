@@ -47,14 +47,14 @@
                         <h4>รายละเอียดการชำระเงิน</h4>
                     </div>
                     <div class="boxPayment">
-                        <div class="slipImage">
+                        <div class="slipImage" <?php echo ($upload_slip_at=='') ? 'style="visibility: hidden;"' : '';?>>
                             <?=$showimg[$i];?>
                         </div>
                         <div class="paymentDetail borderBox">
                             <div class="form">
                                 <div class="formRow">
                                     <div class="formTitle">
-                                        <h4>ชื่อผู้เข้าพัก</h4>
+                                        <h4>ชื่อผู้จอง</h4>
                                     </div>
                                     <div class="formInput">
                                         <input type="text" value="<?=$fetch['booker_name'];?>" readonly>
@@ -98,6 +98,14 @@
                                     </div>
                                     <div class="formInput">
                                         <input type="text" value="<?=$fetch['end_date'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="formRow valignTop">
+                                    <div class="formTitle">
+                                        <h4>หมายเหตุการจอง</h4>
+                                    </div>
+                                    <div class="formInput">
+                                        <textarea name="" readonly><?=$fetch['remark'];?></textarea>
                                     </div>
                                 </div>
                                 <div class="formRow">
@@ -214,13 +222,13 @@
                                         <h4>หมายเหตุ</h4>
                                     </div>
                                     <div class="formInput">
-                                        <textarea name="remark_approve"></textarea>
+                                        <textarea name="remark_approve"><?=$fetch['remark_approve'];?></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="formBtn">
-                                <button type="submit" name="cancel" class="button orange"> การชำระเงินไม่ถูกต้อง</button>
-                                <button type="submit" name="update" class="button green"> ยืนยันการชำระเงิน</button>
+                                <button type="submit" name="cancel" class="button orange" <?php echo ($booking_status!='ชำระเงินเรียบร้อย / รอตรวจสอบ') ? 'style="display: none;"' : ''; ?>> การชำระเงินไม่ถูกต้อง</button>
+                                <button type="submit" name="update" class="button green" <?php echo ($booking_status!='ชำระเงินเรียบร้อย / รอตรวจสอบ') ? 'style="display: none;"' : ''; ?>> ยืนยันการชำระเงิน</button>
                                 <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
                             </div>
                         </div>

@@ -150,6 +150,12 @@
             line-height: 18px;
         }
 
+        .boxPrice {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         @media screen and (max-width: 576px) {
             .imgDesc {
                 flex-direction: column;
@@ -215,7 +221,10 @@
                                 </div>
                                 <h4><?=$fetch['meetroom_name'];?></h4>
                                 <h4 class="roomDesc"><?=$fetch['meetroom_desc'];?></h4>
-                                <h4>฿ <?=number_format($fetch['meetroom_price']);?></h4>
+                                <div class="boxPrice">
+                                    <h4>฿ <?=number_format($fetch['meetroom_price']);?></h4>
+                                    <h4>รองรับ <?=$fetch['amountpeople'];?> คน</h4>
+                                </div>
                             </div>
                         </a>
                     <?php } ?>

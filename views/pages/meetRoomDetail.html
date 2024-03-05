@@ -461,7 +461,7 @@
             <div class="roomDetailName borderBox">
                 <div class="roomName">
                     <h2><?=$fetch['meetroom_name'];?></h2>
-                    <h5><?=$fetch['meetroom_about'];?></h5>
+                    <h5><?=$fetch['meetroom_about'];?> (รองรับได้ <?=$fetch['amountpeople'];?> คน)</h5>
                 </div>
                 <div class="boxRoomPrice">
                     <div class="roomPrice">
@@ -753,8 +753,8 @@
                     <h2 style="height: fit-content;">รายละเอียดการจอง (สำหรับใบจองอิเล็กทรอนิกส์)</h2>
                     <div class="containerModalForm">
                         <div class="form-panel active">
-                            <h4>ชื่อ</h4>
-                            <input type="text" style="margin-bottom: 10px;" name="booker_name" value="<?=$_SESSION["username"];?>" required>
+                            <h4 style="margin-bottom: 10px;">ชื่อผู้จอง</h4>
+                            <input type="text" style="margin-bottom: 10px;" name="booker_name" value="<?=$_SESSION["name"];?>" required>
                             <div class="modalFormItem">
                                 <div>
                                     <h4>อีเมล</h4>

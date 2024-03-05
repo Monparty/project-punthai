@@ -145,15 +145,15 @@
             foreach ($query as $i=>$fetch) { ?>
             <a href="<?php if ($fetch['booking_status'] === 'รอชำระเงิน') { ?>
               paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
-            <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
-              userBookingDetail.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>
-            <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย / รอตรวจสอบ') { ?>
-
-            <?php } else { ?>
-              paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
-            <?php } ?>">
-              <div class="borderBox roomContainer">
-                <?=$showimg[$i];?>
+              <?php } else if ($fetch['booking_status'] === 'ข้อมูลการชำระเงินไม่ถูกต้อง') { ?>
+                paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
+              <?php } else if ($fetch['booking_status'] === 'เช็คอิน' && 'เช็คเอาท์' && 'ชำระเงินเรียบร้อย / รอตรวจสอบ') { ?>
+                userBookingDetail.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>
+              <?php } else { ?>
+                  
+              <?php } ?>">
+                <div class="borderBox roomContainer">
+                    <?=$showimg[$i];?>
                 <div class="roomItem">
                   <h4 class="bold"><?=$fetch["name"];?></h4>
                   <div class="roomCheckDate">

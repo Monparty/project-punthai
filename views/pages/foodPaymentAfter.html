@@ -264,7 +264,7 @@
                   </div>
                   <div class="boxPriceItem">
                     <h3 class="bold">ราคารวม</h3>
-                    <h3 class="bold">฿ <?=number_format($fetch['food_price']);?></h3>
+                    <h3 class="bold">฿ <?=number_format($sumPrice);?></h3>
                   </div>
                 </div>
               </details>
@@ -291,6 +291,10 @@
               <h4>รายละเอียดการติดต่อ</h4>
               <h4><?=$_SESSION["username"];?></h4>
               <h4><?=$_SESSION["phone_number"];?></h4>
+            </div>
+            <div <?php echo ($payment_remark=='') ? 'style="display: none;"' : '';?>>
+              <h4 class="bold" style="color: var(--orange);">มีบางอย่างไม่ถูกต้อง !</h4>
+              <h4><?=$fetch['payment_remark'];?></h4>
             </div>
           </div>
         </div>

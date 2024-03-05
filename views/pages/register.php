@@ -6,6 +6,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // รับข้อมูลจากฟอร์ม
+  $name = $_POST["name"];
   $username = $_POST["username"];
   $email = $_POST["email"];
   $phone_number = $_POST["phone_number"];
@@ -72,8 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
   // บันทึกข้อมูลผู้ใช้ใหม่ลงในฐานข้อมูล
-  $sql = "INSERT INTO users (username, email, phone_number,  password, create_at) VALUES (:username, :email, :phone_number, :hashedPassword, CURRENT_TIMESTAMP)";
+  $sql = "INSERT INTO users (name, username, email, phone_number,  password, create_at) VALUES (:name, :username, :email, :phone_number, :hashedPassword, CURRENT_TIMESTAMP)";
   $stmt = $conn->prepare($sql);
+  $stmt->bindParam(":name", $name);
   $stmt->bindParam(":username", $username);
   $stmt->bindParam(":email", $email);
   $stmt->bindParam(":phone_number", $phone_number);

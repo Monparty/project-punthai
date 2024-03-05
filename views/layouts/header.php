@@ -75,7 +75,7 @@
       <!-- เข้าสู่ระบบแล้ว ให้แสดงรูปภาพ -->
       <div class="dropdown">
         <div class="dropbtn" onclick="myFunction()">
-          <?php echo $_SESSION['username'];?>
+          <?php echo $_SESSION['name'];?>
           <i class='bx bx-chevron-down'></i>
         </div>
         <div id="myDropdown" class="dropdown-content">

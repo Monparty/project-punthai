@@ -143,11 +143,11 @@
             <h2>รายละเอียดการจอง</h2>
             <?php
             foreach ($query as $i=>$fetch) { ?>
-            <a href="<?php if ($fetch['booking_status'] === 'รอชำระเงิน') { ?>
+            <a href="<?php if ($fetch['booking_status'] === 'รอชำระเงิน' || 'ข้อมูลการชำระเงินไม่ถูกต้อง') { ?>
               meetRoomPaymentAfter.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id'];?>
             <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
               userMeetBookingDetail.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id']?>
-            <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย / รอตรวจสอบ') { ?>
+            <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย / รอตรวจสอบ' || 'ใช้งานห้องประชุมเสร็จสิ้น' ) { ?>
               
               <?php } else { ?>
                 meetRoomPaymentAfter.php?meetbooking_id=<?php echo $fetch['meetbooking_id'] . '&meetroom_id=' . $fetch['meetroom_id'];?>

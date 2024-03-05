@@ -41,7 +41,7 @@
                         <h4>รายละเอียดการสั่งอาหาร</h4>
                     </div>
                     <div class="boxPayment">
-                        <div class="slipImage">
+                        <div class="slipImage" <?php echo ($fetch['payment_at']=='') ? 'style="visibility: hidden;"' : '';?>>
                             <?=$showimg[$i];?>
                         </div>
                         <div class="paymentDetail borderBox">
