@@ -1,56 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
-    <link rel="icon" type="image/x-icon" href="../imgs/logoIcon.png">
-    <link rel="icon" type="image/x-icon" href="../../imgs/logoIcon.png">
-    <link rel="stylesheet" href="../css/main.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        .formItem {
-            display: flex;
-            flex-direction: column;
-            row-gap: 10px;
-            width: 300px;
-            padding: 20px;
-        }
+<?php 
+require_once '../config/config.php';
+session_start();
 
-        .container {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // รับข้อมูลจากฟอร์ม
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-        .borderBox {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
-</head>
-<body>
-<form action="pages/dashboard/dashboard.php" method="post">
-    <div class="container">
-        <div class="borderBox">
-            <h2>Admin Login</h2>
-            <div class="formItem">
-                <h4>Username</h4>
-                <input type="text" name="username" required>
-                <h4>Password</h4>
-                <input type="password" name="password" required>
-            </div>
-            <button type="submit" class="button w100" onclick="adminLogin()">เข้าสู่ระบบ</button>
-        </div>
-    </div>
-</form>
-<script>
-    function adminLogin() {
-        window.location.href = "pages/dashboard/dashboard.php"
+    // ตรวจสอบว่า ชื่อผู้ใช้และรหัสผ่านถูกต้องหรือไม่
+    $sql = "SELECT * FROM users WHERE username = :username AND position IN ('admin', 'employee')";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":username", $username);
+    $stmt->execute();
+    
+    if ($stmt->rowCount() == 1) {
+        $data = $stmt->fetch();
+        $hashedPassword = $data['password'];
+
+        if (password_verify($password, $hashedPassword)) {   
+            $_SESSION["username"] = $data["username"];
+            $_SESSION["name"] = $data["name"];
+            $_SESSION["email"] = $data["email"];
+            $_SESSION["user_id"] = $data["user_id"];
+            $_SESSION["phone_number"] = $data["phone_number"] ?? "";
+
+            //เปลี่ยนเส้นท่าไปยังหน้าหลัก
+            echo '<script>
+                    setTimeout(function() {
+                    swal({
+                        title: "เข้าสู่ระบบสำเร็จ",  
+                        type: "success"
+                    }, function() {
+                        window.location = "pages/dashboard/dashboard.php";
+                    });
+                    }, 1000);
+                </script>';
+            } else {
+            //หากเข้าสู่ระบบไม่สำเร็จ
+                echo '<script>
+                            setTimeout(function() {
+                            swal({
+                                title: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง !!",  
+                                text: "กรุณาลองใหม่อีกครั้ง",
+                                type: "warning"
+                            }, function() {
+                                window.location = "index.php";
+                            });
+                        }, 1000);
+                    </script>';
+                }
+    } else {
+        //หากเข้าสู่ระบบไม่สำเร็จ
+        echo '<script>
+                    setTimeout(function() {
+                    swal({
+                        title: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง !!",
+                        text: "กรุณาลองใหม่อีกครั้ง",
+                        type: "warning"
+                    }, function() {
+                        window.location = "index.php";
+                    });
+                }, 1000);
+            </script>';
     }
-</script>
-</body>
-</html>
+}
+include ("index.html");
+?>
+

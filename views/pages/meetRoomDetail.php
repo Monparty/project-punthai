@@ -59,9 +59,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $buffetset2 = isset($_POST["buffetset2"]) ? $_POST["buffetset2"] : "";
   $buffetset3 = isset($_POST["buffetset3"]) ? $_POST["buffetset3"] : "";
   $remark = isset($_POST["remark"]) ? $_POST["remark"] : "";
+  $facility = isset($_POST["facility"]) ? implode(", ",$_POST["facility"]) : "";
 
-  $sql = "INSERT INTO meetroom_bookings (user_id, meetroom_id, booker_name, email, phone, amountpeople, meeting_topic, start_date, end_date, catering, catering_type, snack1, snack1_amount, snack2, snack2_amount, snack3, snack3_amount, lunch1, lunch1_amount, lunch2, lunch2_amount, lunch3, lunch3_amount, buffet1, buffet1_amount, buffet2, buffet2_amount, buffet3, buffet3_amount, buffetset1, buffetset2, buffetset3, remark, create_at)
-  VALUES (:user_id, :meetroom_id, :booker_name, :email, :phone, :amountpeople, :meeting_topic, :start_date, :end_date, :catering, :catering_type, :snack1, :snack1_amount, :snack2, :snack2_amount, :snack3, :snack3_amount, :lunch1, :lunch1_amount, :lunch2, :lunch2_amount, :lunch3, :lunch3_amount, :buffet1, :buffet1_amount, :buffet2, :buffet2_amount, :buffet3, :buffet3_amount, :buffetset1, :buffetset2, :buffetset3, :remark, CURRENT_TIMESTAMP)";
+
+  $sql = "INSERT INTO meetroom_bookings (user_id, meetroom_id, booker_name, email, phone, amountpeople, meeting_topic, start_date, end_date, catering, catering_type, snack1, snack1_amount, snack2, snack2_amount, snack3, snack3_amount, lunch1, lunch1_amount, lunch2, lunch2_amount, lunch3, lunch3_amount, buffet1, buffet1_amount, buffet2, buffet2_amount, buffet3, buffet3_amount, buffetset1, buffetset2, buffetset3, remark, facility, create_at)
+  VALUES (:user_id, :meetroom_id, :booker_name, :email, :phone, :amountpeople, :meeting_topic, :start_date, :end_date, :catering, :catering_type, :snack1, :snack1_amount, :snack2, :snack2_amount, :snack3, :snack3_amount, :lunch1, :lunch1_amount, :lunch2, :lunch2_amount, :lunch3, :lunch3_amount, :buffet1, :buffet1_amount, :buffet2, :buffet2_amount, :buffet3, :buffet3_amount, :buffetset1, :buffetset2, :buffetset3, :remark, :facility, CURRENT_TIMESTAMP)";
 
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(":user_id", $user_id);
@@ -97,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt->bindParam(":buffetset2", $buffetset2);
   $stmt->bindParam(":buffetset3", $buffetset3);
   $stmt->bindParam(":remark", $remark);
+  $stmt->bindParam(":facility", $facility);
   $stmt->execute();
 
   if ($stmt->rowCount() > 0) {

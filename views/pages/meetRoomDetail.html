@@ -330,7 +330,7 @@
             display: flex;
             align-items: center;
             column-gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 3px;
         }
 
         .modalFormItem {
@@ -439,6 +439,20 @@
                     gap: 10px;
                 }
             }
+        }
+        .formRow {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            margin-top: 10px;
+        }
+
+        .formRow.valignTop {
+            align-items: start;
+        }
+
+        .containerCheckbox {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
     </style>
 </head>
@@ -785,6 +799,63 @@
                                 <div>
                                     <h4>วันที่ / เวลาที่สิ้นสุด</h4>
                                     <input type="datetime-local" name="end_date" required>
+                                </div>
+                            </div>
+                            <div class="formRow valignTop">
+                                <div class="formTitle">
+                                    <h4>สิ่งอำนวยความสะดวก</h4>
+                                </div>
+                                <div class="formInput">
+                                    <div class="containerCheckbox">
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f1" name="facility[]" value="โปรเจคเตอร์">
+                                            <label for="f1">โปรเจคเตอร์</label>
+                                        </div>
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f2" name="facility[]" value="ไมโครโฟน">
+                                            <label for="f2">ไมโครโฟน</label>
+                                        </div>
+                                    </div>
+                                    <div class="containerCheckbox">
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f3" name="facility[]" value="ลำโพง">
+                                            <label for="f3">ลำโพง</label>
+                                        </div>
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f4" name="facility[]" value="พัดลม">
+                                            <label for="f4">พัดลม</label>
+                                        </div>
+                                    </div>
+                                    <div class="containerCheckbox">
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f5" name="facility[]" value="โต๊ะกลม">
+                                            <label for="f5">โต๊ะกลม</label>
+                                        </div>
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f6" name="facility[]" value="โต๊ะยาว">
+                                            <label for="f6">โต๊ะยาว</label>
+                                        </div>
+                                    </div>
+                                    <div class="containerCheckbox">
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f7" name="facility[]" value="ผ้าปูโต๊ะ">
+                                            <label for="f7">ผ้าปูโต๊ะ</label>
+                                        </div>
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f8" name="facility[]" value="กระดานไวท์บอร์ด">
+                                            <label for="f8">กระดานไวท์บอร์ด</label>
+                                        </div>
+                                    </div>
+                                    <div class="containerCheckbox">
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f9" name="facility[]" value="โพเดียม">
+                                            <label for="f9">โพเดียม</label>
+                                        </div>
+                                        <div class="boxCheckbox">
+                                            <input type="checkbox" id="f10" name="facility[]" value="ดอกไม้พลาสติก">
+                                            <label for="f10">ดอกไม้พลาสติก</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -147,9 +147,15 @@
               paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
               <?php } else if ($fetch['booking_status'] === 'ข้อมูลการชำระเงินไม่ถูกต้อง') { ?>
                 paymentAfter.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id'];?>
-              <?php } else if ($fetch['booking_status'] === 'เช็คอิน' && 'เช็คเอาท์' && 'ชำระเงินเรียบร้อย / รอตรวจสอบ') { ?>
+                <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
                 userBookingDetail.php?booking_id=<?php echo $fetch['booking_id'] . '&room_id=' . $fetch['room_id']?>
-              <?php } else { ?>
+                <?php } else if ($fetch['booking_status'] === 'เช็คอิน') { ?>
+
+                <?php } else if ($fetch['booking_status'] === 'เช็คเอาท์') { ?>
+
+                <?php } else if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย / รอตรวจสอบ') { ?>
+                  
+                <?php } else { ?>
                   
               <?php } ?>">
                 <div class="borderBox roomContainer">
