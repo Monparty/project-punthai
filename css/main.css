@@ -223,6 +223,11 @@ input[type=file]::file-selector-button:hover {
     border-radius: 4px;
 }
 
+.right {
+    display: flex; 
+    justify-content: flex-end
+}
+
 .w100 {
     width: 100px;
 }

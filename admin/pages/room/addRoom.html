@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/admin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .hideImg {
+            width: 300px; 
+            object-fit: cover; 
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
     <?php include("../../layouts/header.php"); ?>
@@ -30,10 +38,16 @@
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>ชื่อห้องพัก <span class="force">*</span></h4>
+                            <h4>ประเภทห้องพักห้องพัก <span class="force">*</span></h4>
                         </div>
-                        <div class="formInput">
-                            <input type="text" name="name" value="" required>
+                        <div class="formInput  w300"">
+                            <select name="name" required>
+                                <option value="" selected>-</option>
+                                <option value="ห้องสแตนดาร์ด">ห้องสแตนดาร์ด</option>
+                                <option value="ห้องซูพีเรีย">ห้องซูพีเรีย</option>
+                                <option value="ห้องดีลักซ์">ห้องดีลักซ์</option>
+                                <option value="ห้องสวีท">ห้องสวีท</option>
+                            </select>
                         </div>
                     </div>
                     <div class="formRow">
@@ -41,7 +55,15 @@
                             <h4>คำอธิบาย</h4>
                         </div>
                         <div class="formInput">
-                            <input type="text" name="roomdesc" value="">
+                            <input type="text" name="roomabout" value="">
+                        </div>
+                    </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>เกี่ยวกับห้องพัก</h4>
+                        </div>
+                        <div class="formInput">
+                            <textarea name="roomdesc"></textarea>
                         </div>
                     </div>
                     <div class="formRow">
@@ -51,14 +73,6 @@
                         <div class="formInput w300">
                             <input type="number" name="price" value="" required>
                             <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
-                        </div>
-                    </div>
-                    <div class="formRow valignTop">
-                        <div class="formTitle">
-                            <h4>เกี่ยวกับห้องพัก</h4>
-                        </div>
-                        <div class="formInput">
-                            <textarea name="roomabout"></textarea>
                         </div>
                     </div>
                     <div class="formRow">
@@ -83,108 +97,159 @@
                             <h5 class="formInputDesc">หน่วยเป็นคน</h5>
                         </div>
                     </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>หมายเลขห้องพัก <span class="force">*</span></h4>
+                            <div style="display: flex; gap: 5px;">
+                                <button class="button" type="button" onclick="addRow('tblSample')">+ เพิ่ม</button>
+                                <button class="button gray" type="button" onclick="deleterow('tblSample')">- ลบ</button>
+                            </div>
+                        </div>
+                        <div class="formInput">
+                            <table id="tblSample">
+                                <tr>
+                                    <td><input type="text" name="room_number[]" style="width: 300px; margin-bottom: 10px;" required></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                     <div class="formRow">
                         <div class="formTitle">
                             <h4>รูปภาพประกอบ <span class="force">*</span></h4>
                         </div>
                         <div class="formInput file w300">
-                            <input type="file" name="image" multiple required>
+                            <input type="file" name="image" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])" multiple required>
                         </div>
                     </div>
-                    <div class="headersection" style="display: none;">
+                    <div class="formRow">
+                        <div class="formTitle"></div>
+                        <div class="w300">
+                            <img id="image" class="hideImg"/>
+                            <div class="w300 right">
+                                <button class="button" type="button" onclick="document.getElementById('formRow2').style.display='block'; this.style.display='none'">+ เพิ่มรูปภาพ</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="formRow2" style="display: none;">
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="formInput file w300">
+                                <input type="file" name="image2" onchange="document.getElementById('image2').src = window.URL.createObjectURL(this.files[0])" multiple>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="w300">
+                                <img id="image2" class="hideImg"/>
+                                <div class="w300 right">
+                                    <button class="button" type="button" onclick="document.getElementById('formRow3').style.display='block'; this.style.display='none'">+ เพิ่มรูปภาพ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="formRow3" style="display: none;">
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="formInput file w300">
+                                <input type="file" name="image3" onchange="document.getElementById('image3').src = window.URL.createObjectURL(this.files[0])" multiple>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="w300">
+                                <img id="image3" class="hideImg"/>
+                                <div class="w300 right">
+                                    <button class="button" type="button" onclick="document.getElementById('formRow4').style.display='block'; this.style.display='none'">+ เพิ่มรูปภาพ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="formRow4" style="display: none;">
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="formInput file w300">
+                                <input type="file" name="image4" onchange="document.getElementById('image4').src = window.URL.createObjectURL(this.files[0])" multiple>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="w300">
+                                <img id="image4" class="hideImg"/>
+                                <div class="w300 right">
+                                    <button class="button" type="button" onclick="document.getElementById('formRow5').style.display='block'; this.style.display='none'">+ เพิ่มรูปภาพ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="formRow5" style="display: none;">
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="formInput file w300">
+                                <input type="file" name="image5" onchange="document.getElementById('image5').src = window.URL.createObjectURL(this.files[0])" multiple>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="w300">
+                                <img id="image5" class="hideImg"/>
+                                <div class="w300 right">
+                                    <button class="button" type="button" onclick="alert('เพิ่มรูปภาพได้สูงสุด 5 รูปภาพ'); this.style.display='none'">+ เพิ่มรูปภาพ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="headersection">
                         <i class='bx bxs-playlist'></i>
                         <h4>สิ่งอำนวยความสะดวก</h4>
                     </div>
-                    <div class="formRow valignTop" style="display: none;">
+                    <div class="formRow valignTop">
                         <div class="formTitle">
                             <h4>สิ่งอำนวยความสะดวก</h4>
                         </div>
                         <div class="formInput">
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility1" value="1">
-                                    <label for="">อาหารเช้า</label>
+                                    <input id="fa1" type="checkbox" name="facility1" value="1">
+                                    <label for="fa1">โต๊ะทำงาน</label>
                                 </div>
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility2" value="2">
-                                    <label for="">สิ่งอํานวยความสะดวกสําหรับผู้พิการ</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility3" value="3">
-                                    <label for="">พนักงานบริการ 24 ชั่วโมง</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility4" value="4">
-                                    <label for="">ที่จอดรถ</label>
+                                    <input id="fa2" type="checkbox" name="facility2" value="2">
+                                    <label for="fa2">เครื่องปรับอากาศ</label>
                                 </div>
                             </div>
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility5" value="5">
-                                    <label for="">WiFi</label>
+                                    <input id="fa3" type="checkbox" name="facility3" value="3">
+                                    <label for="fa3">อ่างอาบน้ำ</label>
                                 </div>
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility6" value="6">
+                                    <input id="fa4" type="checkbox" name="facility4" value="4">
+                                    <label for="fa4">ผ้านวมเสริม</label>
+                                </div>
+                            </div>
+                            <div class="containerCheckbox">
+                                <div class="boxCheckbox">
+                                    <input id="fa5" type="checkbox" name="facility5" value="5">
+                                    <label for="fa5">ทีวีเคเบิ้ล</label>
+                                </div>
+                                <div class="boxCheckbox">
+                                    <input id="fa6" type="checkbox" name="facility6" value="6">
                                     <label for="">พื้นที่สูบบุหรี่</label>
                                 </div>
                             </div>
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility7" value="7">
-                                    <label for="">ระบบรักษาความปลอดภัย 24 ชั่วโมง</label>
+                                    <input id="fa7" type="checkbox" name="facility7" value="7">
+                                    <label for="fa7">ตู้เซฟอิเล็กทรอนิกส์</label>
                                 </div>
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility8" value="8">
-                                    <label for="">ต้อนรับสัตว์เลี้ยง</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="formRow valignTop" style="display: none;">
-                        <div class="formTitle">
-                            <h4>Highlights</h4>
-                        </div>
-                        <div class="formInput">
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight1" value="1">
-                                    <label for="">สระว่ายน้ำ</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight2" value="2">
-                                    <label for="">ฟิตเนส</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight3" value="3">
-                                    <label for="">สปา</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight4" value="4">
-                                    <label for="">ห้องอาหาร</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight5" value="5">
-                                    <label for="">ห้องประชุม</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight6" value="6">
-                                    <label for="">บริการรับ-ส่งสนามบิน</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight7" value="7">
-                                    <label for="">มีสถานที่ปั่นจักรยาน</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight8" value="8">
-                                    <label for="">บริการซักรีด</label>
+                                    <input id="fa8" type="checkbox" name="facility8" value="8">
+                                    <label for="fa8">ต้อนรับสัตว์เลี้ยง</label>
                                 </div>
                             </div>
                         </div>
@@ -213,5 +278,26 @@
         </main>
     </form>
     <script src="../../js/script.js"></script>
+    <script>
+            function addRow(myTable) {
+                var table = document.getElementById(myTable);
+                var row = table.getElementsByTagName('tr');
+                var row = row[row.length-1].outerHTML;
+                table.innerHTML = table.innerHTML + row;
+                var row = table.getElementsByTagName('tr');
+                var row = row[row.length-1].getElementsByTagName('td');
+                for(i=0;i<row.length;i++){
+                    row[i].innerHTML = '<input type="text" name="room_number[]" style="width: 300px; margin-bottom: 10px;" required>';
+                }
+            }
+
+            function deleterow(tblId) {
+                var table = document.getElementById(tblId);
+                var row = table.getElementsByTagName('tr');
+                if(row.length!='1'){
+                    row[row.length - 1].outerHTML='';
+                }
+            }
+    </script>
 </body>
 </html>

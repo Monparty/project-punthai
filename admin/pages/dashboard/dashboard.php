@@ -2,7 +2,7 @@
 include ("../../../config/config.php");
 session_start();
 
-$sql_room = "SELECT COUNT(*) FROM bookings";
+$sql_room = "SELECT * FROM bookings";
 $query_room = mysqli_query( $c, $sql_room );
 $total_room = mysqli_num_rows($query_room);
 
