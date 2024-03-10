@@ -12,9 +12,10 @@ $fetch = mysqli_fetch_assoc($query);
 // ส่วนบันทึกข้อมูล User
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $sql = "UPDATE users SET username=:username, email=:email, phone_number=:phone_number, gender=:gender, birth_date=:birth_date, address=:address, update_at=CURRENT_TIMESTAMP WHERE user_id=$user_id";
+    $sql = "UPDATE users SET name=:name, username=:username, email=:email, phone_number=:phone_number, gender=:gender, birth_date=:birth_date, address=:address, update_at=CURRENT_TIMESTAMP WHERE user_id=$user_id";
 
     $stmt = $conn->prepare($sql);
+    $name = isset($_POST["name"]) ? $_POST["name"] : "";
     $username = isset($_POST["username"]) ? $_POST["username"] : "";
     $email = isset($_POST["email"]) ? $_POST["email"] : "";
     $phone_number = isset($_POST["phone_number"]) ? $_POST["phone_number"] : "";
@@ -22,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $birth_date = isset($_POST["birth_date"]) ? $_POST["birth_date"] : "";
     $address = isset($_POST["address"]) ? $_POST["address"] : "";
 
+    $stmt->bindParam(":name", $name);
     $stmt->bindParam(":username", $username);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":phone_number", $phone_number);

@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php include("../../layouts/header.php"); ?>
-    <?php include("../../layouts/sidebar.html"); ?>
+    <span style="display: none;"><?php include("../../layouts/sidebar.html"); ?></span>
     <div class="breadcrumbsAdmin">
         <a href="../dashboard/dashboard.php">หน้าแรก</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
@@ -31,10 +31,15 @@
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>ชื่อห้องพัก <span class="force">*</span></h4>
+                            <h4>ประเภทห้องพักห้องพัก <span class="force">*</span></h4>
                         </div>
-                        <div class="formInput">
-                            <input type="text" name="name" value="<?=$name;?>" required>
+                        <div class="formInput  w300"">
+                            <select name="name" required>
+                                <option value="ห้องสแตนดาร์ด" <?php echo ($name=='ห้องสแตนดาร์ด') ? 'selected' : '';?>>ห้องสแตนดาร์ด</option>
+                                <option value="ห้องซูพีเรีย" <?php echo ($name=='ห้องซูพีเรีย') ? 'selected' : '';?>>ห้องซูพีเรีย</option>
+                                <option value="ห้องดีลักซ์" <?php echo ($name=='ห้องดีลักซ์') ? 'selected' : '';?>>ห้องดีลักซ์</option>
+                                <option value="ห้องสวีท" <?php echo ($name=='ห้องสวีท') ? 'selected' : '';?>>ห้องสวีท</option>
+                            </select>
                         </div>
                     </div>
                     <div class="formRow">
@@ -45,6 +50,14 @@
                             <input type="text" name="roomabout" value="<?=$roomabout;?>">
                         </div>
                     </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>เกี่ยวกับห้องพัก</h4>
+                        </div>
+                        <div class="formInput">
+                            <textarea name="roomdesc"><?=$roomdesc;?></textarea>
+                        </div>
+                    </div>
                     <div class="formRow">
                         <div class="formTitle">
                             <h4>ราคาที่พัก <span class="force">*</span></h4>
@@ -52,14 +65,6 @@
                         <div class="formInput w300">
                             <input type="number" name="price" value="<?=$price;?>" required>
                             <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
-                        </div>
-                    </div>
-                    <div class="formRow valignTop">
-                        <div class="formTitle">
-                            <h4>เกี่ยวกับห้องพัก</h4>
-                        </div>
-                        <div class="formInput">
-                            <textarea name="roomdesc"><?=$roomdesc;?></textarea>
                         </div>
                     </div>
                     <div class="formRow">
@@ -85,6 +90,14 @@
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
+                            <h4>หมายเลขห้องพัก <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="number" name="room_number" value="<?=$room_number;?>" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
                             <h4>รูปภาพประกอบ <span class="force">*</span></h4>
                         </div>
                         <div class="formInput file w300" style="display: flex; justify-content: space-between; align-items: center;">
@@ -98,100 +111,118 @@
                             <?=$showimg;?>
                         </div>
                     </div>
-                    <div class="headersection" style="display: none;">
+
+                    <div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="formInput file w300" style="display: flex; justify-content: space-between; align-items: center;">
+                                <input type="file" name="image2" multiple>
+                                <input type="text" style="width: 700px; border: none; height: 20px; background: none;" <?php echo ($fetch["image2"]=='') ? 'hidden' : '';?> value="<?=$image_base642;?>" readonly>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div style="width: 300px; margin: 10px 0;">
+                                <?=$showimg2;?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="formInput file w300" style="display: flex; justify-content: space-between; align-items: center;">
+                                <input type="file" name="image3" multiple>
+                                <input type="text" style="width: 700px; border: none; height: 20px; background: none;" <?php echo ($fetch["image3"]=='') ? 'hidden' : '';?> value="<?=$image_base643;?>" readonly>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div style="width: 300px; margin: 10px 0;">
+                                <?=$showimg3;?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="formInput file w300" style="display: flex; justify-content: space-between; align-items: center;">
+                                <input type="file" name="image4" multiple>
+                                <input type="text" style="width: 700px; border: none; height: 20px; background: none;" <?php echo ($fetch["image4"]=='') ? 'hidden' : '';?> value="<?=$image_base644;?>" readonly>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div style="width: 300px; margin: 10px 0;">
+                                <?=$showimg4;?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div class="formInput file w300" style="display: flex; justify-content: space-between; align-items: center;">
+                                <input type="file" name="image5" multiple>
+                                <input type="text" style="width: 700px; border: none; height: 20px; background: none;" <?php echo ($fetch["image5"]=='') ? 'hidden' : '';?> value="<?=$image_base645;?>" readonly>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="formTitle"></div>
+                            <div style="width: 300px; margin: 10px 0;">
+                                <?=$showimg5;?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="headersection">
                         <i class='bx bxs-playlist'></i>
                         <h4>สิ่งอำนวยความสะดวก</h4>
                     </div>
-                    <div class="formRow valignTop" style="display: none;">
+                    <div class="formRow valignTop">
                         <div class="formTitle">
                             <h4>สิ่งอำนวยความสะดวก</h4>
                         </div>
                         <div class="formInput">
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility1" value="1" <?php echo ($facility1=='1') ? 'checked' : ''; ?>>
-                                    <label for="">อาหารเช้า</label>
+                                    <input id="fa1" type="checkbox" name="facility1" value="1" <?php echo ($facility1=='1') ? 'checked' : ''; ?>>
+                                    <label for="fa1">โต๊ะทำงาน</label>
                                 </div>
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility2" value="2" <?php echo ($facility2=='2') ? 'checked' : ''; ?>>
-                                    <label for="">สิ่งอํานวยความสะดวกสําหรับผู้พิการ</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility3" value="3" <?php echo ($facility3=='3') ? 'checked' : ''; ?>>
-                                    <label for="">พนักงานบริการ 24 ชั่วโมง</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility4" value="4" <?php echo ($facility4=='4') ? 'checked' : ''; ?>>
-                                    <label for="">ที่จอดรถ</label>
+                                    <input id="fa2" type="checkbox" name="facility2" value="2" <?php echo ($facility2=='2') ? 'checked' : ''; ?>>
+                                    <label for="fa2">เครื่องปรับอากาศ</label>
                                 </div>
                             </div>
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility5" value="5" <?php echo ($facility5=='5') ? 'checked' : ''; ?>>
-                                    <label for="">WiFi</label>
+                                    <input id="fa3" type="checkbox" name="facility3" value="3" <?php echo ($facility3=='3') ? 'checked' : ''; ?>>
+                                    <label for="fa3">อ่างอาบน้ำ</label>
                                 </div>
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility6" value="6" <?php echo ($facility6=='6') ? 'checked' : ''; ?>>
-                                    <label for="">พื้นที่สูบบุหรี่</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility7" value="7" <?php echo ($facility7=='7') ? 'checked' : ''; ?>>
-                                    <label for="">ระบบรักษาความปลอดภัย 24 ชั่วโมง</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="facility8" value="8" <?php echo ($facility8=='8') ? 'checked' : ''; ?>>
-                                    <label for="">ต้อนรับสัตว์เลี้ยง</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="formRow valignTop" style="display: none;">
-                        <div class="formTitle">
-                            <h4>Highlights</h4>
-                        </div>
-                        <div class="formInput">
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight1" value="1" <?php echo ($highlight1=='1') ? 'checked' : ''; ?>>
-                                    <label for="">สระว่ายน้ำ</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight2" value="2" <?php echo ($highlight2=='2') ? 'checked' : ''; ?>>
-                                    <label for="">ฟิตเนส</label>
+                                    <input id="fa4" type="checkbox" name="facility4" value="4" <?php echo ($facility4=='4') ? 'checked' : ''; ?>>
+                                    <label for="fa4">ผ้านวมเสริม</label>
                                 </div>
                             </div>
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight3" value="3" <?php echo ($highlight3=='3') ? 'checked' : ''; ?>>
-                                    <label for="">สปา</label>
+                                    <input id="fa5" type="checkbox" name="facility5" value="5" <?php echo ($facility5=='5') ? 'checked' : ''; ?>>
+                                    <label for="fa5">ทีวีเคเบิ้ล</label>
                                 </div>
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight4" value="4" <?php echo ($highlight4=='4') ? 'checked' : ''; ?>>
-                                    <label for="">ห้องอาหาร</label>
-                                </div>
-                            </div>
-                            <div class="containerCheckbox">
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight5" value="5" <?php echo ($highlight5=='5') ? 'checked' : ''; ?>>
-                                    <label for="">ห้องประชุม</label>
-                                </div>
-                                <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight6" value="6" <?php echo ($highlight6=='6') ? 'checked' : ''; ?>>
-                                    <label for="">บริการรับ-ส่งสนามบิน</label>
+                                    <input id="fa6" type="checkbox" name="facility6" value="6" <?php echo ($facility6=='6') ? 'checked' : ''; ?>>
+                                    <label for="fa6">พื้นที่สูบบุหรี่</label>
                                 </div>
                             </div>
                             <div class="containerCheckbox">
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight7" value="7" <?php echo ($highlight7=='7') ? 'checked' : ''; ?>>
-                                    <label for="">มีสถานที่ปั่นจักรยาน</label>
+                                    <input id="fa7" type="checkbox" name="facility7" value="7" <?php echo ($facility7=='7') ? 'checked' : ''; ?>>
+                                    <label for="fa7">ตู้เซฟอิเล็กทรอนิกส์</label>
                                 </div>
                                 <div class="boxCheckbox">
-                                    <input type="checkbox" name="highlight8" value="8" <?php echo ($highlight8=='8') ? 'checked' : ''; ?>>
-                                    <label for="">บริการซักรีด</label>
+                                    <input id="fa8" type="checkbox" name="facility8" value="8" <?php echo ($facility8=='8') ? 'checked' : ''; ?>>
+                                    <label for="fa8">ต้อนรับสัตว์เลี้ยง</label>
                                 </div>
                             </div>
                         </div>

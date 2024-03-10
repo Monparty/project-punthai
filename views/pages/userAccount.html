@@ -124,7 +124,9 @@
             <form action="userAccount.php" method="post">
               <div class="borderBox">
                   <div class="formItem">
-                      <h4>ชื่อผู้ใช้งาน</h4>
+                      <h4>ชื่อ - นามสกุล</h4>
+                      <input type="text" name="name" value="<?=$fetch['name'];?>">
+                      <h4>Username</h4>
                       <input type="text" name="username" value="<?=$fetch['username'];?>">
                       <h4>อีเมล</h4>
                       <input type="email" name="email" value="<?=$fetch['email'];?>">

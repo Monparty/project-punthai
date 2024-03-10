@@ -22,22 +22,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $status = implode($_POST["status"]);
   $image = file_get_contents($_FILES["image"]["tmp_name"]);
   $image_base64 = base64_encode($image);
-  $image2 = file_get_contents($_FILES["image2"]["tmp_name"]);
-  $image_base642 = base64_encode($image2);
-  $image3 = file_get_contents($_FILES["image3"]["tmp_name"]);
-  $image_base643 = base64_encode($image3);
-  $image4 = file_get_contents($_FILES["image4"]["tmp_name"]);
-  $image_base644 = base64_encode($image4);
-  $image5 = file_get_contents($_FILES["image5"]["tmp_name"]);
-  $image_base645 = base64_encode($image5);
-  //$image2 = isset($_POST["image2"]["tmp_name"]) ? file_get_contents($_FILES["image2"]["tmp_name"]) : "";
-  //$image_base642 = base64_encode($image2);
-  //$image3 = isset($_POST["image3"]["tmp_name"]) ? file_get_contents($_FILES["image3"]["tmp_name"]) : "";
-  //$image_base643 = base64_encode($image3);
-  //$image4 = isset($_POST["image4"]["tmp_name"]) ? file_get_contents($_FILES["image4"]["tmp_name"]) : "";
-  //$image_base644 = base64_encode($image4);
-  //$image5 = isset($_POST["image5"]["tmp_name"]) ? file_get_contents($_FILES["image5"]["tmp_name"]) : "";
-  //$image_base645 = base64_encode($image5);
+  if($_FILES["image2"]["tmp_name"]!=""){
+      $image2 = file_get_contents($_FILES["image2"]["tmp_name"]);
+      $image_base642 = base64_encode($image2);
+  } else {
+    $image_base642 = "";
+  };
+  if($_FILES["image3"]["tmp_name"]!=""){
+      $image3 = file_get_contents($_FILES["image3"]["tmp_name"]);
+      $image_base643 = base64_encode($image3);
+  } else {
+    $image_base643 = "";
+  };
+  if($_FILES["image4"]["tmp_name"]!=""){
+      $image4 = file_get_contents($_FILES["image4"]["tmp_name"]);
+      $image_base644 = base64_encode($image4);
+  } else {
+    $image_base644 = "";
+  };
+  if($_FILES["image5"]["tmp_name"]!=""){
+      $image5 = file_get_contents($_FILES["image5"]["tmp_name"]);
+      $image_base645 = base64_encode($image5);
+  } else {
+    $image_base645 = "";
+  };
 
   $sql = "INSERT INTO rooms (name, roomdesc, price, roomabout,  bed, amountpeople, facility1, facility2, facility3, facility4, facility5, facility6, facility7, facility8, room_number, status, createAt, image, image2, image3, image4, image5)
   VALUES (:name, :roomdesc, :price, :roomabout, :bed, :amountpeople, :facility1, :facility2, :facility3, :facility4, :facility5, :facility6, :facility7, :facility8, :room_number, :status, CURRENT_TIMESTAMP, :image_base64, :image_base642, :image_base643, :image_base644, :image_base645)";
@@ -65,9 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt->bindParam(":image_base644", $image_base644);
   $stmt->bindParam(":image_base645", $image_base645);
   $stmt->execute();
-
-  //print_r($stmt);
-  //exit();
 
   if ($stmt->rowCount() > 0) {
     echo '<script>

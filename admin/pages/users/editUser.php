@@ -13,9 +13,10 @@ $stmt->execute();
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
-    $sql = "UPDATE users SET username=:username, email=:email, phone_number=:phone_number, gender=:gender, birth_date=:birth_date, address=:address, position=:position, status=:status, update_at=CURRENT_TIMESTAMP WHERE user_id=$user_id";
+    $sql = "UPDATE users SET name=:name, username=:username, email=:email, phone_number=:phone_number, gender=:gender, birth_date=:birth_date, address=:address, position=:position, status=:status, update_at=CURRENT_TIMESTAMP WHERE user_id=$user_id";
     
     $stmt = $conn->prepare($sql);
+    $name = $_POST["name"];
     $username = $_POST["username"];
     $email = $_POST["email"];
     $phone_number = $_POST["phone_number"];
@@ -36,6 +37,7 @@ if (isset($_REQUEST['update'])) {
     
 
 
+    $stmt->bindParam(":name", $name);
     $stmt->bindParam(":username", $username);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":phone_number", $phone_number);
