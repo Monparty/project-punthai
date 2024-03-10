@@ -79,25 +79,38 @@ if (isset($_REQUEST['update'])) {
     $status = implode($_POST["status"]);
     $room_number = $_POST["room_number"];
 
-    if($_FILES["image"]["tmp_name"]){
-        $image = file_get_contents($_FILES["image"]["tmp_name"]);
-        $image_base64 = base64_encode($image);
+    
+
+    if($_FILES["image"]["tmp_name"]!=""){
+      $image = file_get_contents($_FILES["image"]["tmp_name"]);
+      $image_base64 = base64_encode($image);
+    } else {
+      $image_base64 = $fetch["image"];
     };
-    if($_FILES["image2"]["tmp_name"]){
+
+    if($_FILES["image2"]["tmp_name"]!=""){
         $image2 = file_get_contents($_FILES["image2"]["tmp_name"]);
         $image_base642 = base64_encode($image2);
+    } else {
+      $image_base642 = $fetch["image2"];
     };
-    if($_FILES["image3"]["tmp_name"]){
+    if($_FILES["image3"]["tmp_name"]!=""){
         $image3 = file_get_contents($_FILES["image3"]["tmp_name"]);
         $image_base643 = base64_encode($image3);
+    } else {
+      $image_base643 = $fetch["image3"];
     };
-    if($_FILES["image4"]["tmp_name"]){
+    if($_FILES["image4"]["tmp_name"]!=""){
         $image4 = file_get_contents($_FILES["image4"]["tmp_name"]);
         $image_base644 = base64_encode($image4);
+    } else {
+      $image_base644 = $fetch["image4"];
     };
-    if($_FILES["image5"]["tmp_name"]){
+    if($_FILES["image5"]["tmp_name"]!=""){
         $image5 = file_get_contents($_FILES["image5"]["tmp_name"]);
         $image_base645 = base64_encode($image5);
+    } else {
+      $image_base645 = $fetch["image5"];
     };
 
     $stmt->bindParam(":name", $name);
@@ -116,21 +129,12 @@ if (isset($_REQUEST['update'])) {
     $stmt->bindParam(":facility8", $facility8);
     $stmt->bindParam(":status", $status);
     $stmt->bindParam(":room_number", $room_number);
-    if($image_base64){
-        $stmt->bindParam(":image_base64", $image_base64);
-    };
-    if($image_base642){
-        $stmt->bindParam(":image_base642", $image_base642);
-    };
-    if($image_base643){
-        $stmt->bindParam(":image_base643", $image_base643);
-    };
-    if($image_base644){
-        $stmt->bindParam(":image_base644", $image_base644);
-    };
-    if($image_base645){
-        $stmt->bindParam(":image_base645", $image_base645);
-    };
+    $stmt->bindParam(":image_base64", $image_base64);
+    $stmt->bindParam(":image_base642", $image_base642);
+    $stmt->bindParam(":image_base643", $image_base643);
+    $stmt->bindParam(":image_base644", $image_base644);
+    $stmt->bindParam(":image_base645", $image_base645);
+
 
     $stmt->execute();
 

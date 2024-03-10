@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php include("../../layouts/header.php"); ?>
-    <span style="display: none;"><?php include("../../layouts/sidebar.html"); ?></span>
+    <?php include("../../layouts/sidebar.html"); ?>
     <div class="breadcrumbsAdmin">
         <a href="../dashboard/dashboard.php">หน้าแรก</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
@@ -93,7 +93,7 @@
                             <h4>หมายเลขห้องพัก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <input type="number" name="room_number" value="<?=$room_number;?>" required>
+                            <input type="text" name="room_number" value="<?=$room_number;?>" required>
                         </div>
                     </div>
                     <div class="formRow">
