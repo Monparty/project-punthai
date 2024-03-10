@@ -144,6 +144,19 @@
             }
         }
 
+        .boxPrice {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: space-between;
+
+            & div {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+        }
+
         .roomDesc {
             height: 55px; 
             overflow: hidden; 
@@ -215,7 +228,13 @@
                                 </div>
                                 <h4><?=$fetch['name'];?></h4>
                                 <h4 class="roomDesc"><?=$fetch['roomdesc'];?></h4>
-                                <h4>฿ <?=number_format($fetch['price']);?></h4>
+                                <div class="boxPrice">
+                                    <h4>฿ <?=number_format($fetch['price']);?></h4>
+                                    <div>
+                                        <i class='bx bx-group'></i>
+                                        <h4><?=$fetch['amountpeople'];?></h4>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     <?php } ?>
