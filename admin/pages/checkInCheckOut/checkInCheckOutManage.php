@@ -10,6 +10,13 @@ extract($fetch);
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
+$sql_room_number = "SELECT bookings.room_number  FROM bookings INNER JOIN rooms ON rooms.room_id = bookings.room_id WHERE bookings.booking_id = $booking_id";
+$query_room_number = mysqli_query( $c, $sql_room_number);
+$fetch_room_number = mysqli_fetch_array($query_room_number);
+
+$room_number_arr = $fetch['room_number'];
+$room_number = explode(', ',$room_number_arr);
+
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['checkIn'])) {
     $sql = "UPDATE bookings SET room_number=:room_number, car_number=:car_number, remark_check_in_out=:remark_check_in_out, booking_status=:booking_status, check_in_at=CURRENT_TIMESTAMP WHERE booking_id=$booking_id";

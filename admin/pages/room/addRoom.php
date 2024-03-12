@@ -2,6 +2,9 @@
 include("../../../config/config.php");
 session_start();
 
+$sql = " SELECT * FROM room_type";
+$query = mysqli_query( $c, $sql );
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $name = $_POST["name"];

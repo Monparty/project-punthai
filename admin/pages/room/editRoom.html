@@ -33,12 +33,11 @@
                         <div class="formTitle">
                             <h4>ประเภทห้องพักห้องพัก <span class="force">*</span></h4>
                         </div>
-                        <div class="formInput  w300"">
+                        <div class="formInput w300">
                             <select name="name" required>
-                                <option value="ห้องสแตนดาร์ด" <?php echo ($name=='ห้องสแตนดาร์ด') ? 'selected' : '';?>>ห้องสแตนดาร์ด</option>
-                                <option value="ห้องซูพีเรีย" <?php echo ($name=='ห้องซูพีเรีย') ? 'selected' : '';?>>ห้องซูพีเรีย</option>
-                                <option value="ห้องดีลักซ์" <?php echo ($name=='ห้องดีลักซ์') ? 'selected' : '';?>>ห้องดีลักซ์</option>
-                                <option value="ห้องสวีท" <?php echo ($name=='ห้องสวีท') ? 'selected' : '';?>>ห้องสวีท</option>
+                                <?php foreach($query_room_type as $row) { ?>
+                                <option value="<?=$row['name'];?>" <?php echo ($name==$row['name']) ? 'selected' : '';?>><?=$row['name'];?></option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -72,8 +71,8 @@
                             <h4>จำนวนเตียง <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <select name="bed" id="">
-                                <option value="1" <?php echo ($bed=='1') ? 'selected' : ''; ?>>เตียงเดี่ยว</option>
+                            <select name="bed">
+                                <option value="1" <?php echo ($bed=='1') ? 'selected' : ''; ?>>เตียงเดี่ยวขนาดเล็ก</option>
                                 <option value="2" <?php echo ($bed=='2') ? 'selected' : ''; ?>>เตียงคู่</option>
                                 <option value="3" <?php echo ($bed=='3') ? 'selected' : ''; ?>>เตียงใหญ่</option>
                             </select>

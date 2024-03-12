@@ -40,13 +40,12 @@
                         <div class="formTitle">
                             <h4>ประเภทห้องพักห้องพัก <span class="force">*</span></h4>
                         </div>
-                        <div class="formInput  w300"">
+                        <div class="formInput w300">
                             <select name="name" required>
                                 <option value="" selected>-</option>
-                                <option value="ห้องสแตนดาร์ด">ห้องสแตนดาร์ด</option>
-                                <option value="ห้องซูพีเรีย">ห้องซูพีเรีย</option>
-                                <option value="ห้องดีลักซ์">ห้องดีลักซ์</option>
-                                <option value="ห้องสวีท">ห้องสวีท</option>
+                                <?php foreach($query as $fetch) { ?>
+                                <option value="<?=$fetch['name'];?>"><?=$fetch['name'];?></option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -82,7 +81,7 @@
                         <div class="formInput w300">
                             <select name="bed" id="">
                                 <option value="" selected>-</option>
-                                <option value="1">เตียงเดี่ยว</option>
+                                <option value="1">เตียงเดี่ยวขนาดเล็ก</option>
                                 <option value="2">เตียงคู่</option>
                                 <option value="3">เตียงใหญ่</option>
                             </select>

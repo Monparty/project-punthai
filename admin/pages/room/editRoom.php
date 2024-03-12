@@ -57,6 +57,9 @@ foreach ($stmt as $fetch) {
   }
 }
 
+$sql_room_type = "SELECT * FROM room_type";
+$query_room_type = mysqli_query( $c, $sql_room_type );
+
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
     $sql = "UPDATE rooms SET name=:name, roomdesc=:roomdesc, price=:price, roomabout=:roomabout, bed=:bed, amountpeople=:amountpeople, facility1=:facility1, facility2=:facility2, facility3=:facility3, facility4=:facility4, facility5=:facility5, facility6=:facility6, facility7=:facility7, facility8=:facility8, status=:status, room_number=:room_number, image=:image_base64, image2=:image_base642, image3=:image_base643, image4=:image_base644, image5=:image_base645, updateAt=CURRENT_TIMESTAMP WHERE room_id=$room_id";

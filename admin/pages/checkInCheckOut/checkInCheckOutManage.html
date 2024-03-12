@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="formRow">
                                     <div class="formTitle">
-                                        <h4>ชื่อห้องพัก</h4>
+                                        <h4>ประเภทห้องพัก</h4>
                                     </div>
                                     <div class="formInput">
                                         <input type="text" value="<?=$fetch['name'];?>" readonly>
@@ -96,7 +96,23 @@
                                         <h4>เลขห้องพัก <span class="force">*</span></h4>
                                     </div>
                                     <div class="formInput w300">
-                                        <input type="number" name="room_number" value="<?=$fetch['room_number'];?>" required>
+                                        <?php if ($fetch['booking_status'] === 'ชำระเงินเรียบร้อย') { ?>
+                                            <select name="room_number" required>
+                                                <option value="">-</option>
+                                                <?php foreach($room_number as $row) { ?>
+                                                <option value="<?=$row;?>"><?=$row;?></option>
+                                                <?php } ?>
+                                            </select>
+                                        <?php } else if ($fetch['booking_status'] === 'เช็คอิน') { ?>
+                                            <div class="formInput w300">
+                                                <input type="text" value="<?=$fetch_room_number['room_number'];?>" readonly>
+                                            </div>
+                                        <?php } else if ($fetch['booking_status'] === 'เช็คเอาท์') { ?>
+                                            <div class="formInput w300">
+                                                <input type="text" value="<?=$fetch_room_number['room_number'];?>" readonly>
+                                            </div>
+                                        <?php } ?>
+                                        
                                     </div>
                                 </div>
                                 <div class="formRow">
