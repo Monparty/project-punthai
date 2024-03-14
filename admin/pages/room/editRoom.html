@@ -34,11 +34,12 @@
                             <h4>ประเภทห้องพักห้องพัก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <select name="name" required>
+                            <input type="text" list="name" name="name" value="<?=$row['name'];?>" required>
+                            <datalist id="name">
                                 <?php foreach($query_room_type as $row) { ?>
-                                <option value="<?=$row['name'];?>" <?php echo ($name==$row['name']) ? 'selected' : '';?>><?=$row['name'];?></option>
+                                <option value="<?=$row['name'];?>"><?=$row['name'];?></option>
                                 <?php } ?>
-                            </select>
+                            </datalist>
                         </div>
                     </div>
                     <div class="formRow">

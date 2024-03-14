@@ -21,14 +21,19 @@
         <h2 style="margin-bottom:10px;">จัดการห้องพัก</h2>
         <div class="boxSearch">
             <div class="searchItem">
-                <input type="text" name="" id="" placeholder="ค้นหารายการ...">
+                <input type="text" class="w100" placeholder="ค้นหารายการ..." id="inputFilter" onkeyup="filterTable()">
+                <select class="w200" id="filterStatus" onchange="filterTableStatus()">
+                    <option value="" selected>-</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
                 <a href="#" class="button w100">ค้นหา</a>
             </div>
             <a href="addRoom.php" class="button green">เพิ่มข้อมูลห้องพัก <i class='bx bx-plus'></i></a>
         </div>
 
         <div class="containerTable">
-            <table class="table" border="0">
+            <table class="table">
                 <thead>
                     <tr>
                         <td width="6%">ลำดับ</td>
@@ -39,7 +44,7 @@
                         <td width="5%"></td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="thisTable">
                 <?php
                     $count = 1;
                     foreach($query as $fetch) { ?>

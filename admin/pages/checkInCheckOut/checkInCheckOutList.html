@@ -21,7 +21,13 @@
         <h2 style="margin-bottom:10px;">จัดการเช็คอิน เช็คเอาท์</h2>
         <div class="boxSearch">
             <div class="searchItem">
-                <input type="text" name="" id="" placeholder="ค้นหารายการ...">
+                <input type="text" placeholder="ค้นหารายการ..." id="inputFilter" onkeyup="filterTable()">
+                <select class="w200" id="filterStatus" onchange="filterTableStatus()">
+                    <option value="" selected>-</option>
+                    <option value="ชำระเงินเรียบร้อย">ชำระเงินเรียบร้อย</option>
+                    <option value="เช็คอิน">เช็คอิน</option>
+                    <option value="เช็คเอาท์">เช็คเอาท์</option>
+                </select>
                 <a href="#" class="button w100">ค้นหา</a>
             </div>
         </div>
@@ -37,7 +43,7 @@
                         <td width="10%"></td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="thisTable">
                 <?php
                     $count = 1;
                     foreach($query as $fetch) { ?>

@@ -41,12 +41,12 @@
                             <h4>ประเภทห้องพักห้องพัก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <select name="name" required>
-                                <option value="" selected>-</option>
+                            <input type="text" list="name" name="name" required>
+                            <datalist id="name">
                                 <?php foreach($query as $fetch) { ?>
                                 <option value="<?=$fetch['name'];?>"><?=$fetch['name'];?></option>
                                 <?php } ?>
-                            </select>
+                            </datalist>
                         </div>
                     </div>
                     <div class="formRow">
