@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขข้อมูลประเภทห้องพัก</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="../dashboard/dashboard.php">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a href="roomList.php">จัดการประเภทห้องพัก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>แก้ไขข้อมูลประเภทห้องพัก</a>
+    </div>
+    <form action="editRoom.php" method="post">
+        <main class="containerAdmin">
+            <section class="formSection">
+                <h2 style="margin-bottom:10px;">แก้ไขข้อมูลประเภทห้องพัก</h2>
+                <div class="form">
+                    <input type="hidden" name="id" value="<?=$id;?>">
+                    <div class="headersection">
+                        <i class='bx bx-info-circle'></i>
+                        <h4>ข้อมูลทั่วไป</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ประเภทห้องพักห้องพัก <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="text" list="name" name="name" value="<?=$row['name'];?>" required>
+                            <datalist id="name">
+                                <?php foreach($query_room_type as $row) { ?>
+                                <option value="<?=$row['name'];?>"><?=$row['name'];?></option>
+                                <?php } ?>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="headersection">
+                        <i class='bx bx-list-check'></i>
+                        <h4>สถานะ</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สถานะ <span class="force">*</span></h4>
+                        </div>
+                        <div class="boxCheckbox">
+                            <input type="radio" name="status[]" value="Active" <?php echo ($status=='Active') ? 'checked' : ''; ?>>
+                            <label for="">ใช้งาน</label>
+                            <input type="radio" name="status[]" value="Inactive" <?php echo ($status=='Inactive') ? 'checked' : ''; ?>>
+                            <label for="">ไม่ใช้งาน</label>
+                        </div>
+                    </div>
+                    <div class="formBtn">
+                        <button type="submit" class="button green w100" name="update"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </form>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

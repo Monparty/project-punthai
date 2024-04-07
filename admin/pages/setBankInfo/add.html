@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เพิ่มข้อมูลธนาคาร</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .hideImg {
+            width: 300px; 
+            object-fit: cover; 
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="../dashboard/dashboard.php">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a href="list.php">ข้อมูลธนาคาร</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>เพิ่มข้อมูลธนาคาร</a>
+    </div>
+    <form action="add.php" method="post" enctype="multipart/form-data">
+        <main class="containerAdmin">
+            <section class="formSection">
+                <h2 style="margin-bottom:10px;">เพิ่มข้อมูลธนาคาร</h2>
+                <div class="form">
+                    <div class="headersection">
+                        <i class='bx bx-info-circle'></i>
+                        <h4>ข้อมูลทั่วไป</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ชื่อธนาคาร <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="text" list="bank_name" name="bank_name" required>
+                            <datalist id="bank_name">
+                                <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
+                                <option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</option>
+                                <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
+                                <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
+                                <option value="ธนาคารกรุงศรีอยุธยา">ธนาคารกรุงศรีอยุธยา</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ชื่อบัญชี <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="text" name="account_name" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>เลขที่บัญชี <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="number" name="account_number" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>รูปภาพประกอบ <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput file w300">
+                            <input type="file" name="bank_image" onchange="document.getElementById('bank_image').src = window.URL.createObjectURL(this.files[0])" multiple required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle"></div>
+                        <div class="w300">
+                            <img id="bank_image" class="hideImg"/>
+                        </div>
+                    </div>
+
+                    <div class="headersection">
+                        <i class='bx bx-list-check'></i>
+                        <h4>สถานะ</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สถานะ <span class="force">*</span></h4>
+                        </div>
+                        <div class="boxCheckbox">
+                            <input type="radio" name="status[]" value="Active" checked>
+                            <label for="">ใช้งาน</label>
+                            <input type="radio" name="status[]" value="Inactive">
+                            <label for="">ไม่ใช้งาน</label>
+                        </div>
+                    </div>
+                    <div class="formBtn">
+                        <button type="submit" class="button green w100"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </form>
+    <script src="../../js/script.js"></script>
+    <script>
+            function addRow(myTable) {
+                var table = document.getElementById(myTable);
+                var row = table.getElementsByTagName('tr');
+                var row = row[row.length-1].outerHTML;
+                table.innerHTML = table.innerHTML + row;
+                var row = table.getElementsByTagName('tr');
+                var row = row[row.length-1].getElementsByTagName('td');
+                for(i=0;i<row.length;i++){
+                    row[i].innerHTML = '<input type="text" name="room_number[]" style="width: 300px; margin-bottom: 10px;" required>';
+                }
+            }
+
+            function deleterow(tblId) {
+                var table = document.getElementById(tblId);
+                var row = table.getElementsByTagName('tr');
+                if(row.length!='1'){
+                    row[row.length - 1].outerHTML='';
+                }
+            }
+    </script>
+</body>
+</html>

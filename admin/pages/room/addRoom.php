@@ -2,7 +2,7 @@
 include("../../../config/config.php");
 session_start();
 
-$sql = " SELECT * FROM room_type";
+$sql = " SELECT * FROM room_type WHERE status = 'Active'";
 $query = mysqli_query( $c, $sql );
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

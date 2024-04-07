@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขข้อมูลธนาคาร</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="../dashboard/dashboard.php">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a href="list.php">ข้อมูลธนาคาร</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>แก้ไขข้อมูลธนาคาร</a>
+    </div>
+    <form action="edit.php" method="post" enctype="multipart/form-data">
+        <main class="containerAdmin">
+            <section class="formSection">
+                <h2 style="margin-bottom:10px;">แก้ไขข้อมูลธนาคาร</h2>
+                <div class="form">
+                    <input type="hidden" name="id" value="<?=$id;?>">
+                    <div class="headersection">
+                        <i class='bx bx-info-circle'></i>
+                        <h4>ข้อมูลทั่วไป</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ชื่อธนาคาร <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="text" list="bank_name" name="bank_name" value="<?=$row['bank_name'];?>" required>
+                            <datalist id="bank_name">
+                                <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
+                                <option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</option>
+                                <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
+                                <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
+                                <option value="ธนาคารกรุงศรีอยุธยา">ธนาคารกรุงศรีอยุธยา</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ชื่อบัญชี <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="text" name="account_name" value="<?=$row['account_name'];?>" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>เลขที่บัญชี <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="number" name="account_number" value="<?=$row['account_number'];?>" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>รูปภาพประกอบ <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput file w300" style="display: flex; justify-content: space-between; align-items: center;">
+                            <input type="file" name="bank_image" multiple>
+                            <input type="text" style="width: 700px; border: none; height: 20px; background: none;" value="<?=$image_base64;?>" readonly>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle"></div>
+                        <div style="width: 300px;">
+                            <?=$showimg;?>
+                        </div>
+                    </div>
+
+                    <div class="headersection">
+                        <i class='bx bx-list-check'></i>
+                        <h4>สถานะ</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สถานะ <span class="force">*</span></h4>
+                        </div>
+                        <div class="boxCheckbox">
+                            <input type="radio" name="status[]" value="Active" <?php echo ($status=='Active') ? 'checked' : ''; ?>>
+                            <label for="">ใช้งาน</label>
+                            <input type="radio" name="status[]" value="Inactive" <?php echo ($status=='Inactive') ? 'checked' : ''; ?>>
+                            <label for="">ไม่ใช้งาน</label>
+                        </div>
+                    </div>
+                    <div class="formBtn">
+                        <button type="submit" class="button green w100" name="update"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </form>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

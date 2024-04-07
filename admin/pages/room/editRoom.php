@@ -57,7 +57,7 @@ foreach ($stmt as $fetch) {
   }
 }
 
-$sql_room_type = "SELECT * FROM room_type";
+$sql_room_type = "SELECT * FROM room_type WHERE status = 'Active'";
 $query_room_type = mysqli_query( $c, $sql_room_type );
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
@@ -81,8 +81,6 @@ if (isset($_REQUEST['update'])) {
     $facility8 = isset($_POST['facility8']) ? $_POST['facility8'] : "";
     $status = implode($_POST["status"]);
     $room_number = $_POST["room_number"];
-
-    
 
     if($_FILES["image"]["tmp_name"]!=""){
       $image = file_get_contents($_FILES["image"]["tmp_name"]);
@@ -138,9 +136,7 @@ if (isset($_REQUEST['update'])) {
     $stmt->bindParam(":image_base644", $image_base644);
     $stmt->bindParam(":image_base645", $image_base645);
 
-
     $stmt->execute();
-
 
     if ($stmt->rowCount() > 0) {
     echo '<script>
