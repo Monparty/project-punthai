@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขสิ่งอำนวยความสะดวก</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        samp {
+            color: var(--blue);
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="../dashboard/dashboard.php">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a href="list.php">สิ่งอำนวยความสะดวก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>แก้ไขสิ่งอำนวยความสะดวก</a>
+    </div>
+    <form action="edit.php" method="post">
+        <main class="containerAdmin">
+            <section class="formSection">
+                <h2 style="margin-bottom:10px;">แก้ไขสิ่งอำนวยความสะดวก</h2>
+                <div class="form">
+                    <input type="hidden" name="id" value="<?=$id;?>">
+                    <div class="headersection">
+                        <i class='bx bx-info-circle'></i>
+                        <h4>ข้อมูลทั่วไป</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สิ่งอำนวยความสะดวก <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="text" name="name" value="<?=$row['name'];?>" required>
+                        </div>
+                    </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>Icon <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput">
+                            <textarea name="image_svg" style="height: 130px;" required><?=$row['image_svg'];?></textarea>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4></h4>
+                        </div>
+                        <div class="formInput" style="display: flex; align-items: center; gap: 10px;">
+                            <a href="https://boxicons.com/" class="button w100" target="_blank">Boxicons</a>
+                            <h4>ดาวน์โหลด Icon แบบ SVG CODE และใช้โค้ดสี <samp onclick="clipboard()">#0077ED</samp></h4>
+                        </div>
+                    </div>  
+
+                    <div class="headersection">
+                        <i class='bx bx-list-check'></i>
+                        <h4>สถานะ</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สถานะ <span class="force">*</span></h4>
+                        </div>
+                        <div class="boxCheckbox">
+                            <input type="radio" name="status[]" value="Active" <?php echo ($status=='Active') ? 'checked' : ''; ?>>
+                            <label for="">ใช้งาน</label>
+                            <input type="radio" name="status[]" value="Inactive" <?php echo ($status=='Inactive') ? 'checked' : ''; ?>>
+                            <label for="">ไม่ใช้งาน</label>
+                        </div>
+                    </div>
+                    <div class="formBtn">
+                        <button type="submit" class="button green w100" name="update"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </form>
+    <script src="../../js/script.js"></script>
+    <script>
+        function clipboard() {
+            navigator.clipboard.writeText("#0077ED");
+            alert("Copied #0077ED");
+        }
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เพิ่มข้อมูลธนาคาร</title>
+    <title>เพิ่มสิ่งอำนวยความสะดวก</title>
     <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/admin.css">
@@ -15,6 +15,15 @@
             border-radius: 4px;
             margin: 10px 0;
         }
+
+        samp {
+            color: var(--blue);
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
     </style>
 </head>
 <body>
@@ -23,14 +32,14 @@
     <div class="breadcrumbsAdmin">
         <a href="../dashboard/dashboard.php">หน้าแรก</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
-        <a href="list.php">ข้อมูลธนาคาร</a>
+        <a href="list.php">สิ่งอำนวยความสะดวก</a>
         <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
-        <a>เพิ่มข้อมูลธนาคาร</a>
+        <a>เพิ่มสิ่งอำนวยความสะดวก</a>
     </div>
-    <form action="add.php" method="post" enctype="multipart/form-data">
+    <form action="add.php" method="post">
         <main class="containerAdmin">
             <section class="formSection">
-                <h2 style="margin-bottom:10px;">เพิ่มข้อมูลธนาคาร</h2>
+                <h2 style="margin-bottom:10px;">เพิ่มสิ่งอำนวยความสะดวก</h2>
                 <div class="form">
                     <div class="headersection">
                         <i class='bx bx-info-circle'></i>
@@ -38,47 +47,27 @@
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>ชื่อธนาคาร <span class="force">*</span></h4>
+                            <h4>สิ่งอำนวยความสะดวก <span class="force">*</span></h4>
                         </div>
                         <div class="formInput w300">
-                            <input type="text" list="bank_name" name="bank_name" required>
-                            <datalist id="bank_name">
-                                <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
-                                <option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</option>
-                                <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
-                                <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
-                                <option value="ธนาคารกรุงศรีอยุธยา">ธนาคารกรุงศรีอยุธยา</option>
-                            </datalist>
+                            <input type="text" name="name" required>
+                        </div>
+                    </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>Icon <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput">
+                            <textarea name="image_svg" style="height: 130px;" required></textarea>
                         </div>
                     </div>
                     <div class="formRow">
                         <div class="formTitle">
-                            <h4>ชื่อบัญชี <span class="force">*</span></h4>
+                            <h4></h4>
                         </div>
-                        <div class="formInput w300">
-                            <input type="text" name="account_name" required>
-                        </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>เลขที่บัญชี <span class="force">*</span></h4>
-                        </div>
-                        <div class="formInput w300">
-                            <input type="number" name="account_number" required>
-                        </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle">
-                            <h4>รูปภาพประกอบ <span class="force">*</span></h4>
-                        </div>
-                        <div class="formInput file w300">
-                            <input type="file" name="bank_image" onchange="document.getElementById('bank_image').src = window.URL.createObjectURL(this.files[0])" multiple required>
-                        </div>
-                    </div>
-                    <div class="formRow">
-                        <div class="formTitle"></div>
-                        <div class="w300">
-                            <img id="bank_image" class="hideImg"/>
+                        <div class="formInput" style="display: flex; align-items: center; gap: 10px;">
+                            <a href="https://boxicons.com/" class="button w100" target="_blank">Boxicons</a>
+                            <h4>ดาวน์โหลด Icon แบบ SVG CODE และใช้โค้ดสี <samp onclick="clipboard()">#0077ED</samp></h4>
                         </div>
                     </div>
 
@@ -106,5 +95,11 @@
         </main>
     </form>
     <script src="../../js/script.js"></script>
+    <script>
+        function clipboard() {
+            navigator.clipboard.writeText("#0077ED");
+            alert("Copied #0077ED");
+        }
+    </script>
 </body>
 </html>
