@@ -10,6 +10,26 @@ extract($fetch);
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
+$sql_bank = "SELECT * FROM bank_info";
+$query_bank = mysqli_query( $c, $sql_bank);
+// ใช้แสดงรูปภาพ
+$stmt_bank = $conn->prepare($sql_bank);
+$stmt_bank->execute();
+$fetch_bank = mysqli_fetch_assoc($query_bank);
+
+foreach ($stmt_bank as $i=>$fetch_bank) {
+
+// แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64
+$image_base64[$i] = $fetch_bank["bank_image"];
+
+// แปลงข้อมูลรูปภาพจากฐาน64เป็นข้อมูลรูปภาพ
+$bank_image = base64_decode($image_base64[$i]);
+
+// แสดงผลรูปภาพ
+$showimg_bank[$i] = '<img src="data:$bank_image/png;base64,' . $image_base64[$i] . '" style="width: 40px; height: 40px; border-radius: 5px; object-fit: cover; border-radius: 5px;"/>';
+}
+
+
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
     $user_id = $_SESSION["user_id"];

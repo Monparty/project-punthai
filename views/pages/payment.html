@@ -59,13 +59,6 @@
             display: flex;
             gap: 20px;
             align-items: center;
-
-            & img {
-                width: 40px;
-                height: 40px;
-                object-fit: cover;
-                border-radius: 5px;
-            }
           }
         }
 
@@ -229,26 +222,18 @@
               </div>
             </label>
             <div class="paymentList" id="details">
+              <?php foreach($query_bank as $i=>$fetch_bank) { ?>
               <details>
-                <summary>ธนาคารไทยพาณิชย์</summary>
+                <summary><?=$fetch_bank['bank_name'];?></summary>
                 <div class="summaryContent">
-                  <img src="https://i.pinimg.com/736x/02/31/87/023187a2f2dc47bbdc809b43c7667b3a.jpg"/>
+                  <?=$showimg_bank[$i];?>
                   <div class="paymentItem">
-                    <h4>ชื่อบัญชี : xxxxxxxx</h4>
-                    <h4>เลขที่บัญชี : xxxxxxxx</h4>
+                    <h4>ชื่อบัญชี : <?=$fetch_bank['account_name'];?></h4>
+                    <h4>เลขที่บัญชี : <?=$fetch_bank['account_number'];?></h4>
                   </div>
                 </div>
               </details>
-              <details>
-                <summary>ธนาคารกรุงไทย</summary>
-                <div class="summaryContent">
-                  <img src="https://thaitabloid.com/wp-content/uploads/2018/01/9242_%E0%B9%82%E0%B8%A5%E0%B9%82%E0%B8%81%E0%B9%89-KTB-01.jpg"/>
-                  <div class="paymentItem">
-                    <h4>ชื่อบัญชี : xxxxxxxx</h4>
-                    <h4>เลขที่บัญชี : xxxxxxxx</h4>
-                  </div>
-                </div>
-              </details>
+              <?php } ?>
             </div>
             <div class="uploadSlip">
               <h2>แนบหลักฐานการชำระเงิน</h2>
