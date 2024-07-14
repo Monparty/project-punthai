@@ -28,7 +28,7 @@
     margin: 0 auto;
 
     @media screen and (max-width: 576px) {
-        width: 576px;
+        width: 100vw;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -279,7 +279,7 @@ input[type=file]::file-selector-button:hover {
 
     @media screen and (max-width: 576px) {
         flex-direction: column;
-        width: 400px;
+        width: 90vw;
         row-gap: 10px;
         text-align: center;
 
@@ -307,7 +307,7 @@ details {
     }
 
     @media screen and (max-width: 576px) {
-        width: 500px;
+        width: 100vw;
     }
 }
 

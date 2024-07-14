@@ -1,5 +1,5 @@
 <style>
-    nav {
+    .nav {
         padding: 10px 0;
         background-color: var(--white);
         display: flex;
@@ -8,16 +8,60 @@
         column-gap: 40px;
         box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
         opacity: .9;
+    }
+    
+    .navIcon {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        display: none;
+    }
+    
+    @media screen and (max-width: 576px) { 
+        .navRes {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0;
+            width: 100vw;
+            background-color: var(--white);
+            align-items: center;
+            justify-content: center;
+            column-gap: 40px;
+            box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+            opacity: .9;
+        }
 
-        @media screen and (max-width: 576px) {
-            flex-direction: row !important;
+        .nav {
+            display: none;
+        }
+
+        .navIcon {
+            display: block;
         }
     }
 </style>
 <nav class="container" style="position: sticky; top: 0; z-index: 1; margin-bottom: 20px;">
-    <a href="homePage.php">หน้าแรก</a>
-    <a href="../pages/roomList.php">ห้องพัก</a>
-    <a href="../pages/meetRoomList.php">ห้องประชุม</a>
-    <a href="#">เช็คราคา</a>
-    <a href="../pages/contact.php"">ติดต่อ</a>
+    <div class="nav" id="nav">
+        <a href="homePage.php">หน้าแรก</a>
+        <a href="../pages/roomList.php">ห้องพัก</a>
+        <a href="../pages/meetRoomList.php">ห้องประชุม</a>
+        <a href="#">เช็คราคา</a>
+        <a href="../pages/contact.php"">ติดต่อ</a>
+    </div>
+
+    <div class="navIcon" onclick="showNav()" id="navIcon">
+        <i class='bx bx-menu'></i>
+    </div>
 </nav>
+
+<script>
+function showNav() {
+    let nav = document.getElementById("nav")
+
+    if (nav.className === "nav") {
+        nav.className = "navRes";
+    } else {
+        nav.className = "nav";
+    }
+}
+</script>
