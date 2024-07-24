@@ -37,8 +37,8 @@
                 <thead>
                     <tr>
                         <td width="6%">ลำดับ</td>
-                        <td width="20%">ชื่อธนาคาร</td>
                         <td>ชื่อบัญชี</td>
+                        <td width="20%">ชื่อธนาคาร</td>
                         <td width="16%">วันที่บันทึก</td>
                         <td width="14%">สถานะ</td>
                         <td width="5%"></td>
@@ -51,8 +51,8 @@
                     foreach($query as $fetch) { ?>
                         <tr align="center">
                             <td><?=$count++;?></td>
-                            <td><?=$fetch['bank_name'];?></td>
                             <td align="left"><?=$fetch['account_name'];?></td>
+                            <td align="left"><?=$fetch['bank_name'];?></td>
                             <td><?=$fetch['create_at'];?></td>
                             <td><?=$fetch['status'];?></td>
                             <td align="left"><a title="แก้ไขข้อมูล" href="edit.php?id=<?=$fetch['id'];?>"><i class='bx bx-edit-alt'></i></a></td>

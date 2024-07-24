@@ -79,6 +79,11 @@
             position: absolute;
             bottom: 30px;
             right: 20px;
+
+            @media screen and (max-width: 576px) {
+                bottom: 40px;
+            }
+
         }
 
         .next, .prev {
@@ -275,13 +280,13 @@
 
             .boxcontent4__img {
                 display: grid;
-                grid-template-columns: auto auto;
-                justify-content: start;
+                grid-template-columns: 1fr;
+                justify-content: center;
                 row-gap: 10px;
             }
             
             .boxcontent5__boxitem {
-                grid-template-columns: auto auto auto;
+                grid-template-columns: auto auto;
             }
         }
 
@@ -352,7 +357,7 @@
             </div>
         </section>
         <section>
-            <h2 style="margin-bottom: 10px;">ยกระดับการเดินทางของคุณในแบบที่คุณต้องการ</h2>
+            <h2 style="text-align: center; padding: 20px;">ยกระดับการเดินทางของคุณในแบบที่คุณต้องการ</h2>
             <div class="boxcontent2">
                 <div class="content__img1">
                     <a href="#"><img src="https://www.grandecentrepointpattaya.com/upload/rooms-and-suites/2-rooms-and-suites.jpg?v=66" alt=""></a>
@@ -389,7 +394,7 @@
                         <a class="prev" onclick="plusSlides(-1)"><i class='bx bx-chevron-left'></i></a>
                         <a class="next" onclick="plusSlides(1)"><i class='bx bx-chevron-right'></i></a>
                     </div>
-                    <div class="btn__group" style="margin: 5px;">
+                    <div class="btn__group" style="margin: 10px 0; display: flex;">
                         <span class="dot" onclick="currentSlide(1)"></span> 
                         <span class="dot" onclick="currentSlide(2)"></span> 
                         <span class="dot" onclick="currentSlide(3)"></span> 

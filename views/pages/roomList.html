@@ -58,6 +58,13 @@
             &:hover {
                 box-shadow: rgba(11, 57, 220, 0.1) 0px 4px 12px;
             }
+
+            @media screen and (max-width: 576px) {
+                width: 90vw;
+                display: flex;
+                justify-content: flex-start;
+                gap: 10px ;
+            }
         }
 
         .scrollPrice {
@@ -73,9 +80,10 @@
                 object-fit: cover;
                 border-radius: 10px;
             }
-
+            
             & h5 {
                 padding: 10px;
+                text-align: justify;
             }
         }
 
@@ -171,12 +179,17 @@
                 justify-content: center;
             }
 
+            .roomDesc {
+                height: 130px; 
+            }
+
             .boxContainer {
                 grid-template-columns: 1fr;
                 row-gap: 30px;
             }
 
             .container__lists {
+                align-items: center;
                 grid-template-columns: 1fr;
                 column-gap: 10px;
             }
@@ -223,16 +236,18 @@
                     foreach ($query as $i=>$fetch) { ?>
                         <a href="roomDetail.php?id=<?=$fetch['room_id'];?>">
                             <div class="item__list">
-                                <div class="zoomImg">
+                                <div class="zoomImg" style="flex: 1.2;">
                                     <?=$showimg[$i];?>
                                 </div>
-                                <h4><?=$fetch['name'];?></h4>
-                                <h4 class="roomDesc"><?=$fetch['roomdesc'];?></h4>
-                                <div class="boxPrice">
-                                    <h4>฿ <?=number_format($fetch['price']);?></h4>
-                                    <div>
-                                        <i class='bx bx-group'></i>
-                                        <h4><?=$fetch['amountpeople'];?></h4>
+                                <div style="flex: 1;">
+                                    <h4><?=$fetch['name'];?></h4>
+                                    <h4 class="roomDesc"><?=$fetch['roomdesc'];?></h4>
+                                    <div class="boxPrice">
+                                        <h4>฿ <?=number_format($fetch['price']);?></h4>
+                                        <div>
+                                            <i class='bx bx-group'></i>
+                                            <h4><?=$fetch['amountpeople'];?></h4>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
