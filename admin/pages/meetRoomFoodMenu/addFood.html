@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เพิ่มเมนูอาหาร</title>
+    <link rel="icon" type="image/x-icon" href="../../../imgs/logoIcon.png">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <?php include("../../layouts/header.php"); ?>
+    <?php include("../../layouts/sidebar.html"); ?>
+    <div class="breadcrumbsAdmin">
+        <a href="../dashboard/dashboard.php">หน้าแรก</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a href="foodList.php">จัดการมื้ออาหาร</a>
+        <i class='bx bx-chevron-right' style="color: var(--gray);"></i>
+        <a>เพิ่มเมนูอาหาร</a>
+    </div>
+    <form action="addFood.php" method="post" enctype="multipart/form-data">
+        <main class="containerAdmin">
+            <section class="formSection">
+                <h2 style="margin-bottom:10px;">เพิ่มเมนูอาหาร</h2>
+                <div class="form">
+                    <div class="headersection">
+                        <i class='bx bx-info-circle'></i>
+                        <h4>ข้อมูลทั่วไป</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ชื่ออาหาร <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput">
+                            <input type="text" name="food_name" value="" required>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ราคาอาหาร <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <input type="number" name="food_price" value="" required>
+                            <h5 class="formInputDesc">หน่วยเป็นบาท</h5>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>ประเภทอาหาร <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput w300">
+                            <select name="food_type">
+                                <option value="" selected>-</option>
+                                <option value="1">อาหารว่าง</option>
+                                <option value="2">อาหารกลางวัน</option>
+                                <option value="3">อาหารแบบบุฟเฟ่ต์</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="formRow valignTop">
+                        <div class="formTitle">
+                            <h4>ข้อมูลอาหาร</h4>
+                        </div>
+                        <div class="formInput">
+                            <textarea name="food_detail"></textarea>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>รูปภาพประกอบ <span class="force">*</span></h4>
+                        </div>
+                        <div class="formInput file w300">
+                            <input type="file" name="food_image" multiple required>
+                        </div>
+                    </div>
+                    <div class="headersection">
+                        <i class='bx bx-list-check'></i>
+                        <h4>สถานะ</h4>
+                    </div>
+                    <div class="formRow">
+                        <div class="formTitle">
+                            <h4>สถานะ <span class="force">*</span></h4>
+                        </div>
+                        <div class="boxCheckbox">
+                            <input type="radio" name="food_status[]" value="Active" checked>
+                            <label for="">ใช้งาน</label>
+                            <input type="radio" name="food_status[]" value="Inactive">
+                            <label for="">ไม่ใช้งาน</label>
+                        </div>
+                    </div>
+                    <div class="formBtn">
+                        <button type="submit" class="button green w100"><i class='bx bx-save'></i> บันทึก</button>
+                        <button type="button" class="button gray w100" onclick="history.back()">ยกเลิก</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </form>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

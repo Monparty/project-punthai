@@ -41,16 +41,24 @@
                 <h4>Username</h4>
                 <input type="text" name="username" required>
                 <h4>Password</h4>
-                <input type="password" name="password" required>
+                <div style="position: relative;">
+                    <input type="password" name="password" id="myInput" required>
+                    <i class='bx bxs-low-vision' onclick="showPass()" style="position: absolute; right: 0; top:50%; transform: translate(-50%, -50%); cursor: pointer;"></i>
+                </div>
             </div>
             <button type="submit" class="button w100" onclick="adminLogin()">เข้าสู่ระบบ</button>
         </div>
     </div>
 </form>
 <script>
-    // function adminLogin() {
-    //     window.location.href = "pages/dashboard/dashboard.php"
-    // }
+function showPass() {
+  var myInput = document.getElementById("myInput");
+  if (myInput.type === "password") {
+    myInput.type = "text";
+  } else {
+    myInput.type = "password";
+  }
+} 
 </script>
 </body>
 </html>

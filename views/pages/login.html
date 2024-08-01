@@ -44,7 +44,10 @@
                 <h4>Username</h4>
                 <input type="text" name="username" required>
                 <h4>รหัสผ่าน</h4>
-                <input type="password" name="password" required>
+                <div style="position: relative;">
+                    <input type="password" name="password" id="myInput" required>
+                    <i class='bx bxs-low-vision' onclick="showPass()" style="position: absolute; right: 0; top:50%; transform: translate(-50%, -50%); cursor: pointer;"></i>
+                </div>
             </div>
             <button type="submit" class="button w100">เข้าสู่ระบบ</button>
             <a href="register.php">สมัครสมาชิก</a>
@@ -52,5 +55,15 @@
     </div>
 </form>
 <script src="../js/script.js"></script>
+<script>
+ function showPass() {
+  var myInput = document.getElementById("myInput");
+  if (myInput.type === "password") {
+    myInput.type = "text";
+  } else {
+    myInput.type = "password";
+  }
+}   
+</script>
 </body>
 </html>
