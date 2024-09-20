@@ -22,6 +22,27 @@ foreach ($stmt as $i=>$fetch) {
   $showimg[$i] = '<img src="data:$meetroom_image/png;base64,' . $image_base64[$i] . '" style="width: 100%; height: 310px; object-fit: cover; border-radius: 5px; transition: .3s;"/>';
 }
 
+// ดึงข้อมูลรายการอาหาร
+$sql_food = "SELECT * FROM meetroom_food";
+$query_food = mysqli_query( $c, $sql_food );
+// ใช้แสดงรูปภาพ
+$stmt_food = $conn->prepare($sql_food);
+$stmt_food->execute();
+$fetch_food = mysqli_fetch_assoc($query_food);
+
+foreach ($stmt_food as $j=>$fetch_food) {
+  
+  // แปลงข้อมูลรูปภาพจากฐานข้อมูลเป็นฐาน64
+  $image_base64_food[$j] = $fetch_food["food_image"];
+
+  // แปลงข้อมูลรูปภาพจากฐาน64เป็นข้อมูลรูปภาพ
+  $food_image = base64_decode($image_base64_food[$j]);
+
+  // แสดงผลรูปภาพ
+  $showimg_food[$j] = '<img src="data:$food_image/png;base64,' . $image_base64_food[$j] . '" style="width: 70px; height: 70px; object-fit: cover; border-radius: 5px; transition: .3s;"/>';
+}
+// ดึงข้อมูลรายการอาหาร
+
 // ส่วนบันทึกข้อมูลการจอง
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

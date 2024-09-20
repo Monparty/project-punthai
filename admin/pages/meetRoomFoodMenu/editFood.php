@@ -28,7 +28,7 @@ foreach ($stmt as $row) {
 
 // ใช้สำหรับ Update ข้อมูลจะทำงานเมื่อกดปุ่ม update
 if (isset($_REQUEST['update'])) {
-    $sql = "UPDATE foods SET food_name=:food_name, food_price=:food_price, food_type=:food_type, food_detail=:food_detail, food_status=:food_status, food_image=:image_base64, update_at=CURRENT_TIMESTAMP WHERE id=$id";
+    $sql = "UPDATE meetroom_food SET food_name=:food_name, food_price=:food_price, food_type=:food_type, food_detail=:food_detail, food_status=:food_status, food_image=:image_base64, update_at=CURRENT_TIMESTAMP WHERE id=$id";
     
     $stmt = $conn->prepare($sql);
     $food_name = $_POST['food_name'];
