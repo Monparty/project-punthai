@@ -1,15 +1,15 @@
 <?php
-$servername = "localhost";
+$servername = "yamanote.proxy.rlwy.net:26986";
 $username = "root";
-$password = "";
-$dbname= "punthai_project_db";
+$password = "OtHLBnRAWENJDSaDAgISAqivqRlhGyZy";
+$dbname= "railway";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
   // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $c = mysqli_connect( "localhost", "root", "", "punthai_project_db" );
+  $c = mysqli_connect( "yamanote.proxy.rlwy.net:26986", "root", "OtHLBnRAWENJDSaDAgISAqivqRlhGyZy", "railway" );
   mysqli_query( $c, "SET NAMES UTF8" );
   //echo "Connected successfully";
 } catch(PDOException $e) {
