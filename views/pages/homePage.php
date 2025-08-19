@@ -1,4 +1,4 @@
 <?php 
 session_start();
-    include ("homePage.html");
+include ("homePage.html");
 ?>

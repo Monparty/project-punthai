@@ -1,6 +1,6 @@
 <?php 
 require_once '../../config/config.php';
-session_start();
+// session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         title: "เข้าสู่ระบบสำเร็จ",  
                         type: "success"
                     }, function() {
-                        window.location = "homepage.php";
+                        window.location = "homepage.html";
                     });
                     }, 1000);
                 </script>';

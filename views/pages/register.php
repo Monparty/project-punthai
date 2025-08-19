@@ -1,6 +1,6 @@
 <?php
 require_once '../../config/config.php';
-session_start();
+// session_start();
 
 // ตรวจสอบว่าฟอร์มถูกส่งหรือไม่
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
