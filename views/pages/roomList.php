@@ -1,6 +1,6 @@
 <?php 
 include ("../../config/config.php");
-session_start();
+// session_start();
 
 $sql = "SELECT * FROM rooms WHERE status = 'Active'";
 $query = mysqli_query( $c, $sql );

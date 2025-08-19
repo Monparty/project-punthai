@@ -1,6 +1,6 @@
 <?php 
 include ("../../config/config.php");
-session_start();
+// session_start();
 
 $room_id = $_REQUEST['id'];
 $sql = "SELECT * FROM users, rooms WHERE room_id=$room_id";
