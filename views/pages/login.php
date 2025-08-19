@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         title: "เข้าสู่ระบบสำเร็จ",  
                         type: "success"
                     }, function() {
-                        window.location = "./homepage.php";
+                        window.location = "./homePage.php";
                     });
                     }, 1000);
                 </script>';
