@@ -6,6 +6,7 @@ $booking_id = $_REQUEST['id'];
 $sql = "SELECT * FROM bookings INNER JOIN rooms ON rooms.room_id = bookings.room_id WHERE bookings.booking_id = $booking_id";
 $result = mysqli_query($c, $sql);
 $fetch = mysqli_fetch_array($result);
+echo $fetch;
 extract($fetch);
 $stmt = $conn->prepare($sql);
 $stmt->execute();

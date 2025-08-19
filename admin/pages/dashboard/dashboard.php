@@ -1,6 +1,6 @@
 <?php 
 include ("../../../config/config.php");
-// session_start();
+session_start();
 
 $sql_room = "SELECT * FROM bookings";
 $query_room = mysqli_query( $c, $sql_room );
